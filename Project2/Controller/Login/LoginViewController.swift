@@ -22,8 +22,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupLoginButton()
-        NotificationCenter.default.addObserver(self, selector: #selector(playSong(notification:)), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginManager.shared.updateAfterLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(playSong(notification:)), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(LoginManager.shared.updateAfterLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
     }
 
     private func setupLoginButton() {
@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
     }
 
     @objc func playSong(notification: NSNotification) {
-        self.player?.playSpotifyURI("spotify:track:1nXRacxi1isUvleBB6Jgx7", startingWith: 0, startingWithPosition: 0, callback: { (error) in
-            })
+//        self.player?.playSpotifyURI("spotify:track:1nXRacxi1isUvleBB6Jgx7", startingWith: 0, startingWithPosition: 0, callback: { (error) in
+//            })
     }
 
 }

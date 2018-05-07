@@ -22,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         LoginManager.shared.setup()
-        
+
         if self.auth?.session != nil {
             if (self.auth?.session.isValid())! {
                 switchToMainStoryBoard()
+                NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
             }
         }
 
@@ -77,10 +78,7 @@ extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDeleg
                     userDefaults.set(sessionData, forKey: "SpotifySession")
                     userDefaults.synchronize()
 
-                    let delegate = UIApplication.shared.delegate as? AppDelegate
-                    delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
-
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
+                    NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
                 }
             }
             return true
@@ -97,7 +95,7 @@ extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDeleg
         }
         window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
     }
-    
+
     func switchToMainStoryBoard() {
         if !Thread.current.isMainThread {
             DispatchQueue.main.async { [weak self] in
@@ -107,11 +105,5 @@ extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDeleg
         }
         window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
     }
-    
-    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        self.player?.playSpotifyURI("spotify:track:1nXRacxi1isUvleBB6Jgx7", startingWith: 0, startingWithPosition: 0, callback: { (_) in
-        })
-    }
-
 
 }

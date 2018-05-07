@@ -9,11 +9,14 @@
 import Foundation
 
 class GameViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginManager.shared.updateAfterLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+//        NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
+    }
+    
+    @IBAction func play(_ sender: Any) {
+        LoginManager.shared.playMusic()
     }
 
 }
