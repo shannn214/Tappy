@@ -28,6 +28,7 @@
 		090B6974209F402C0095B416 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6973209F402C0095B416 /* Achievement.storyboard */; };
 		090B6976209F403C0095B416 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6975209F403C0095B416 /* Setting.storyboard */; };
 		090B6978209F47D10095B416 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6977209F47D10095B416 /* GameViewController.swift */; };
+		090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* LoginManager.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		090B6973209F402C0095B416 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		090B6975209F403C0095B416 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		090B6977209F47D10095B416 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		090B697920A00D1C0095B416 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				090B695B209F3B540095B416 /* LoginViewController.swift */,
+				090B697920A00D1C0095B416 /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				090B696C209F3FD30095B416 /* AchievementViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
+				090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,

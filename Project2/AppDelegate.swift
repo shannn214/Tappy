@@ -11,8 +11,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static let shared = UIApplication.shared.delegate as! AppDelegate
+    
     var window: UIWindow?
-
     var auth = SPTAuth()
     var authViewController = UIViewController()
     var player: SPTAudioStreamingController?
@@ -26,11 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.auth.sessionUserDefaultsKey = "current session"
         self.auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserReadPrivateScope]
         self.player?.delegate = self
-        
-//        var audioStreamingInitError = NSError()
+
+        var audioStreamingInitError = NSError()
         DispatchQueue.main.async {
             self.startAuthenticationFlow()
         }
+
+//        LoginManager.shared.setup()
 
         return true
     }

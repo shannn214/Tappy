@@ -19,8 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-3d-WKc">
-                                <rect key="frame" x="162.5" y="387" width="49" height="30"/>
-                                <state key="normal" title="Spotify"/>
+                                <rect key="frame" x="97" y="387" width="180" height="40"/>
+                                <color key="backgroundColor" red="0.19349032412802011" green="0.80183951689999999" blue="0.59333805282843555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IA6-Ox-xM3"/>
+                                    <constraint firstAttribute="width" constant="180" id="Kzn-pO-KrW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Spotify">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginButton:" destination="wGR-qC-vze" eventType="touchUpInside" id="odn-nD-kpw"/>
                                 </connections>
@@ -33,6 +41,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="45G-L5-2p5"/>
                     </view>
+                    <connections>
+                        <outlet property="loginSpotifyBtn" destination="SHv-3d-WKc" id="vMK-hX-7tR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcz-vb-Usm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
