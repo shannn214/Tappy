@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class LoginViewController: UIViewController {
+    
+    @IBAction func loginButton(_ sender: Any) {
+    }
+    
+    var auth = SPTAuth()
+    var authViewController = UIViewController()
+    var player: SPTAudioStreamingController?
+
+}
+
+extension LoginViewController: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+}

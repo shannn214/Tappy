@@ -13,8 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var auth = SPTAuth()
+    var authViewController = UIViewController()
+    var player: SPTAudioStreamingController?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.auth = SPTAuth.defaultInstance()
+        self.player = SPTAudioStreamingController.sharedInstance()
+        self.auth.clientID = "d030ac4b117b47ec835c425d436cb5c0"
+        self.auth.redirectURL = URL(string: "project2://callback")
+        self.auth.sessionUserDefaultsKey = "current session"
+        self.auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserReadPrivateScope]
+        self.player?.delegate = self
+        
+//        var audioStreamingInitError = NSError()
+        DispatchQueue.main.async {
+            self.startAuthenticationFlow()
+        }
+
         return true
     }
 
@@ -40,4 +57,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
+
+extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+
+    func startAuthenticationFlow() {
+
+        if self.auth.session != nil {
+            self.player?.login(withAccessToken: self.auth.session.accessToken)
+        } else {
+            let authURL: URL? = self.auth.spotifyWebAuthenticationURL()
+            self.authViewController = SFSafariViewController.init(url: authURL!)
+            self.window?.rootViewController?.present(self.authViewController, animated: true, completion: nil)
+        }
+
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if self.auth.canHandle(url) {
+            self.authViewController.presentingViewController?.dismiss(animated: true, completion: nil)
+//            self.authViewController = nil
+            self.auth.handleAuthCallback(withTriggeredAuthURL: url) { (error, session) in
+                if session != nil {
+                    self.player?.login(withAccessToken: self.auth.session.accessToken)
+                }
+            }
+            return true
+        }
+        return false
+    }
 }

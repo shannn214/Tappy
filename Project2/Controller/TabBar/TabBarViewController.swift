@@ -49,13 +49,13 @@ enum TabBar {
 
             return #imageLiteral(resourceName: "game_controller")
 
-        case .collection:
-
-            return #imageLiteral(resourceName: "music_record")
-
         case .achievement:
 
             return #imageLiteral(resourceName: "badge")
+
+        case .collection:
+
+            return #imageLiteral(resourceName: "music_record")
 
         case .setting:
 
@@ -65,9 +65,29 @@ enum TabBar {
 
     }
 
-//    func selectedImage() -> UIImage {
-//
-//    }
+    func selectedImage() -> UIImage {
+
+        switch self {
+
+        case .game:
+
+            return #imageLiteral(resourceName: "game_controller").withRenderingMode(.alwaysTemplate)
+
+        case .achievement:
+
+            return #imageLiteral(resourceName: "badge").withRenderingMode(.alwaysTemplate)
+
+        case .collection:
+
+            return #imageLiteral(resourceName: "music_record").withRenderingMode(.alwaysTemplate)
+
+        case .setting:
+
+            return #imageLiteral(resourceName: "setting").withRenderingMode(.alwaysTemplate)
+
+        }
+
+    }
 
 }
 
@@ -95,7 +115,7 @@ class TabBarViewController: UITabBarController {
                                     image: tab.image(),
                                     selectedImage: nil)
 
-            item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0)
+            item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
 
             controllers.append(controller)
         }
