@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-3d-WKc">
-                                <rect key="frame" x="97" y="387" width="180" height="40"/>
+                                <rect key="frame" x="87" y="387" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.19349032412802011" green="0.80183951689999999" blue="0.59333805282843555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IA6-Ox-xM3"/>
-                                    <constraint firstAttribute="width" constant="180" id="Kzn-pO-KrW"/>
+                                    <constraint firstAttribute="width" constant="200" id="Kzn-pO-KrW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Spotify">

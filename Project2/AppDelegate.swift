@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-//        DispatchQueue.main.async {
-//            LoginManager.shared.startAuthenticationFlow()
-//        }
         return true
     }
 

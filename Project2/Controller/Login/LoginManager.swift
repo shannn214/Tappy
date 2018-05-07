@@ -28,7 +28,7 @@ class LoginManager: UIViewController {
         self.auth.sessionUserDefaultsKey = "current session"
         self.auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserReadPrivateScope]
         self.player?.delegate = self
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(updateAfterLogin), name: .loginSuccessfull, object: nil)
     }
 
@@ -49,10 +49,8 @@ class LoginManager: UIViewController {
         let userDefaults = UserDefaults.standard
 
         if let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-
             let sessionDataObj = sessionObj as? Data
             let firstTimesession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj!) as? SPTSession
-
             self.session = firstTimesession
             initializePlayer(authSession: session!)
         }
@@ -74,8 +72,10 @@ class LoginManager: UIViewController {
 }
 
 extension LoginManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
     }
+
 }
