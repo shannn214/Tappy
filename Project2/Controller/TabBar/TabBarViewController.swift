@@ -9,27 +9,27 @@
 import Foundation
 
 enum TabBar {
-    
+
     case game
 
     case achievement
-    
+
     case collection
 
     case setting
-    
+
     func controller() -> UIViewController {
 
         switch self {
-            
+
         case .game:
 
             return UIStoryboard.gameStoryboard().instantiateInitialViewController()!
-            
+
         case .achievement:
 
             return UIStoryboard.achievementStoryboard().instantiateInitialViewController()!
-            
+
         case .collection:
 
             return UIStoryboard.collectionStoryboard().instantiateInitialViewController()!

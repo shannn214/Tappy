@@ -11,30 +11,27 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static let shared = UIApplication.shared.delegate as! AppDelegate
-    
+    static let shared = UIApplication.shared.delegate as? AppDelegate
+
     var window: UIWindow?
-    var auth = SPTAuth()
+    var auth = SPTAuth.defaultInstance()
     var authViewController = UIViewController()
     var player: SPTAudioStreamingController?
+    var session: SPTSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        self.auth = SPTAuth.defaultInstance()
-        self.player = SPTAudioStreamingController.sharedInstance()
-        self.auth.clientID = "d030ac4b117b47ec835c425d436cb5c0"
-        self.auth.redirectURL = URL(string: "project2://callback")
-        self.auth.sessionUserDefaultsKey = "current session"
-        self.auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserReadPrivateScope]
-        self.player?.delegate = self
-
-        var audioStreamingInitError = NSError()
-        DispatchQueue.main.async {
-            self.startAuthenticationFlow()
+        LoginManager.shared.setup()
+        
+        if self.auth?.session != nil {
+            if (self.auth?.session.isValid())! {
+                switchToMainStoryBoard()
+            }
         }
 
-//        LoginManager.shared.setup()
-
+//        DispatchQueue.main.async {
+//            LoginManager.shared.startAuthenticationFlow()
+//        }
         return true
     }
 
@@ -64,29 +61,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
 
-    func startAuthenticationFlow() {
-
-        if self.auth.session != nil {
-            self.player?.login(withAccessToken: self.auth.session.accessToken)
-        } else {
-            let authURL: URL? = self.auth.spotifyWebAuthenticationURL()
-            self.authViewController = SFSafariViewController.init(url: authURL!)
-            self.window?.rootViewController?.present(self.authViewController, animated: true, completion: nil)
-        }
-
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if self.auth.canHandle(url) {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        if (self.auth?.canHandle(url))! {
             self.authViewController.presentingViewController?.dismiss(animated: true, completion: nil)
-//            self.authViewController = nil
-            self.auth.handleAuthCallback(withTriggeredAuthURL: url) { (error, session) in
+            self.auth?.handleAuthCallback(withTriggeredAuthURL: url) { (_ error, _ session) in
+                if error != nil {
+                    print("error!")
+                    return
+                }
                 if session != nil {
-                    self.player?.login(withAccessToken: self.auth.session.accessToken)
+                    self.player?.login(withAccessToken: self.auth?.session.accessToken)
+
+                    let userDefaults = UserDefaults.standard
+                    let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+                    userDefaults.set(sessionData, forKey: "SpotifySession")
+                    userDefaults.synchronize()
+
+                    let delegate = UIApplication.shared.delegate as? AppDelegate
+                    delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
                 }
             }
             return true
         }
         return false
     }
+
+    func switchToLoginStoryBoard() {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.switchToLoginStoryBoard()
+            }
+            return
+        }
+        window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
+    }
+    
+    func switchToMainStoryBoard() {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.switchToMainStoryBoard()
+            }
+            return
+        }
+        window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+    }
+    
+    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+        self.player?.playSpotifyURI("spotify:track:1nXRacxi1isUvleBB6Jgx7", startingWith: 0, startingWithPosition: 0, callback: { (_) in
+        })
+    }
+
+
 }

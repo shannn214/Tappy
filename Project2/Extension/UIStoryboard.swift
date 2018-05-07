@@ -9,28 +9,29 @@
 import Foundation
 
 extension UIStoryboard {
-    
+
     static func mainStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
-    
+
     static func loginStorybaord() -> UIStoryboard {
         return UIStoryboard(name: "Login", bundle: nil)
     }
-    
+
     static func gameStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Game", bundle: nil)
     }
-    
+
     static func collectionStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Collection", bundle: nil)
     }
-    
+
     static func achievementStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Achievement", bundle: nil)
     }
-    
+
     static func settingStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Setting", bundle: nil)
     }
+
 }
