@@ -18,25 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-Ci-PBM">
-                                <rect key="frame" x="164" y="324" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="play:" destination="5eu-RK-QSY" eventType="touchUpInside" id="u6z-st-u8y"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvV-9J-sdi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64b-FO-7go" customClass="GameMapViewController" customModule="Project2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="760" height="1000"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Part1Map" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-EU-MLx">
+                                                <rect key="frame" x="0.0" y="0.0" width="760" height="1000"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="760" id="QJM-N7-RwE"/>
+                                                    <constraint firstAttribute="height" constant="1000" id="ieM-cv-X0z"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="WsZ-EU-MLx" firstAttribute="leading" secondItem="64b-FO-7go" secondAttribute="leading" id="CyS-ID-CPp"/>
+                                            <constraint firstItem="WsZ-EU-MLx" firstAttribute="top" secondItem="64b-FO-7go" secondAttribute="top" id="Gna-0a-3rE"/>
+                                            <constraint firstAttribute="bottom" secondItem="WsZ-EU-MLx" secondAttribute="bottom" id="RGL-5q-rqZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="WsZ-EU-MLx" secondAttribute="trailing" id="bCP-BE-2RM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="64b-FO-7go" secondAttribute="bottom" id="EcE-Y2-XHe"/>
+                                    <constraint firstAttribute="trailing" secondItem="64b-FO-7go" secondAttribute="trailing" id="Rs4-5h-qte"/>
+                                    <constraint firstItem="64b-FO-7go" firstAttribute="top" secondItem="VvV-9J-sdi" secondAttribute="top" id="qic-Jf-JJ7"/>
+                                    <constraint firstItem="64b-FO-7go" firstAttribute="leading" secondItem="VvV-9J-sdi" secondAttribute="leading" id="sa1-H0-Qqr"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcq-9T-dl0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TYt-lb-CH1">
+                                        <rect key="frame" x="72.5" y="35" width="230" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="nHE-Bn-cUJ"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="1" green="0.22433632647272184" blue="0.58990203859624302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="trackTintColor" red="0.088099875469506719" green="0.096848503356070231" blue="0.5189243027888446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icW-aa-NnC">
+                                        <rect key="frame" x="163" y="40" width="48" height="48"/>
+                                        <state key="normal" image="game_controller"/>
+                                        <connections>
+                                            <action selector="movingButton:" destination="5eu-RK-QSY" eventType="touchUpInside" id="DN5-Y4-xqs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="X14-e3-rFl"/>
+                                    <constraint firstItem="TYt-lb-CH1" firstAttribute="top" secondItem="zcq-9T-dl0" secondAttribute="top" constant="35" id="Xwo-VQ-urM"/>
+                                    <constraint firstItem="icW-aa-NnC" firstAttribute="top" secondItem="TYt-lb-CH1" secondAttribute="bottom" constant="3" id="ZCM-fF-x0w"/>
+                                    <constraint firstItem="TYt-lb-CH1" firstAttribute="centerX" secondItem="zcq-9T-dl0" secondAttribute="centerX" id="kfm-9B-NLq"/>
+                                    <constraint firstItem="icW-aa-NnC" firstAttribute="centerX" secondItem="zcq-9T-dl0" secondAttribute="centerX" id="tiX-8f-FVR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="00R-Ci-PBM" firstAttribute="centerX" secondItem="rsW-zs-1UD" secondAttribute="centerX" id="8gt-6c-eSv"/>
-                            <constraint firstItem="00R-Ci-PBM" firstAttribute="top" secondItem="Z3y-E3-1yK" secondAttribute="top" constant="304" id="EXM-B7-zBW"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="zcq-9T-dl0" secondAttribute="trailing" id="1oC-dy-dAo"/>
+                            <constraint firstItem="VvV-9J-sdi" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="7cf-rE-IA7"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="VvV-9J-sdi" secondAttribute="bottom" id="B05-Mf-eai"/>
+                            <constraint firstItem="VvV-9J-sdi" firstAttribute="centerX" secondItem="rsW-zs-1UD" secondAttribute="centerX" id="Fj7-Rk-pDs"/>
+                            <constraint firstItem="zcq-9T-dl0" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="YCq-Dm-vEg"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="VvV-9J-sdi" secondAttribute="trailing" id="iu5-QS-tWi"/>
+                            <constraint firstItem="zcq-9T-dl0" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="v9z-5h-iZq"/>
+                            <constraint firstItem="VvV-9J-sdi" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="zAV-5x-Hpo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="64b-FO-7go" id="Ps9-Fe-wHV"/>
+                        <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
+                        <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ia6-PA-yaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15" y="196"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Part1Map" width="425" height="567"/>
+        <image name="game_controller" width="48" height="48"/>
+    </resources>
 </document>
