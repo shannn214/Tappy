@@ -19,6 +19,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     var distance = 0.0
     var locations = [CLLocation]()
 
+    let CDButton = UIButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,9 +30,13 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         progress.progress = 0
         movingBtn.isHidden = true
+
+        createButton()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestAlwaysAuthorization()
         } else if CLLocationManager.authorizationStatus() == .denied {
@@ -63,13 +69,37 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
+    func createButton() {
+
+        CDButton.frame = CGRect(x: 49 * gameMapView.bounds.width/100, y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
+        CDButton.setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
+        self.gameMapView.addSubview(CDButton)
+        CDButton.isHidden = true
+        CDButton.addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
+
+    }
+
+    @objc func showRecordInfo() {
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.didMove(toParentViewController: self)
+
+        LoginManager.shared.playMusic()
+    }
+
     @IBAction func movingButton(_ sender: Any) {
+
         movingBtn.isHidden = true
         progress.progress = 0
         distance = 0
 
         self.gameMapView.check = true
         self.gameMapView.setNeedsDisplay()
+
+        CDButton.isHidden = false
+
     }
 
 }

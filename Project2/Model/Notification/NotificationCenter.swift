@@ -11,4 +11,6 @@ import Foundation
 extension Notification.Name {
 //    static let pressLogin = Notification.Name("pressLogin")
     static let loginSuccessfull = Notification.Name("loginSuccessfull")
+    
+    static let startPlayingTrack = Notification.Name("startPlayingTrack")
 }
