@@ -65,7 +65,7 @@ class LoginManager: UIViewController {
     }
 
     func playMusic() {
-        self.player?.playSpotifyURI("spotify:track:3V9SgblMQCt5LyepDyHyEV", startingWith: 0, startingWithPosition: 0, callback: { (error) in
+        self.player?.playSpotifyURI("spotify:track:3V9SgblMQCt5LyepDyHyEV", startingWith: 0, startingWithPosition: 0, callback: { (_) in
         })
     }
 

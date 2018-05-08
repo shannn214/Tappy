@@ -11,25 +11,25 @@ import CoreLocation
 
 class GameViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
-    
+    @IBOutlet weak var gameMapView: GameMapViewController!
+
     let locationManager = CLLocationManager()
     var distance = 0.0
     var locations = [CLLocation]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         locationManager.delegate = self
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+
         progress.progress = 0
         movingBtn.isHidden = true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestAlwaysAuthorization()
@@ -39,11 +39,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let curLocation: CLLocation = locations[0]
         print("\(curLocation.coordinate)")
-        
+
         for location in locations as [CLLocation] {
             if location.horizontalAccuracy < 20 {
                 if self.locations.count > 0 {
@@ -62,11 +62,14 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
+
     @IBAction func movingButton(_ sender: Any) {
         movingBtn.isHidden = true
         progress.progress = 0
         distance = 0
+
+        self.gameMapView.check = true
+        self.gameMapView.setNeedsDisplay()
     }
-    
+
 }

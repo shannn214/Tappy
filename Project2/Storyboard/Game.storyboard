@@ -90,7 +90,7 @@
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="64b-FO-7go" id="Ps9-Fe-wHV"/>
+                        <outlet property="gameMapView" destination="64b-FO-7go" id="2lR-QU-xLN"/>
                         <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
                         <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
                     </connections>
