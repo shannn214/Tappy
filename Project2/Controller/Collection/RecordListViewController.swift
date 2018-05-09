@@ -8,20 +8,27 @@
 
 import Foundation
 
+protocol RecordListControllerDelegate: class {
+    func recordViewDidScroll(_ controller: RecordListViewController, translation: CGFloat)
+}
+
 class RecordListViewController: UIViewController {
 
     @IBOutlet weak var recordTableView: UITableView!
 
+    weak var delegate: RecordListControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        recordTableView.separatorStyle = .none
         setupTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        recordTableView.contentInset = UIEdgeInsets(top: 260, left: 0, bottom: 0, right: 0)
-        recordTableView.contentOffset = CGPoint(x: 0, y: -260)
+        recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
+        recordTableView.contentOffset = CGPoint(x: 0, y: -190)
     }
 
     func setupTableView() {
@@ -42,8 +49,19 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = recordTableView.dequeueReusableCell(withIdentifier: String(describing: RecordTableViewCell.self), for: indexPath) as? RecordTableViewCell
+        cell?.selectionStyle = .none
 
         return cell!
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 77
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let recordY = scrollView.contentOffset.y
+        let distance = recordY - (-190)
+        self.delegate?.recordViewDidScroll(self, translation: distance)
     }
 
 }

@@ -45,6 +45,7 @@ class PopUpRecordViewController: UIViewController {
         recordCover.sd_setImage(with: URL(string: url!))
         recordTitle.text = title
         recordArtist.text = artist
+        rotate(image: recordCover)
     }
 
     @IBAction func leaveButton(_ sender: Any) {
@@ -58,6 +59,17 @@ class PopUpRecordViewController: UIViewController {
 
     func removeAnimation() {
 //        TO DO
+    }
+
+//    Animation
+    func rotate(image: UIImageView) {
+        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
+        rotationAnimation.duration = 10
+        rotationAnimation.isCumulative = true
+        rotationAnimation.repeatCount = .infinity
+        image.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        image.layer.cornerRadius = self.recordCover.bounds.size.width * 0.5
     }
 
 }
