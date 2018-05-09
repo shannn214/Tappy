@@ -11,11 +11,25 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    static let shared = UIApplication.shared.delegate as? AppDelegate
 
+    var window: UIWindow?
+    var auth = SPTAuth.defaultInstance()
+    var authViewController = UIViewController()
+    var player: SPTAudioStreamingController?
+    var session: SPTSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        LoginManager.shared.setup()
+
+        if self.auth?.session != nil {
+            if (self.auth?.session.isValid())! {
+                switchToMainStoryBoard()
+                NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
+            }
+        }
+
         return true
     }
 
@@ -41,6 +55,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        if (self.auth?.canHandle(url))! {
+            self.authViewController.presentingViewController?.dismiss(animated: true, completion: nil)
+            self.auth?.handleAuthCallback(withTriggeredAuthURL: url) { (_ error, _ session) in
+                if error != nil {
+                    print("error!")
+                    return
+                }
+                if session != nil {
+                    self.player?.login(withAccessToken: self.auth?.session.accessToken)
+
+                    let userDefaults = UserDefaults.standard
+                    let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+                    userDefaults.set(sessionData, forKey: "SpotifySession")
+                    userDefaults.synchronize()
+
+                    NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
+                }
+            }
+            return true
+        }
+        return false
+    }
+
+    func switchToLoginStoryBoard() {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.switchToLoginStoryBoard()
+            }
+            return
+        }
+        window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
+    }
+
+    func switchToMainStoryBoard() {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.switchToMainStoryBoard()
+            }
+            return
+        }
+        window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+    }
+
+}

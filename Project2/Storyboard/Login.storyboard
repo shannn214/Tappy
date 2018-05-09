@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wGR-qC-vze">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="zlT-0c-nkv">
+            <objects>
+                <viewController id="wGR-qC-vze" customClass="LoginViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dHs-ZG-X5o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-3d-WKc">
+                                <rect key="frame" x="87" y="387" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.19349032412802011" green="0.80183951689999999" blue="0.59333805282843555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IA6-Ox-xM3"/>
+                                    <constraint firstAttribute="width" constant="200" id="Kzn-pO-KrW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Spotify">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="wGR-qC-vze" eventType="touchUpInside" id="odn-nD-kpw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SHv-3d-WKc" firstAttribute="top" secondItem="45G-L5-2p5" secondAttribute="top" constant="367" id="ChD-mB-716"/>
+                            <constraint firstItem="SHv-3d-WKc" firstAttribute="centerX" secondItem="dHs-ZG-X5o" secondAttribute="centerX" id="hbB-US-z9v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="45G-L5-2p5"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginSpotifyBtn" destination="SHv-3d-WKc" id="vMK-hX-7tR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vcz-vb-Usm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="62"/>
+        </scene>
+    </scenes>
+</document>
