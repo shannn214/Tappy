@@ -14,7 +14,7 @@ struct Record: Codable {
 
     let artist: String
 
-    let cover: [String]
+    let cover: [URL]
 
     let duration: Int
 

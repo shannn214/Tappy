@@ -100,6 +100,24 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         CDButton.isHidden = false
 
+        test()
+
+    }
+
+    func test() {
+        let spotifyUrlString = "https://api.spotify.com/v1/tracks/3V9SgblMQCt5LyepDyHyEV"
+
+        guard let url = URL(string: spotifyUrlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+
+            guard let data = data else { return }
+
+            let dataAsString = String(data: data, encoding: .utf8)
+
+            print(dataAsString)
+
+        }.resume()
     }
 
 }
