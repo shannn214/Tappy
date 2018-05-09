@@ -10,4 +10,6 @@ import Foundation
 
 class CollectionViewController: UIViewController {
 
+    @IBOutlet weak var recordContainerView: UIView!
+
 }

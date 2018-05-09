@@ -21,7 +21,7 @@ class PopUpRecordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         NotificationCenter.default.addObserver(self, selector: #selector(showInfo(notification:)), name: .startPlayingTrack, object: nil)
     }
@@ -48,6 +48,7 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @IBAction func leaveButton(_ sender: Any) {
+        LoginManager.shared.player?.setIsPlaying(false, callback: nil)
         self.view.removeFromSuperview()
     }
 
