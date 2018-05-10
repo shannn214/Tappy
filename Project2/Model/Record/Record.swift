@@ -8,20 +8,40 @@
 
 import Foundation
 
-struct Record: Decodable {
+struct JSONData: Codable {
 
-    let trackName: String
-
-    let artist: String?
-
-//    let cover: [String: Any]
-
-    let duration: Int
+    let data: Record
 
 }
 
-struct Album: Decodable {
+struct Record: Codable {
+
+    let album: Album
 
     let artists: String
+
+    let duration: Int
+
+    let name: String
+
+    private enum CodingKeys: String, CodingKey {
+
+        case album, artists, name
+
+        case duration = "duration_ms"
+
+    }
+
+}
+
+struct Album: Codable {
+
+    let images: [Images]
+
+}
+
+struct Images: Codable {
+
+    let url: String
 
 }

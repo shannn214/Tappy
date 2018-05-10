@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-U8-Wh8">
-                                <rect key="frame" x="0.0" y="60" width="375" height="195"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apparat" translatesAutoresizingMaskIntoConstraints="NO" id="0eR-Yv-vTM">
-                                        <rect key="frame" x="122" y="0.0" width="130" height="130"/>
+                                        <rect key="frame" x="122" y="60" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="kDJ-Rn-gER"/>
                                             <constraint firstAttribute="width" constant="130" id="qfh-Hb-fXv"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atp-i1-KPm">
-                                        <rect key="frame" x="139" y="140" width="97" height="24"/>
+                                        <rect key="frame" x="139" y="200" width="97" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -38,9 +38,9 @@
                                 <color key="backgroundColor" red="0.09276954681274896" green="0.09276954681274896" blue="0.09276954681274896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="atp-i1-KPm" firstAttribute="centerX" secondItem="7L0-U8-Wh8" secondAttribute="centerX" id="Bkm-D8-Cln"/>
-                                    <constraint firstAttribute="height" constant="195" id="LSv-lf-kbs"/>
+                                    <constraint firstAttribute="height" constant="255" id="LSv-lf-kbs"/>
                                     <constraint firstItem="atp-i1-KPm" firstAttribute="top" secondItem="0eR-Yv-vTM" secondAttribute="bottom" constant="10" id="OwQ-L1-peg"/>
-                                    <constraint firstItem="0eR-Yv-vTM" firstAttribute="top" secondItem="7L0-U8-Wh8" secondAttribute="top" id="cWI-nR-e6n"/>
+                                    <constraint firstItem="0eR-Yv-vTM" firstAttribute="top" secondItem="7L0-U8-Wh8" secondAttribute="top" constant="60" id="cWI-nR-e6n"/>
                                     <constraint firstItem="0eR-Yv-vTM" firstAttribute="centerX" secondItem="7L0-U8-Wh8" secondAttribute="centerX" id="gn7-IE-01w"/>
                                 </constraints>
                             </view>
@@ -80,12 +80,13 @@
                             <constraint firstItem="fuo-OK-JN1" firstAttribute="top" secondItem="b9X-5J-b2V" secondAttribute="top" id="b3f-GV-6wi"/>
                             <constraint firstItem="Fy7-YO-Nng" firstAttribute="trailing" secondItem="H3Z-iI-mnT" secondAttribute="trailing" id="kCN-DZ-2te"/>
                             <constraint firstItem="7L0-U8-Wh8" firstAttribute="leading" secondItem="Fy7-YO-Nng" secondAttribute="leading" id="mLv-9l-oAf"/>
-                            <constraint firstItem="7L0-U8-Wh8" firstAttribute="top" secondItem="b9X-5J-b2V" secondAttribute="top" constant="60" id="o0P-gx-bw7"/>
+                            <constraint firstItem="7L0-U8-Wh8" firstAttribute="top" secondItem="b9X-5J-b2V" secondAttribute="top" id="o0P-gx-bw7"/>
                             <constraint firstItem="fuo-OK-JN1" firstAttribute="leading" secondItem="Fy7-YO-Nng" secondAttribute="leading" id="zgs-re-nPp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fy7-YO-Nng"/>
                     </view>
                     <connections>
+                        <outlet property="collectionCover" destination="0eR-Yv-vTM" id="H0A-cw-fag"/>
                         <outlet property="firstCollectionText" destination="R2z-sk-RdN" id="LxA-Rt-TE8"/>
                         <outlet property="recordContainerView" destination="H3Z-iI-mnT" id="FXE-uW-aub"/>
                         <outlet property="secondCollectionText" destination="atp-i1-KPm" id="xph-cY-ksy"/>

@@ -14,16 +14,20 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var firstCollectionText: UILabel!
     @IBOutlet weak var secondCollectionText: UILabel!
-
-    let topViewHeight: CGFloat = 190
+    @IBOutlet weak var collectionCover: UIImageView!
+    
+    let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
-    var showPoint: CGFloat = 65
+    var showPoint: CGFloat = 30
     var recordTransition: CGFloat?
+    
+    let designSetting = DesignSetting()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         firstCollectionText.isHidden = true
+        designSetting.designSetting(view: collectionCover)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,7 +48,7 @@ extension CollectionViewController: RecordListControllerDelegate {
     func changeTopView() {
         guard let recordY = recordTransition else { return }
         if recordY <= changePoint {
-            topView.frame = CGRect(x: 0, y: (60 - recordY), width: topView.frame.width, height: topViewHeight)
+            topView.frame = CGRect(x: 0, y: (0 - recordY), width: topView.frame.width, height: topViewHeight)
         }
         if recordY >= showPoint {
             firstCollectionText.isHidden = false

@@ -22,6 +22,8 @@ class PopUpRecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        recordCover.alpha = 0
+
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         NotificationCenter.default.addObserver(self, selector: #selector(showInfo(notification:)), name: .startPlayingTrack, object: nil)
     }
@@ -42,6 +44,9 @@ class PopUpRecordViewController: UIViewController {
         let title = LoginManager.shared.player?.metadata.currentTrack?.playbackSourceName
         let artist = LoginManager.shared.player?.metadata.currentTrack?.artistName
 
+        UIView.animate(withDuration: 0.2) {
+            self.recordCover.alpha = 1
+        }
         recordCover.sd_setImage(with: URL(string: url!))
         recordTitle.text = title
         recordArtist.text = artist
@@ -50,6 +55,7 @@ class PopUpRecordViewController: UIViewController {
 
     @IBAction func leaveButton(_ sender: Any) {
         LoginManager.shared.player?.setIsPlaying(false, callback: nil)
+
         self.view.removeFromSuperview()
     }
 

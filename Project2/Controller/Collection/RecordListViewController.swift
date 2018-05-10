@@ -20,13 +20,17 @@ class RecordListViewController: UIViewController {
 
     var recordInfoDelegate = RecordProvider()
 
+    let designSetting = DesignSetting()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         recordInfoDelegate.delegate = self
-        recordInfoDelegate.getRecordInfo()
+//        recordInfoDelegate.getRecordInfo()
 
         recordTableView.separatorStyle = .none
+
+        designSetting.designSetting(view: recordTableView)
         setupTableView()
     }
 
@@ -44,6 +48,13 @@ class RecordListViewController: UIViewController {
         recordTableView.dataSource = self
 
     }
+
+//    func designSetting() {
+//        recordTableView.layer.shadowColor = UIColor.black.cgColor
+//        recordTableView.layer.shadowOpacity = 1
+//        recordTableView.layer.shadowOffset = CGSize.zero
+//        recordTableView.layer.shadowRadius = 10
+//    }
 }
 
 extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {

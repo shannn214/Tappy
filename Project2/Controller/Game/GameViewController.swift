@@ -84,7 +84,12 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.addChildViewController(popUpRecordView)
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.didMove(toParentViewController: self)
+        popUpRecordView.view.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
+//        popUpRecordView.didMove(toParentViewController: self)
 
         LoginManager.shared.playMusic()
     }
