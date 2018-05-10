@@ -38,6 +38,7 @@
 		0914190820A3388900B7C0F0 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190720A3388900B7C0F0 /* Record.swift */; };
 		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
+		0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914190F20A48EB300B7C0F0 /* Player.storyboard */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		0914190720A3388900B7C0F0 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
+		0914190F20A48EB300B7C0F0 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				090B6971209F40130095B416 /* Collection.storyboard */,
 				090B6973209F402C0095B416 /* Achievement.storyboard */,
 				090B6975209F403C0095B416 /* Setting.storyboard */,
+				0914190F20A48EB300B7C0F0 /* Player.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
 				0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */,
 				090B6974209F402C0095B416 /* Achievement.storyboard in Resources */,
+				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
 			);

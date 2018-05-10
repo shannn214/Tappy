@@ -19,10 +19,16 @@ class PopUpRecordViewController: UIViewController {
     var session: SPTSession!
     var player: SPTAudioStreamingController?
 
+    weak var delegate = UIApplication.shared.delegate as? AppDelegate
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         recordCover.alpha = 0
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(touchCover))
+        recordCover.isUserInteractionEnabled = true
+        recordCover.addGestureRecognizer(tap)
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         NotificationCenter.default.addObserver(self, selector: #selector(showInfo(notification:)), name: .startPlayingTrack, object: nil)
@@ -38,9 +44,12 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
+    @objc func touchCover() {
+        delegate?.window?.rootViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController()
+    }
+
     @objc func showInfo(notification: NSNotification) {
         let url = LoginManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        recordCover.sd_setImage(with: URL(string: url!))
         let title = LoginManager.shared.player?.metadata.currentTrack?.playbackSourceName
         let artist = LoginManager.shared.player?.metadata.currentTrack?.artistName
 

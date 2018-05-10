@@ -12,21 +12,23 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var recordContainerView: UIView!
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var firstCollectionText: UILabel!
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
-    
+
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
     var showPoint: CGFloat = 30
     var recordTransition: CGFloat?
-    
+
     let designSetting = DesignSetting()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        firstCollectionText.isHidden = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.topItem?.title = ""
         designSetting.designSetting(view: collectionCover)
     }
 
@@ -51,9 +53,9 @@ extension CollectionViewController: RecordListControllerDelegate {
             topView.frame = CGRect(x: 0, y: (0 - recordY), width: topView.frame.width, height: topViewHeight)
         }
         if recordY >= showPoint {
-            firstCollectionText.isHidden = false
+            self.navigationController?.navigationBar.topItem?.title = "Collection"
         } else {
-            firstCollectionText.isHidden = true
+            self.navigationController?.navigationBar.topItem?.title = ""
         }
 
     }
