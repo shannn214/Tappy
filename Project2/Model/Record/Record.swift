@@ -8,14 +8,20 @@
 
 import Foundation
 
-struct Record: Codable {
+struct Record: Decodable {
 
     let trackName: String
 
-    let artist: String
+    let artist: String?
 
-    let cover: [URL]
+//    let cover: [String: Any]
 
     let duration: Int
+
+}
+
+struct Album: Decodable {
+
+    let artists: String
 
 }

@@ -36,6 +36,7 @@
 		0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */; };
 		0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */; };
 		0914190820A3388900B7C0F0 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190720A3388900B7C0F0 /* Record.swift */; };
+		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		0914190720A3388900B7C0F0 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				090B6969209F3FC00095B416 /* CollectionViewController.swift */,
 				090B698220A2E22D0095B416 /* RecordListViewController.swift */,
+				0914190920A3EECA00B7C0F0 /* RecordProvider.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -401,10 +404,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +438,7 @@
 				090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
+				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
 			);

@@ -18,8 +18,13 @@ class RecordListViewController: UIViewController {
 
     weak var delegate: RecordListControllerDelegate?
 
+    var recordInfoDelegate = RecordProvider()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        recordInfoDelegate.delegate = self
+        recordInfoDelegate.getRecordInfo()
 
         recordTableView.separatorStyle = .none
         setupTableView()
@@ -62,6 +67,13 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         let recordY = scrollView.contentOffset.y
         let distance = recordY - (-190)
         self.delegate?.recordViewDidScroll(self, translation: distance)
+    }
+
+}
+
+extension RecordListViewController: RecordManagerDelegate {
+    func manager(_ manager: RecordProvider, didGet recordInfo: Record) {
+        print(recordInfo)
     }
 
 }

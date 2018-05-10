@@ -5,6 +5,7 @@ target 'Project2' do
 
   use_frameworks!
 
+pod 'Alamofire', '~> 4.7'
 pod 'SDWebImage', '~> 4.0'
 pod 'SwiftLint'
 
