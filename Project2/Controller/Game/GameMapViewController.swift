@@ -13,12 +13,15 @@ class GameMapViewController: UIView {
     let firstAreaArray = [CAShapeLayer(), CAShapeLayer(), CAShapeLayer(), CAShapeLayer()]
     let pathArray = [UIBezierPath(), UIBezierPath(), UIBezierPath()]
 
+//    var firstAreaArray: Array<CAShapeLayer>?
+
     var check: Bool?
     var position = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        appendArray()
         for firstArea in firstAreaArray {
             layer.addSublayer(firstArea)
         }
@@ -33,6 +36,16 @@ class GameMapViewController: UIView {
             creatMapStroke()
         }
 
+    }
+
+    func appendArray() {
+//        for _ in 0...3 {
+//            firstAreaArray?.append(CAShapeLayer())
+//        }
+//
+//        for firstArea in firstAreaArray! {
+//            layer.addSublayer(firstArea)
+//        }
     }
 
     func creatMapStroke() {
