@@ -43,7 +43,7 @@ struct RecordProvider {
 
                 if let result = response.result.value {
                     let JSON = result as? NSDictionary
-                    
+
                     do {
                         let recordInfo = try JSONDecoder().decode(Record.self, from: response.data!)
                         print(recordInfo)

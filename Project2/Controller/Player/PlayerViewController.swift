@@ -18,7 +18,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var artist: UILabel!
 
     let designSetting = DesignSetting()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +39,6 @@ class PlayerViewController: UIViewController {
     }
 
     @objc func update() {
-        
+
     }
 }

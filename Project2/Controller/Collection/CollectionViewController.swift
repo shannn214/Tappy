@@ -17,7 +17,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
-    var showPoint: CGFloat = 30
+    var showPoint: CGFloat = 70
     var recordTransition: CGFloat?
 
     let designSetting = DesignSetting()
@@ -30,7 +30,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.topItem?.title = ""
         designSetting.designSetting(view: collectionCover)
-        
+
         LoginManager.shared.getTrackInfo()
     }
 
@@ -54,10 +54,10 @@ extension CollectionViewController: RecordListControllerDelegate {
         if recordY <= changePoint {
             topView.frame = CGRect(x: 0, y: (0 - recordY), width: topView.frame.width, height: topViewHeight)
         }
-        if recordY >= showPoint {
-            self.navigationController?.navigationBar.topItem?.title = "Collection"
-        } else {
+        if recordY <= showPoint {
             self.navigationController?.navigationBar.topItem?.title = ""
+        } else {
+            self.navigationController?.navigationBar.topItem?.title = "Collection"
         }
 
     }
