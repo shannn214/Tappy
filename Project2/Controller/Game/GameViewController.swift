@@ -31,7 +31,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         progress.progress = 0
-        movingBtn.isHidden = true
+        movingBtn.isHidden = false
 
         createButton()
     }
@@ -98,8 +98,9 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)
         }
-
+        
         LoginManager.shared.playMusic()
+
     }
 
     @IBAction func movingButton(_ sender: Any) {

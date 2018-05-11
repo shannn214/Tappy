@@ -30,6 +30,8 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.topItem?.title = ""
         designSetting.designSetting(view: collectionCover)
+        
+        LoginManager.shared.getTrackInfo()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -26,7 +26,7 @@ class RecordListViewController: UIViewController {
         super.viewDidLoad()
 
         recordInfoDelegate.delegate = self
-//        recordInfoDelegate.getRecordInfo()
+        recordInfoDelegate.getRecordInfo()
 
         recordTableView.separatorStyle = .none
 

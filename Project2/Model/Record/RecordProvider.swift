@@ -41,24 +41,37 @@ struct RecordProvider {
                     return
                 }
 
-                var getRecordInfo: Record?
-                let dictionary = ["data": response]
-                if let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
-                    if let recordInfo = try? JSONDecoder().decode(JSONData.self, from: jsonData).data {
+                if let result = response.result.value {
+                    let JSON = result as? NSDictionary
+                    
+                    do {
+                        let recordInfo = try JSONDecoder().decode(Record.self, from: response.data!)
                         print(recordInfo)
-
-                        let artists = recordInfo.artists
-                        let duration = recordInfo.duration
-                        let name = recordInfo.name
-                        let cover = recordInfo.album.images[1].url
-
-                        getRecordInfo = Record(album: Album(images: [Images(url: cover)]), artists: artists, duration: duration, name: name)
-
-                        DispatchQueue.main.async {
-                            self.delegate?.manager(self, didGet: getRecordInfo!)
-                        }
+                    } catch {
+                        print(error)
                     }
+
                 }
+
+//                var getRecordInfo: Record?
+//                let dictionary = ["data": response]
+//                if let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) {
+//                    if let recordInfo = try? JSONDecoder().decode(JSONData.self, from: jsonData).data {
+//                        print(recordInfo)
+//
+//                        let artists = recordInfo.artists
+//                        let duration = recordInfo.duration
+//                        let name = recordInfo.name
+//                        let cover = recordInfo.album.images[1].url
+//
+//                        getRecordInfo = Record(album: Album(images: [Images(url: cover)]), artists: artists, duration: duration, name: name)
+//
+//                        DispatchQueue.main.async {
+//                            self.delegate?.manager(self, didGet: getRecordInfo!)
+//                        }
+//                    }
+//                }
+
             }
     }
 
