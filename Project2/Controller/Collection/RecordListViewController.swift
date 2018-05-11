@@ -49,12 +49,6 @@ class RecordListViewController: UIViewController {
 
     }
 
-//    func designSetting() {
-//        recordTableView.layer.shadowColor = UIColor.black.cgColor
-//        recordTableView.layer.shadowOpacity = 1
-//        recordTableView.layer.shadowOffset = CGSize.zero
-//        recordTableView.layer.shadowRadius = 10
-//    }
 }
 
 extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -66,6 +60,9 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = recordTableView.dequeueReusableCell(withIdentifier: String(describing: RecordTableViewCell.self), for: indexPath) as? RecordTableViewCell
         cell?.selectionStyle = .none
+
+        cell?.artist.text = LoginManager.shared.recordInfo?.artist
+        cell?.title.text = LoginManager.shared.recordInfo?.trackName
 
         return cell!
     }
