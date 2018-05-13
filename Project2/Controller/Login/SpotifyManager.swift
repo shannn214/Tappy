@@ -21,7 +21,7 @@ class SpotifyManager: UIViewController {
     let clientID = "d030ac4b117b47ec835c425d436cb5c0"
     let redirectURL = "project2://callback"
 
-    var recordInfo: RecordInfo?
+    var recordInfo: TrackInfo?
 
     func setup() {
         self.auth = SPTAuth.defaultInstance()
@@ -80,45 +80,6 @@ class SpotifyManager: UIViewController {
         })
     }
 
-    
-    //move to a new file (get spttrack series)
-    func getTrackInfo() {
-
-//        var albumCover: URL?
-//        var artist: String?
-//        var trackName: String?
-
-        SPTTrack.track(withURI: URL(string: "spotify:track:7plGWSHjz9qz2DMkZLZm2D"), accessToken: auth.session.accessToken, market: nil) { (error, response) in
-            if response != nil {
-                if let track = response as? SPTTrack, let trackArtist = track.artists as? [SPTPartialArtist] {
-                    print(trackArtist)
-                    print("---------------------^^")
-                    let name = trackArtist[0].name
-                    let title = track.name
-                    print(title!)
-                    print(name!)
-
-                    self.recordInfo = RecordInfo(albumCover: nil, artist: name!, trackName: title!)
-                }
-            } else {
-                print(error)
-            }
-        }
-
-        SPTAlbum.album(withURI: URL(string: "spotify:album:2UQpIR7LhOlWecHpN494O5"), accessToken: auth.session.accessToken, market: nil, callback: { (error, success) in
-            if success != nil {
-                if let album = success as? SPTPartialAlbum {
-                    print("================")
-                    print(album.largestCover.imageURL!)
-                    let cover = album.largestCover.imageURL
-
-                }
-            } else {
-                print(error)
-            }
-        })
-
-    }
 }
 
 extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {

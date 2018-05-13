@@ -18,15 +18,20 @@ class RecordListViewController: UIViewController {
 
     weak var delegate: RecordListControllerDelegate?
 
-    var recordInfoDelegate = RecordProvider()
+    var spotifyTracDelegate = SpotifyTrackManager()
 
+    var trackInfo: TrackInfo?
+    
+    var tracksInfo = [TrackInfo]()
+    
     let designSetting = DesignSetting()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        recordInfoDelegate.delegate = self
-        recordInfoDelegate.getRecordInfo()
+        spotifyTracDelegate.delegate = self
+        spotifyTracDelegate.getTrackInfo(trackUri: "spotify:track:4dyx5SzxPPaD8xQIid5Wjj", albumUri: "spotify:album:5g4E06cxsFEMFE9hSekAt2")
 
         recordTableView.separatorStyle = .none
 
@@ -38,6 +43,11 @@ class RecordListViewController: UIViewController {
         super.viewDidAppear(animated)
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        recordTableView.reloadData()
     }
 
     func setupTableView() {
@@ -52,6 +62,7 @@ class RecordListViewController: UIViewController {
 }
 
 extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
@@ -61,8 +72,8 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = recordTableView.dequeueReusableCell(withIdentifier: String(describing: RecordTableViewCell.self), for: indexPath) as? RecordTableViewCell
         cell?.selectionStyle = .none
 
-        cell?.artist.text = SpotifyManager.shared.recordInfo?.artist
-        cell?.title.text = SpotifyManager.shared.recordInfo?.trackName
+        cell?.artist.text = trackInfo?.artist
+        cell?.title.text = trackInfo?.trackName
 
         return cell!
     }
@@ -79,9 +90,10 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
-extension RecordListViewController: RecordManagerDelegate {
-    func manager(_ manager: RecordProvider, didGet recordInfo: Record) {
-        print(recordInfo)
+extension RecordListViewController: SpotifyTrackManagerDelegate {
+
+    func trackManager(trackInfo: TrackInfo) {
+        self.trackInfo = trackInfo
     }
 
 }

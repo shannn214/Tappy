@@ -45,13 +45,3 @@ struct Images: Codable {
     let url: String
 
 }
-
-struct RecordInfo {
-
-    let albumCover: URL?
-
-    let artist: String
-
-    let trackName: String
-
-}
