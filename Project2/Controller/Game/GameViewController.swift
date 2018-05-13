@@ -98,7 +98,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             popUpRecordView.didMove(toParentViewController: self)
         }
 
-        LoginManager.shared.playMusic()
+        SpotifyManager.shared.playMusic()
 
     }
 //    delete after demo
@@ -113,7 +113,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             popUpRecordView.didMove(toParentViewController: self)
         }
 
-        LoginManager.shared.playMusic2()
+        SpotifyManager.shared.playMusic2()
 
     }
 //--------

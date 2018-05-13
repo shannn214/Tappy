@@ -26,9 +26,9 @@ class PlayerViewController: UIViewController {
 //        slider.value = 0.0
 //        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
 
-        let url = LoginManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        let title = LoginManager.shared.player?.metadata.currentTrack?.playbackSourceName
-        let artistName = LoginManager.shared.player?.metadata.currentTrack?.artistName
+        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
+        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
+        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
         cover.sd_setImage(with: URL(string: url!))
         trackName.text = title
         artist.text = artistName

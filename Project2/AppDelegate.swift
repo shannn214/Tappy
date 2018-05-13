@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        LoginManager.shared.setup()
+        SpotifyManager.shared.setup()
 
         if self.auth?.session != nil {
             if (self.auth?.session.isValid())! {

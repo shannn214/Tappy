@@ -25,7 +25,7 @@
 		090B6974209F402C0095B416 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6973209F402C0095B416 /* Achievement.storyboard */; };
 		090B6976209F403C0095B416 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6975209F403C0095B416 /* Setting.storyboard */; };
 		090B6978209F47D10095B416 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6977209F47D10095B416 /* GameViewController.swift */; };
-		090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* LoginManager.swift */; };
+		090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* SpotifyManager.swift */; };
 		090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697B20A153FA0095B416 /* GameMapViewController.swift */; };
 		090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697E20A18E9F0095B416 /* PlayerViewController.swift */; };
 		090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698020A1907D0095B416 /* PopUpRecordViewController.swift */; };
@@ -64,7 +64,7 @@
 		090B6973209F402C0095B416 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		090B6975209F403C0095B416 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		090B6977209F47D10095B416 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		090B697920A00D1C0095B416 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		090B697920A00D1C0095B416 /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		090B697B20A153FA0095B416 /* GameMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapViewController.swift; sourceTree = "<group>"; };
 		090B697E20A18E9F0095B416 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		090B698020A1907D0095B416 /* PopUpRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRecordViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				090B695B209F3B540095B416 /* LoginViewController.swift */,
-				090B697920A00D1C0095B416 /* LoginManager.swift */,
+				090B697920A00D1C0095B416 /* SpotifyManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -443,7 +443,7 @@
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
-				090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */,
+				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,

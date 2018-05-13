@@ -61,8 +61,8 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = recordTableView.dequeueReusableCell(withIdentifier: String(describing: RecordTableViewCell.self), for: indexPath) as? RecordTableViewCell
         cell?.selectionStyle = .none
 
-        cell?.artist.text = LoginManager.shared.recordInfo?.artist
-        cell?.title.text = LoginManager.shared.recordInfo?.trackName
+        cell?.artist.text = SpotifyManager.shared.recordInfo?.artist
+        cell?.title.text = SpotifyManager.shared.recordInfo?.trackName
 
         return cell!
     }

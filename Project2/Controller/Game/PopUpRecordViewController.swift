@@ -49,9 +49,9 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @objc func showInfo(notification: NSNotification) {
-        let url = LoginManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        let title = LoginManager.shared.player?.metadata.currentTrack?.playbackSourceName
-        let artist = LoginManager.shared.player?.metadata.currentTrack?.artistName
+        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
+        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
+        let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
 
         UIView.animate(withDuration: 0.2) {
             self.recordCover.alpha = 1
@@ -63,7 +63,7 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @IBAction func leaveButton(_ sender: Any) {
-        LoginManager.shared.player?.setIsPlaying(false, callback: nil)
+        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
 
         self.view.removeFromSuperview()
     }

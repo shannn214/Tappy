@@ -31,7 +31,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.navigationBar.topItem?.title = ""
         designSetting.designSetting(view: collectionCover)
 
-        LoginManager.shared.getTrackInfo()
+        SpotifyManager.shared.getTrackInfo()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
