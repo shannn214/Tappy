@@ -34,7 +34,7 @@ class SpotifyManager: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(updateAfterLogin), name: .loginSuccessfull, object: nil)
     }
-
+//Have Bugggg!!!
     func startAuthenticationFlow() {
 //        if self.auth.session != nil {
             if self.auth.session.isValid() {
@@ -70,13 +70,8 @@ class SpotifyManager: UIViewController {
         self.player!.login(withAccessToken: authSession.accessToken)
     }
 
-    func playMusic() {
-        self.player?.playSpotifyURI("spotify:track:3V9SgblMQCt5LyepDyHyEV", startingWith: 0, startingWithPosition: 0, callback: { (_) in
-        })
-    }
-
-    func playMusic2() {
-        self.player?.playSpotifyURI("spotify:track:4dyx5SzxPPaD8xQIid5Wjj", startingWith: 0, startingWithPosition: 0, callback: { (_) in
+    func playMusic(track: String) {
+        self.player?.playSpotifyURI(track, startingWith: 0, startingWithPosition: 0, callback: { (_) in
         })
     }
 

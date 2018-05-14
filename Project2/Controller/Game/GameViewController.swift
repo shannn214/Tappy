@@ -50,7 +50,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let curLocation: CLLocation = locations[0]
-        print("\(curLocation.coordinate)")
 
         for location in locations as [CLLocation] {
             if location.horizontalAccuracy < 20 {
@@ -73,50 +72,32 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     func createButton() {
 
+        for btnIndex in 0...1 {
+            CDButtonArray[btnIndex].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
+            self.gameMapView.addSubview(CDButtonArray[btnIndex])
+            CDButtonArray[btnIndex].isHidden = true
+            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
+            CDButtonArray[btnIndex].tag = btnIndex
+        }
+
         CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100, y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[0].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-        self.gameMapView.addSubview(CDButtonArray[0])
-        CDButtonArray[0].isHidden = true
-        CDButtonArray[0].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
-
         CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100, y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[1].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-        self.gameMapView.addSubview(CDButtonArray[1])
-        CDButtonArray[1].isHidden = true
-        CDButtonArray[1].addTarget(self, action: #selector(showRecordInfo2), for: .touchUpInside)
 
     }
 
-    @objc func showRecordInfo() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
+    @objc func showRecordInfo(sender: UIButton!) {
+        popUpView()
+
+        var btnSendTag: UIButton = sender
+        switch btnSendTag.tag {
+        case 0:
+            SpotifyManager.shared.playMusic(track: "spotify:track:3V9SgblMQCt5LyepDyHyEV")
+//            use database to insert track value
+        default:
+            SpotifyManager.shared.playMusic(track: "spotify:track:6xiBw5s8JrFnEjrkz3jpUO")
         }
 
-        SpotifyManager.shared.playMusic()
-
     }
-//    delete after demo
-    @objc func showRecordInfo2() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
-
-        SpotifyManager.shared.playMusic2()
-
-    }
-//--------
 
     @IBAction func movingButton(_ sender: Any) {
 
@@ -127,14 +108,27 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.gameMapView.check = true
         self.gameMapView.setNeedsDisplay()
 
+//        When user press moving button, database should add one object into the collection view.
+
         if level == 1 {
             level += 1
             CDButtonArray[0].isHidden = false
         } else {
             CDButtonArray[1].isHidden = false
-
         }
 
+    }
+
+    func popUpView() {
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.view.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
     }
 
 }

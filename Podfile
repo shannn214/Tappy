@@ -8,6 +8,7 @@ target 'Project2' do
 pod 'Alamofire', '~> 4.7'
 pod 'SDWebImage', '~> 4.0'
 pod 'SwiftLint'
+pod 'RealmSwift'
 
   # Pods for Project2
 

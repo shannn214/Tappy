@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol SpotifyTrackManagerDelegate: class {
     func trackManager(trackInfo: TrackInfo)
@@ -17,6 +18,8 @@ class SpotifyTrackManager {
     weak var delegate: SpotifyTrackManagerDelegate?
 
     var trackInfo: TrackInfo?
+
+    var databaseManager = DBManager()
 
     let token = SpotifyManager.shared.auth.session.accessToken
 
@@ -29,13 +32,45 @@ class SpotifyTrackManager {
                     SPTAlbum.album(withURI: URL(string: albumUri), accessToken: self.token, market: nil, callback: { (error, success) in
 
                         if success != nil {
-                            if let album = success as? SPTPartialAlbum {
-                                guard let name = trackArtist[0].name,
-                                    let title = track.name,
+                            if let album = success as? SPTPartialAlbum, let covers = album.covers as? [SPTImage] {
+                                guard let title = track.name,
                                     let cover = album.largestCover.imageURL
+//                                    let cover = covers[0].imageURL
                                     else { return }
 
-                                self.trackInfo = TrackInfo(albumCover: cover, artist: name, trackName: title)
+                                var artistName = ""
+                                trackArtist.forEach({ (trackArtist) in
+                                    artistName += trackArtist.name
+
+                                    self.databaseManager.artist = artistName
+
+                                    self.trackInfo = TrackInfo(albumCover: cover, artist: artistName, trackName: title)
+                                })
+
+                                self.databaseManager.albumUri = albumUri
+                                self.databaseManager.trackUri = trackUri
+                                self.databaseManager.trackName = title
+                                self.databaseManager.cover = "Cover"
+
+//                                Save Data-----
+                                do {
+                                    let realm = try Realm()
+                                    try realm.write {
+                                        realm.add(self.databaseManager)
+                                    }
+                                } catch let error as NSError {
+                                    print(error)
+                                }
+                                
+//                                Delete All Data----
+//                                do {
+//                                    let realm = try Realm()
+//                                    try realm.write {
+//                                        realm.deleteAll()
+//                                    }
+//                                } catch let error as NSError {
+//                                    print(error)
+//                                }
 
                                 DispatchQueue.main.async {
                                     self.delegate?.trackManager(trackInfo: self.trackInfo!)

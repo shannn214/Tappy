@@ -41,6 +41,9 @@
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
 		09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3920A82D4200A6C567 /* Spotify.swift */; };
 		09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */; };
+		09C6CF3E20A9466600A6C567 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* DBManager.swift */; };
+		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
+		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,9 @@
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
 		09C6CF3920A82D4200A6C567 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrackManager.swift; sourceTree = "<group>"; };
+		09C6CF3D20A9466600A6C567 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
+		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 		090B694C209F04610095B416 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09C6CF3F20A9701900A6C567 /* Database */,
 				09C6CF3820A82D2800A6C567 /* Spotify */,
 				0914190620A3386800B7C0F0 /* Record */,
 				090B6960209F3BD10095B416 /* Notification */,
@@ -200,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				090B695B209F3B540095B416 /* LoginViewController.swift */,
-				090B697920A00D1C0095B416 /* SpotifyManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -295,9 +301,20 @@
 			isa = PBXGroup;
 			children = (
 				09C6CF3920A82D4200A6C567 /* Spotify.swift */,
+				090B697920A00D1C0095B416 /* SpotifyManager.swift */,
 				09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */,
 			);
 			path = Spotify;
+			sourceTree = "<group>";
+		};
+		09C6CF3F20A9701900A6C567 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				09C6CF3D20A9466600A6C567 /* DBManager.swift */,
+				09C6CF4020A9737B00A6C567 /* TracksInfo.json */,
+				09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		E40AB426BB8F9BBC538BF7EA /* Pods */ = {
@@ -378,6 +395,7 @@
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
 				0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */,
 				090B6974209F402C0095B416 /* Achievement.storyboard in Resources */,
+				09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */,
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
@@ -426,11 +444,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +472,7 @@
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
 				090B696C209F3FD30095B416 /* AchievementViewController.swift in Sources */,
 				090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */,
+				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
@@ -461,6 +484,7 @@
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
+				09C6CF3E20A9466600A6C567 /* DBManager.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
