@@ -19,7 +19,7 @@ class RecordListViewController: UIViewController {
 
     weak var delegate: RecordListControllerDelegate?
 
-    var spotifyTracDelegate = SpotifyTrackManager()
+//    var spotifyTracDelegate = SpotifyTrackManager()
 
     var trackInfo: TrackInfo?
 
@@ -33,16 +33,22 @@ class RecordListViewController: UIViewController {
         recordTableView.separatorStyle = .none
         designSetting.designSetting(view: recordTableView)
 
-        spotifyTracDelegate.delegate = self
-        getInfoData()
+        recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
+        recordTableView.contentOffset = CGPoint(x: 0, y: -190)
+//        spotifyTracDelegate.delegate = self
 
         setupTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
-        recordTableView.contentOffset = CGPoint(x: 0, y: -190)
+//        recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
+//        recordTableView.contentOffset = CGPoint(x: 0, y: -190)
+        
+//        for iii in 0...4 {
+            getInfoData(uriIndex: 4)
+//        }
+        
         recordTableView.reloadData()
     }
 
@@ -55,15 +61,17 @@ class RecordListViewController: UIViewController {
 
     }
 
-    func getInfoData() {
+    func getInfoData(uriIndex: Int) {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
         guard uriManager.uris.count > 0 else { return }
-        
-        for uriIndex in 0...4 {
-            spotifyTracDelegate.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
-                                             albumUri: uriManager.uris[uriIndex].albumUri)
-        }
+
+       
+        SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
+                                                    albumUri: uriManager.uris[uriIndex].albumUri)
+
+
+        recordTableView.reloadData()
 
     }
 
@@ -118,7 +126,7 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 extension RecordListViewController: SpotifyTrackManagerDelegate {
 
     func trackManager(trackInfo: TrackInfo) {
-        self.trackInfo = trackInfo
+//        self.trackInfo = trackInfo
     }
 
 }

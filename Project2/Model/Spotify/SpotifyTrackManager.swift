@@ -16,6 +16,8 @@ protocol SpotifyTrackManagerDelegate: class {
 class SpotifyTrackManager {
 
     weak var delegate: SpotifyTrackManagerDelegate?
+    
+    static let shared = SpotifyTrackManager()
 
     var trackInfo: TrackInfo?
 
@@ -37,6 +39,7 @@ class SpotifyTrackManager {
                                     let cover = album.largestCover.imageURL
 //                                    let cover = covers[0].imageURL
                                     else { return }
+                                let coverUri = String(describing: cover)
 
                                 var artistName = ""
                                 trackArtist.forEach({ (trackArtist) in
@@ -50,13 +53,15 @@ class SpotifyTrackManager {
                                 self.databaseManager.albumUri = albumUri
                                 self.databaseManager.trackUri = trackUri
                                 self.databaseManager.trackName = title
-                                self.databaseManager.cover = "Cover"
+                                self.databaseManager.cover = coverUri
 
 //                                Save Data-----
                                 do {
                                     let realm = try Realm()
                                     try realm.write {
                                         realm.add(self.databaseManager)
+                                        print("========")
+                                        print(realm)
                                     }
                                 } catch let error as NSError {
                                     print(error)
