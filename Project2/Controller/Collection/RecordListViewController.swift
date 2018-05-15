@@ -34,15 +34,15 @@ class RecordListViewController: UIViewController {
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
 
+        for dataIndex in 0...4 {
+//            getInfoData(uriIndex: dataIndex)
+        }
+
         setupTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        for dataIndex in 0...4 {
-            getInfoData(uriIndex: dataIndex)
-        }
 
         recordTableView.reloadData()
     }
@@ -60,7 +60,7 @@ class RecordListViewController: UIViewController {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
         guard uriManager.uris.count > 0 else { return }
-       
+
         SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
                                                 albumUri: uriManager.uris[uriIndex].albumUri)
 
@@ -73,15 +73,15 @@ class RecordListViewController: UIViewController {
 extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        do {
-            let realm = try Realm()
-            let realmForCount = realm.objects(DBManager.self)
-            return realmForCount.count
-        } catch let error as NSError {
-            print(error)
-        }
-        return Int()
-//        Need to increase when level goes up
+//        do {
+//            let realm = try Realm()
+//            let realmForCount = realm.objects(DBManager.self)
+//            return realmForCount.count
+//        } catch let error as NSError {
+//            print(error)
+//        }
+        return LevelStatusManager.shared.level!
+        //Need to increase when level goes up
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,17 +89,32 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = recordTableView.dequeueReusableCell(withIdentifier: String(describing: RecordTableViewCell.self), for: indexPath) as? RecordTableViewCell
         cell?.selectionStyle = .none
 
-//        loading realm database depends on level
-        do {
-            let dbRealm = try Realm()
-            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-            let info = array[indexPath.row]
-            
-            cell?.artist.text = info.artist
-            cell?.title.text = info.trackName
-        } catch let error as NSError {
-            print(error)
+        //loading realm database depends on level
+
+        let levels = LevelStatusManager.shared.level! - 1
+        for level in 0...levels {
+            do {
+                let dbRealm = try Realm()
+                let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
+                let info = array[level]
+
+                cell?.artist.text = info.artist
+                cell?.title.text = info.trackName
+            } catch let error as NSError {
+                print(error)
+            }
         }
+
+//        do {
+//            let dbRealm = try Realm()
+//            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
+//            let info = array[indexPath.row]
+//
+//            cell?.artist.text = info.artist
+//            cell?.title.text = info.trackName
+//        } catch let error as NSError {
+//            print(error)
+//        }
 
         return cell!
     }
@@ -115,7 +130,6 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
 }
-
 
 //Need to ask Luke
 extension Results {

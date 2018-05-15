@@ -36,6 +36,7 @@
 		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
 		0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914190F20A48EB300B7C0F0 /* Player.storyboard */; };
+		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -80,6 +81,7 @@
 		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
 		0914190F20A48EB300B7C0F0 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		090B694C209F04610095B416 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B2220AAAD9800BA5932 /* Game */,
 				09C6CF3F20A9701900A6C567 /* Database */,
 				09C6CF3820A82D2800A6C567 /* Spotify */,
 				0914190620A3386800B7C0F0 /* Record */,
@@ -295,6 +298,14 @@
 				0914190920A3EECA00B7C0F0 /* RecordProvider.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		09A62B2220AAAD9800BA5932 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		09C6CF3820A82D2800A6C567 /* Spotify */ = {
@@ -478,6 +489,7 @@
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
+				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
 				0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,

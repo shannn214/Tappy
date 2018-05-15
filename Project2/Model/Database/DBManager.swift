@@ -29,3 +29,9 @@ class DBManager: Object {
 //    }
 
 }
+
+class LevelManager: Object {
+
+    @objc dynamic var level: Int = 0
+
+}

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class SpotifyTrackManager {
-    
+
     static let shared = SpotifyTrackManager()
 
     var trackInfo: TrackInfo?
@@ -24,7 +24,7 @@ class SpotifyTrackManager {
                 if let track = response as? SPTTrack, let trackArtist = track.artists as? [SPTPartialArtist] {
 
                     SPTAlbum.album(withURI: URL(string: albumUri), accessToken: self.token, market: nil, callback: { (error, success) in
-                        
+
                         print(track)
                         if success != nil {
                             if let album = success as? SPTPartialAlbum, let covers = album.covers as? [SPTImage] {
@@ -58,7 +58,7 @@ class SpotifyTrackManager {
                                     } catch let error as NSError {
                                         print(error)
                                     }
-                                
+
 //                                Delete All Data----
 //                                do {
 //                                    let realm = try Realm()

@@ -18,10 +18,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var distance = 0.0
     var locations = [CLLocation]()
+    var checkLevel: Int?
 
 //    let CDButton = UIButton()
     let CDButtonArray = [UIButton(), UIButton()]
-    var level = 1
+//    var level = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         progress.progress = 0
         movingBtn.isHidden = false
+
+//        LevelStatusManager.shared.createLevel(newLevel: 0)
 
         createButton()
     }
@@ -63,6 +66,9 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                     } else {
                         progress.progress = Float(complete)
                         movingBtn.isHidden = false
+//                        let newLevel = LevelStatusManager.shared.level! + 1
+//                        LevelStatusManager.shared.updateLevel(newLevel: newLevel)
+//                        self.checkLevel = newLevel
                     }
                 }
                 self.locations.append(location)
@@ -91,10 +97,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         var btnSendTag: UIButton = sender
         switch btnSendTag.tag {
         case 0:
-            SpotifyManager.shared.playMusic(track: "spotify:track:3V9SgblMQCt5LyepDyHyEV")
-//            use database to insert track value
+            SpotifyManager.shared.playMusic(track: "spotify:track:4dyx5SzxPPaD8xQIid5Wjj")
+            //use database to insert track value
         default:
-            SpotifyManager.shared.playMusic(track: "spotify:track:6xiBw5s8JrFnEjrkz3jpUO")
+            SpotifyManager.shared.playMusic(track: "spotify:track:3lB0GMiI5KxDbTOG8V3bOx")
         }
 
     }
@@ -108,10 +114,16 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.gameMapView.check = true
         self.gameMapView.setNeedsDisplay()
 
-//        When user press moving button, database should add one object into the collection view.
+        //When user press moving button, database should add one object into the collection view.
 
-        if level == 1 {
-            level += 1
+        self.checkLevel = LevelStatusManager.shared.level! + 1
+        LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel!)
+        LevelStatusManager.shared.showNewLevel()
+
+        //should call this function only once
+        //LevelStatusManager.shared.createLevel(newLevel: 0)
+
+        if checkLevel == 1 {
             CDButtonArray[0].isHidden = false
         } else {
             CDButtonArray[1].isHidden = false
