@@ -24,6 +24,8 @@ class RecordListViewController: UIViewController {
     var tracksInfo = [TrackInfo]()
 
     let designSetting = DesignSetting()
+    
+//    let levelStatus = LevelStatusManager.shared.level!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +82,12 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 //        } catch let error as NSError {
 //            print(error)
 //        }
-        return LevelStatusManager.shared.level!
+//        guard let levelStatus = LevelStatusManager.shared.level else { return Int() }
+        if LevelStatusManager.shared.level! - 1 <= 4 {
+            return LevelStatusManager.shared.level!
+        }
+        
+        return 5
         //Need to increase when level goes up
     }
 
@@ -92,28 +99,22 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         //loading realm database depends on level
 
         let levels = LevelStatusManager.shared.level! - 1
-        for level in 0...levels {
+//        for level in 0...1 {
             do {
                 let dbRealm = try Realm()
                 let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-                let info = array[level]
+//                for level in 0...1 {
+                    let info = array[indexPath.row]
+                    print("=====start======")
+                    print(info)
+                    print("=======end====")
+//                }
 
                 cell?.artist.text = info.artist
                 cell?.title.text = info.trackName
             } catch let error as NSError {
                 print(error)
             }
-        }
-
-//        do {
-//            let dbRealm = try Realm()
-//            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-//            let info = array[indexPath.row]
-//
-//            cell?.artist.text = info.artist
-//            cell?.title.text = info.trackName
-//        } catch let error as NSError {
-//            print(error)
 //        }
 
         return cell!
