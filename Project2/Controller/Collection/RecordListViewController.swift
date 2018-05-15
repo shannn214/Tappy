@@ -19,8 +19,6 @@ class RecordListViewController: UIViewController {
 
     weak var delegate: RecordListControllerDelegate?
 
-//    var spotifyTracDelegate = SpotifyTrackManager()
-
     var trackInfo: TrackInfo?
 
     var tracksInfo = [TrackInfo]()
@@ -35,20 +33,17 @@ class RecordListViewController: UIViewController {
 
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
-//        spotifyTracDelegate.delegate = self
 
         setupTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
-//        recordTableView.contentOffset = CGPoint(x: 0, y: -190)
-        
-//        for iii in 0...4 {
-            getInfoData(uriIndex: 4)
-//        }
-        
+
+        for dataIndex in 0...4 {
+            getInfoData(uriIndex: dataIndex)
+        }
+
         recordTableView.reloadData()
     }
 
@@ -65,11 +60,9 @@ class RecordListViewController: UIViewController {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
         guard uriManager.uris.count > 0 else { return }
-
        
         SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
-                                                    albumUri: uriManager.uris[uriIndex].albumUri)
-
+                                                albumUri: uriManager.uris[uriIndex].albumUri)
 
         recordTableView.reloadData()
 
@@ -99,9 +92,9 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 //        loading realm database depends on level
         do {
             let dbRealm = try Realm()
-            let infos = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-            let info = infos[indexPath.row]
-
+            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
+            let info = array[indexPath.row]
+            
             cell?.artist.text = info.artist
             cell?.title.text = info.trackName
         } catch let error as NSError {
@@ -123,16 +116,12 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
-extension RecordListViewController: SpotifyTrackManagerDelegate {
 
-    func trackManager(trackInfo: TrackInfo) {
-//        self.trackInfo = trackInfo
-    }
-
-}
 //Need to ask Luke
 extension Results {
     func toArray<T>(ofType: T.Type) -> [T] {
-        return flatMap { $0 as? T }
+//        return flatMap { $0 as? T }
+        let array = Array(self) as? [T]
+        return array!
     }
 }

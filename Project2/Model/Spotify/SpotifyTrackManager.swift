@@ -9,19 +9,11 @@
 import Foundation
 import RealmSwift
 
-protocol SpotifyTrackManagerDelegate: class {
-    func trackManager(trackInfo: TrackInfo)
-}
-
 class SpotifyTrackManager {
-
-    weak var delegate: SpotifyTrackManagerDelegate?
     
     static let shared = SpotifyTrackManager()
 
     var trackInfo: TrackInfo?
-
-    var databaseManager = DBManager()
 
     let token = SpotifyManager.shared.auth.session.accessToken
 
@@ -32,7 +24,8 @@ class SpotifyTrackManager {
                 if let track = response as? SPTTrack, let trackArtist = track.artists as? [SPTPartialArtist] {
 
                     SPTAlbum.album(withURI: URL(string: albumUri), accessToken: self.token, market: nil, callback: { (error, success) in
-
+                        
+                        print(track)
                         if success != nil {
                             if let album = success as? SPTPartialAlbum, let covers = album.covers as? [SPTImage] {
                                 guard let title = track.name,
@@ -41,31 +34,30 @@ class SpotifyTrackManager {
                                     else { return }
                                 let coverUri = String(describing: cover)
 
+                                //Notice: New a place for EACH data. If u create "let databaseManager = DBManager()" outside the function, all the new data will point to the same place and edit the previous data or cause some conflict.
+                                let databaseManager = DBManager()
+
                                 var artistName = ""
                                 trackArtist.forEach({ (trackArtist) in
-                                    artistName += trackArtist.name
-
-                                    self.databaseManager.artist = artistName
-
+                                    artistName += trackArtist.name + ","
+                                    databaseManager.artist = artistName
                                     self.trackInfo = TrackInfo(albumCover: cover, artist: artistName, trackName: title)
                                 })
 
-                                self.databaseManager.albumUri = albumUri
-                                self.databaseManager.trackUri = trackUri
-                                self.databaseManager.trackName = title
-                                self.databaseManager.cover = coverUri
+                                databaseManager.albumUri = albumUri
+                                databaseManager.trackUri = trackUri
+                                databaseManager.trackName = title
+                                databaseManager.cover = coverUri
 
 //                                Save Data-----
-                                do {
-                                    let realm = try Realm()
-                                    try realm.write {
-                                        realm.add(self.databaseManager)
-                                        print("========")
-                                        print(realm)
+                                    do {
+                                        let realm = try Realm()
+                                        try realm.write {
+                                            realm.add(databaseManager)
+                                        }
+                                    } catch let error as NSError {
+                                        print(error)
                                     }
-                                } catch let error as NSError {
-                                    print(error)
-                                }
                                 
 //                                Delete All Data----
 //                                do {
@@ -77,9 +69,6 @@ class SpotifyTrackManager {
 //                                    print(error)
 //                                }
 
-                                DispatchQueue.main.async {
-                                    self.delegate?.trackManager(trackInfo: self.trackInfo!)
-                                }
                             }
                         } else {
                             print(error)
