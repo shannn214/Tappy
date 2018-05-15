@@ -22,6 +22,8 @@ class RecordListViewController: UIViewController {
     var trackInfo: TrackInfo?
 
     var tracksInfo = [TrackInfo]()
+    
+    var infoArray: [Any] = []
 
     let designSetting = DesignSetting()
     
@@ -36,9 +38,20 @@ class RecordListViewController: UIViewController {
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
 
-        for dataIndex in 0...4 {
-//            getInfoData(uriIndex: dataIndex)
+        for dataIndex in 0...9 {
+            getInfoData(uriIndex: dataIndex)
         }
+
+//        do {
+//            let dbRealm = try Realm()
+//            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
+//            self.infoArray = array
+//            print(array)
+//        } catch let error as NSError {
+//            print(error)
+//        }
+//        
+
 
         setupTableView()
     }
@@ -64,7 +77,8 @@ class RecordListViewController: UIViewController {
         guard uriManager.uris.count > 0 else { return }
 
         SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
-                                                albumUri: uriManager.uris[uriIndex].albumUri)
+                                                albumUri: uriManager.uris[uriIndex].albumUri,
+                                                level: uriManager.uris[uriIndex].level)
 
         recordTableView.reloadData()
 
@@ -83,11 +97,11 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
 //            print(error)
 //        }
 //        guard let levelStatus = LevelStatusManager.shared.level else { return Int() }
-        if LevelStatusManager.shared.level! - 1 <= 4 {
+        if LevelStatusManager.shared.level! - 1 <= 9 {
             return LevelStatusManager.shared.level!
         }
         
-        return 5
+        return 10
         //Need to increase when level goes up
     }
 
@@ -109,7 +123,6 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
                     print(info)
                     print("=======end====")
 //                }
-
                 cell?.artist.text = info.artist
                 cell?.title.text = info.trackName
             } catch let error as NSError {

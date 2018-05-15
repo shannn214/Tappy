@@ -17,7 +17,7 @@ class SpotifyTrackManager {
 
     let token = SpotifyManager.shared.auth.session.accessToken
 
-    func getTrackInfo(trackUri: String, albumUri: String) {
+    func getTrackInfo(trackUri: String, albumUri: String, level: Int) {
 
         SPTTrack.track(withURI: URL(string: trackUri), accessToken: token, market: nil) { (error, response) in
             if response != nil {
@@ -43,9 +43,24 @@ class SpotifyTrackManager {
                                     databaseManager.artist = artistName
                                     self.trackInfo = TrackInfo(albumCover: cover, artist: artistName, trackName: title)
                                 })
+                                
+                                let config = Realm.Configuration(
+                                    
+                                    schemaVersion: 1,
+                                    migrationBlock: { migration, oldSchemaVersion in
+                                        if (oldSchemaVersion < 1) {
+                                            migration.enumerateObjects(ofType: DBManager.className()) { (_, newDBManager) in
+                                                newDBManager?["level"] = Int()
+                                                
+                                            }
+                                        }
+                                })
+                                Realm.Configuration.defaultConfiguration = config
+//                                let realm = try! Realm()
 
                                 databaseManager.albumUri = albumUri
                                 databaseManager.trackUri = trackUri
+                                databaseManager.level = level
                                 databaseManager.trackName = title
                                 databaseManager.cover = coverUri
 

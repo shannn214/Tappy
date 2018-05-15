@@ -16,6 +16,7 @@ class DBManager: Object {
     @objc dynamic var trackName = ""
     @objc dynamic var artist = ""
     @objc dynamic var cover = ""
+    @objc dynamic var level = Int()
 
 //    func save() {
 //        do {

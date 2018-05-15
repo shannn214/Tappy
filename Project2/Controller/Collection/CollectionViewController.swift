@@ -50,9 +50,9 @@ extension CollectionViewController: RecordListControllerDelegate {
 
     func changeTopView() {
         guard let recordY = recordTransition else { return }
-        if recordY <= changePoint {
+//        if recordY <= changePoint {
             topView.frame = CGRect(x: 0, y: (0 - recordY), width: topView.frame.width, height: topViewHeight)
-        }
+//        }
         if recordY <= showPoint {
             self.navigationController?.navigationBar.topItem?.title = ""
         } else {

@@ -34,8 +34,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         progress.progress = 0
         movingBtn.isHidden = false
 
-//        LevelStatusManager.shared.createLevel(newLevel: 0)
-
         createButton()
     }
 
@@ -117,6 +115,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         //When user press moving button, database should add one object into the collection view.
 
         self.checkLevel = LevelStatusManager.shared.level! + 1
+        
         LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel!)
         LevelStatusManager.shared.showNewLevel()
 
