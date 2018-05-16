@@ -36,11 +36,11 @@ class SpotifyManager: UIViewController {
     }
 //Have Bugggg!!!
     func startAuthenticationFlow() {
-//        if self.auth.session != nil {
+        if self.auth.session != nil {
             if self.auth.session.isValid() {
                 self.player?.login(withAccessToken: self.auth.session.accessToken)
                 delegate?.window?.rootViewController? = UIStoryboard.mainStoryboard().instantiateInitialViewController()!
-//            }
+            }
         } else {
             let authURL: URL? = self.auth.spotifyWebAuthenticationURL()
             self.authViewController = SFSafariViewController.init(url: authURL!)

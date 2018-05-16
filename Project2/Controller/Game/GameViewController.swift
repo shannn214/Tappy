@@ -121,7 +121,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         LevelStatusManager.shared.showNewLevel()
 
         //should call this function only once
-        //LevelStatusManager.shared.createLevel(newLevel: 0)
+//        LevelStatusManager.shared.createLevel(newLevel: 0)
 
         if checkLevel == 1 {
             CDButtonArray[0].isHidden = false

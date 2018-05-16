@@ -44,18 +44,18 @@ class SpotifyTrackManager {
                                     self.trackInfo = TrackInfo(albumCover: cover, artist: artistName, trackName: title)
                                 })
                                 
-                                let config = Realm.Configuration(
-                                    
-                                    schemaVersion: 1,
-                                    migrationBlock: { migration, oldSchemaVersion in
-                                        if (oldSchemaVersion < 1) {
-                                            migration.enumerateObjects(ofType: DBManager.className()) { (_, newDBManager) in
-                                                newDBManager?["level"] = Int()
-                                                
-                                            }
-                                        }
-                                })
-                                Realm.Configuration.defaultConfiguration = config
+//                                let config = Realm.Configuration(
+//
+//                                    schemaVersion: 1,
+//                                    migrationBlock: { migration, oldSchemaVersion in
+//                                        if (oldSchemaVersion < 1) {
+//                                            migration.enumerateObjects(ofType: DBManager.className()) { (_, newDBManager) in
+//                                                newDBManager?["level"] = Int()
+//
+//                                            }
+//                                        }
+//                                })
+//                                Realm.Configuration.defaultConfiguration = config
 //                                let realm = try! Realm()
 
                                 databaseManager.albumUri = albumUri
