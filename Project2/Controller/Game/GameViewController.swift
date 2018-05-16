@@ -33,6 +33,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         progress.progress = 0
         movingBtn.isHidden = false
+        //false for test
 
         createButton()
     }

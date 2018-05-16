@@ -39,7 +39,7 @@ class RecordListViewController: UIViewController {
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
 
         for dataIndex in 0...9 {
-            getInfoData(uriIndex: dataIndex)
+//            getInfoData(uriIndex: dataIndex)
         }
 
 //        do {
