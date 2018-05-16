@@ -41,6 +41,7 @@ class LevelStatusManager {
             try realm.write {
                 levelData.level = newLevel
             }
+            level = levelData.level
         } catch let error as NSError {
             print(error)
         }

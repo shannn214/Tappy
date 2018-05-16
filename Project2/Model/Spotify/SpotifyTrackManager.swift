@@ -43,7 +43,8 @@ class SpotifyTrackManager {
                                     databaseManager.artist = artistName
                                     self.trackInfo = TrackInfo(albumCover: cover, artist: artistName, trackName: title)
                                 })
-                                
+
+//                                Note: If database were edited, remember to change the schemaVersion!
 //                                let config = Realm.Configuration(
 //
 //                                    schemaVersion: 1,

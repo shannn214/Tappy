@@ -18,11 +18,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var distance = 0.0
     var locations = [CLLocation]()
-    var checkLevel: Int?
-
-//    let CDButton = UIButton()
+    var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton()]
-//    var level = 1
+    let firstLogin = UserDefaults.standard
+
+//    let databaseManager = DBManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,31 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         //false for test
 
         createButton()
+
+        if firstLogin.value(forKey: "firstLogin") == nil {
+            LevelStatusManager.shared.createLevel(newLevel: 0)
+            for dataIndex in 0...9 {
+                getInfoData(uriIndex: dataIndex)
+            }
+            firstLogin.set("true", forKey: "firstLogin")
+        } else {
+            //TODO
+        }
+
+        LevelStatusManager.shared.showNewLevel()
+        self.checkLevel = LevelStatusManager.shared.level! + 1
+
+    }
+
+    func getInfoData(uriIndex: Int) {
+
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+        guard uriManager.uris.count > 0 else { return }
+
+        SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
+                                                albumUri: uriManager.uris[uriIndex].albumUri,
+                                                level: uriManager.uris[uriIndex].level)
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -115,10 +140,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         //When user press moving button, database should add one object into the collection view.
 
-        self.checkLevel = LevelStatusManager.shared.level! + 1
-        
-        LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel!)
-        LevelStatusManager.shared.showNewLevel()
+//        self.checkLevel = LevelStatusManager.shared.level! + 1
+
+        LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
+//        LevelStatusManager.shared.showNewLevel()
 
         //should call this function only once
 //        LevelStatusManager.shared.createLevel(newLevel: 0)

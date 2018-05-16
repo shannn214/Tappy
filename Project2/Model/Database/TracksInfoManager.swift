@@ -13,7 +13,7 @@ protocol SpotifyUri {
     var trackUri: String { get }
 
     var albumUri: String { get }
-    
+
     var level: Int { get }
 }
 
@@ -22,7 +22,7 @@ struct SpotifyUris: Codable, SpotifyUri {
     var trackUri: String
 
     var albumUri: String
-    
+
     var level: Int
 
 }
