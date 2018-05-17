@@ -34,13 +34,11 @@ class SpotifyManager: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(updateAfterLogin), name: .loginSuccessfull, object: nil)
     }
-//Have Bugggg!!!
+
     func startAuthenticationFlow() {
-//        if self.auth.session != nil {
-            if self.auth.session.isValid() {
+        if self.auth.session != nil && self.auth.session.isValid() {
                 self.player?.login(withAccessToken: self.auth.session.accessToken)
                 delegate?.window?.rootViewController? = UIStoryboard.mainStoryboard().instantiateInitialViewController()!
-//            }
         } else {
             let authURL: URL? = self.auth.spotifyWebAuthenticationURL()
             self.authViewController = SFSafariViewController.init(url: authURL!)

@@ -23,11 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         SpotifyManager.shared.setup()
 
-        if self.auth?.session != nil {
-            if (self.auth?.session.isValid())! {
+        if self.auth?.session != nil && (self.auth?.session.isValid())! {
                 switchToMainStoryBoard()
                 NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
-            }
         }
 
         return true
