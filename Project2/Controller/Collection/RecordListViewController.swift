@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 protocol RecordListControllerDelegate: class {
     func recordViewDidScroll(_ controller: RecordListViewController, translation: CGFloat)
@@ -19,15 +18,7 @@ class RecordListViewController: UIViewController {
 
     weak var delegate: RecordListControllerDelegate?
 
-    var trackInfo: TrackInfo?
-
-    var tracksInfo = [TrackInfo]()
-
-    var infoArray: [Any] = []
-
     let designSetting = DesignSetting()
-
-    let database = DBManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +28,8 @@ class RecordListViewController: UIViewController {
 
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
+
+        recordTableView.isHidden = true
 
         setupTableView()
     }
@@ -94,13 +87,4 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         self.delegate?.recordViewDidScroll(self, translation: distance)
     }
 
-}
-
-//Need to ask Luke
-extension Results {
-    func toArray<T>(ofType: T.Type) -> [T] {
-//        return flatMap { $0 as? T }
-        let array = Array(self) as? [T]
-        return array!
-    }
 }

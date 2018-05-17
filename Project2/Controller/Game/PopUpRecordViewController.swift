@@ -84,7 +84,7 @@ class PopUpRecordViewController: UIViewController {
         rotationAnimation.isCumulative = true
         rotationAnimation.repeatCount = .infinity
         image.layer.add(rotationAnimation, forKey: "rotationAnimation")
-        image.layer.cornerRadius = self.recordCover.bounds.size.width * 0.5
+        image.layer.cornerRadius = image.bounds.size.width * 0.5
     }
 
 }
