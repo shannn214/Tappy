@@ -38,29 +38,27 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         createButton()
 
         if firstLogin.value(forKey: "firstLogin") == nil {
-            LevelStatusManager.shared.createLevel(newLevel: 0)
-            for dataIndex in 0...9 {
-                getInfoData(uriIndex: dataIndex)
-            }
-            firstLogin.set("true", forKey: "firstLogin")
+            getInfoData()
+            LevelStatusManager.shared.initialGame()
+            firstLogin.set(true, forKey: "firstLogin")
         } else {
             //TODO
         }
 
         LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
-//        self.checkLevel = LevelStatusManager.shared.level! + 1
 
     }
 
-    func getInfoData(uriIndex: Int) {
+    func getInfoData() {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
-        guard uriManager.uris.count > 0 else { return }
 
-        SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[uriIndex].trackUri,
-                                                albumUri: uriManager.uris[uriIndex].albumUri,
-                                                level: uriManager.uris[uriIndex].level)
+        for dataIndex in 0...uriManager.uris.count {
+            SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
+                                                    albumUri: uriManager.uris[dataIndex].albumUri,
+                                                    level: uriManager.uris[dataIndex].level)
+        }
 
     }
 

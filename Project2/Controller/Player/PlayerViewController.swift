@@ -21,7 +21,7 @@ class PlayerViewController: UIViewController {
             SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
         }
     }
-    
+
     let designSetting = DesignSetting()
 
     override func viewDidLoad() {

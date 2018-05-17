@@ -13,13 +13,14 @@ class DBProvider {
 
     static var shared = DBProvider()
 
-    var sortedArray: Results<DBManager>?
+    var sortedArray: Results<Track>?
 
     func getSortedArray() {
 
         do {
+            
             let dbRealm = try Realm()
-            let data = dbRealm.objects(DBManager.self)
+            let data = dbRealm.objects(Track.self)
             let sortedResult = data.sorted(byKeyPath: "level", ascending: true)
             sortedArray = sortedResult
 

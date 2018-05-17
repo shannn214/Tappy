@@ -13,9 +13,13 @@ class LevelStatusManager {
 
     static var shared = LevelStatusManager()
 
-    let levelStatus = LevelManager()
+    let levelStatus = Level()
 
     var level: Int? = 0
+
+    func initialGame() {
+        createLevel(newLevel: 0)
+    }
 
     func createLevel(newLevel: Int) {
 
@@ -36,7 +40,7 @@ class LevelStatusManager {
 
         do {
             let realm = try Realm()
-            let array = realm.objects(LevelManager.self).toArray(ofType: LevelManager.self)
+            let array = realm.objects(Level.self).toArray(ofType: Level.self)
             let levelData = array[0]
             try realm.write {
                 levelData.level = newLevel
@@ -52,7 +56,7 @@ class LevelStatusManager {
 
         do {
             let realm = try Realm()
-            let array = realm.objects(LevelManager.self).toArray(ofType: LevelManager.self)
+            let array = realm.objects(Level.self).toArray(ofType: Level.self)
             let levelData = array[0]
             level = levelData.level
         } catch let error as NSError {

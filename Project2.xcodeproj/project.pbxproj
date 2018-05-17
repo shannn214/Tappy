@@ -46,7 +46,7 @@
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
 		09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3920A82D4200A6C567 /* Spotify.swift */; };
 		09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */; };
-		09C6CF3E20A9466600A6C567 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* DBManager.swift */; };
+		09C6CF3E20A9466600A6C567 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* Track.swift */; };
 		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
 		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
@@ -95,7 +95,7 @@
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
 		09C6CF3920A82D4200A6C567 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrackManager.swift; sourceTree = "<group>"; };
-		09C6CF3D20A9466600A6C567 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		09C6CF3D20A9466600A6C567 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
 		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 			children = (
 				09C6CF4020A9737B00A6C567 /* TracksInfo.json */,
 				09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */,
-				09C6CF3D20A9466600A6C567 /* DBManager.swift */,
+				09C6CF3D20A9466600A6C567 /* Track.swift */,
 				09A62B2620AD2D6200BA5932 /* DBProvider.swift */,
 			);
 			path = Database;
@@ -520,7 +520,7 @@
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
-				09C6CF3E20A9466600A6C567 /* DBManager.swift in Sources */,
+				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
