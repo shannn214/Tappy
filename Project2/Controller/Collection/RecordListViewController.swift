@@ -38,25 +38,6 @@ class RecordListViewController: UIViewController {
         recordTableView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordTableView.contentOffset = CGPoint(x: 0, y: -190)
 
-//        do {
-//            let dbRealm = try Realm()
-//            let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-//            self.infoArray = array
-//            print(array)
-//        } catch let error as NSError {
-//            print(error)
-//        }
-
-//        do {
-//            let realm = try Realm()
-//            let data = realm.objects(DBManager.self)
-//            let sorted = data.sorted(byKeyPath: "level", ascending: true)
-//            print("=====DATA=====")
-//            print(sorted)
-//        } catch let error as NSError {
-//            print(error)
-//        }
-
         setupTableView()
     }
 
@@ -95,23 +76,10 @@ extension RecordListViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.selectionStyle = .none
 
         //loading realm database depends on level
-
-//        for level in 0...1 {
-            do {
-                let dbRealm = try Realm()
-                let data = dbRealm.objects(DBManager.self)
-                let sortedArray = data.sorted(byKeyPath: "level", ascending: true)
-//                let array = dbRealm.objects(DBManager.self).toArray(ofType: DBManager.self)
-                    let info = sortedArray[indexPath.row]
-                    print("=====start======")
-                    print(info)
-                    print("=======end====")
-                cell?.artist.text = info.artist
-                cell?.title.text = info.trackName
-            } catch let error as NSError {
-                print(error)
-            }
-//        }
+        let sortedArray = DBProvider.shared.sortedArray
+        let info = sortedArray![indexPath.row]
+        cell?.artist.text = info.artist
+        cell?.title.text = info.trackName
 
         return cell!
     }

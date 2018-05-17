@@ -48,7 +48,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         LevelStatusManager.shared.showNewLevel()
-        self.checkLevel = LevelStatusManager.shared.level! + 1
+        DBProvider.shared.getSortedArray()
+//        self.checkLevel = LevelStatusManager.shared.level! + 1
 
     }
 
@@ -140,13 +141,9 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         //When user press moving button, database should add one object into the collection view.
 
-//        self.checkLevel = LevelStatusManager.shared.level! + 1
+        self.checkLevel = LevelStatusManager.shared.level! + 1
 
         LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
-//        LevelStatusManager.shared.showNewLevel()
-
-        //should call this function only once
-//        LevelStatusManager.shared.createLevel(newLevel: 0)
 
         if checkLevel == 1 {
             CDButtonArray[0].isHidden = false

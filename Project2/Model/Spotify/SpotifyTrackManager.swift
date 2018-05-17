@@ -75,16 +75,6 @@ class SpotifyTrackManager {
                                         print(error)
                                     }
 
-//                                Delete All Data----
-//                                do {
-//                                    let realm = try Realm()
-//                                    try realm.write {
-//                                        realm.deleteAll()
-//                                    }
-//                                } catch let error as NSError {
-//                                    print(error)
-//                                }
-
                             }
                         } else {
                             print(error)

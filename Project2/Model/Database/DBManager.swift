@@ -18,17 +18,6 @@ class DBManager: Object {
     @objc dynamic var cover = ""
     @objc dynamic var level = Int()
 
-//    func save() {
-//        do {
-//            let realm = try Realm()
-//            try realm.write {
-//                realm.add(self, update: true)
-//            }
-//        } catch let error as NSError {
-//            fatalError(error.localizedDescription)
-//        }
-//    }
-
 }
 
 class LevelManager: Object {
