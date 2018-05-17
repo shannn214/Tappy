@@ -91,9 +91,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                     } else {
                         progress.progress = Float(complete)
                         movingBtn.isHidden = false
-//                        let newLevel = LevelStatusManager.shared.level! + 1
-//                        LevelStatusManager.shared.updateLevel(newLevel: newLevel)
-//                        self.checkLevel = newLevel
                     }
                 }
                 self.locations.append(location)
@@ -122,10 +119,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         var btnSendTag: UIButton = sender
         switch btnSendTag.tag {
         case 0:
-            SpotifyManager.shared.playMusic(track: "spotify:track:4dyx5SzxPPaD8xQIid5Wjj")
+            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![0].trackUri)
             //use database to insert track value
         default:
-            SpotifyManager.shared.playMusic(track: "spotify:track:3lB0GMiI5KxDbTOG8V3bOx")
+            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![1].trackUri)
         }
 
     }

@@ -45,7 +45,9 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @objc func touchCover() {
-        delegate?.window?.rootViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController()
+//        delegate?.window?.rootViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController()
+        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController()
+        self.present(playerVC!, animated: true, completion: nil)
     }
 
     @objc func showInfo(notification: NSNotification) {

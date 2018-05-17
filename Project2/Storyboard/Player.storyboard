@@ -45,6 +45,13 @@
                                 <color key="textColor" red="0.71313827033137289" green="0.71884337649402386" blue="0.71884337649402386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4F-Fb-v7n">
+                                <rect key="frame" x="164.5" y="560" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="leaveBtn:" destination="aws-MT-OLZ" eventType="touchUpInside" id="N56-YQ-lzH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12154506972111556" green="0.12154506972111556" blue="0.12154506972111556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -55,6 +62,8 @@
                             <constraint firstItem="A1m-yr-VaV" firstAttribute="top" secondItem="yel-hK-dSJ" secondAttribute="bottom" constant="8" id="abw-69-2gD"/>
                             <constraint firstItem="PyC-k8-G0p" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="105" id="gEH-go-WNj"/>
                             <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="gp1-3v-KOq"/>
+                            <constraint firstItem="S4F-Fb-v7n" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="45" id="j2o-Tc-bpr"/>
+                            <constraint firstItem="S4F-Fb-v7n" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="jNA-kA-SW7"/>
                             <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="38" id="sqx-td-5uR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G9w-8c-PdF"/>

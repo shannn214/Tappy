@@ -16,7 +16,12 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
-
+    @IBAction func leaveBtn(_ sender: Any) {
+        self.dismiss(animated: true) {
+            SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
+        }
+    }
+    
     let designSetting = DesignSetting()
 
     override func viewDidLoad() {
