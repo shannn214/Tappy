@@ -11,6 +11,8 @@ import Foundation
 class SpotifyManager: UIViewController {
 
     static let shared = SpotifyManager()
+    
+    private init() {}
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 

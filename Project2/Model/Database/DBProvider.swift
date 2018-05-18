@@ -12,6 +12,8 @@ import RealmSwift
 class DBProvider {
 
     static var shared = DBProvider()
+    
+    private init() {}
 
     var sortedArray: Results<Track>?
 
