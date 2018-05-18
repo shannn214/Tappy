@@ -30,25 +30,25 @@ class TransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
         let initialFrame = presenting ? originFrame: playerView.frame
 
-        let finalFram = presenting ? playerView.frame: originFrame
+        let finalFrame = presenting ? playerView.frame: originFrame
 
         let xScaleFactor = presenting ?
-            initialFrame.width / finalFram.width :
-            finalFram.width / initialFrame.width
+            initialFrame.width / finalFrame.width :
+            finalFrame.width / initialFrame.width
 
         let yScaleFactor = presenting ?
-            initialFrame.height / finalFram.height :
-            finalFram.height / initialFrame.height
+            initialFrame.height / finalFrame.height :
+            finalFrame.height / initialFrame.height
 
-        let scalwTransForm = CGAffineTransform(scaleX: xScaleFactor,
+        let scaleTransForm = CGAffineTransform(scaleX: xScaleFactor,
                                                     y: yScaleFactor)
 
         if presenting {
 
-            playerView.transform = scalwTransForm
+            playerView.transform = scaleTransForm
             playerView.center = CGPoint(x: initialFrame.midX,
                                         y: initialFrame.midY)
-//            playerView.clipsToBounds = true
+            playerView.clipsToBounds = true
 
         }
 
@@ -56,13 +56,16 @@ class TransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         containerView.bringSubview(toFront: playerView)
 
         UIView.animate(withDuration: duration,
-                       delay: 0.3,
+                       delay: 0.8,
                        usingSpringWithDamping: 1,
                        initialSpringVelocity: 0.0,
                        animations: {
-                            playerView.transform = self.presenting ? CGAffineTransform.identity : scalwTransForm
-                            playerView.center = CGPoint(x: finalFram.midX, y: finalFram.midY)
+                            playerView.transform = self.presenting ? CGAffineTransform.identity : scaleTransForm
+                            playerView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
                        }) { (_) in
+                        if !self.presenting{
+                            self.dismissCompletion?()
+                        }
                             transitionContext.completeTransition(true)
         }
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrackCollectionViewCell" customModule="Project2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="203" height="154"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="203" height="154"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpm-qD-3Ig">
+                        <rect key="frame" x="0.0" y="0.0" width="203" height="154"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Zpm-qD-3Ig" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7to-Zt-Xb8"/>
+                <constraint firstAttribute="trailing" secondItem="Zpm-qD-3Ig" secondAttribute="trailing" id="BMp-Wi-J06"/>
+                <constraint firstAttribute="bottom" secondItem="Zpm-qD-3Ig" secondAttribute="bottom" id="PG8-uD-SQJ"/>
+                <constraint firstItem="Zpm-qD-3Ig" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w6h-gV-4W5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="203" height="154"/>
+            <connections>
+                <outlet property="trackCellView" destination="Zpm-qD-3Ig" id="HVr-IB-Mpr"/>
+            </connections>
+            <point key="canvasLocation" x="110.5" y="106"/>
+        </collectionViewCell>
+    </objects>
+</document>

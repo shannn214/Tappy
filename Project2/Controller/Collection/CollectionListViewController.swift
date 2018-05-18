@@ -25,13 +25,14 @@ class CollectionListViewController: UIViewController {
 
     let transitionAnimation = TransitionAnimation()
 
-    var selectedCell: RecordCollectionViewCell?
+    var selectedCell: TrackCollectionViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
         setCollectionLayout()
+        setupTrackCell()
 
         designSetting.designSetting(view: recordCollectionView)
 
@@ -51,6 +52,13 @@ class CollectionListViewController: UIViewController {
         recordCollectionView.delegate = self
         recordCollectionView.dataSource = self
     }
+    
+    func setupTrackCell() {
+        
+        let nib = UINib(nibName: String(describing: TrackCollectionViewCell.self), bundle: nil)
+        recordCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: TrackCollectionViewCell.self))
+        
+    }
 
     func setCollectionLayout() {
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -61,7 +69,7 @@ class CollectionListViewController: UIViewController {
             setLayout.minimumInteritemSpacing = 0
         }
     }
-
+    
 }
 
 extension CollectionListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -78,17 +86,35 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let recordCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecordCollectionViewCell.self), for: indexPath) as? RecordCollectionViewCell
-
-//        setCollectionLayout()
-
+//        let recordCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecordCollectionViewCell.self), for: indexPath) as? RecordCollectionViewCell
+//
+        setCollectionLayout()
+//
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![indexPath.row]
-        recordCell?.artist.text = info.artist
-        recordCell?.trackName.text = info.trackName
-        recordCell?.cover.sd_setImage(with: URL(string: info.cover))
+//        recordCell?.artist.text = info.artist
+//        recordCell?.trackName.text = info.trackName
+//        recordCell?.cover.sd_setImage(with: URL(string: info.cover))
+//
+        
+        //-------------put controller in cell-------
+        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
+        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
+        self.addChildViewController(playerVC!)
+        playerVC!.transitioningDelegate = self
+        playerVC!.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
+        playerVC!.view.clipsToBounds = true
 
-        return recordCell!
+        trackCell?.trackCellView.addSubview((playerVC?.view)!)
+        trackCell?.clipsToBounds = true
+
+        playerVC?.artist.text = info.artist
+        playerVC?.trackName.text = info.trackName
+        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
+
+        return trackCell!
+        
+//        return recordCell!
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -106,14 +132,25 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         }
         let info = sortedArray![indexPath.row]
         SpotifyManager.shared.playMusic(track: info.trackUri)
+
 //        self.navigationController?.pushViewController(playerVC, animated: true)
 
-        selectedCell = recordCollectionView.cellForItem(at: indexPath) as? RecordCollectionViewCell
+        selectedCell = recordCollectionView.cellForItem(at: indexPath) as? TrackCollectionViewCell
+        selectedCell?.clipsToBounds = false
+        selectedCell?.trackCellView.clipsToBounds = false
+        selectedCell?.trackCellView.frame = CGRect(x: UIScreen.main.bounds.minX, y: UIScreen.main.bounds.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
-        playerVC.transitioningDelegate = self
-        present(playerVC, animated: true, completion: nil)
+//        present(playerVC, animated: true, completion: nil)
+
+//        playerVC.transitioningDelegate = self
+//        present(playerVC, animated: true) {
+//            playerVC.cover.sd_setImage(with: URL(string: info.cover))
+//            playerVC.artist.text = info.artist
+//            playerVC.trackName.text = info.trackName
+//        }
 
     }
+
 
 }
 
@@ -136,7 +173,7 @@ extension CollectionListViewController: UIViewControllerTransitioningDelegate {
 
         transitionAnimation.presenting = false
 
-        return nil
+        return transitionAnimation
     }
 
 }

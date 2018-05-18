@@ -76,11 +76,11 @@ extension CollectionViewController: RecordListControllerDelegate, CollectionList
         if collectionY <= changePoint {
             topView.frame = CGRect(x: 0, y: (0 - collectionY), width: topView.frame.width, height: topViewHeight)
         }
-        if collectionY <= showPoint {
-            self.navigationController?.navigationBar.topItem?.title = ""
-        } else {
-            self.navigationController?.navigationBar.topItem?.title = "Collection"
-        }
+//        if collectionY <= showPoint {
+//            self.navigationController?.navigationBar.topItem?.title = ""
+//        } else {
+//            self.navigationController?.navigationBar.topItem?.title = "Collection"
+//        }
 
     }
 

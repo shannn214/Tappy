@@ -23,6 +23,8 @@ class PlayerViewController: UIViewController {
     }
 
     let designSetting = DesignSetting()
+    
+    let sortedArray = DBProvider.shared.sortedArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,8 @@ class PlayerViewController: UIViewController {
 //        slider.maximumValue = Float(duration!)
 //        slider.value = 0.0
 //        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
+        
+        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
 
         NotificationCenter.default.addObserver(
             self,
@@ -42,13 +46,13 @@ class PlayerViewController: UIViewController {
 
     @objc func showInfo(notification: NSNotification) {
 
-        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
-        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
-        cover.sd_setImage(with: URL(string: url!))
-        trackName.text = title
-        artist.text = artistName
-        designSetting.designSetting(view: cover)
+//        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
+//        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
+//        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
+//        cover.sd_setImage(with: URL(string: url!))
+//        trackName.text = title
+//        artist.text = artistName
+
 
     }
 
