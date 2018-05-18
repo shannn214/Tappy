@@ -31,7 +31,7 @@ class SpotifyTrackManager {
                     withURI: URL(string: albumUri),
                     accessToken: self.token,
                     market: nil,
-                    callback: { (error, data) in
+                    callback: { [weak self] (error, data) in
 
                         guard data != nil,
                               let album = data as? SPTPartialAlbum,
