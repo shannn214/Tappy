@@ -104,7 +104,7 @@ class TabBarViewController: UITabBarController {
     private func setupTab() {
 
         tabBar.tintColor = UIColor.black
-        
+
         tabBar.backgroundImage = UIImage()
 
         var controllers: [UIViewController] = []

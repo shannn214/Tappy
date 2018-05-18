@@ -21,6 +21,8 @@ class CollectionListViewController: UIViewController {
 
     let designSetting = DesignSetting()
 
+    let sortedArray = DBProvider.shared.sortedArray
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,9 +88,22 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
         let collectionListY = scrollView.contentOffset.y
         let movingDistance = collectionListY - (-190)
         self.delegate?.collectionViewDidScroll(self, translation: movingDistance)
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else {
+            return
+        }
+        let info = sortedArray![indexPath.row]
+        SpotifyManager.shared.playMusic(track: info.trackUri)
+        self.navigationController?.pushViewController(playerVC, animated: true)
+
     }
 
 }

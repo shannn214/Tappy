@@ -18,8 +18,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var artist: UILabel!
     @IBAction func leaveBtn(_ sender: Any) {
         self.dismiss(animated: true) {
-            SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
         }
+        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
     }
 
     let designSetting = DesignSetting()
@@ -31,6 +31,17 @@ class PlayerViewController: UIViewController {
 //        slider.value = 0.0
 //        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showInfo(notification:)),
+            name: .startPlayingTrack,
+            object: nil
+        )
+
+    }
+
+    @objc func showInfo(notification: NSNotification) {
+
         let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
         let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
         let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
@@ -38,6 +49,7 @@ class PlayerViewController: UIViewController {
         trackName.text = title
         artist.text = artistName
         designSetting.designSetting(view: cover)
+
     }
 
     func sliderProgress() {

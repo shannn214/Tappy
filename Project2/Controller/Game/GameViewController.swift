@@ -63,6 +63,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
 
         if CLLocationManager.authorizationStatus() == .notDetermined {
@@ -72,9 +73,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let curLocation: CLLocation = locations[0]
 
         for location in locations as [CLLocation] {
@@ -94,6 +97,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                 self.locations.append(location)
             }
         }
+        
     }
 
     func createButton() {
@@ -106,8 +110,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             CDButtonArray[btnIndex].tag = btnIndex
         }
 
-        CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100, y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100, y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
+        CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100,
+                                        y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
+        CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100,
+                                        y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
 
     }
 

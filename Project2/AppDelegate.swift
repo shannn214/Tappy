@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switchToMainStoryBoard()
                 NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
         }
-        
-        
 
         return true
     }

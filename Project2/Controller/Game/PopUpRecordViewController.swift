@@ -31,7 +31,14 @@ class PopUpRecordViewController: UIViewController {
         recordCover.addGestureRecognizer(tap)
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        NotificationCenter.default.addObserver(self, selector: #selector(showInfo(notification:)), name: .startPlayingTrack, object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showInfo(notification:)),
+            name: .startPlayingTrack,
+            object: nil
+        )
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,12 +52,14 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @objc func touchCover() {
-//        delegate?.window?.rootViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController()
+
         let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController()
         self.present(playerVC!, animated: true, completion: nil)
+
     }
 
     @objc func showInfo(notification: NSNotification) {
+
         let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
         let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
         let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
@@ -58,16 +67,19 @@ class PopUpRecordViewController: UIViewController {
         UIView.animate(withDuration: 0.2) {
             self.recordCover.alpha = 1
         }
+
         recordCover.sd_setImage(with: URL(string: url!))
         recordTitle.text = title
         recordArtist.text = artist
         rotate(image: recordCover)
+
     }
 
     @IBAction func leaveButton(_ sender: Any) {
-        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
 
+        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
         self.view.removeFromSuperview()
+
     }
 
     func showAnimation() {
@@ -80,6 +92,7 @@ class PopUpRecordViewController: UIViewController {
 
 //    Animation
     func rotate(image: UIImageView) {
+
         let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
         rotationAnimation.duration = 10
@@ -87,6 +100,7 @@ class PopUpRecordViewController: UIViewController {
         rotationAnimation.repeatCount = .infinity
         image.layer.add(rotationAnimation, forKey: "rotationAnimation")
         image.layer.cornerRadius = image.bounds.size.width * 0.5
+
     }
 
 }

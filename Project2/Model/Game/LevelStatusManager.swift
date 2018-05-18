@@ -12,7 +12,7 @@ import RealmSwift
 class LevelStatusManager {
 
     static var shared = LevelStatusManager()
-    
+
     private init() {}
 
     let levelStatus = Level()

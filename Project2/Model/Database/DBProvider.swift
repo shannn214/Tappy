@@ -12,7 +12,7 @@ import RealmSwift
 class DBProvider {
 
     static var shared = DBProvider()
-    
+
     private init() {}
 
     var sortedArray: Results<Track>?
@@ -20,7 +20,7 @@ class DBProvider {
     func getSortedArray() {
 
         do {
-            
+
             let dbRealm = try Realm()
             let data = dbRealm.objects(Track.self)
             let sortedResult = data.sorted(byKeyPath: "level", ascending: true)

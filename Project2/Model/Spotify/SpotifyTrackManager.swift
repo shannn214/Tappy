@@ -12,7 +12,7 @@ import RealmSwift
 class SpotifyTrackManager {
 
     static let shared = SpotifyTrackManager()
-    
+
     private init() {}
 
     let token = SpotifyManager.shared.auth.session.accessToken

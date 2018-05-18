@@ -44,6 +44,7 @@
 		09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */; };
 		09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */; };
 		09A62B3420ADCF8300BA5932 /* pixelmix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3320ADCF8300BA5932 /* pixelmix.ttf */; };
+		09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -96,6 +97,7 @@
 		09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grand9K Pixel.ttf"; sourceTree = "<group>"; };
 		09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "small_pixel-7.ttf"; sourceTree = "<group>"; };
 		09A62B3320ADCF8300BA5932 /* pixelmix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelmix.ttf; sourceTree = "<group>"; };
+		09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -146,11 +148,11 @@
 		090B6913209F03260095B416 /* Project2 */ = {
 			isa = PBXGroup;
 			children = (
-				09A62B2E20ADC93F00BA5932 /* Support */,
 				090B694C209F04610095B416 /* Model */,
 				090B694D209F04670095B416 /* View */,
 				090B694E209F046D0095B416 /* Controller */,
 				090B695F209F3B9D0095B416 /* Extension */,
+				09A62B2E20ADC93F00BA5932 /* Support */,
 				090B694F209F04860095B416 /* Storyboard */,
 				090B691B209F03290095B416 /* Assets.xcassets */,
 				090B6914209F03270095B416 /* AppDelegate.swift */,
@@ -189,6 +191,7 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
 			);
 			path = View;
@@ -342,6 +345,14 @@
 				09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		09A62B3520AE8CE300BA5932 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		09C6CF3820A82D2800A6C567 /* Spotify */ = {
@@ -543,6 +554,7 @@
 				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
+				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
 			);
