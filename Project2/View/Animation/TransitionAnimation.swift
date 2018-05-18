@@ -63,7 +63,7 @@ class TransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
                             playerView.transform = self.presenting ? CGAffineTransform.identity : scaleTransForm
                             playerView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
                        }) { (_) in
-                        if !self.presenting{
+                        if !self.presenting {
                             self.dismissCompletion?()
                         }
                             transitionContext.completeTransition(true)

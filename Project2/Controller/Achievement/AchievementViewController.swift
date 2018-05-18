@@ -8,6 +8,15 @@
 
 import Foundation
 
-class AchievementViewController: UIViewController {
+class AchievementViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewImage: UIImageView!
+    @IBOutlet weak var topViewLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
 }

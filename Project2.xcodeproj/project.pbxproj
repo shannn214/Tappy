@@ -29,9 +29,6 @@
 		090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697B20A153FA0095B416 /* GameMapViewController.swift */; };
 		090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697E20A18E9F0095B416 /* PlayerViewController.swift */; };
 		090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698020A1907D0095B416 /* PopUpRecordViewController.swift */; };
-		090B698320A2E22D0095B416 /* RecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698220A2E22D0095B416 /* RecordListViewController.swift */; };
-		0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */; };
-		0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */; };
 		0914190820A3388900B7C0F0 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190720A3388900B7C0F0 /* Record.swift */; };
 		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
@@ -47,6 +44,9 @@
 		09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */; };
 		09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */; };
 		09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */; };
+		09A62B3D20AF3F1800BA5932 /* AchievementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3C20AF3F1800BA5932 /* AchievementListViewController.swift */; };
+		09A62B4120AF3FCD00BA5932 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */; };
+		09A62B4220AF3FCD00BA5932 /* AchievementCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -84,9 +84,6 @@
 		090B697B20A153FA0095B416 /* GameMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapViewController.swift; sourceTree = "<group>"; };
 		090B697E20A18E9F0095B416 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		090B698020A1907D0095B416 /* PopUpRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRecordViewController.swift; sourceTree = "<group>"; };
-		090B698220A2E22D0095B416 /* RecordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListViewController.swift; sourceTree = "<group>"; };
-		0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
-		0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		0914190720A3388900B7C0F0 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
@@ -102,6 +99,9 @@
 		09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCollectionViewCell.xib; sourceTree = "<group>"; };
+		09A62B3C20AF3F1800BA5932 /* AchievementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListViewController.swift; sourceTree = "<group>"; };
+		09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
+		09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementCollectionViewCell.xib; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -195,6 +195,7 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
 			);
@@ -283,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				090B696B209F3FD30095B416 /* AchievementViewController.swift */,
+				09A62B3C20AF3F1800BA5932 /* AchievementListViewController.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -291,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				090B6969209F3FC00095B416 /* CollectionViewController.swift */,
-				090B698220A2E22D0095B416 /* RecordListViewController.swift */,
 				09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */,
 				0914190D20A4839500B7C0F0 /* DesignSetting.swift */,
 			);
@@ -309,8 +310,6 @@
 		0914190120A2E79900B7C0F0 /* RecordCell */ = {
 			isa = PBXGroup;
 			children = (
-				0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */,
-				0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */,
 				09A62B2A20AD392800BA5932 /* RecordCollectionViewCell.swift */,
 				09A62B2B20AD392800BA5932 /* RecordCollectionViewCell.xib */,
 				09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */,
@@ -359,6 +358,15 @@
 				09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		09A62B3E20AF3FAE00BA5932 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */,
+				09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */,
+			);
+			path = Achievement;
 			sourceTree = "<group>";
 		};
 		09C6CF3820A82D2800A6C567 /* Spotify */ = {
@@ -458,8 +466,8 @@
 				090B691F209F03290095B416 /* LaunchScreen.storyboard in Resources */,
 				090B691C209F03290095B416 /* Assets.xcassets in Resources */,
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
-				0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */,
 				090B6974209F402C0095B416 /* Achievement.storyboard in Resources */,
+				09A62B4220AF3FCD00BA5932 /* AchievementCollectionViewCell.xib in Resources */,
 				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
 				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
 				09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */,
@@ -539,7 +547,6 @@
 			files = (
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
-				090B698320A2E22D0095B416 /* RecordListViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
 				090B696C209F3FD30095B416 /* AchievementViewController.swift in Sources */,
 				09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */,
@@ -552,9 +559,9 @@
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
+				09A62B4120AF3FCD00BA5932 /* AchievementCollectionViewCell.swift in Sources */,
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
 				09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */,
-				0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
@@ -564,6 +571,7 @@
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
+				09A62B3D20AF3F1800BA5932 /* AchievementListViewController.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
