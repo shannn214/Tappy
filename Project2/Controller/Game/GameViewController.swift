@@ -63,7 +63,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
+
         super.viewDidAppear(animated)
 
         if CLLocationManager.authorizationStatus() == .notDetermined {
@@ -73,11 +73,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
-        
+
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         let curLocation: CLLocation = locations[0]
 
         for location in locations as [CLLocation] {
@@ -97,7 +97,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                 self.locations.append(location)
             }
         }
-        
+
     }
 
     func createButton() {

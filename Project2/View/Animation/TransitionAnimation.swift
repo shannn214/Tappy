@@ -10,48 +10,62 @@ import UIKit
 
 class TransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
+    let duration = 0.5
+    var presenting = true
+    var originFrame = CGRect.zero
+    var dismissCompletion: (() -> Void)?
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.35
+        return duration
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
-        let fromVC = transitionContext.viewController(forKey: .from)
-        let fromView = transitionContext.view(forKey: .from)!
-        
-        let toVC = transitionContext.viewController(forKey: .to)
+
+        let containerView = transitionContext.containerView
+
         let toView = transitionContext.view(forKey: .to)!
-        
-        let container = transitionContext.containerView
-        container.addSubview(fromView)
 
-        let duration = self.transitionDuration(using: transitionContext)
-        
-        if (toVC?.isBeingPresented)! {
-            
-            container.addSubview(toView)
-            
-            let toViewWidth = container.frame.width
-            let toViewHeight = container.frame.height
-            toView.center = container.center
-            toView.bounds = CGRect(x: 0, y: 0, width: toViewWidth, height: toViewHeight)
-            
+        let playerView = presenting ? toView:
+            transitionContext.view(forKey: .from)!
+
+        let initialFrame = presenting ? originFrame: playerView.frame
+
+        let finalFram = presenting ? playerView.frame: originFrame
+
+        let xScaleFactor = presenting ?
+            initialFrame.width / finalFram.width :
+            finalFram.width / initialFrame.width
+
+        let yScaleFactor = presenting ?
+            initialFrame.height / finalFram.height :
+            finalFram.height / initialFrame.height
+
+        let scalwTransForm = CGAffineTransform(scaleX: xScaleFactor,
+                                                    y: yScaleFactor)
+
+        if presenting {
+
+            playerView.transform = scalwTransForm
+            playerView.center = CGPoint(x: initialFrame.midX,
+                                        y: initialFrame.midY)
+//            playerView.clipsToBounds = true
+
         }
-        
+
+        containerView.addSubview(toView)
+        containerView.bringSubview(toFront: playerView)
+
+        UIView.animate(withDuration: duration,
+                       delay: 0.3,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 0.0,
+                       animations: {
+                            playerView.transform = self.presenting ? CGAffineTransform.identity : scalwTransForm
+                            playerView.center = CGPoint(x: finalFram.midX, y: finalFram.midY)
+                       }) { (_) in
+                            transitionContext.completeTransition(true)
+        }
+
     }
 
-   
-
-}
-
-extension TransitionAnimation: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self
-    }
-    
 }

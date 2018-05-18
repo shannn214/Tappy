@@ -23,6 +23,10 @@ class CollectionListViewController: UIViewController {
 
     let sortedArray = DBProvider.shared.sortedArray
 
+    let transitionAnimation = TransitionAnimation()
+
+    var selectedCell: RecordCollectionViewCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -102,8 +106,37 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         }
         let info = sortedArray![indexPath.row]
         SpotifyManager.shared.playMusic(track: info.trackUri)
-        self.navigationController?.pushViewController(playerVC, animated: true)
+//        self.navigationController?.pushViewController(playerVC, animated: true)
 
+        selectedCell = recordCollectionView.cellForItem(at: indexPath) as? RecordCollectionViewCell
+
+        playerVC.transitioningDelegate = self
+        present(playerVC, animated: true, completion: nil)
+
+    }
+
+}
+
+extension CollectionListViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
+
+        transitionAnimation.originFrame = originFrame
+
+        transitionAnimation.presenting = true
+
+//        selectedCell?.isHidden = true
+
+        return transitionAnimation
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        transitionAnimation.presenting = false
+
+        return nil
     }
 
 }
