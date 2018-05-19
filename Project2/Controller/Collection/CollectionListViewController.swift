@@ -37,21 +37,25 @@ class CollectionListViewController: UIViewController {
 
         designSetting.designSetting(view: recordCollectionView)
 
-        recordCollectionView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
-        recordCollectionView.contentOffset = CGPoint(x: 0, y: -190)
     }
 
     override func viewWillAppear(_ animated: Bool) {
+
         super.viewWillAppear(animated)
 
         recordCollectionView.reloadData()
+
     }
 
     func setupCollectionView() {
+
         let nib = UINib(nibName: String(describing: RecordCollectionViewCell.self), bundle: nil)
         recordCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: RecordCollectionViewCell.self))
         recordCollectionView.delegate = self
         recordCollectionView.dataSource = self
+        recordCollectionView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
+        recordCollectionView.contentOffset = CGPoint(x: 0, y: -190)
+
     }
 
     func setupTrackCell() {
@@ -62,11 +66,12 @@ class CollectionListViewController: UIViewController {
     }
 
     func setCollectionLayout() {
+
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2
             setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             setLayout.itemSize = CGSize(width: itemSize, height: itemSize)
-            setLayout.minimumLineSpacing = 0
+            setLayout.minimumLineSpacing = 1
             setLayout.minimumInteritemSpacing = 0
         }
     }
@@ -87,7 +92,9 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let recordCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecordCollectionViewCell.self), for: indexPath) as? RecordCollectionViewCell
+        let recordCell = recordCollectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
+            for: indexPath) as? RecordCollectionViewCell
 
         setCollectionLayout()
 

@@ -26,8 +26,8 @@ extension UIStoryboard {
         return UIStoryboard(name: "Collection", bundle: nil)
     }
 
-    static func achievementStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Achievement", bundle: nil)
+    static func cardStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Card", bundle: nil)
     }
 
     static func settingStoryboard() -> UIStoryboard {

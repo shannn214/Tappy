@@ -26,11 +26,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.topItem?.title = ""
-        collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
+        setupNav()
 
     }
 
@@ -39,6 +35,16 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         if let collectionListViewController = segue.destination as? CollectionListViewController {
             collectionListViewController.delegate = self
         }
+    }
+
+    func setupNav() {
+
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.topItem?.title = ""
+        collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
+
     }
 
 }

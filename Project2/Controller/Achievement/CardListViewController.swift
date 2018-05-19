@@ -8,9 +8,15 @@
 
 import Foundation
 
-class AchievementListViewController: UIViewController {
+protocol CardListControllerDelegate: class {
+    func cardViewDisScroll(_ controller: CardListViewController, translation: CGFloat)
+}
+
+class CardListViewController: UIViewController {
 
     @IBOutlet weak var listCollectionView: UICollectionView!
+
+    weak var delegate: CardListControllerDelegate?
 
     override func viewDidLoad() {
 
@@ -18,7 +24,7 @@ class AchievementListViewController: UIViewController {
 
         setupCollectionView()
 
-        setCollectionLayout()
+        setupCollectionLayout()
 
     }
 
@@ -28,21 +34,25 @@ class AchievementListViewController: UIViewController {
         listCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: AchievementCollectionViewCell.self))
         listCollectionView.delegate = self
         listCollectionView.dataSource = self
+        listCollectionView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
+        listCollectionView.contentOffset = CGPoint(x: 0, y: -190)
+
     }
 
-    func setCollectionLayout() {
+    func setupCollectionLayout() {
+
         if let setLayout = listCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemSize = UIScreen.main.bounds.width/2
-            setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            let itemSize = UIScreen.main.bounds.width/2 - 5
+            setLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             setLayout.itemSize = CGSize(width: itemSize, height: itemSize)
-            setLayout.minimumLineSpacing = 0
+            setLayout.minimumLineSpacing = 5
             setLayout.minimumInteritemSpacing = 0
         }
     }
 
 }
 
-extension AchievementListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CardListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -55,7 +65,20 @@ extension AchievementListViewController: UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+
+        let cardCell = listCollectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: AchievementCollectionViewCell.self),
+            for: indexPath) as? AchievementCollectionViewCell
+
+        return cardCell!
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let cardListY = scrollView.contentOffset.y
+        let movingDistance = cardListY - (-255)
+        self.delegate?.cardViewDisScroll(self, translation: movingDistance)
+
     }
 
 }
