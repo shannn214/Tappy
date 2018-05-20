@@ -33,6 +33,7 @@
 		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
 		0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914190F20A48EB300B7C0F0 /* Player.storyboard */; };
+		0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973B20B1B9C1006E468E /* PlayerPanelView.swift */; };
 		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
 		09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2620AD2D6200BA5932 /* DBProvider.swift */; };
 		09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */; };
@@ -89,6 +90,7 @@
 		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
 		0914190F20A48EB300B7C0F0 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		0951973B20B1B9C1006E468E /* PlayerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPanelView.swift; sourceTree = "<group>"; };
 		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
 		09A62B2620AD2D6200BA5932 /* DBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0951973A20B1B9A0006E468E /* Player */,
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
@@ -328,6 +331,14 @@
 				0914190920A3EECA00B7C0F0 /* RecordProvider.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		0951973A20B1B9A0006E468E /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				0951973B20B1B9C1006E468E /* PlayerPanelView.swift */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		09A62B2220AAAD9800BA5932 /* Game */ = {
@@ -576,6 +587,7 @@
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
+				0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
 				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
 				09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */,

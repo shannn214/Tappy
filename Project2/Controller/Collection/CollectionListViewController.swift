@@ -137,9 +137,10 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 //        present(playerVC, animated: true, completion: nil)
 
         present(playerVC, animated: true) {
-            playerVC.cover.sd_setImage(with: URL(string: info.cover))
-            playerVC.artist.text = info.artist
-            playerVC.trackName.text = info.trackName
+            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+            playerVC.playerPanelView.artist.text = info.artist
+            playerVC.playerPanelView.trackName.text = info.trackName
         }
 
     }
