@@ -26,7 +26,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNav()
+        setup()
 
     }
 
@@ -37,14 +37,10 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func setupNav() {
-
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.topItem?.title = ""
+    func setup() {
+        
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
-
+        
     }
 
 }

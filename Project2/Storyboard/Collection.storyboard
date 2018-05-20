@@ -103,7 +103,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dgd-QG-T0L">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t34-UI-DPk" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t34-UI-DPk" customClass="NavigationController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yxj-HK-b8X">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
