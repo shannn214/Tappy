@@ -56,6 +56,11 @@
                                             <constraint firstAttribute="width" constant="200" id="e3e-Ks-0J2"/>
                                         </constraints>
                                     </imageView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-k8-G0p">
+                                        <rect key="frame" x="43" y="432" width="289" height="31"/>
+                                        <color key="minimumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="maximumTrackTintColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="0.29345703125" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yel-hK-dSJ">
                                         <rect key="frame" x="88" y="370" width="200" height="20"/>
                                         <constraints>
@@ -81,32 +86,55 @@
                                             <action selector="leaveBtn:" destination="jQo-UL-sX6" eventType="touchUpInside" id="Hg4-rE-GOz"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-k8-G0p">
-                                        <rect key="frame" x="46" y="432" width="284" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-m6-YVb">
+                                        <rect key="frame" x="163" y="482" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="280" id="97e-Kc-67i"/>
+                                            <constraint firstAttribute="height" constant="50" id="1sk-gi-5K8"/>
+                                            <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
-                                        <color key="minimumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="maximumTrackTintColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="0.29345703125" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </slider>
+                                        <state key="normal" backgroundImage="play-button-4"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOc-L0-U3A">
+                                        <rect key="frame" x="45" y="467" width="36" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-Gs-lLZ">
+                                        <rect key="frame" x="294" y="467" width="36" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="76I-0s-gRA"/>
+                                    <constraint firstAttribute="trailing" secondItem="OaG-Gs-lLZ" secondAttribute="trailing" constant="45" id="CyJ-a8-Eh0"/>
                                     <constraint firstItem="S4F-Fb-v7n" firstAttribute="top" secondItem="A1m-yr-VaV" secondAttribute="bottom" constant="145.5" id="DQI-cr-uMq"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="JhL-L7-jSk"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="top" secondItem="jQo-UL-sX6" secondAttribute="top" constant="140" id="MEy-uK-2KS"/>
                                     <constraint firstItem="S4F-Fb-v7n" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="NMp-3H-mH9"/>
+                                    <constraint firstItem="vOc-L0-U3A" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="Os0-tW-Dlv"/>
+                                    <constraint firstItem="Onb-m6-YVb" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="PZu-V6-DKh"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="Qkp-uR-pvf"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="30" id="YBq-g9-IJb"/>
+                                    <constraint firstItem="Onb-m6-YVb" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="20" id="aKE-Mj-Z2P"/>
+                                    <constraint firstItem="vOc-L0-U3A" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="ah6-c2-uYH"/>
+                                    <constraint firstAttribute="trailing" secondItem="PyC-k8-G0p" secondAttribute="trailing" constant="45" id="bcr-AI-aHH"/>
+                                    <constraint firstItem="OaG-Gs-lLZ" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="flx-GU-hiW"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="top" secondItem="yel-hK-dSJ" secondAttribute="bottom" constant="10" id="jSo-dn-u3y"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="nat-NS-2m5"/>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="top" secondItem="A1m-yr-VaV" secondAttribute="bottom" constant="15.5" id="rpl-a4-fu4"/>
+                                    <constraint firstItem="PyC-k8-G0p" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="u01-o4-7ts"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="artist" destination="A1m-yr-VaV" id="hsk-YA-zKb"/>
                                     <outlet property="cover" destination="SCH-7K-qDA" id="X6R-Ut-2vV"/>
+                                    <outlet property="endTimeLabel" destination="OaG-Gs-lLZ" id="y7b-pu-ddF"/>
+                                    <outlet property="playButton" destination="Onb-m6-YVb" id="FGw-ah-tA5"/>
                                     <outlet property="slider" destination="PyC-k8-G0p" id="mlX-gW-CxR"/>
+                                    <outlet property="startTimeLabel" destination="vOc-L0-U3A" id="oQS-wb-elh"/>
                                     <outlet property="trackName" destination="yel-hK-dSJ" id="nlU-w5-R1M"/>
                                 </connections>
                             </view>
@@ -143,4 +171,7 @@
             <point key="canvasLocation" x="80.799999999999997" y="204.64767616191907"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play-button-4" width="64" height="64"/>
+    </resources>
 </document>

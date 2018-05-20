@@ -20,6 +20,30 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(trackDuration(notification:)),
+            name: .startPlayingTrack,
+            object: nil
+        )
+    }
+    
+    @objc func trackDuration(notification: Notification) {
+        
+        guard let duration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
+        let trackTime = TimeInterval(duration)
+        let totalTime = "\(formatPlayTime(second: duration))"
+        playerPanelView.updateEndTime(time: totalTime)
+        
+    }
+    
+    func formatPlayTime(second: TimeInterval) -> String {
+        if second.isNaN {
+            return "00:00"
+        }
+        let min = Int(second / 60)
+        let sec = Int(second) % 60
+        return String(format: "%02d:%02d", min, sec)
     }
 
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
