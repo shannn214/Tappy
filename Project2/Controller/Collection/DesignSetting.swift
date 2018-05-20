@@ -17,4 +17,17 @@ struct DesignSetting {
         view.layer.shadowRadius = 10
     }
 
+    func imageShadow(shadowView: UIView, cover: UIView) {
+
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.cornerRadius = shadowView.bounds.size.width * 0.5
+        shadowView.layer.shadowOffset = CGSize.zero
+        shadowView.layer.shadowRadius = 10
+        shadowView.layer.shadowPath = UIBezierPath(rect: cover.bounds).cgPath
+        shadowView.layer.shouldRasterize = true
+
+    }
+
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,14 +20,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-7K-qDA">
-                                <rect key="frame" x="67" y="140" width="240" height="240"/>
+                                <rect key="frame" x="87" y="140" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="5oy-vi-g14"/>
-                                    <constraint firstAttribute="width" constant="240" id="e3e-Ks-0J2"/>
+                                    <constraint firstAttribute="height" constant="200" id="5oy-vi-g14"/>
+                                    <constraint firstAttribute="width" constant="200" id="e3e-Ks-0J2"/>
                                 </constraints>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-k8-G0p">
-                                <rect key="frame" x="45" y="485" width="284" height="31"/>
+                                <rect key="frame" x="45" y="445" width="284" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="97e-Kc-67i"/>
                                 </constraints>
@@ -34,28 +35,37 @@
                                 <color key="maximumTrackTintColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="0.29345703125" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yel-hK-dSJ">
-                                <rect key="frame" x="165.5" y="418" width="43.5" height="20"/>
+                                <rect key="frame" x="165.5" y="350" width="43.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1m-yr-VaV">
-                                <rect key="frame" x="170.5" y="446" width="34.5" height="16.5"/>
+                                <rect key="frame" x="170.5" y="378" width="34.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.71313827033137289" green="0.71884337649402386" blue="0.71884337649402386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4F-Fb-v7n">
+                                <rect key="frame" x="164.5" y="520" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="leaveBtn:" destination="aws-MT-OLZ" eventType="touchUpInside" id="N56-YQ-lzH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12154506972111556" green="0.12154506972111556" blue="0.12154506972111556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="D5A-mB-4Oa"/>
                             <constraint firstItem="A1m-yr-VaV" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="HiB-3J-5Gf"/>
                             <constraint firstItem="yel-hK-dSJ" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="PpJ-Lb-PGJ"/>
-                            <constraint firstItem="SCH-7K-qDA" firstAttribute="top" secondItem="G9w-8c-PdF" secondAttribute="top" constant="120" id="Yxd-Pn-OtJ"/>
                             <constraint firstItem="A1m-yr-VaV" firstAttribute="top" secondItem="yel-hK-dSJ" secondAttribute="bottom" constant="8" id="abw-69-2gD"/>
+                            <constraint firstItem="SCH-7K-qDA" firstAttribute="top" secondItem="MVt-CQ-e4b" secondAttribute="topMargin" constant="120" id="d2M-oy-ggn"/>
                             <constraint firstItem="PyC-k8-G0p" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="105" id="gEH-go-WNj"/>
                             <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="gp1-3v-KOq"/>
-                            <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="38" id="sqx-td-5uR"/>
+                            <constraint firstItem="S4F-Fb-v7n" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="45" id="j2o-Tc-bpr"/>
+                            <constraint firstItem="S4F-Fb-v7n" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="jNA-kA-SW7"/>
+                            <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="10" id="sqx-td-5uR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G9w-8c-PdF"/>
                     </view>

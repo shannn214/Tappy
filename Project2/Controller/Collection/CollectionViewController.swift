@@ -10,56 +10,91 @@ import Foundation
 
 class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var recordContainerView: UIView!
+    @IBOutlet weak var recordsContainerView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
+    @IBOutlet weak var gradientView: UIView!
+
+    @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
 
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
-    var showPoint: CGFloat = 70
+    var alphaPoint: CGFloat = 190
     var recordTransition: CGFloat?
+    var collectionTransition: CGFloat?
+    let layer = CAGradientLayer()
 
     let designSetting = DesignSetting()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.topItem?.title = ""
-        designSetting.designSetting(view: collectionCover)
+        setup()
 
-        LoginManager.shared.getTrackInfo()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let recordViewController = segue.destination as? RecordListViewController {
-            recordViewController.delegate = self
+
+        if let collectionListViewController = segue.destination as? CollectionListViewController {
+            collectionListViewController.delegate = self
         }
+    }
+
+    func setup() {
+
+        collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
+
+        layer.colors = [
+            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0).cgColor,
+            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        ]
+
+        layer.locations = [0.0, 0.35]
+
+        layer.startPoint = CGPoint(x: 0.5, y: 0.0)
+
+        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
+
+        layer.frame = UIScreen.main.bounds
+
+        self.gradientView.layer.addSublayer(layer)
+
     }
 
 }
 
-extension CollectionViewController: RecordListControllerDelegate {
+extension CollectionViewController: CollectionListControllerDelegate {
 
-    func recordViewDidScroll(_ controller: RecordListViewController, translation: CGFloat) {
-        self.recordTransition = translation
+    func collectionViewDidScroll(_ controller: CollectionListViewController, translation: CGFloat) {
+        self.collectionTransition = translation
         changeTopView()
     }
 
     func changeTopView() {
-        guard let recordY = recordTransition else { return }
-        if recordY <= changePoint {
-            topView.frame = CGRect(x: 0, y: (0 - recordY), width: topView.frame.width, height: topViewHeight)
-        }
-        if recordY <= showPoint {
-            self.navigationController?.navigationBar.topItem?.title = ""
-        } else {
-            self.navigationController?.navigationBar.topItem?.title = "Collection"
-        }
 
+        guard let collectionY = collectionTransition else { return }
+        if collectionY <= changePoint {
+//            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
+            topViewHeightConstraint.constant = topViewHeight - collectionY
+            topImageConstraint.constant = 65 - collectionY
+            self.gradientHeightConstraint.constant = topViewHeight - collectionY
+
+            //-----issue: gradient will delay-----
+//            self.gradientView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
+//            layer.frame = CGRect(x: 0, y: 0 - collectionY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//            let xx = collectionY/660 as NSNumber
+//            guard let tt = xx as? Double else { return }
+//            layer.locations = [0.0, 0.35 - tt] as [NSNumber]
+
+        }
+        if collectionY <= alphaPoint {
+            let percentage = collectionY/alphaPoint
+            collectionCover.alpha = 1.0 - percentage
+        }
     }
 
 }

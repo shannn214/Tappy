@@ -25,7 +25,7 @@ struct RecordProvider {
 
     func getRecordInfo() {
 
-        guard let tokenValue = LoginManager.shared.auth.session.accessToken as? String else { return }
+        guard let tokenValue = SpotifyManager.shared.auth.session.accessToken as? String else { return }
 
         let headers: HTTPHeaders = ["Authorization": "Bearer \(tokenValue)"]
 

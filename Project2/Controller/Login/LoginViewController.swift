@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButton(_ sender: Any) {
-        LoginManager.shared.startAuthenticationFlow()
+        SpotifyManager.shared.startAuthenticationFlow()
     }
 
 }

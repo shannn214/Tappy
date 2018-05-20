@@ -14,14 +14,16 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
     @IBOutlet weak var gameMapView: GameMapViewController!
+    @IBOutlet weak var mapScrollView: UIScrollView!
 
     let locationManager = CLLocationManager()
     var distance = 0.0
     var locations = [CLLocation]()
-
-//    let CDButton = UIButton()
+    var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton()]
-    var level = 1
+    let firstLogin = UserDefaults.standard
+
+//    let databaseManager = DBManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,40 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         progress.progress = 0
         movingBtn.isHidden = false
+        //false for test
 
         createButton()
+
+        if firstLogin.value(forKey: "firstLogin") == nil {
+            getInfoData()
+            LevelStatusManager.shared.initialGame()
+            firstLogin.set(true, forKey: "firstLogin")
+        } else {
+            //TODO
+        }
+
+        LevelStatusManager.shared.showNewLevel()
+        DBProvider.shared.getSortedArray()
+
+        mapScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapScrollView.contentOffset = CGPoint(x: 380, y: 500)
+//        mapScrollView.bounces = false
+    }
+
+    func getInfoData() {
+
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+
+        for dataIndex in 0...uriManager.uris.count {
+            SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
+                                                    albumUri: uriManager.uris[dataIndex].albumUri,
+                                                    level: uriManager.uris[dataIndex].level)
+        }
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
+
         super.viewDidAppear(animated)
 
         if CLLocationManager.authorizationStatus() == .notDetermined {
@@ -46,11 +77,12 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
+
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
         let curLocation: CLLocation = locations[0]
-        print("\(curLocation.coordinate)")
 
         for location in locations as [CLLocation] {
             if location.horizontalAccuracy < 20 {
@@ -69,54 +101,39 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                 self.locations.append(location)
             }
         }
+
     }
 
     func createButton() {
 
-        CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100, y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[0].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-        self.gameMapView.addSubview(CDButtonArray[0])
-        CDButtonArray[0].isHidden = true
-        CDButtonArray[0].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
-
-        CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100, y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[1].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-        self.gameMapView.addSubview(CDButtonArray[1])
-        CDButtonArray[1].isHidden = true
-        CDButtonArray[1].addTarget(self, action: #selector(showRecordInfo2), for: .touchUpInside)
-
-    }
-
-    @objc func showRecordInfo() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
+        for btnIndex in 0...1 {
+            CDButtonArray[btnIndex].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
+            self.gameMapView.addSubview(CDButtonArray[btnIndex])
+            CDButtonArray[btnIndex].isHidden = true
+            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
+            CDButtonArray[btnIndex].tag = btnIndex
         }
 
-        LoginManager.shared.playMusic()
+        CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100,
+                                        y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
+        CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100,
+                                        y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
 
     }
-//    delete after demo
-    @objc func showRecordInfo2() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
+
+    @objc func showRecordInfo(sender: UIButton!) {
+        popUpView()
+
+        var btnSendTag: UIButton = sender
+        switch btnSendTag.tag {
+        case 0:
+            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![0].trackUri)
+            //use database to insert track value
+        default:
+            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![1].trackUri)
         }
 
-        LoginManager.shared.playMusic2()
-
     }
-//--------
 
     @IBAction func movingButton(_ sender: Any) {
 
@@ -127,14 +144,30 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.gameMapView.check = true
         self.gameMapView.setNeedsDisplay()
 
-        if level == 1 {
-            level += 1
+        //When user press moving button, database should add one object into the collection view.
+
+        self.checkLevel = LevelStatusManager.shared.level! + 1
+
+        LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
+
+        if checkLevel == 1 {
             CDButtonArray[0].isHidden = false
         } else {
             CDButtonArray[1].isHidden = false
-
         }
 
+    }
+
+    func popUpView() {
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.view.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
     }
 
 }

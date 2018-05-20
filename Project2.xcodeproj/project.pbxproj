@@ -18,27 +18,44 @@
 		090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6963209F3C530095B416 /* UIStoryboard.swift */; };
 		090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6967209F3F9A0095B416 /* SettingViewController.swift */; };
 		090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6969209F3FC00095B416 /* CollectionViewController.swift */; };
-		090B696C209F3FD30095B416 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B696B209F3FD30095B416 /* AchievementViewController.swift */; };
+		090B696C209F3FD30095B416 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B696B209F3FD30095B416 /* CardViewController.swift */; };
 		090B696E209F3FF90095B416 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B696D209F3FF90095B416 /* Login.storyboard */; };
 		090B6970209F40040095B416 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B696F209F40040095B416 /* Game.storyboard */; };
 		090B6972209F40130095B416 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6971209F40130095B416 /* Collection.storyboard */; };
-		090B6974209F402C0095B416 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6973209F402C0095B416 /* Achievement.storyboard */; };
+		090B6974209F402C0095B416 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6973209F402C0095B416 /* Card.storyboard */; };
 		090B6976209F403C0095B416 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6975209F403C0095B416 /* Setting.storyboard */; };
 		090B6978209F47D10095B416 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6977209F47D10095B416 /* GameViewController.swift */; };
-		090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* LoginManager.swift */; };
+		090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* SpotifyManager.swift */; };
 		090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697B20A153FA0095B416 /* GameMapViewController.swift */; };
 		090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697E20A18E9F0095B416 /* PlayerViewController.swift */; };
 		090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698020A1907D0095B416 /* PopUpRecordViewController.swift */; };
-		090B698320A2E22D0095B416 /* RecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698220A2E22D0095B416 /* RecordListViewController.swift */; };
-		0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */; };
-		0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */; };
 		0914190820A3388900B7C0F0 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190720A3388900B7C0F0 /* Record.swift */; };
 		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
 		0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914190F20A48EB300B7C0F0 /* Player.storyboard */; };
+		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
+		09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2620AD2D6200BA5932 /* DBProvider.swift */; };
+		09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */; };
+		09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2A20AD392800BA5932 /* RecordCollectionViewCell.swift */; };
+		09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B2B20AD392800BA5932 /* RecordCollectionViewCell.xib */; };
+		09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */; };
+		09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */; };
+		09A62B3420ADCF8300BA5932 /* pixelmix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3320ADCF8300BA5932 /* pixelmix.ttf */; };
+		09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */; };
+		09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */; };
+		09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */; };
+		09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3C20AF3F1800BA5932 /* CardListViewController.swift */; };
+		09A62B4120AF3FCD00BA5932 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */; };
+		09A62B4220AF3FCD00BA5932 /* AchievementCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */; };
+		09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B4420B15FE600BA5932 /* NavigationController.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
+		09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3920A82D4200A6C567 /* Spotify.swift */; };
+		09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */; };
+		09C6CF3E20A9466600A6C567 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* Track.swift */; };
+		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
+		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,27 +74,44 @@
 		090B6963209F3C530095B416 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		090B6967209F3F9A0095B416 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		090B6969209F3FC00095B416 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		090B696B209F3FD30095B416 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		090B696B209F3FD30095B416 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		090B696D209F3FF90095B416 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		090B696F209F40040095B416 /* Game.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		090B6971209F40130095B416 /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
-		090B6973209F402C0095B416 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
+		090B6973209F402C0095B416 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
 		090B6975209F403C0095B416 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		090B6977209F47D10095B416 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		090B697920A00D1C0095B416 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		090B697920A00D1C0095B416 /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		090B697B20A153FA0095B416 /* GameMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapViewController.swift; sourceTree = "<group>"; };
 		090B697E20A18E9F0095B416 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		090B698020A1907D0095B416 /* PopUpRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRecordViewController.swift; sourceTree = "<group>"; };
-		090B698220A2E22D0095B416 /* RecordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListViewController.swift; sourceTree = "<group>"; };
-		0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
-		0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		0914190720A3388900B7C0F0 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
 		0914190F20A48EB300B7C0F0 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
+		09A62B2620AD2D6200BA5932 /* DBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
+		09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
+		09A62B2A20AD392800BA5932 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		09A62B2B20AD392800BA5932 /* RecordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCollectionViewCell.xib; sourceTree = "<group>"; };
+		09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grand9K Pixel.ttf"; sourceTree = "<group>"; };
+		09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "small_pixel-7.ttf"; sourceTree = "<group>"; };
+		09A62B3320ADCF8300BA5932 /* pixelmix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelmix.ttf; sourceTree = "<group>"; };
+		09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
+		09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCollectionViewCell.xib; sourceTree = "<group>"; };
+		09A62B3C20AF3F1800BA5932 /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
+		09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
+		09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementCollectionViewCell.xib; sourceTree = "<group>"; };
+		09A62B4420B15FE600BA5932 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
+		09C6CF3920A82D4200A6C567 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
+		09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrackManager.swift; sourceTree = "<group>"; };
+		09C6CF3D20A9466600A6C567 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
+		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +158,7 @@
 				090B694D209F04670095B416 /* View */,
 				090B694E209F046D0095B416 /* Controller */,
 				090B695F209F3B9D0095B416 /* Extension */,
+				09A62B2E20ADC93F00BA5932 /* Support */,
 				090B694F209F04860095B416 /* Storyboard */,
 				090B691B209F03290095B416 /* Assets.xcassets */,
 				090B6914209F03270095B416 /* AppDelegate.swift */,
@@ -149,6 +184,10 @@
 		090B694C209F04610095B416 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B2520AD2BF300BA5932 /* Collection */,
+				09A62B2220AAAD9800BA5932 /* Game */,
+				09C6CF3F20A9701900A6C567 /* Database */,
+				09C6CF3820A82D2800A6C567 /* Spotify */,
 				0914190620A3386800B7C0F0 /* Record */,
 				090B6960209F3BD10095B416 /* Notification */,
 			);
@@ -158,6 +197,8 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B3E20AF3FAE00BA5932 /* Achievement */,
+				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
 			);
 			path = View;
@@ -166,6 +207,7 @@
 		090B694E209F046D0095B416 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				09A62B4320B15FB700BA5932 /* Navigate */,
 				090B6957209F3B020095B416 /* Login */,
 				090B697D20A18E850095B416 /* Player */,
 				090B695A209F3B220095B416 /* Game */,
@@ -184,7 +226,7 @@
 				090B696D209F3FF90095B416 /* Login.storyboard */,
 				090B696F209F40040095B416 /* Game.storyboard */,
 				090B6971209F40130095B416 /* Collection.storyboard */,
-				090B6973209F402C0095B416 /* Achievement.storyboard */,
+				090B6973209F402C0095B416 /* Card.storyboard */,
 				090B6975209F403C0095B416 /* Setting.storyboard */,
 				0914190F20A48EB300B7C0F0 /* Player.storyboard */,
 			);
@@ -195,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				090B695B209F3B540095B416 /* LoginViewController.swift */,
-				090B697920A00D1C0095B416 /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -245,7 +286,8 @@
 		090B6965209F3F700095B416 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
-				090B696B209F3FD30095B416 /* AchievementViewController.swift */,
+				090B696B209F3FD30095B416 /* CardViewController.swift */,
+				09A62B3C20AF3F1800BA5932 /* CardListViewController.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -254,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				090B6969209F3FC00095B416 /* CollectionViewController.swift */,
-				090B698220A2E22D0095B416 /* RecordListViewController.swift */,
+				09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */,
 				0914190D20A4839500B7C0F0 /* DesignSetting.swift */,
 			);
 			path = Collection;
@@ -271,8 +313,10 @@
 		0914190120A2E79900B7C0F0 /* RecordCell */ = {
 			isa = PBXGroup;
 			children = (
-				0914190220A2E83200B7C0F0 /* RecordTableViewCell.swift */,
-				0914190320A2E83200B7C0F0 /* RecordTableViewCell.xib */,
+				09A62B2A20AD392800BA5932 /* RecordCollectionViewCell.swift */,
+				09A62B2B20AD392800BA5932 /* RecordCollectionViewCell.xib */,
+				09A62B3820AED14700BA5932 /* TrackCollectionViewCell.swift */,
+				09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */,
 			);
 			path = RecordCell;
 			sourceTree = "<group>";
@@ -284,6 +328,77 @@
 				0914190920A3EECA00B7C0F0 /* RecordProvider.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		09A62B2220AAAD9800BA5932 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		09A62B2520AD2BF300BA5932 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		09A62B2E20ADC93F00BA5932 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B3320ADCF8300BA5932 /* pixelmix.ttf */,
+				09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */,
+				09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		09A62B3520AE8CE300BA5932 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B3620AE8D0200BA5932 /* TransitionAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		09A62B3E20AF3FAE00BA5932 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B3F20AF3FCD00BA5932 /* AchievementCollectionViewCell.swift */,
+				09A62B4020AF3FCD00BA5932 /* AchievementCollectionViewCell.xib */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		09A62B4320B15FB700BA5932 /* Navigate */ = {
+			isa = PBXGroup;
+			children = (
+				09A62B4420B15FE600BA5932 /* NavigationController.swift */,
+			);
+			path = Navigate;
+			sourceTree = "<group>";
+		};
+		09C6CF3820A82D2800A6C567 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				09C6CF3920A82D4200A6C567 /* Spotify.swift */,
+				090B697920A00D1C0095B416 /* SpotifyManager.swift */,
+				09C6CF3B20A82DD700A6C567 /* SpotifyTrackManager.swift */,
+			);
+			path = Spotify;
+			sourceTree = "<group>";
+		};
+		09C6CF3F20A9701900A6C567 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				09C6CF4020A9737B00A6C567 /* TracksInfo.json */,
+				09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */,
+				09C6CF3D20A9466600A6C567 /* Track.swift */,
+				09A62B2620AD2D6200BA5932 /* DBProvider.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		E40AB426BB8F9BBC538BF7EA /* Pods */ = {
@@ -362,11 +477,17 @@
 				090B691F209F03290095B416 /* LaunchScreen.storyboard in Resources */,
 				090B691C209F03290095B416 /* Assets.xcassets in Resources */,
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
-				0914190520A2E83200B7C0F0 /* RecordTableViewCell.xib in Resources */,
-				090B6974209F402C0095B416 /* Achievement.storyboard in Resources */,
+				090B6974209F402C0095B416 /* Card.storyboard in Resources */,
+				09A62B4220AF3FCD00BA5932 /* AchievementCollectionViewCell.xib in Resources */,
+				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
+				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
+				09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */,
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
+				09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */,
+				09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */,
+				09A62B3420ADCF8300BA5932 /* pixelmix.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,11 +533,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,23 +556,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
-				090B698320A2E22D0095B416 /* RecordListViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
-				090B696C209F3FD30095B416 /* AchievementViewController.swift in Sources */,
+				090B696C209F3FD30095B416 /* CardViewController.swift in Sources */,
+				09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */,
+				09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */,
 				090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */,
+				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
-				0914190420A2E83200B7C0F0 /* RecordTableViewCell.swift in Sources */,
+				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
+				09A62B4120AF3FCD00BA5932 /* AchievementCollectionViewCell.swift in Sources */,
+				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
+				09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
-				090B697A20A00D1C0095B416 /* LoginManager.swift in Sources */,
+				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
+				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
+				09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
+				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
+				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
+				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

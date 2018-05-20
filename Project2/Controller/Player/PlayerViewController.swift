@@ -16,8 +16,15 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
+    @IBAction func leaveBtn(_ sender: Any) {
+        self.dismiss(animated: true) {
+        }
+        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
+    }
 
     let designSetting = DesignSetting()
+
+    let sortedArray = DBProvider.shared.sortedArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +33,26 @@ class PlayerViewController: UIViewController {
 //        slider.value = 0.0
 //        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
 
-        let url = LoginManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        let title = LoginManager.shared.player?.metadata.currentTrack?.playbackSourceName
-        let artistName = LoginManager.shared.player?.metadata.currentTrack?.artistName
-        cover.sd_setImage(with: URL(string: url!))
-        trackName.text = title
-        artist.text = artistName
-        designSetting.designSetting(view: cover)
+        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showInfo(notification:)),
+            name: .startPlayingTrack,
+            object: nil
+        )
+
+    }
+
+    @objc func showInfo(notification: NSNotification) {
+
+//        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
+//        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
+//        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
+//        cover.sd_setImage(with: URL(string: url!))
+//        trackName.text = title
+//        artist.text = artistName
+
     }
 
     func sliderProgress() {

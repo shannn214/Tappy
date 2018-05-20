@@ -28,7 +28,7 @@ enum TabBar {
 
         case .achievement:
 
-            return UIStoryboard.achievementStoryboard().instantiateInitialViewController()!
+            return UIStoryboard.cardStoryboard().instantiateInitialViewController()!
 
         case .collection:
 
@@ -47,7 +47,7 @@ enum TabBar {
 
         case .game:
 
-            return #imageLiteral(resourceName: "game_controller")
+            return #imageLiteral(resourceName: "gamepad-2")
 
         case .achievement:
 
@@ -55,39 +55,39 @@ enum TabBar {
 
         case .collection:
 
-            return #imageLiteral(resourceName: "music_record")
+            return #imageLiteral(resourceName: "vynil")
 
         case .setting:
 
-            return #imageLiteral(resourceName: "setting")
+            return #imageLiteral(resourceName: "settings-2")
 
         }
 
     }
 
-//    func selectedImage() -> UIImage {
-//
-//        switch self {
-//
-//        case .game:
-//
-//            return #imageLiteral(resourceName: "game_controller").withRenderingMode(.alwaysTemplate)
-//
-//        case .achievement:
-//
-//            return #imageLiteral(resourceName: "badge").withRenderingMode(.alwaysTemplate)
-//
-//        case .collection:
-//
-//            return #imageLiteral(resourceName: "music_record").withRenderingMode(.alwaysTemplate)
-//
-//        case .setting:
-//
-//            return #imageLiteral(resourceName: "setting").withRenderingMode(.alwaysTemplate)
-//
-//        }
-//
-//    }
+    func selectedImage() -> UIImage {
+
+        switch self {
+
+        case .game:
+
+            return #imageLiteral(resourceName: "gamepad-4").withRenderingMode(.alwaysOriginal)
+
+        case .achievement:
+
+            return #imageLiteral(resourceName: "badge").withRenderingMode(.alwaysOriginal)
+
+        case .collection:
+
+            return #imageLiteral(resourceName: "vynil-2").withRenderingMode(.alwaysOriginal)
+
+        case .setting:
+
+            return #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal)
+
+        }
+
+    }
 
 }
 
@@ -105,6 +105,8 @@ class TabBarViewController: UITabBarController {
 
         tabBar.tintColor = UIColor.black
 
+        tabBar.backgroundImage = UIImage()
+
         var controllers: [UIViewController] = []
 
         for tab in tabs {
@@ -113,9 +115,9 @@ class TabBarViewController: UITabBarController {
 
             let item = UITabBarItem(title: nil,
                                     image: tab.image(),
-                                    selectedImage: nil)
+                                    selectedImage: tab.selectedImage())
 
-            item.imageInsets = UIEdgeInsets(top: 6, left: 4, bottom: -6, right: 4)
+            item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             controller.tabBarItem = item
             controllers.append(controller)
         }
