@@ -14,12 +14,19 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
-
+    @IBOutlet weak var gradientView: UIView!
+    
+    @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
+    
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
     var recordTransition: CGFloat?
     var collectionTransition: CGFloat?
+    let layer = CAGradientLayer()
 
     let designSetting = DesignSetting()
 
@@ -40,6 +47,21 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     func setup() {
         
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
+
+        layer.colors = [
+            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0).cgColor,
+            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        ]
+        
+        layer.locations = [0.0, 0.35]
+        
+        layer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        
+        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        layer.frame = UIScreen.main.bounds
+        
+        self.gradientView.layer.addSublayer(layer)
         
     }
 
@@ -56,14 +78,24 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         guard let collectionY = collectionTransition else { return }
         if collectionY <= changePoint {
-            topView.frame = CGRect(x: 0, y: (0 - collectionY), width: topView.frame.width, height: topViewHeight)
+//            topView.frame = CGRect(x: 0, y: 0, width: topView.frame.width, height: topViewHeight)
+            topViewHeightConstraint.constant = topViewHeight - collectionY
+            topImageConstraint.constant = 65 - collectionY
+            self.gradientHeightConstraint.constant = topViewHeight - collectionY
+            
+            //issue: gradient will delay
+//            self.gradientView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
+//            layer.frame = CGRect(x: 0, y: 0 - collectionY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//            let xx = collectionY/660 as NSNumber
+//            guard let tt = xx as? Double else { return }
+//            layer.locations = [0.0, 0.35 - tt] as [NSNumber]
 
         }
         if collectionY <= alphaPoint {
             let percentage = collectionY/alphaPoint
-            print(percentage)
             collectionCover.alpha = 1.0 - percentage
         }
     }
+
 
 }
