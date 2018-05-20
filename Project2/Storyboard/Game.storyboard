@@ -91,6 +91,7 @@
                     </view>
                     <connections>
                         <outlet property="gameMapView" destination="64b-FO-7go" id="2lR-QU-xLN"/>
+                        <outlet property="mapScrollView" destination="VvV-9J-sdi" id="qLv-xz-82f"/>
                         <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
                         <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
                     </connections>

@@ -9,15 +9,15 @@
 import Foundation
 
 class NavigationController: UINavigationController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.setupNav()
     }
-    
+
     private func setupNav() {
-        
+
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]

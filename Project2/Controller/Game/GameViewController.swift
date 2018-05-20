@@ -14,6 +14,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
     @IBOutlet weak var gameMapView: GameMapViewController!
+    @IBOutlet weak var mapScrollView: UIScrollView!
 
     let locationManager = CLLocationManager()
     var distance = 0.0
@@ -48,6 +49,9 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
 
+        mapScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapScrollView.contentOffset = CGPoint(x: 380, y: 500)
+//        mapScrollView.bounces = false
     }
 
     func getInfoData() {
