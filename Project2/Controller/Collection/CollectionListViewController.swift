@@ -23,10 +23,6 @@ class CollectionListViewController: UIViewController {
 
     let sortedArray = DBProvider.shared.sortedArray
 
-    let transitionAnimation = TransitionAnimation()
-
-    var selectedCell: TrackCollectionViewCell?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -103,7 +99,6 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell?.artist.text = info.artist
         recordCell?.trackName.text = info.trackName
         recordCell?.cover.sd_setImage(with: URL(string: info.cover))
-//
 
         //-------------put controller in cell-------
 //        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
@@ -135,20 +130,12 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else {
-            return
-        }
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
         let info = sortedArray![indexPath.row]
         SpotifyManager.shared.playMusic(track: info.trackUri)
 
-//        selectedCell = recordCollectionView.cellForItem(at: indexPath) as? TrackCollectionViewCell
-//        selectedCell?.clipsToBounds = false
-//        selectedCell?.trackCellView.clipsToBounds = false
-//        selectedCell?.trackCellView.frame = CGRect(x: UIScreen.main.bounds.minX, y: UIScreen.main.bounds.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
 //        present(playerVC, animated: true, completion: nil)
 
-//        playerVC.transitioningDelegate = self
         present(playerVC, animated: true) {
             playerVC.cover.sd_setImage(with: URL(string: info.cover))
             playerVC.artist.text = info.artist
@@ -161,24 +148,8 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
 extension CollectionListViewController: UIViewControllerTransitioningDelegate {
 
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
-
-        transitionAnimation.originFrame = originFrame
-
-        transitionAnimation.presenting = true
-
-//        selectedCell?.isHidden = true
-
-        return transitionAnimation
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        transitionAnimation.presenting = false
-
-        return transitionAnimation
-    }
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return 
+//    }
 
 }

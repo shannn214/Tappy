@@ -14,7 +14,7 @@
         <!--Player View Controller-->
         <scene sceneID="5E4-fb-hot">
             <objects>
-                <viewController id="aws-MT-OLZ" customClass="PlayerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="aws-MT-OLZ" customClass="PlayerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MVt-CQ-e4b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,6 +55,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12154506972111556" green="0.12154506972111556" blue="0.12154506972111556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="D5A-mB-4Oa"/>
                             <constraint firstItem="A1m-yr-VaV" firstAttribute="centerX" secondItem="MVt-CQ-e4b" secondAttribute="centerX" id="HiB-3J-5Gf"/>
@@ -68,6 +69,9 @@
                             <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="10" id="sqx-td-5uR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G9w-8c-PdF"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6V5-QS-ULK" appends="YES" id="MIe-jq-oVd"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="artist" destination="A1m-yr-VaV" id="sxY-sB-E6q"/>
@@ -77,6 +81,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GC-GJ-DEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6V5-QS-ULK">
+                    <connections>
+                        <action selector="panGesture:" destination="aws-MT-OLZ" id="sNn-1w-F40"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="82" y="205"/>
         </scene>

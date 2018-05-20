@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievementCollectionViewCell: UICollectionViewCell {
+class CardCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

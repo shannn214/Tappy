@@ -18,7 +18,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
-    
+
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
     var cardTransition: CGFloat?

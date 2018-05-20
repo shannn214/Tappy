@@ -18,6 +18,10 @@ class CardListViewController: UIViewController {
 
     weak var delegate: CardListControllerDelegate?
 
+    let transitionAnimation = TransitionAnimation()
+
+    var selectedCell: CardCollectionViewCell?
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -30,8 +34,8 @@ class CardListViewController: UIViewController {
 
     func setupCollectionView() {
 
-        let nib = UINib(nibName: String(describing: AchievementCollectionViewCell.self), bundle: nil)
-        listCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: AchievementCollectionViewCell.self))
+        let nib = UINib(nibName: String(describing: CardCollectionViewCell.self), bundle: nil)
+        listCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: CardCollectionViewCell.self))
         listCollectionView.delegate = self
         listCollectionView.dataSource = self
         listCollectionView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
@@ -67,8 +71,8 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cardCell = listCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: AchievementCollectionViewCell.self),
-            for: indexPath) as? AchievementCollectionViewCell
+            withReuseIdentifier: String(describing: CardCollectionViewCell.self),
+            for: indexPath) as? CardCollectionViewCell
 
         return cardCell!
     }
@@ -79,6 +83,41 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         let movingDistance = cardListY - (-255)
         self.delegate?.cardViewDisScroll(self, translation: movingDistance)
 
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+//        selectedCell = listCollectionView.cellForItem(at: indexPath) as? AchievementCollectionViewCell
+//        selectedCell?.clipsToBounds = false
+//        selectedCell?.trackCellView.clipsToBounds = false
+//        selectedCell?.trackCellView.frame = CGRect(x: UIScreen.main.bounds.minX, y: UIScreen.main.bounds.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
+//        playerVC.transitioningDelegate = self
+
+    }
+
+}
+
+extension CardListViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
+
+        transitionAnimation.originFrame = originFrame
+
+        transitionAnimation.presenting = true
+
+        //        selectedCell?.isHidden = true
+
+        return transitionAnimation
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        transitionAnimation.presenting = false
+
+        return transitionAnimation
     }
 
 }
