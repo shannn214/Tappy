@@ -47,19 +47,19 @@ enum TabBar {
 
         case .game:
 
-            return #imageLiteral(resourceName: "gamepad-2")
+            return #imageLiteral(resourceName: "gamepad-5")
 
         case .achievement:
 
-            return #imageLiteral(resourceName: "badge")
+            return #imageLiteral(resourceName: "medal")
 
         case .collection:
 
-            return #imageLiteral(resourceName: "vynil")
+            return #imageLiteral(resourceName: "vynil-3")
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings-2")
+            return #imageLiteral(resourceName: "settings-3")
 
         }
 
@@ -71,19 +71,19 @@ enum TabBar {
 
         case .game:
 
-            return #imageLiteral(resourceName: "gamepad-4").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "gamepad-5").withRenderingMode(.alwaysOriginal)
 
         case .achievement:
 
-            return #imageLiteral(resourceName: "badge").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "medal").withRenderingMode(.alwaysOriginal)
 
         case .collection:
 
-            return #imageLiteral(resourceName: "vynil-2").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "vynil-3").withRenderingMode(.alwaysOriginal)
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "settings-3").withRenderingMode(.alwaysOriginal)
 
         }
 

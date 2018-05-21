@@ -9,7 +9,7 @@
 import Foundation
 
 class PlayerPanelView: UIView {
-    
+
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
@@ -21,45 +21,35 @@ class PlayerPanelView: UIView {
 //        self.dismiss(animated: true) {
 //        }
         SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
+        
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setupButton()
 
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
     }
-    
+
     func updateEndTime(time: String) {
-        
+
         endTimeLabel.text = time
-        
+
     }
-    
+
     func updateCurrentTime(currentTime: String, proportion: Double) {
-        
+
         startTimeLabel.text = currentTime
-        
+
         slider.value = Float(proportion)
-        
+
     }
-    
+
     private func setupButton() {
-        
+
         let pause = #imageLiteral(resourceName: "pause-2").withRenderingMode(.alwaysOriginal)
         playButton.setImage(pause, for: .selected)
-        
-    }
-
-    @objc func showInfo(notification: NSNotification) {
-
-        //        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-        //        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
-        //        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
-        //        cover.sd_setImage(with: URL(string: url!))
-        //        trackName.text = title
-        //        artist.text = artistName
 
     }
 

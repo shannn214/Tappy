@@ -20,35 +20,34 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhx-d0-ZBk">
-                        <rect key="frame" x="5" y="0.0" width="164" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="174" height="155"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My-Boo" translatesAutoresizingMaskIntoConstraints="NO" id="HS7-Bp-bZx">
-                                <rect key="frame" x="0.0" y="0.0" width="164" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDg-x4-Mc3">
+                                <rect key="frame" x="37" y="27.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gzO-0R-Fa2"/>
+                                    <constraint firstAttribute="height" constant="100" id="tXm-Xw-a2g"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HS7-Bp-bZx" firstAttribute="top" secondItem="Vhx-d0-ZBk" secondAttribute="top" id="58A-9s-7YE"/>
-                            <constraint firstAttribute="trailing" secondItem="HS7-Bp-bZx" secondAttribute="trailing" id="7g9-KQ-l1G"/>
-                            <constraint firstItem="HS7-Bp-bZx" firstAttribute="leading" secondItem="Vhx-d0-ZBk" secondAttribute="leading" id="Jrb-D8-a6z"/>
-                            <constraint firstAttribute="bottom" secondItem="HS7-Bp-bZx" secondAttribute="bottom" id="dh1-g2-Jnh"/>
+                            <constraint firstItem="TDg-x4-Mc3" firstAttribute="centerX" secondItem="Vhx-d0-ZBk" secondAttribute="centerX" id="IN8-Td-ELx"/>
+                            <constraint firstItem="TDg-x4-Mc3" firstAttribute="centerY" secondItem="Vhx-d0-ZBk" secondAttribute="centerY" id="hbk-88-lvC"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Vhx-d0-ZBk" secondAttribute="trailing" constant="5" id="5k2-jE-QVh"/>
-                <constraint firstItem="Vhx-d0-ZBk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="BcN-Rb-dxy"/>
+                <constraint firstAttribute="trailing" secondItem="Vhx-d0-ZBk" secondAttribute="trailing" id="5k2-jE-QVh"/>
+                <constraint firstItem="Vhx-d0-ZBk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BcN-Rb-dxy"/>
                 <constraint firstItem="Vhx-d0-ZBk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hr6-vn-9Eu"/>
-                <constraint firstAttribute="bottom" secondItem="Vhx-d0-ZBk" secondAttribute="bottom" constant="5" id="lJg-eA-692"/>
+                <constraint firstAttribute="bottom" secondItem="Vhx-d0-ZBk" secondAttribute="bottom" id="lJg-eA-692"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="174" height="155"/>
             <point key="canvasLocation" x="96" y="106.5"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="My-Boo" width="500" height="500"/>
-    </resources>
 </document>
