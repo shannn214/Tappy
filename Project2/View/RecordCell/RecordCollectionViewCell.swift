@@ -14,7 +14,8 @@ class RecordCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var recordHole: UIView!
-
+    @IBOutlet weak var recordPlaceHolderView: UIView!
+    
 
 
     override func awakeFromNib() {
@@ -24,6 +25,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
 
         setting(view: recordHole)
+        setting(view: recordPlaceHolderView)
 
     }
 

@@ -76,6 +76,26 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         return cardCell!
     }
+    
+    
+    //-------------put controller in cell-------
+    //        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
+    //        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
+    //        self.addChildViewController(playerVC!)
+    //        playerVC!.transitioningDelegate = self
+    //        playerVC!.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
+    //        playerVC!.view.clipsToBounds = true
+    //
+    //        trackCell?.trackCellView.addSubview((playerVC?.view)!)
+    //        trackCell?.clipsToBounds = true
+    //
+    //        playerVC?.artist.text = info.artist
+    //        playerVC?.trackName.text = info.trackName
+    //        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
+    
+    //        return trackCell!
+    //------------------------------------------
+
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
@@ -98,26 +118,29 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
 }
 
-extension CardListViewController: UIViewControllerTransitioningDelegate {
 
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
-        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
 
-        transitionAnimation.originFrame = originFrame
-
-        transitionAnimation.presenting = true
-
-        //        selectedCell?.isHidden = true
-
-        return transitionAnimation
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        transitionAnimation.presenting = false
-
-        return transitionAnimation
-    }
-
-}
+//extension CardListViewController: UIViewControllerTransitioningDelegate {
+//
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
+//
+//        transitionAnimation.originFrame = originFrame
+//
+//        transitionAnimation.presenting = true
+//
+//        //        selectedCell?.isHidden = true
+//
+//        return transitionAnimation
+//    }
+//
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        transitionAnimation.presenting = false
+//
+//        return transitionAnimation
+//    }
+//
+//}

@@ -106,23 +106,6 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
             recordCell?.cover.isHidden = false
         }
 
-        //-------------put controller in cell-------
-//        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
-//        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
-//        self.addChildViewController(playerVC!)
-//        playerVC!.transitioningDelegate = self
-//        playerVC!.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
-//        playerVC!.view.clipsToBounds = true
-//
-//        trackCell?.trackCellView.addSubview((playerVC?.view)!)
-//        trackCell?.clipsToBounds = true
-//
-//        playerVC?.artist.text = info.artist
-//        playerVC?.trackName.text = info.trackName
-//        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
-
-//        return trackCell!
-
         return recordCell!
     }
 

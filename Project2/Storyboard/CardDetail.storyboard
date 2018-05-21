@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Card Detail View Controller-->
+        <scene sceneID="Ex9-RG-yz4">
+            <objects>
+                <viewController id="ki3-uT-Wib" customClass="CardDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UM8-DS-wl9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-QD-CTb">
+                                <rect key="frame" x="67.5" y="220" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="8bC-Ik-iFf"/>
+                                    <constraint firstAttribute="width" constant="240" id="rfA-ll-GIw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blaalaalaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-6K-oOe">
+                                <rect key="frame" x="149" y="495" width="76.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" constant="200" id="6GJ-K0-DCT"/>
+                            <constraint firstItem="5u2-6K-oOe" firstAttribute="centerX" secondItem="UM8-DS-wl9" secondAttribute="centerX" id="ORB-E1-Bup"/>
+                            <constraint firstItem="T3y-QD-CTb" firstAttribute="centerX" secondItem="UM8-DS-wl9" secondAttribute="centerX" id="gnq-bt-0Hd"/>
+                            <constraint firstItem="5u2-6K-oOe" firstAttribute="top" secondItem="T3y-QD-CTb" secondAttribute="bottom" constant="35" id="xx9-wr-TGP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gbb-9Z-HNi"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardImage" destination="T3y-QD-CTb" id="Ujo-Nj-bpx"/>
+                        <outlet property="cardLabel" destination="5u2-6K-oOe" id="BDu-Tx-299"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFy-vk-NUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42" y="170"/>
+        </scene>
+    </scenes>
+</document>

@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhx-d0-ZBk">
                         <rect key="frame" x="0.0" y="0.0" width="174" height="155"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDg-x4-Mc3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost-2" translatesAutoresizingMaskIntoConstraints="NO" id="TDg-x4-Mc3">
                                 <rect key="frame" x="37" y="27.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -51,4 +51,7 @@
             <point key="canvasLocation" x="96" y="106.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ghost-2" width="21" height="21"/>
+    </resources>
 </document>
