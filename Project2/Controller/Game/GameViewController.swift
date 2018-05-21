@@ -58,7 +58,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
-        for dataIndex in 0...uriManager.uris.count {
+        for dataIndex in 0...uriManager.uris.count - 1 {
             SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
                                                     albumUri: uriManager.uris[dataIndex].albumUri,
                                                     level: uriManager.uris[dataIndex].level)
@@ -137,7 +137,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func movingButton(_ sender: Any) {
 
-        movingBtn.isHidden = true
+        movingBtn.isHidden = false
         progress.progress = 0
         distance = 0
 

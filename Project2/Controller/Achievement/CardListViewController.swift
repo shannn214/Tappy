@@ -46,10 +46,10 @@ class CardListViewController: UIViewController {
     func setupCollectionLayout() {
 
         if let setLayout = listCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemSize = UIScreen.main.bounds.width/2 - 5
-            setLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            let itemSize = UIScreen.main.bounds.width/2
+            setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             setLayout.itemSize = CGSize(width: itemSize, height: itemSize)
-            setLayout.minimumLineSpacing = 5
+            setLayout.minimumLineSpacing = 0
             setLayout.minimumInteritemSpacing = 0
         }
     }

@@ -60,8 +60,8 @@
                                         <color key="trackTintColor" red="0.088099875469506719" green="0.096848503356070231" blue="0.5189243027888446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icW-aa-NnC">
-                                        <rect key="frame" x="163" y="40" width="48" height="48"/>
-                                        <state key="normal" image="game_controller"/>
+                                        <rect key="frame" x="171" y="40" width="32" height="32"/>
+                                        <state key="normal" image="gamepad-5"/>
                                         <connections>
                                             <action selector="movingButton:" destination="5eu-RK-QSY" eventType="touchUpInside" id="DN5-Y4-xqs"/>
                                         </connections>
@@ -175,6 +175,6 @@
     </scenes>
     <resources>
         <image name="Part1Map" width="425" height="567"/>
-        <image name="game_controller" width="48" height="48"/>
+        <image name="gamepad-5" width="32" height="32"/>
     </resources>
 </document>

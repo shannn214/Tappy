@@ -15,14 +15,23 @@ class RecordCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var recordHole: UIView!
 
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
-        recordHole.layer.cornerRadius = recordHole.bounds.size.width * 0.5
-        recordHole.layer.borderColor = UIColor.darkGray.cgColor
-        recordHole.layer.borderWidth = 2
+
+        setting(view: recordHole)
+
+    }
+
+    func setting(view: UIView) {
+
+        view.layer.cornerRadius = view.bounds.size.width * 0.5
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        view.layer.borderWidth = 2
 
     }
 

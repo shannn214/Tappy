@@ -66,10 +66,11 @@ class CollectionListViewController: UIViewController {
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2
             setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            setLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+            setLayout.itemSize = CGSize(width: itemSize, height: 210)
             setLayout.minimumLineSpacing = 1
             setLayout.minimumInteritemSpacing = 0
         }
+        
     }
 
 }
@@ -78,9 +79,9 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if LevelStatusManager.shared.level! - 1 <= 9 {
-            return LevelStatusManager.shared.level!
-        }
+//        if LevelStatusManager.shared.level! - 1 <= 9 {
+//            return LevelStatusManager.shared.level!
+//        }
 
         return 10
 
@@ -99,6 +100,11 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell?.artist.text = info.artist
         recordCell?.trackName.text = info.trackName
         recordCell?.cover.sd_setImage(with: URL(string: info.cover))
+        recordCell?.cover.isHidden = true
+        
+        if indexPath.row < LevelStatusManager.shared.level! {
+            recordCell?.cover.isHidden = false
+        }
 
         //-------------put controller in cell-------
 //        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
