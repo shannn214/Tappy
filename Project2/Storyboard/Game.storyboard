@@ -22,17 +22,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64b-FO-7go" customClass="GameMapViewController" customModule="Project2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="760" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="2800" height="680"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Part1Map" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-EU-MLx">
-                                                <rect key="frame" x="0.0" y="0.0" width="760" height="1000"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapTest" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-EU-MLx">
+                                                <rect key="frame" x="0.0" y="0.0" width="2800" height="680"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="760" id="QJM-N7-RwE"/>
-                                                    <constraint firstAttribute="height" constant="1000" id="ieM-cv-X0z"/>
+                                                    <constraint firstAttribute="width" constant="2800" id="QJM-N7-RwE"/>
+                                                    <constraint firstAttribute="height" constant="680" id="ieM-cv-X0z"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="WsZ-EU-MLx" firstAttribute="leading" secondItem="64b-FO-7go" secondAttribute="leading" id="CyS-ID-CPp"/>
                                             <constraint firstItem="WsZ-EU-MLx" firstAttribute="top" secondItem="64b-FO-7go" secondAttribute="top" id="Gna-0a-3rE"/>
@@ -76,7 +77,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="zcq-9T-dl0" secondAttribute="trailing" id="1oC-dy-dAo"/>
                             <constraint firstItem="VvV-9J-sdi" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="7cf-rE-IA7"/>
@@ -98,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ia6-PA-yaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="196"/>
+            <point key="canvasLocation" x="13.6" y="195.6521739130435"/>
         </scene>
         <!--Pop Up Record View Controller-->
         <scene sceneID="NEU-1l-t9B">
@@ -174,7 +175,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Part1Map" width="425" height="567"/>
+        <image name="MapTest" width="9258" height="2304"/>
         <image name="gamepad-5" width="32" height="32"/>
     </resources>
 </document>
