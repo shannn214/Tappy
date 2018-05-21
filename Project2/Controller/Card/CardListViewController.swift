@@ -73,11 +73,22 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         let cardCell = listCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
+        let storyboard = UIStoryboard(name: "CardDetail", bundle: nil)
+        let cardDetailVC = storyboard.instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)) as? CardDetailViewController
+
+        self.addChildViewController(cardDetailVC!)
+        cardCell?.cardCellView.addSubview((cardDetailVC?.view)!)
+        cardDetailVC?.view.frame = (cardCell?.contentView.bounds)!
+        cardDetailVC?.didMove(toParentViewController: self)
+
+        cardCell?.clipsToBounds = true
+
+//        cardDetailVC?.view.frame = CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width/2, height: 120)
+//        cardDetailVC?.view.clipsToBounds = true
 
         return cardCell!
     }
-    
-    
+
     //-------------put controller in cell-------
     //        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
     //        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
@@ -92,10 +103,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
     //        playerVC?.artist.text = info.artist
     //        playerVC?.trackName.text = info.trackName
     //        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
-    
+
     //        return trackCell!
     //------------------------------------------
-
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
@@ -107,19 +117,23 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-//        selectedCell = listCollectionView.cellForItem(at: indexPath) as? AchievementCollectionViewCell
+        selectedCell = listCollectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+
+//        self.addChildViewController(cardDetailVC!)
+
 //        selectedCell?.clipsToBounds = false
-//        selectedCell?.trackCellView.clipsToBounds = false
-//        selectedCell?.trackCellView.frame = CGRect(x: UIScreen.main.bounds.minX, y: UIScreen.main.bounds.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
-//        playerVC.transitioningDelegate = self
+//        selectedCell?.cardCellView.clipsToBounds = false
+
+        selectedCell?.cardCellView.removeFromSuperview()
+
+        let cardVC = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? CardViewController
+        cardVC?.view.addSubview((selectedCell?.cardCellView)!)
+
+        selectedCell?.cardCellView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
     }
 
 }
-
-
-
 
 //extension CardListViewController: UIViewControllerTransitioningDelegate {
 //

@@ -10,6 +10,8 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var cardCellView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

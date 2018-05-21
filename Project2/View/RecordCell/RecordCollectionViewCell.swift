@@ -15,8 +15,6 @@ class RecordCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var recordHole: UIView!
     @IBOutlet weak var recordPlaceHolderView: UIView!
-    
-
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -13,20 +13,21 @@
         <!--Card Detail View Controller-->
         <scene sceneID="Ex9-RG-yz4">
             <objects>
-                <viewController id="ki3-uT-Wib" customClass="CardDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" id="ki3-uT-Wib" customClass="CardDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UM8-DS-wl9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-QD-CTb">
-                                <rect key="frame" x="67.5" y="220" width="240" height="240"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost-2" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-QD-CTb">
+                                <rect key="frame" x="127.5" y="220" width="120" height="120"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="8bC-Ik-iFf"/>
-                                    <constraint firstAttribute="width" constant="240" id="rfA-ll-GIw"/>
+                                    <constraint firstAttribute="height" constant="120" id="8bC-Ik-iFf"/>
+                                    <constraint firstAttribute="width" constant="120" id="rfA-ll-GIw"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blaalaalaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-6K-oOe">
-                                <rect key="frame" x="149" y="495" width="76.5" height="21"/>
+                                <rect key="frame" x="149" y="375" width="76.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,4 +52,7 @@
             <point key="canvasLocation" x="42" y="170"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ghost-2" width="21" height="21"/>
+    </resources>
 </document>

@@ -70,7 +70,7 @@ class CollectionListViewController: UIViewController {
             setLayout.minimumLineSpacing = 1
             setLayout.minimumInteritemSpacing = 0
         }
-        
+
     }
 
 }
@@ -101,7 +101,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell?.trackName.text = info.trackName
         recordCell?.cover.sd_setImage(with: URL(string: info.cover))
         recordCell?.cover.isHidden = true
-        
+
         if indexPath.row < LevelStatusManager.shared.level! {
             recordCell?.cover.isHidden = false
         }

@@ -9,8 +9,11 @@
 import Foundation
 
 class CardDetailViewController: UIViewController {
-    
+
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardLabel: UILabel!
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
