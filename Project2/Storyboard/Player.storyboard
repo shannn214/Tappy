@@ -79,13 +79,6 @@
                                         <color key="textColor" red="0.71313827033137289" green="0.71884337649402386" blue="0.71884337649402386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4F-Fb-v7n">
-                                        <rect key="frame" x="165" y="562.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="leaveBtn:" destination="jQo-UL-sX6" eventType="touchUpInside" id="Hg4-rE-GOz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-m6-YVb">
                                         <rect key="frame" x="163" y="482.5" width="50" height="50"/>
                                         <constraints>
@@ -93,6 +86,10 @@
                                             <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="play-button-4"/>
+                                        <state key="selected" backgroundImage="pause-2"/>
+                                        <connections>
+                                            <action selector="playButton:" destination="aws-MT-OLZ" eventType="touchUpInside" id="YzI-M8-Ayn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOc-L0-U3A">
                                         <rect key="frame" x="45" y="467.5" width="26" height="16.5"/>
@@ -111,10 +108,8 @@
                                 <constraints>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="76I-0s-gRA"/>
                                     <constraint firstAttribute="trailing" secondItem="OaG-Gs-lLZ" secondAttribute="trailing" constant="45" id="CyJ-a8-Eh0"/>
-                                    <constraint firstItem="S4F-Fb-v7n" firstAttribute="top" secondItem="A1m-yr-VaV" secondAttribute="bottom" constant="145.5" id="DQI-cr-uMq"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="JhL-L7-jSk"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="top" secondItem="jQo-UL-sX6" secondAttribute="top" constant="140" id="MEy-uK-2KS"/>
-                                    <constraint firstItem="S4F-Fb-v7n" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="NMp-3H-mH9"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="Os0-tW-Dlv"/>
                                     <constraint firstItem="Onb-m6-YVb" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="PZu-V6-DKh"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="Qkp-uR-pvf"/>
@@ -172,6 +167,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pause-2" width="64" height="64"/>
         <image name="play-button-4" width="64" height="64"/>
     </resources>
 </document>

@@ -120,20 +120,20 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
         )
 
     }
-    
+
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didReceive event: SpPlaybackEvent) {
-        
+
     }
-    
+
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePosition position: TimeInterval) {
-        
+
         NotificationCenter.default.post(
             name: .startPlayingTrack,
             object: nil
         )
-        
+
         self.position = position
-        
+
     }
 
 }

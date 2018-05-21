@@ -17,12 +17,8 @@ class PlayerPanelView: UIView {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
-    @IBAction func leaveBtn(_ sender: Any) {
-//        self.dismiss(animated: true) {
-//        }
-        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
-        
-    }
+
+    var playing = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +26,25 @@ class PlayerPanelView: UIView {
         setupButton()
 
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+
+        // TODO
+        slider.setThumbImage(UIImage(), for: .normal)
+
+        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+    }
+
+    @objc func playAndPause() {
+
+        playing = !playing
+        playButton.isSelected = !playButton.isSelected
+
+        if playing {
+            SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
+        } else {
+            SpotifyManager.shared.player?.setIsPlaying(true, callback: nil)
+        }
+
     }
 
     func updateEndTime(time: String) {
@@ -48,8 +63,7 @@ class PlayerPanelView: UIView {
 
     private func setupButton() {
 
-        let pause = #imageLiteral(resourceName: "pause-2").withRenderingMode(.alwaysOriginal)
-        playButton.setImage(pause, for: .selected)
+        playButton.isSelected = false
 
     }
 
