@@ -60,9 +60,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if LevelStatusManager.shared.level! - 1 <= 9 {
-            return LevelStatusManager.shared.level!
-        }
+//        if LevelStatusManager.shared.level! - 1 <= 9 {
+//            return LevelStatusManager.shared.level!
+//        }
 
         return 10
 
@@ -85,6 +85,12 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
 //        cardDetailVC?.view.frame = CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width/2, height: 120)
 //        cardDetailVC?.view.clipsToBounds = true
+        
+        cardDetailVC?.cardImage.isHidden = true
+        
+        if indexPath.row < LevelStatusManager.shared.level! {
+            cardDetailVC?.cardImage.isHidden = false
+        }
 
         return cardCell!
     }

@@ -18,37 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvV-9J-sdi">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scL-Yl-4xS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64b-FO-7go" customClass="GameMapViewController" customModule="Project2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="2800" height="680"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapTest" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-EU-MLx">
-                                                <rect key="frame" x="0.0" y="0.0" width="2800" height="680"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="2800" id="QJM-N7-RwE"/>
-                                                    <constraint firstAttribute="height" constant="680" id="ieM-cv-X0z"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="WsZ-EU-MLx" firstAttribute="leading" secondItem="64b-FO-7go" secondAttribute="leading" id="CyS-ID-CPp"/>
-                                            <constraint firstItem="WsZ-EU-MLx" firstAttribute="top" secondItem="64b-FO-7go" secondAttribute="top" id="Gna-0a-3rE"/>
-                                            <constraint firstAttribute="bottom" secondItem="WsZ-EU-MLx" secondAttribute="bottom" id="RGL-5q-rqZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="WsZ-EU-MLx" secondAttribute="trailing" id="bCP-BE-2RM"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="64b-FO-7go" secondAttribute="bottom" id="EcE-Y2-XHe"/>
-                                    <constraint firstAttribute="trailing" secondItem="64b-FO-7go" secondAttribute="trailing" id="Rs4-5h-qte"/>
-                                    <constraint firstItem="64b-FO-7go" firstAttribute="top" secondItem="VvV-9J-sdi" secondAttribute="top" id="qic-Jf-JJ7"/>
-                                    <constraint firstItem="64b-FO-7go" firstAttribute="leading" secondItem="VvV-9J-sdi" secondAttribute="leading" id="sa1-H0-Qqr"/>
-                                </constraints>
-                            </scrollView>
+                                <connections>
+                                    <segue destination="G8z-2a-wY8" kind="embed" id="78b-8w-7K7"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcq-9T-dl0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
@@ -80,19 +55,17 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="zcq-9T-dl0" secondAttribute="trailing" id="1oC-dy-dAo"/>
-                            <constraint firstItem="VvV-9J-sdi" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="7cf-rE-IA7"/>
-                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="VvV-9J-sdi" secondAttribute="bottom" id="B05-Mf-eai"/>
-                            <constraint firstItem="VvV-9J-sdi" firstAttribute="centerX" secondItem="rsW-zs-1UD" secondAttribute="centerX" id="Fj7-Rk-pDs"/>
+                            <constraint firstItem="scL-Yl-4xS" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="H0Y-H0-0PG"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="scL-Yl-4xS" secondAttribute="trailing" id="Od5-bh-wDN"/>
+                            <constraint firstItem="scL-Yl-4xS" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="STl-Ki-VqJ"/>
                             <constraint firstItem="zcq-9T-dl0" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="YCq-Dm-vEg"/>
-                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="VvV-9J-sdi" secondAttribute="trailing" id="iu5-QS-tWi"/>
                             <constraint firstItem="zcq-9T-dl0" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="v9z-5h-iZq"/>
-                            <constraint firstItem="VvV-9J-sdi" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="zAV-5x-Hpo"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="scL-Yl-4xS" secondAttribute="bottom" id="wGS-C1-shJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
                     </view>
                     <connections>
-                        <outlet property="gameMapView" destination="64b-FO-7go" id="2lR-QU-xLN"/>
-                        <outlet property="mapScrollView" destination="VvV-9J-sdi" id="qLv-xz-82f"/>
+                        <outlet property="gameMapContainer" destination="scL-Yl-4xS" id="2vK-Mr-etA"/>
                         <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
                         <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
                     </connections>
@@ -173,9 +146,22 @@
             </objects>
             <point key="canvasLocation" x="954" y="194"/>
         </scene>
+        <!--Game Map Test View Controller-->
+        <scene sceneID="996-eU-V48">
+            <objects>
+                <viewController id="G8z-2a-wY8" customClass="GameMapTestViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3PQ-2E-C5E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8z-bJ-WcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="-474"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="MapTest" width="9258" height="2304"/>
         <image name="gamepad-5" width="32" height="32"/>
     </resources>
 </document>

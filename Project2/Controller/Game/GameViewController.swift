@@ -13,8 +13,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
-    @IBOutlet weak var gameMapView: GameMapViewController!
-    @IBOutlet weak var mapScrollView: UIScrollView!
+    @IBOutlet weak var gameMapContainer: UIView!
 
     let locationManager = CLLocationManager()
     var distance = 0.0
@@ -23,20 +22,33 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     let CDButtonArray = [UIButton(), UIButton()]
     let firstLogin = UserDefaults.standard
 
-//    let databaseManager = DBManager()
+    var scrollView: UIScrollView!
+    var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        initialSetting()
+        setupLocation()
+
+        LevelStatusManager.shared.showNewLevel()
+        DBProvider.shared.getSortedArray()
+
+    }
+
+    func setupLocation() {
 
         locationManager.delegate = self
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
+    }
+
+    func initialSetting() {
+
         progress.progress = 0
         movingBtn.isHidden = false
         //false for test
-
-        createButton()
 
         if firstLogin.value(forKey: "firstLogin") == nil {
             getInfoData()
@@ -46,12 +58,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             //TODO
         }
 
-        LevelStatusManager.shared.showNewLevel()
-        DBProvider.shared.getSortedArray()
-
-        mapScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapScrollView.contentOffset = CGPoint(x: 380, y: 500)
-//        mapScrollView.bounces = false
     }
 
     func getInfoData() {
@@ -104,23 +110,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     }
 
-    func createButton() {
-
-        for btnIndex in 0...1 {
-            CDButtonArray[btnIndex].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-            self.gameMapView.addSubview(CDButtonArray[btnIndex])
-            CDButtonArray[btnIndex].isHidden = true
-            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
-            CDButtonArray[btnIndex].tag = btnIndex
-        }
-
-        CDButtonArray[0].frame = CGRect(x: 49 * gameMapView.bounds.width/100,
-                                        y: 65 * gameMapView.bounds.height/100, width: 40, height: 40)
-        CDButtonArray[1].frame = CGRect(x: 20 * gameMapView.bounds.width/100,
-                                        y: 40 * gameMapView.bounds.height/100, width: 40, height: 40)
-
-    }
-
     @objc func showRecordInfo(sender: UIButton!) {
         popUpView()
 
@@ -141,20 +130,14 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         progress.progress = 0
         distance = 0
 
-        self.gameMapView.check = true
-        self.gameMapView.setNeedsDisplay()
-
-        //When user press moving button, database should add one object into the collection view.
-
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
         LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
 
-        if checkLevel == 1 {
-            CDButtonArray[0].isHidden = false
-        } else {
-            CDButtonArray[1].isHidden = false
-        }
+        NotificationCenter.default.post(
+            name: .pressMovingButton,
+            object: nil
+        )
 
     }
 
