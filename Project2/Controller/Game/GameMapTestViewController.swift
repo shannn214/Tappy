@@ -35,15 +35,15 @@ class GameMapTestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func loadButton() {
-        
+
         if LevelStatusManager.shared.level! > 0 {
             for level in 0...LevelStatusManager.shared.level! - 1 {
                 CDButtonArray[level].isHidden = false
             }
         }
-        
+
     }
 
     func createScrollViewAndMap() {
@@ -96,7 +96,6 @@ class GameMapTestViewController: UIViewController {
         default:
             CDButtonArray[3].isHidden = false
         }
-    
 
     }
 

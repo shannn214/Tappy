@@ -95,8 +95,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                 if self.locations.count > 0 {
                     distance += location.distance(from: self.locations.last!)
                     let complete = 25.0
-                    print("-----------")
-                    print(distance)
+//                    print("-----------")
+//                    print(distance)
                     if distance <= complete {
                         progress.progress = Float(distance) / Float(complete)
                     } else {

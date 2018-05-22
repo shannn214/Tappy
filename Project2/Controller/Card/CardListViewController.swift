@@ -18,6 +18,15 @@ class CardListViewController: UIViewController {
 
     weak var delegate: CardListControllerDelegate?
 
+    lazy var controllers: [UIViewController] = [
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self))
+//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self))
+    ]
     let transitionAnimation = TransitionAnimation()
 
     var selectedCell: CardCollectionViewCell?
@@ -64,7 +73,7 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 //            return LevelStatusManager.shared.level!
 //        }
 
-        return 10
+        return controllers.count
 
     }
 
@@ -73,23 +82,23 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         let cardCell = listCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
-        let storyboard = UIStoryboard(name: "CardDetail", bundle: nil)
-        let cardDetailVC = storyboard.instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)) as? CardDetailViewController
 
-        self.addChildViewController(cardDetailVC!)
-        cardCell?.cardCellView.addSubview((cardDetailVC?.view)!)
-        cardDetailVC?.view.frame = (cardCell?.contentView.bounds)!
-        cardDetailVC?.didMove(toParentViewController: self)
+        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
+
+        self.addChildViewController(cardDetailVC)
+        cardCell?.cardCellView.addSubview((cardDetailVC.view)!)
+        cardDetailVC.view.frame = (cardCell?.contentView.bounds)!
+        cardDetailVC.didMove(toParentViewController: self)
 
         cardCell?.clipsToBounds = true
 
 //        cardDetailVC?.view.frame = CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width/2, height: 120)
 //        cardDetailVC?.view.clipsToBounds = true
-        
-        cardDetailVC?.cardImage.isHidden = true
-        
+
+        cardDetailVC.cardImage.isHidden = true
+
         if indexPath.row < LevelStatusManager.shared.level! {
-            cardDetailVC?.cardImage.isHidden = false
+            cardDetailVC.cardImage.isHidden = false
         }
 
         return cardCell!
@@ -123,19 +132,42 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        selectedCell = listCollectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+
+        let itemSize = UIScreen.main.bounds.width/2
+
+        guard let vc = controllers[indexPath.row] as? CardDetailViewController else { return }
+
+        vc.view.removeFromSuperview()
+
+        self.view.addSubview(vc.view)
+
+        let point = collectionView.convert(cell.frame.origin, to: self.view)
+
+        vc.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
+
+        self.view.bringSubview(toFront: vc.view)
+
+        print("-----Point---------")
+        print(point)
+
+        UIView.animate(withDuration: 0.5) {
+            vc.view.frame = self.view.frame
+            vc.changeContraintToFullScreen()
+        }
+//        selectedCell = listCollectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
 
 //        self.addChildViewController(cardDetailVC!)
 
 //        selectedCell?.clipsToBounds = false
 //        selectedCell?.cardCellView.clipsToBounds = false
 
-        selectedCell?.cardCellView.removeFromSuperview()
-
-        let cardVC = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? CardViewController
-        cardVC?.view.addSubview((selectedCell?.cardCellView)!)
-
-        selectedCell?.cardCellView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        selectedCell?.cardCellView.removeFromSuperview()
+//
+//        let cardVC = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? CardViewController
+//        cardVC?.view.addSubview((selectedCell?.cardCellView)!)
+//
+//        selectedCell?.cardCellView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
     }
 
