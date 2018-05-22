@@ -48,9 +48,9 @@ class GameMapTestViewController: UIViewController {
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "MapTest3"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "MapBlueGround-1"))
         imageView.frame.size.height = UIScreen.main.bounds.height
-        imageView.frame.size.width = UIScreen.main.bounds.height/3033 * 9546
+        imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.backgroundColor = UIColor.black
         scrollView.contentSize = CGSize(width: imageView.bounds.width, height: UIScreen.main.bounds.height)

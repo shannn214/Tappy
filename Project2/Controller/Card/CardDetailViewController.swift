@@ -16,9 +16,11 @@ protocol CardDetailDelegate: class {
 
 class CardDetailViewController: UIViewController {
 
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var cardLabel: UILabel!
     @IBOutlet weak var leadingContraint: NSLayoutConstraint!
+    @IBOutlet weak var cardImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var cardImageWidth: NSLayoutConstraint!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     let initialPoint = CGPoint(x: 0, y: 0)
@@ -27,6 +29,11 @@ class CardDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cardImage.layer.cornerRadius = 20
+        cardImageWidth.constant = UIScreen.main.bounds.width * 0.45
+        cardImageHeight.constant = UIScreen.main.bounds.width * 0.45
+        leadingContraint.constant = UIScreen.main.bounds.width * 0.025
     
         panGesture.delegate = self
         panGesture.isEnabled = false
@@ -42,11 +49,13 @@ class CardDetailViewController: UIViewController {
             //            initialTouchPoint = touchPoint
         } else if sender.state == UIGestureRecognizerState.changed {
             if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
-                self.view.frame = CGRect(x: 0,
+                self.view.frame = CGRect(x: touchTrans.x,
                                          y: touchTrans.y,
                                          width: self.view.frame.size.width,
                                          height: self.view.frame.size.height
                 )
+                
+                backgroundView.alpha = 1 - touchTrans.y / 100
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 300 {
@@ -56,11 +65,12 @@ class CardDetailViewController: UIViewController {
             } else {
                 // Back to full screen
                 UIView.animate(withDuration: 0.3,
-                               animations: { self.view.frame = CGRect(x: 0,
-                                                                      y: 0,
+                               animations: { self.view.frame = CGRect(x: 0, y: 0,
                                                                       width: self.view.frame.size.width,
                                                                       height: self.view.frame.size.height
-                                                                      )
+                                                                     )
+                                             self.backgroundView.alpha = 1
+
                 })
             }
         }
@@ -69,7 +79,10 @@ class CardDetailViewController: UIViewController {
 
     func changeContraintToFullScreen() {
 
-        leadingContraint.constant = 200
+        leadingContraint.constant = UIScreen.main.bounds.width * 0.125
+        cardImageWidth.constant = UIScreen.main.bounds.width * 0.75
+        cardImageHeight.constant = UIScreen.main.bounds.width * 0.75
+        
         view.layoutIfNeeded()
         panGesture.isEnabled = true
 
@@ -77,9 +90,12 @@ class CardDetailViewController: UIViewController {
 
     func changeConstraintToCellSize() {
 
-        leadingContraint.constant = 20
+        cardImageWidth.constant = UIScreen.main.bounds.width * 0.45
+        cardImageHeight.constant = UIScreen.main.bounds.width * 0.45
+        leadingContraint.constant = UIScreen.main.bounds.width * 0.025
         view.layoutIfNeeded()
         panGesture.isEnabled = false
+        
     }
 
 }

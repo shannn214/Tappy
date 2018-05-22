@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,28 +19,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-U4-r6t">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost-2" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-QD-CTb">
-                                <rect key="frame" x="20" y="40" width="120" height="120"/>
+                                <rect key="frame" x="20" y="20" width="120" height="120"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="8bC-Ik-iFf"/>
-                                    <constraint firstAttribute="width" constant="120" id="rfA-ll-GIw"/>
+                                    <constraint firstAttribute="width" constant="120" id="BcR-SQ-UK4"/>
+                                    <constraint firstAttribute="height" constant="120" id="z7E-eV-llF"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blaalaalaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-6K-oOe">
-                                <rect key="frame" x="149" y="195" width="76.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.90074061729999999" blue="0.74030724489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="T3y-QD-CTb" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="4Aw-eD-ndn"/>
-                            <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" constant="20" id="6GJ-K0-DCT"/>
-                            <constraint firstItem="5u2-6K-oOe" firstAttribute="centerX" secondItem="UM8-DS-wl9" secondAttribute="centerX" id="ORB-E1-Bup"/>
-                            <constraint firstItem="5u2-6K-oOe" firstAttribute="top" secondItem="T3y-QD-CTb" secondAttribute="bottom" constant="35" id="xx9-wr-TGP"/>
+                            <constraint firstItem="gbb-9Z-HNi" firstAttribute="bottom" secondItem="IW6-U4-r6t" secondAttribute="bottom" id="W3U-fm-gf7"/>
+                            <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="UM8-DS-wl9" secondAttribute="topMargin" id="Wbn-Ev-zU1"/>
+                            <constraint firstItem="gbb-9Z-HNi" firstAttribute="trailing" secondItem="IW6-U4-r6t" secondAttribute="trailing" id="amu-cU-szO"/>
+                            <constraint firstItem="IW6-U4-r6t" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" id="qgx-OJ-1eN"/>
+                            <constraint firstItem="IW6-U4-r6t" firstAttribute="top" secondItem="UM8-DS-wl9" secondAttribute="top" id="xNT-BY-S5e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gbb-9Z-HNi"/>
                         <connections>
@@ -47,8 +48,10 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="IW6-U4-r6t" id="FFu-sq-hur"/>
                         <outlet property="cardImage" destination="T3y-QD-CTb" id="Ujo-Nj-bpx"/>
-                        <outlet property="cardLabel" destination="5u2-6K-oOe" id="BDu-Tx-299"/>
+                        <outlet property="cardImageHeight" destination="z7E-eV-llF" id="WWC-1r-YEc"/>
+                        <outlet property="cardImageWidth" destination="BcR-SQ-UK4" id="QKX-DX-ym4"/>
                         <outlet property="leadingContraint" destination="4Aw-eD-ndn" id="bmc-yb-TBs"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
                     </connections>
@@ -60,7 +63,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="42" y="170"/>
+            <point key="canvasLocation" x="40.799999999999997" y="169.56521739130437"/>
         </scene>
     </scenes>
     <resources>

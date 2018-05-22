@@ -51,6 +51,14 @@ class CardListViewController: UIViewController {
         setupCollectionLayout()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        listCollectionView.reloadData()
+        
+    }
 
     func setupCollectionView() {
 
@@ -105,7 +113,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         cardDetailVC.cardImage.isHidden = true
 
         if indexPath.row < LevelStatusManager.shared.level! {
+            
             cardDetailVC.cardImage.isHidden = false
+            
         }
 
         return cardCell!
@@ -176,32 +186,9 @@ extension CardListViewController: CardDetailDelegate {
             selectedVC.view.removeFromSuperview()
             selectedCell.addSubview(selectedVC.view)
             selectedVC.view.frame = selectedCell.contentView.frame
+            selectedVC.backgroundView.alpha = 1
         }
 
     }
 
 }
-
-//extension CardListViewController: UIViewControllerTransitioningDelegate {
-//
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//
-//        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
-//
-//        transitionAnimation.originFrame = originFrame
-//
-//        transitionAnimation.presenting = true
-//
-//        //        selectedCell?.isHidden = true
-//
-//        return transitionAnimation
-//    }
-//
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//
-//        transitionAnimation.presenting = false
-//
-//        return transitionAnimation
-//    }
-//
-//}
