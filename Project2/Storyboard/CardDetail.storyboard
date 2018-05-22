@@ -13,7 +13,7 @@
         <!--Card Detail View Controller-->
         <scene sceneID="Ex9-RG-yz4">
             <objects>
-                <viewController storyboardIdentifier="CardDetailViewController" id="ki3-uT-Wib" customClass="CardDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" modalPresentationStyle="overFullScreen" id="ki3-uT-Wib" customClass="CardDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UM8-DS-wl9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,6 +34,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.90074061729999999" blue="0.74030724489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="T3y-QD-CTb" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="4Aw-eD-ndn"/>
                             <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" constant="20" id="6GJ-K0-DCT"/>
@@ -41,14 +42,23 @@
                             <constraint firstItem="5u2-6K-oOe" firstAttribute="top" secondItem="T3y-QD-CTb" secondAttribute="bottom" constant="35" id="xx9-wr-TGP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gbb-9Z-HNi"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aoY-Ze-aW5" appends="YES" id="M9m-jn-3Yl"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="cardImage" destination="T3y-QD-CTb" id="Ujo-Nj-bpx"/>
                         <outlet property="cardLabel" destination="5u2-6K-oOe" id="BDu-Tx-299"/>
                         <outlet property="leadingContraint" destination="4Aw-eD-ndn" id="bmc-yb-TBs"/>
+                        <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFy-vk-NUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="aoY-Ze-aW5">
+                    <connections>
+                        <action selector="panGesture:" destination="ki3-uT-Wib" id="73d-KG-d4U"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="42" y="170"/>
         </scene>

@@ -50,11 +50,11 @@ class GameMapTestViewController: UIViewController {
 
         imageView = UIImageView(image: #imageLiteral(resourceName: "MapTest3"))
         imageView.frame.size.height = UIScreen.main.bounds.height
-        imageView.frame.size.width = 2500
+        imageView.frame.size.width = UIScreen.main.bounds.height/3033 * 9546
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.backgroundColor = UIColor.black
         scrollView.contentSize = CGSize(width: imageView.bounds.width, height: UIScreen.main.bounds.height)
-        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        scrollView.autoresizingMask = [.flexibleWidth]
 
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)

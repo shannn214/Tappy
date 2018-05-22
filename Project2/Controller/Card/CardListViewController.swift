@@ -9,7 +9,9 @@
 import Foundation
 
 protocol CardListControllerDelegate: class {
+
     func cardViewDisScroll(_ controller: CardListViewController, translation: CGFloat)
+
 }
 
 class CardListViewController: UIViewController {
@@ -20,16 +22,25 @@ class CardListViewController: UIViewController {
 
     lazy var controllers: [UIViewController] = [
         UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
+        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
         UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self))
-//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
-//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
-//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
-//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self)),
-//        UIStoryboard(name: "CardDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: CardDetailViewController.self))
     ]
+
     let transitionAnimation = TransitionAnimation()
 
-    var selectedCell: CardCollectionViewCell?
+    var cardDetailVC: CardDetailViewController?
+
+//    var selectedCell: CardCollectionViewCell?
+
+    var selectedIndex: IndexPath?
+
+    var selectedPoint: CGPoint?
+
+    var cell: UICollectionViewCell?
 
     override func viewDidLoad() {
 
@@ -69,10 +80,6 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-//        if LevelStatusManager.shared.level! - 1 <= 9 {
-//            return LevelStatusManager.shared.level!
-//        }
-
         return controllers.count
 
     }
@@ -104,24 +111,6 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         return cardCell!
     }
 
-    //-------------put controller in cell-------
-    //        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
-    //        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
-    //        self.addChildViewController(playerVC!)
-    //        playerVC!.transitioningDelegate = self
-    //        playerVC!.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
-    //        playerVC!.view.clipsToBounds = true
-    //
-    //        trackCell?.trackCellView.addSubview((playerVC?.view)!)
-    //        trackCell?.clipsToBounds = true
-    //
-    //        playerVC?.artist.text = info.artist
-    //        playerVC?.trackName.text = info.trackName
-    //        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
-
-    //        return trackCell!
-    //------------------------------------------
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let cardListY = scrollView.contentOffset.y
@@ -134,40 +123,60 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
 
+        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return }
+
+        self.selectedIndex = indexPath
+
         let itemSize = UIScreen.main.bounds.width/2
 
-        guard let vc = controllers[indexPath.row] as? CardDetailViewController else { return }
+        cardDetailVC.view.removeFromSuperview()
 
-        vc.view.removeFromSuperview()
-
-        self.view.addSubview(vc.view)
+        self.view.addSubview(cardDetailVC.view)
 
         let point = collectionView.convert(cell.frame.origin, to: self.view)
 
-        vc.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
+        self.selectedPoint = point
 
-        self.view.bringSubview(toFront: vc.view)
+        cardDetailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
+
+        self.view.bringSubview(toFront: cardDetailVC.view)
+
+        cardDetailVC.delegate = self
 
         print("-----Point---------")
         print(point)
 
-        UIView.animate(withDuration: 0.5) {
-            vc.view.frame = self.view.frame
-            vc.changeContraintToFullScreen()
+        UIView.animate(withDuration: 0.3) {
+            cardDetailVC.view.frame = self.view.frame
+            cardDetailVC.changeContraintToFullScreen()
         }
-//        selectedCell = listCollectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
 
-//        self.addChildViewController(cardDetailVC!)
+    }
 
-//        selectedCell?.clipsToBounds = false
-//        selectedCell?.cardCellView.clipsToBounds = false
+}
 
-//        selectedCell?.cardCellView.removeFromSuperview()
-//
-//        let cardVC = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? CardViewController
-//        cardVC?.view.addSubview((selectedCell?.cardCellView)!)
-//
-//        selectedCell?.cardCellView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+extension CardListViewController: CardDetailDelegate {
+
+    func cardDetailDidTransition(controller: CardDetailViewController) {
+
+        guard let selectedVC = controllers[(selectedIndex?.row)!] as? CardDetailViewController else { return }
+
+        guard let selectedCell = self.listCollectionView.cellForItem(at: selectedIndex!) as? CardCollectionViewCell else { return }
+
+        let point = listCollectionView.convert(selectedCell.frame.origin, to: view)
+
+        let itemSize = UIScreen.main.bounds.width/2
+
+        UIView.animate(withDuration: 0.3, animations: {
+        
+            selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
+            selectedVC.changeConstraintToCellSize()
+        
+        }) { _ in
+            selectedVC.view.removeFromSuperview()
+            selectedCell.addSubview(selectedVC.view)
+            selectedVC.view.frame = selectedCell.contentView.frame
+        }
 
     }
 

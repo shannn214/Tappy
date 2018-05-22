@@ -15,7 +15,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playerPanelView: PlayerPanelView!
     @IBOutlet weak var backgroundCover: UIImageView!
 
-    var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
+    var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +69,11 @@ class PlayerViewController: UIViewController {
         if sender.state == UIGestureRecognizerState.began {
 //            initialTouchPoint = touchPoint
         } else if sender.state == UIGestureRecognizerState.changed {
-            if touchPoint.y - initialTouchPoint.y > 0 {
+            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
                 self.view.frame = CGRect(x: 0, y: touchTrans.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-            if touchPoint.y - initialTouchPoint.y > 200 {
+            if touchPoint.y - initialPoint.y > 500 {
                 self.dismiss(animated: true, completion: nil)
             } else {
                 UIView.animate(withDuration: 0.3, animations: {

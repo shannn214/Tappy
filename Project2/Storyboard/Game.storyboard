@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scL-Yl-4xS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <connections>
                                     <segue destination="G8z-2a-wY8" kind="embed" id="78b-8w-7K7"/>
                                 </connections>
@@ -60,7 +60,7 @@
                             <constraint firstItem="scL-Yl-4xS" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="STl-Ki-VqJ"/>
                             <constraint firstItem="zcq-9T-dl0" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="YCq-Dm-vEg"/>
                             <constraint firstItem="zcq-9T-dl0" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="v9z-5h-iZq"/>
-                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="scL-Yl-4xS" secondAttribute="bottom" id="wGS-C1-shJ"/>
+                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="scL-Yl-4xS" secondAttribute="bottom" constant="50" id="wGS-C1-shJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
                     </view>
@@ -151,7 +151,7 @@
             <objects>
                 <viewController id="G8z-2a-wY8" customClass="GameMapTestViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3PQ-2E-C5E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
