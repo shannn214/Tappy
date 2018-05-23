@@ -10,9 +10,9 @@ import Foundation
 import SDWebImage
 
 protocol CollectionListControllerDelegate: class {
-    
+
     func collectionViewDidScroll(_ controller: CollectionListViewController, translation: CGFloat)
-    
+
     func playerViewDidDismiss(url: String)
 
 }
@@ -105,7 +105,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell?.trackName.text = info.trackName
         recordCell?.cover.sd_setImage(with: URL(string: info.cover))
         recordCell?.cover.isHidden = true
-        
+
         recordCell?.isUserInteractionEnabled = false
 
         if indexPath.row < LevelStatusManager.shared.level! {

@@ -32,7 +32,7 @@ class CardListViewController: UIViewController {
     ]
 
     let transitionAnimation = TransitionAnimation()
-    
+
     let designSetting = DesignSetting()
 
     var cardDetailVC: CardDetailViewController?
@@ -52,7 +52,7 @@ class CardListViewController: UIViewController {
         setupCollectionView()
 
         setupCollectionLayout()
-        
+
         designSetting.designSetting(view: listCollectionView)
 
     }
@@ -106,23 +106,23 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
 
         self.addChildViewController(cardDetailVC)
-        
+
         cardCell?.cardCellView.addSubview((cardDetailVC.view)!)
-        
+
         cardDetailVC.view.frame = (cardCell?.contentView.bounds)!
-        
+
         cardDetailVC.didMove(toParentViewController: self)
 
         cardCell?.clipsToBounds = true
 
         cardDetailVC.cardImage.isHidden = true
-        
+
         cardCell?.isUserInteractionEnabled = false
 
         if indexPath.row < LevelStatusManager.shared.level! {
 
             cardDetailVC.cardImage.isHidden = false
-            
+
             cardCell?.isUserInteractionEnabled = true
 
         }
@@ -133,9 +133,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let cardListY = scrollView.contentOffset.y
-        
+
         let movingDistance = cardListY - (-255)
-        
+
         self.delegate?.cardViewDisScroll(self, translation: movingDistance)
 
     }
@@ -168,10 +168,10 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         print(point)
 
         UIView.animate(withDuration: 0.3) {
-            
+
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
-            
+
         }
 
     }

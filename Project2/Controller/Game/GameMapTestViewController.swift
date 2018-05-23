@@ -17,16 +17,16 @@ class GameMapTestViewController: UIViewController {
 
     var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+    let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         createScrollViewAndMap()
         createButton()
-        loadButton()
 
         setExplosionImage()
-        animate(imageView: explosionImage, images: explosionImages)
+        loadButton()
 
         NotificationCenter.default.addObserver(
             self,
@@ -49,16 +49,38 @@ class GameMapTestViewController: UIViewController {
     func loadButton() {
 
         if LevelStatusManager.shared.level! > 0 {
+
             for level in 0...LevelStatusManager.shared.level! - 1 {
+                explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+
                 CDButtonArray[level].isHidden = false
+                explosionArray[level].isHidden = false
+//                animate(imageView: explosionArray[0], images: explosionImages)
+                
+                animate(imageView: explosionImage, images: explosionImages)
+
             }
         }
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+//
+//        for level in 0...7 {
+//            animate(imageView: explosionArray[0], images: explosionImages)
+//
+//        }
+
+        
+        
+    }
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "MapBlueGround-1"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -81,19 +103,31 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[btnIndex].tag = btnIndex
         }
 
-        CDButtonArray[0].frame = CGRect(x: 10 * imageView.bounds.width/100,
-                                        y: 40 * imageView.bounds.height/100, width: 80, height: 80)
-        CDButtonArray[1].frame = CGRect(x: 38 * imageView.bounds.width/100,
-                                        y: 45 * imageView.bounds.height/100, width: 80, height: 80)
-        CDButtonArray[2].frame = CGRect(x: 75 * imageView.bounds.width/100,
-                                        y: 40 * imageView.bounds.height/100, width: 80, height: 80)
-        CDButtonArray[3].frame = CGRect(x: 95 * imageView.bounds.width/100,
-                                        y: 30 * imageView.bounds.height/100, width: 80, height: 80)
+        CDButtonArray[0].frame = CGRect(x: 4.4 * imageView.bounds.width/100,
+                                        y: 48 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[1].frame = CGRect(x: 16 * imageView.bounds.width/100,
+                                        y: 53 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[2].frame = CGRect(x: 28 * imageView.bounds.width/100,
+                                        y: 53 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[3].frame = CGRect(x: 39.25 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[4].frame = CGRect(x: 51.75 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[5].frame = CGRect(x: 65.75 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[6].frame = CGRect(x: 80 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[7].frame = CGRect(x: 93.75 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[8].frame = CGRect(x: 98 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
+        CDButtonArray[9].frame = CGRect(x: 97 * imageView.bounds.width/100,
+                                        y: 49 * imageView.bounds.height/100, width: 60, height: 60)
 
     }
-    
+
     @objc func showRecordInfo(sender: UIButton!) {
-        
+
 //        var btnSendTag: UIButton = sender
 //        switch btnSendTag.tag {
 //        case 0:
@@ -102,17 +136,30 @@ class GameMapTestViewController: UIViewController {
 //        default:
 //            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![1].trackUri)
 //        }
-        
+
     }
 
     func setExplosionImage() {
 
+//        for explosionIndex in 0...7 {
+////            explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+//
+//            self.imageView.addSubview(explosionArray[explosionIndex])
+//            explosionArray[explosionIndex].backgroundColor = UIColor.clear
+//            explosionArray[explosionIndex].isHidden = true
+//            explosionArray[explosionIndex].tag = explosionIndex
+////            animate(imageView: explosionArray[explosionIndex], images: explosionImages)
+//
+//        }
+//
+//        explosionArray[0].frame = CGRect(x: 4.4 * imageView.bounds.width/100,
+//                                         y: 48 * imageView.bounds.height/100, width: 90, height: 90)
+        
         explosionImage = UIImageView()
         explosionImage.backgroundColor = UIColor.clear
         imageView.addSubview(explosionImage)
-        explosionImage.frame = CGRect(x: 40, y: 40, width: 60, height: 60)
-        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
-
+        explosionImage.frame = CGRect(x: 3.1 * imageView.bounds.width/100,
+                                      y: 39 * imageView.bounds.height/100, width: 180, height: 180)
     }
 
     func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
@@ -142,16 +189,34 @@ class GameMapTestViewController: UIViewController {
     @objc func showCDButton(notification: Notification) {
 
         self.checkLevel = LevelStatusManager.shared.level!
+        
+        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+
 
         switch checkLevel {
         case 1:
             CDButtonArray[0].isHidden = false
+            explosionArray[0].isHidden = false
+//            animate(imageView: explosionArray[0], images: explosionImages)
+            animate(imageView: explosionImage, images: explosionImages)
         case 2:
             CDButtonArray[1].isHidden = false
         case 3:
             CDButtonArray[2].isHidden = false
-        default:
+        case 4:
             CDButtonArray[3].isHidden = false
+        case 5:
+            CDButtonArray[4].isHidden = false
+        case 6:
+            CDButtonArray[5].isHidden = false
+        case 7:
+            CDButtonArray[6].isHidden = false
+        case 8:
+            CDButtonArray[7].isHidden = false
+        case 9:
+            CDButtonArray[8].isHidden = false
+        default:
+            CDButtonArray[9].isHidden = false
         }
 
     }

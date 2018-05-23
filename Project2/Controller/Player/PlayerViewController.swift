@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController {
 
     @IBOutlet weak var playerPanelView: PlayerPanelView!
     @IBOutlet weak var backgroundCover: UIImageView!
-    
+
     var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
     override func viewDidLoad() {
