@@ -21,6 +21,7 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var leadingContraint: NSLayoutConstraint!
     @IBOutlet weak var cardImageHeight: NSLayoutConstraint!
     @IBOutlet weak var cardImageWidth: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     let initialPoint = CGPoint(x: 0, y: 0)
@@ -31,9 +32,10 @@ class CardDetailViewController: UIViewController {
         super.viewDidLoad()
 
         cardImage.layer.cornerRadius = 20
-        cardImageWidth.constant = UIScreen.main.bounds.width * 0.45
-        cardImageHeight.constant = UIScreen.main.bounds.width * 0.45
-        leadingContraint.constant = UIScreen.main.bounds.width * 0.025
+        cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
+        cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
+        leadingContraint.constant = UIScreen.main.bounds.width * 0.1
+        topConstraint.constant = UIScreen.main.bounds.width * 0.1
 
         panGesture.delegate = self
         panGesture.isEnabled = false
@@ -89,9 +91,10 @@ class CardDetailViewController: UIViewController {
 
     func changeConstraintToCellSize() {
 
-        cardImageWidth.constant = UIScreen.main.bounds.width * 0.45
-        cardImageHeight.constant = UIScreen.main.bounds.width * 0.45
-        leadingContraint.constant = UIScreen.main.bounds.width * 0.025
+        cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
+        cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
+        leadingContraint.constant = UIScreen.main.bounds.width * 0.1
+        
         view.layoutIfNeeded()
         panGesture.isEnabled = false
 

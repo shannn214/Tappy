@@ -13,7 +13,6 @@ class GameMapTestViewController: UIViewController {
     var scrollView: UIScrollView!
     var imageView: UIImageView!
     var explosionImage: UIImageView!
-
     var explosionImages: [UIImage] = []
 
     var checkLevel = 0
@@ -27,7 +26,6 @@ class GameMapTestViewController: UIViewController {
         loadButton()
 
         setExplosionImage()
-
         animate(imageView: explosionImage, images: explosionImages)
 
         NotificationCenter.default.addObserver(
@@ -38,10 +36,10 @@ class GameMapTestViewController: UIViewController {
         )
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,7 +58,7 @@ class GameMapTestViewController: UIViewController {
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "MapBlueGround-1"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -92,6 +90,19 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[3].frame = CGRect(x: 95 * imageView.bounds.width/100,
                                         y: 30 * imageView.bounds.height/100, width: 80, height: 80)
 
+    }
+    
+    @objc func showRecordInfo(sender: UIButton!) {
+        
+//        var btnSendTag: UIButton = sender
+//        switch btnSendTag.tag {
+//        case 0:
+//            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![0].trackUri)
+//        //use database to insert track value
+//        default:
+//            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![1].trackUri)
+//        }
+        
     }
 
     func setExplosionImage() {

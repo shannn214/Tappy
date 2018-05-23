@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +36,7 @@
                         <constraints>
                             <constraint firstItem="T3y-QD-CTb" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="4Aw-eD-ndn"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="bottom" secondItem="IW6-U4-r6t" secondAttribute="bottom" id="W3U-fm-gf7"/>
-                            <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="UM8-DS-wl9" secondAttribute="topMargin" id="Wbn-Ev-zU1"/>
+                            <constraint firstItem="T3y-QD-CTb" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" id="ZHl-0F-iNv"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="trailing" secondItem="IW6-U4-r6t" secondAttribute="trailing" id="amu-cU-szO"/>
                             <constraint firstItem="IW6-U4-r6t" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" id="qgx-OJ-1eN"/>
                             <constraint firstItem="IW6-U4-r6t" firstAttribute="top" secondItem="UM8-DS-wl9" secondAttribute="top" id="xNT-BY-S5e"/>
@@ -54,6 +53,7 @@
                         <outlet property="cardImageWidth" destination="BcR-SQ-UK4" id="QKX-DX-ym4"/>
                         <outlet property="leadingContraint" destination="4Aw-eD-ndn" id="bmc-yb-TBs"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
+                        <outlet property="topConstraint" destination="ZHl-0F-iNv" id="DYC-3k-aHC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFy-vk-NUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
