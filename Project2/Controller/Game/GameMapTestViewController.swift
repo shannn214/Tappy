@@ -12,6 +12,9 @@ class GameMapTestViewController: UIViewController {
 
     var scrollView: UIScrollView!
     var imageView: UIImageView!
+    var explosionImage: UIImageView!
+
+    var explosionImages: [UIImage] = []
 
     var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton()]
@@ -23,12 +26,21 @@ class GameMapTestViewController: UIViewController {
         createButton()
         loadButton()
 
+        setExplosionImage()
+
+        animate(imageView: explosionImage, images: explosionImages)
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(showCDButton(notification:)),
             name: .pressMovingButton,
             object: nil
         )
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +91,40 @@ class GameMapTestViewController: UIViewController {
                                         y: 40 * imageView.bounds.height/100, width: 80, height: 80)
         CDButtonArray[3].frame = CGRect(x: 95 * imageView.bounds.width/100,
                                         y: 30 * imageView.bounds.height/100, width: 80, height: 80)
+
+    }
+
+    func setExplosionImage() {
+
+        explosionImage = UIImageView()
+        explosionImage.backgroundColor = UIColor.clear
+        imageView.addSubview(explosionImage)
+        explosionImage.frame = CGRect(x: 40, y: 40, width: 60, height: 60)
+        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+
+    }
+
+    func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
+
+        var imageArray: [UIImage] = []
+
+        for imageCount in 10..<total {
+            let imageName = "\(imageRefix)\(imageCount).png"
+            let image = UIImage(named: imageName)!
+
+            imageArray.append(image)
+        }
+
+        return imageArray
+
+    }
+
+    func animate(imageView: UIImageView, images: [UIImage]) {
+
+        explosionImage.animationImages = images
+        explosionImage.animationDuration = 0.8
+        explosionImage.animationRepeatCount = 0
+        explosionImage.startAnimating()
 
     }
 

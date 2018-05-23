@@ -29,17 +29,16 @@ class CardDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         cardImage.layer.cornerRadius = 20
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.45
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.45
         leadingContraint.constant = UIScreen.main.bounds.width * 0.025
-    
+
         panGesture.delegate = self
         panGesture.isEnabled = false
     }
 
-    
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
 
         let touchPoint = sender.location(in: self.view.window)
@@ -54,7 +53,7 @@ class CardDetailViewController: UIViewController {
                                          width: self.view.frame.size.width,
                                          height: self.view.frame.size.height
                 )
-                
+
                 backgroundView.alpha = 1 - touchTrans.y / 100
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
@@ -82,7 +81,7 @@ class CardDetailViewController: UIViewController {
         leadingContraint.constant = UIScreen.main.bounds.width * 0.125
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.75
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.75
-        
+
         view.layoutIfNeeded()
         panGesture.isEnabled = true
 
@@ -95,13 +94,13 @@ class CardDetailViewController: UIViewController {
         leadingContraint.constant = UIScreen.main.bounds.width * 0.025
         view.layoutIfNeeded()
         panGesture.isEnabled = false
-        
+
     }
 
 }
 
 extension CardDetailViewController: UIGestureRecognizerDelegate {
-    
+
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return panGesture.isEnabled
     }

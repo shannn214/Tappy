@@ -51,13 +51,13 @@ class CardListViewController: UIViewController {
         setupCollectionLayout()
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        
+
         super.viewWillAppear(animated)
-        
+
         listCollectionView.reloadData()
-        
+
     }
 
     func setupCollectionView() {
@@ -113,9 +113,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         cardDetailVC.cardImage.isHidden = true
 
         if indexPath.row < LevelStatusManager.shared.level! {
-            
+
             cardDetailVC.cardImage.isHidden = false
-            
+
         }
 
         return cardCell!
@@ -178,10 +178,10 @@ extension CardListViewController: CardDetailDelegate {
         let itemSize = UIScreen.main.bounds.width/2
 
         UIView.animate(withDuration: 0.3, animations: {
-        
+
             selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
             selectedVC.changeConstraintToCellSize()
-        
+
         }) { _ in
             selectedVC.view.removeFromSuperview()
             selectedCell.addSubview(selectedVC.view)
