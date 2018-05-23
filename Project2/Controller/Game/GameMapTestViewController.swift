@@ -16,7 +16,7 @@ class GameMapTestViewController: UIViewController {
     var explosionImages: [UIImage] = []
 
     var checkLevel = 0
-    let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton()]
+    let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class GameMapTestViewController: UIViewController {
 
     func createButton() {
 
-        for btnIndex in 0...3 {
+        for btnIndex in 0...9 {
             CDButtonArray[btnIndex].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
             self.imageView.addSubview(CDButtonArray[btnIndex])
             CDButtonArray[btnIndex].isHidden = true

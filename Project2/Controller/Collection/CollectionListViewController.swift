@@ -10,7 +10,11 @@ import Foundation
 import SDWebImage
 
 protocol CollectionListControllerDelegate: class {
+    
     func collectionViewDidScroll(_ controller: CollectionListViewController, translation: CGFloat)
+    
+    func playerViewDidDismiss(url: String)
+
 }
 
 class CollectionListViewController: UIViewController {
@@ -126,13 +130,12 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         let info = sortedArray![indexPath.row]
         SpotifyManager.shared.playMusic(track: info.trackUri)
 
-//        present(playerVC, animated: true, completion: nil)
-
         present(playerVC, animated: true) {
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
             playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
             playerVC.playerPanelView.artist.text = info.artist
             playerVC.playerPanelView.trackName.text = info.trackName
+            self.delegate?.playerViewDidDismiss(url: info.cover)
         }
 
     }

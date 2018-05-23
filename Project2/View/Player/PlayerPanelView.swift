@@ -63,7 +63,7 @@ class PlayerPanelView: UIView {
 
     private func setupButton() {
 
-        playButton.isSelected = false
+        playButton.isSelected = true
 
     }
 

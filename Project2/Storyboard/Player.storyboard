@@ -80,13 +80,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-m6-YVb">
-                                        <rect key="frame" x="163" y="482.5" width="50" height="50"/>
+                                        <rect key="frame" x="163" y="492.5" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1sk-gi-5K8"/>
                                             <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="play-button-4"/>
-                                        <state key="selected" backgroundImage="pause-2"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="play-button-6">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected" backgroundImage="pause-3">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="playButton:" destination="aws-MT-OLZ" eventType="touchUpInside" id="YzI-M8-Ayn"/>
                                         </connections>
@@ -114,7 +119,7 @@
                                     <constraint firstItem="Onb-m6-YVb" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="PZu-V6-DKh"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="Qkp-uR-pvf"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="top" secondItem="SCH-7K-qDA" secondAttribute="bottom" constant="30" id="YBq-g9-IJb"/>
-                                    <constraint firstItem="Onb-m6-YVb" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="20" id="aKE-Mj-Z2P"/>
+                                    <constraint firstItem="Onb-m6-YVb" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="30" id="aKE-Mj-Z2P"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="ah6-c2-uYH"/>
                                     <constraint firstAttribute="trailing" secondItem="PyC-k8-G0p" secondAttribute="trailing" constant="45" id="bcr-AI-aHH"/>
                                     <constraint firstItem="OaG-Gs-lLZ" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="flx-GU-hiW"/>
@@ -167,7 +172,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pause-2" width="64" height="64"/>
-        <image name="play-button-4" width="64" height="64"/>
+        <image name="pause-3" width="64" height="64"/>
+        <image name="play-button-6" width="64" height="64"/>
     </resources>
 </document>

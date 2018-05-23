@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController {
 
     @IBOutlet weak var playerPanelView: PlayerPanelView!
     @IBOutlet weak var backgroundCover: UIImageView!
-
+    
     var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
     override func viewDidLoad() {
@@ -74,7 +74,9 @@ class PlayerViewController: UIViewController {
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 500 {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
+                }
             } else {
                 UIView.animate(withDuration: 0.3, animations: {
                     self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)

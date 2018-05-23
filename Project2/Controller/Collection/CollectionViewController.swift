@@ -29,12 +29,18 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     let layer = CAGradientLayer()
 
     let designSetting = DesignSetting()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        trackIsStreaming()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,4 +103,32 @@ extension CollectionViewController: CollectionListControllerDelegate {
         }
     }
 
+    func playerViewDidDismiss(url: String) {
+        
+        collectionCover.sd_setImage(with: URL(string: url), completed: nil)
+        rotate(image: collectionCover)
+        
+    }
+    
+    func rotate(image: UIImageView) {
+        
+        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
+        rotationAnimation.duration = 10
+        rotationAnimation.isCumulative = true
+        rotationAnimation.repeatCount = .infinity
+        image.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        image.layer.cornerRadius = image.bounds.size.width * 0.5
+        
+    }
+    
+    func trackIsStreaming() {
+
+//        if SpotifyManager.shared.player?.playbackState.isPlaying != nil && SpotifyManager.shared.player?.playbackState.isPlaying == true {
+//            rotate(image: collectionCover)
+//        } else if !(SpotifyManager.shared.player?.playbackState.isPlaying)! {
+//            collectionCover.image = #imageLiteral(resourceName: "My-Boo")
+//        }
+
+    }
 }
