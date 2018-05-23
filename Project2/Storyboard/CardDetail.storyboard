@@ -21,6 +21,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-U4-r6t">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Yey-ry-B9H" appends="YES" id="EAs-UY-yPy"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost-2" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-QD-CTb">
                                 <rect key="frame" x="20" y="20" width="120" height="120"/>
@@ -53,6 +57,7 @@
                         <outlet property="cardImageWidth" destination="BcR-SQ-UK4" id="QKX-DX-ym4"/>
                         <outlet property="leadingContraint" destination="4Aw-eD-ndn" id="bmc-yb-TBs"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
+                        <outlet property="tapGesture" destination="Yey-ry-B9H" id="xrX-62-j9y"/>
                         <outlet property="topConstraint" destination="ZHl-0F-iNv" id="DYC-3k-aHC"/>
                     </connections>
                 </viewController>
@@ -62,6 +67,11 @@
                         <action selector="panGesture:" destination="ki3-uT-Wib" id="73d-KG-d4U"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="Yey-ry-B9H">
+                    <connections>
+                        <action selector="tapped:" destination="ki3-uT-Wib" id="0ge-Wg-GUL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="169.56521739130437"/>
         </scene>

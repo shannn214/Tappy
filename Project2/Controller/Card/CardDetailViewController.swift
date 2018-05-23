@@ -24,6 +24,8 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
+
     let initialPoint = CGPoint(x: 0, y: 0)
 
     weak var delegate: CardDetailDelegate?
@@ -39,6 +41,22 @@ class CardDetailViewController: UIViewController {
 
         panGesture.delegate = self
         panGesture.isEnabled = false
+
+        tapGesture.cancelsTouchesInView = false
+
+    }
+
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+
+        switch sender.state {
+        case .ended:
+            let pop = PopView()
+            pop.center = sender.location(in: view)
+            view.addSubview(pop)
+        default:
+            print("Nope")
+        }
+
     }
 
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {

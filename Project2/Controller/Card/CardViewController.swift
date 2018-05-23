@@ -28,6 +28,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         setup()
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

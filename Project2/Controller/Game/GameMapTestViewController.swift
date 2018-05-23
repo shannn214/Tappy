@@ -19,6 +19,8 @@ class GameMapTestViewController: UIViewController {
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
+    let animation = CAKeyframeAnimation(keyPath: "position")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,17 +58,17 @@ class GameMapTestViewController: UIViewController {
                 CDButtonArray[level].isHidden = false
                 explosionArray[level].isHidden = false
 //                animate(imageView: explosionArray[0], images: explosionImages)
-                
+
                 animate(imageView: explosionImage, images: explosionImages)
 
             }
         }
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
 //        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
 //
 //        for level in 0...7 {
@@ -74,13 +76,27 @@ class GameMapTestViewController: UIViewController {
 //
 //        }
 
-        
-        
+    }
+
+    func movingAnimation() {
+
+        let start = CGPoint(x: 3 * imageView.bounds.width/100,
+                            y: 12 * imageView.bounds.height/100)
+        let end = CGPoint(x: 14 * imageView.bounds.width/100,
+                          y: 12 * imageView.bounds.height/100)
+
+        animation.values = [NSValue(cgPoint: start), NSValue(cgPoint: end)]
+
+        animation.keyTimes = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+
+        animation.duration = 2.0
+
+        imageView.layer.add(animation, forKey: "move")
     }
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "MapBlueGround-1"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -154,7 +170,7 @@ class GameMapTestViewController: UIViewController {
 //
 //        explosionArray[0].frame = CGRect(x: 4.4 * imageView.bounds.width/100,
 //                                         y: 48 * imageView.bounds.height/100, width: 90, height: 90)
-        
+
         explosionImage = UIImageView()
         explosionImage.backgroundColor = UIColor.clear
         imageView.addSubview(explosionImage)
@@ -189,9 +205,8 @@ class GameMapTestViewController: UIViewController {
     @objc func showCDButton(notification: Notification) {
 
         self.checkLevel = LevelStatusManager.shared.level!
-        
-        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
 
+        explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
 
         switch checkLevel {
         case 1:

@@ -57,7 +57,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     func createCoverStroke() {
 
-        let center = topView.center
+//        let center = topView.center
 
 //        let circularPath = UIBezierPath(ovalIn: collectionCover.bounds)
 //        shapeLayer.path = circularPath.cgPath

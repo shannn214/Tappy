@@ -132,7 +132,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
-        if self.checkLevel < 9 {
+        if self.checkLevel < 11 {
             LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
         }
 
