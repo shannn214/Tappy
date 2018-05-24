@@ -147,6 +147,7 @@
                         <viewLayoutGuide key="safeArea" id="wLg-Tx-ohp"/>
                     </view>
                     <connections>
+                        <outlet property="propView" destination="6D6-kn-XfE" id="QFm-tv-CfK"/>
                         <outlet property="recordArtist" destination="DZp-3Z-dfS" id="lPa-Oy-RTL"/>
                         <outlet property="recordCover" destination="nhb-BD-wSB" id="hfl-hM-jC2"/>
                         <outlet property="recordTitle" destination="dxU-2c-MIJ" id="0Op-lo-m9A"/>

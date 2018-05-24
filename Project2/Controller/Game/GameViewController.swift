@@ -38,6 +38,10 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         tapGesture.cancelsTouchesInView = false
 
+//        tapGesture.isEnabled = false
+        progress.isHidden = true
+        movingBtn.isHidden = true
+
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -147,16 +151,16 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         progress.progress = 0
         distance = 0
 
-        self.checkLevel = LevelStatusManager.shared.level! + 1
-
-        if self.checkLevel < 11 {
-            LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
-        }
-
-        NotificationCenter.default.post(
-            name: .pressMovingButton,
-            object: nil
-        )
+//        self.checkLevel = LevelStatusManager.shared.level! + 1
+//
+//        if self.checkLevel < 11 {
+//            LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
+//        }
+//
+//        NotificationCenter.default.post(
+//            name: .pressMovingButton,
+//            object: nil
+//        )
 
     }
 
