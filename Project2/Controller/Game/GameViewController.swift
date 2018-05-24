@@ -14,9 +14,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
     @IBOutlet weak var gameMapContainer: UIView!
-    
-    @IBOutlet var tapGesture: UITapGestureRecognizer!
 
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
 
     let locationManager = CLLocationManager()
     var distance = 0.0
@@ -36,13 +35,13 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
-        
+
         tapGesture.cancelsTouchesInView = false
 
     }
-    
+
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
-        
+
         switch sender.state {
         case .ended:
             let pop = PopView()
@@ -51,9 +50,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         default:
             print("Nope")
         }
-        
-    }
 
+    }
 
     func setupLocation() {
 

@@ -79,7 +79,7 @@ class CardDetailViewController: UIViewController {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
                 backgroundView.clipsToBounds = true
-                
+
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 300 {
@@ -118,7 +118,6 @@ class CardDetailViewController: UIViewController {
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
         leadingContraint.constant = UIScreen.main.bounds.width * 0.1
-        
 
         view.layoutIfNeeded()
         panGesture.isEnabled = false

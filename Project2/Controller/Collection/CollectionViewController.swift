@@ -117,7 +117,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
             topViewHeightConstraint.constant = topViewHeight - collectionY
             topImageConstraint.constant = 65 - collectionY
             self.gradientHeightConstraint.constant = topViewHeight - collectionY
-            
+
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 
         }

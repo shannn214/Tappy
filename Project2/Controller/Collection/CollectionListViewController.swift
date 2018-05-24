@@ -141,4 +141,3 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
     }
 
 }
-

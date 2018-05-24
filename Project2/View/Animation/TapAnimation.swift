@@ -25,20 +25,21 @@ class Line: CAShapeLayer {
     }
 
     func createLine() {
-        // 1)
+
         let bezPath = UIBezierPath()
         bezPath.move(to: CGPoint(x: 15, y: 0))
         let distance = CGFloat(arc4random_uniform(45 - 25) + 25)
         bezPath.addLine(to: CGPoint(x: distance, y: 0))
 
-        // 2)
         lineWidth = 2
         lineCap = kCALineCapRound
         strokeColor = UIColor.lightGray.cgColor
         path = bezPath.cgPath
+
     }
 
     func animate() {
+
         let duration: CFTimeInterval = 0.6
 
         let end = CABasicAnimation(keyPath: "strokeEnd")
@@ -65,6 +66,7 @@ class Line: CAShapeLayer {
         strokeStart = 1
 
         add(group, forKey: "move")
+
     }
 
 }
