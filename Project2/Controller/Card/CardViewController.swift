@@ -18,7 +18,8 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
+    
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
     var cardTransition: CGFloat?
@@ -55,6 +56,8 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         layer.frame = UIScreen.main.bounds
 
         self.gradientView.layer.addSublayer(layer)
+        
+        topViewImage.layer.cornerRadius = 15
 
     }
 
@@ -72,8 +75,16 @@ extension CardViewController: CardListControllerDelegate {
         guard let cardY = cardTransition else { return }
         if cardY <= changePoint {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
+            
             topViewHeightConstraint.constant = topView.frame.height - cardY
-            gradientHeightConstraint.constant = topView.frame.height - cardY
+            topImageConstraint.constant = 65 - cardY
+            
+            self.gradientHeightConstraint.constant = topView.frame.height - cardY
+        }
+        
+        if cardY <= alphaPoint {
+            let percentage = cardY / alphaPoint
+            topViewImage.alpha = 1.0 - percentage
         }
 
     }

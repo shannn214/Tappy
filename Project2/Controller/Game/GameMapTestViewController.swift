@@ -20,12 +20,14 @@ class GameMapTestViewController: UIViewController {
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
     let animation = CAKeyframeAnimation(keyPath: "position")
+    var monster: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         createScrollViewAndMap()
         createButton()
+        createCharacter()
 
         setExplosionImage()
         loadButton()
@@ -81,9 +83,9 @@ class GameMapTestViewController: UIViewController {
     func movingAnimation() {
 
         let start = CGPoint(x: 3 * imageView.bounds.width/100,
-                            y: 12 * imageView.bounds.height/100)
+                            y: 72 * imageView.bounds.height/100)
         let end = CGPoint(x: 14 * imageView.bounds.width/100,
-                          y: 12 * imageView.bounds.height/100)
+                          y: 72 * imageView.bounds.height/100)
 
         animation.values = [NSValue(cgPoint: start), NSValue(cgPoint: end)]
 
@@ -91,7 +93,15 @@ class GameMapTestViewController: UIViewController {
 
         animation.duration = 2.0
 
-        imageView.layer.add(animation, forKey: "move")
+        monster.layer.add(animation, forKey: "move")
+    }
+    
+    func createCharacter() {
+        
+        monster = UIImageView(image: #imageLiteral(resourceName: "pink_Qghost"))
+        monster.frame = CGRect(x: 2 * imageView.bounds.width/100, y: 72 * imageView.bounds.height/100, width: 70, height: 80)
+        self.imageView.addSubview(monster)
+        
     }
 
     func createScrollViewAndMap() {
@@ -216,6 +226,7 @@ class GameMapTestViewController: UIViewController {
             animate(imageView: explosionImage, images: explosionImages)
         case 2:
             CDButtonArray[1].isHidden = false
+            movingAnimation()
         case 3:
             CDButtonArray[2].isHidden = false
         case 4:

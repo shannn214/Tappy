@@ -114,21 +114,16 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         guard let collectionY = collectionTransition else { return }
         if collectionY <= changePoint {
-//            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
             topViewHeightConstraint.constant = topViewHeight - collectionY
             topImageConstraint.constant = 65 - collectionY
             self.gradientHeightConstraint.constant = topViewHeight - collectionY
+            
+//            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 
-            //-----issue: gradient will delay-----
-//            self.gradientView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
-//            layer.frame = CGRect(x: 0, y: 0 - collectionY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//            let xx = collectionY/660 as NSNumber
-//            guard let tt = xx as? Double else { return }
-//            layer.locations = [0.0, 0.35 - tt] as [NSNumber]
 
         }
         if collectionY <= alphaPoint {
-            let percentage = collectionY/alphaPoint
+            let percentage = collectionY / alphaPoint
             collectionCover.alpha = 1.0 - percentage
         }
     }

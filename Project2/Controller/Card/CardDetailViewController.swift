@@ -33,7 +33,7 @@ class CardDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        cardImage.layer.cornerRadius = 20
+        cardImage.layer.cornerRadius = 15
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
         leadingContraint.constant = UIScreen.main.bounds.width * 0.1
@@ -67,7 +67,7 @@ class CardDetailViewController: UIViewController {
         if sender.state == UIGestureRecognizerState.began {
             //            initialTouchPoint = touchPoint
         } else if sender.state == UIGestureRecognizerState.changed {
-            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
+            if touchPoint.y - initialPoint.y > 0 {
                 self.view.frame = CGRect(x: touchTrans.x,
                                          y: touchTrans.y,
                                          width: self.view.frame.size.width,
@@ -75,6 +75,11 @@ class CardDetailViewController: UIViewController {
                 )
 
                 backgroundView.alpha = 1 - touchTrans.y / 100
+                if touchTrans.y < 15 {
+                    backgroundView.layer.cornerRadius = touchTrans.y
+                }
+                backgroundView.clipsToBounds = true
+                
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 300 {
@@ -101,6 +106,7 @@ class CardDetailViewController: UIViewController {
         leadingContraint.constant = UIScreen.main.bounds.width * 0.125
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.75
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.75
+        backgroundView.layer.cornerRadius = 0
 
         view.layoutIfNeeded()
         panGesture.isEnabled = true
@@ -112,6 +118,7 @@ class CardDetailViewController: UIViewController {
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
         leadingContraint.constant = UIScreen.main.bounds.width * 0.1
+        
 
         view.layoutIfNeeded()
         panGesture.isEnabled = false

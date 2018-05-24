@@ -53,6 +53,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="zcq-9T-dl0" secondAttribute="trailing" id="1oC-dy-dAo"/>
                             <constraint firstItem="scL-Yl-4xS" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="H0Y-H0-0PG"/>
@@ -63,14 +64,23 @@
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="scL-Yl-4xS" secondAttribute="bottom" constant="50" id="wGS-C1-shJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="RqJ-7a-gGi" appends="YES" id="agg-SR-QFX"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="gameMapContainer" destination="scL-Yl-4xS" id="2vK-Mr-etA"/>
                         <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
                         <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
+                        <outlet property="tapGesture" destination="RqJ-7a-gGi" id="t8W-hW-aDY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ia6-PA-yaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RqJ-7a-gGi">
+                    <connections>
+                        <action selector="tapped:" destination="5eu-RK-QSY" id="w5u-Bc-f2E"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="13.6" y="195.6521739130435"/>
         </scene>
@@ -154,6 +164,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3UO-Sv-bV8"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8z-bJ-WcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
