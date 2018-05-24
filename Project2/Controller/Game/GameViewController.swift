@@ -31,19 +31,23 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
         initialSetting()
-        setupLocation()
+//        setupLocation()
 
         LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
 
         tapGesture.cancelsTouchesInView = false
-
 //        tapGesture.isEnabled = false
+        
         progress.isHidden = true
         movingBtn.isHidden = true
 
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
 
         switch sender.state {
@@ -75,9 +79,14 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             getInfoData()
             LevelStatusManager.shared.initialGame()
             firstLogin.set(true, forKey: "firstLogin")
+            
+            popUpView()
         } else {
             //TODO
         }
+        
+        //For test
+        popUpView()
 
     }
 
@@ -92,18 +101,32 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
 
     }
+    
+    func popUpView() {
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.view.alpha = 0
+        popUpRecordView.recordTitle.text = "I'm so tired"
+        
+        UIView.animate(withDuration: 0.2) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)
 
-        if CLLocationManager.authorizationStatus() == .notDetermined {
-            locationManager.requestAlwaysAuthorization()
-        } else if CLLocationManager.authorizationStatus() == .denied {
-            print("Please enable getting location.")
-        } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
-            locationManager.startUpdatingLocation()
-        }
+//        if CLLocationManager.authorizationStatus() == .notDetermined {
+//            locationManager.requestAlwaysAuthorization()
+//        } else if CLLocationManager.authorizationStatus() == .denied {
+//            print("Please enable getting location.")
+//        } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
+//            locationManager.startUpdatingLocation()
+//        }
 
     }
 
@@ -116,8 +139,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
                 if self.locations.count > 0 {
                     distance += location.distance(from: self.locations.last!)
                     let complete = 25.0
-//                    print("-----------")
-//                    print(distance)
                     if distance <= complete {
                         progress.progress = Float(distance) / Float(complete)
                     } else {
@@ -162,18 +183,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 //            object: nil
 //        )
 
-    }
-
-    func popUpView() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
     }
 
 }

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Medium.otf">
+            <string>CircularStd-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Card View Controller-->
         <scene sceneID="LKu-BU-zGQ">
@@ -39,9 +44,9 @@
                                                     <constraint firstAttribute="width" constant="130" id="kcR-S5-kVz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-NV-YjH">
-                                                <rect key="frame" x="133.5" y="205" width="108.5" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-NV-YjH">
+                                                <rect key="frame" x="167.5" y="205" width="41" height="23"/>
+                                                <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

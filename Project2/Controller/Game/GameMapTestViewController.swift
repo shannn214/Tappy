@@ -72,11 +72,6 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-
     func createCharacter() {
 
         monster = UIImageView(image: #imageLiteral(resourceName: "pink_Qghost"))
@@ -96,7 +91,6 @@ class GameMapTestViewController: UIViewController {
         scrollView.backgroundColor = UIColor.black
         scrollView.contentSize = CGSize(width: imageView.bounds.width, height: UIScreen.main.bounds.height)
         scrollView.autoresizingMask = [.flexibleWidth]
-
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)
 
@@ -280,7 +274,6 @@ class GameMapTestViewController: UIViewController {
         case 1:
             CDButtonArray[0].isHidden = false
             explosionArray[0].isHidden = false
-//            animate(imageView: explosionArray[0], images: explosionImages)
             animate(imageView: explosionArray[0], images: explosionImages)
             movingAnimations(start: CGPoint(x: 2 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
                              end: CGPoint(x: 14 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
@@ -388,6 +381,7 @@ class GameMapTestViewController: UIViewController {
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
+        popUpRecordView.introView.isHidden = true
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)

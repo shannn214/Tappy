@@ -55,6 +55,10 @@
 		09A6855020B5B26D00BE0EA5 /* GameMovingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6854F20B5B26D00BE0EA5 /* GameMovingViewController.swift */; };
 		09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855120B5B91700BE0EA5 /* TapAnimation.swift */; };
 		09A6855420B5BB3400BE0EA5 /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855320B5BB3400BE0EA5 /* PopView.swift */; };
+		09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855520B7005B00BE0EA5 /* Moon2.0-Regular.otf */; };
+		09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */; };
+		09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */; };
+		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -118,6 +122,10 @@
 		09A6854F20B5B26D00BE0EA5 /* GameMovingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMovingViewController.swift; sourceTree = "<group>"; };
 		09A6855120B5B91700BE0EA5 /* TapAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAnimation.swift; sourceTree = "<group>"; };
 		09A6855320B5BB3400BE0EA5 /* PopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
+		09A6855520B7005B00BE0EA5 /* Moon2.0-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moon2.0-Regular.otf"; sourceTree = "<group>"; };
+		09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moon2.0-Bold.otf"; sourceTree = "<group>"; };
+		09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.otf"; sourceTree = "<group>"; };
+		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -375,6 +383,10 @@
 		09A62B2E20ADC93F00BA5932 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */,
+				09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */,
+				09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */,
+				09A6855520B7005B00BE0EA5 /* Moon2.0-Regular.otf */,
 				09A62B3320ADCF8300BA5932 /* pixelmix.ttf */,
 				09A62B3120ADCA7800BA5932 /* small_pixel-7.ttf */,
 				09A62B2F20ADC96200BA5932 /* Grand9K Pixel.ttf */,
@@ -507,13 +519,17 @@
 				090B691C209F03290095B416 /* Assets.xcassets in Resources */,
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
 				090B6974209F402C0095B416 /* Card.storyboard in Resources */,
+				09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */,
 				0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */,
 				09A62B4220AF3FCD00BA5932 /* CardCollectionViewCell.xib in Resources */,
+				09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */,
 				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
 				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
 				09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */,
+				09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */,
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
+				09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
 				09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */,
 				09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */,

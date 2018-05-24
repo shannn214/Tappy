@@ -13,13 +13,9 @@ class PopUpRecordViewController: UIViewController {
 
     @IBOutlet weak var recordCover: UIImageView!
     @IBOutlet weak var recordTitle: UILabel!
-    @IBOutlet weak var recordArtist: UILabel!
     @IBOutlet weak var propView: UIView!
-
-    var auth = SPTAuth.defaultInstance()!
-    var session: SPTSession!
-    var player: SPTAudioStreamingController?
-
+    @IBOutlet weak var introView: UIView!
+    
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
     override func viewDidLoad() {
@@ -34,7 +30,8 @@ class PopUpRecordViewController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 
         self.propView.layer.cornerRadius = 20
-
+        self.introView.layer.cornerRadius = 20
+        
 //        NotificationCenter.default.addObserver(
 //            self,
 //            selector: #selector(showInfo(notification:)),
@@ -61,23 +58,11 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    @objc func showInfo(notification: NSNotification) {
-
-//        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-//        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
-//        let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
-//
-//        UIView.animate(withDuration: 0.2) {
-//            self.recordCover.alpha = 1
-//        }
-//
-//        recordCover.sd_setImage(with: URL(string: url!))
-//        recordTitle.text = title
-//        recordArtist.text = artist
-//        rotate(image: recordCover)
-
+    @IBAction func nextButton(_ sender: Any) {
+        self.view.removeFromSuperview()
     }
-
+    
+    
     @IBAction func leaveButton(_ sender: Any) {
 
         NotificationCenter.default.post(name: .leavePropPopView,

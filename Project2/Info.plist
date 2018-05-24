@@ -33,12 +33,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>use your location to record the distance you move</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>use your location to record the distance you move</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>CircularStd-Bold.otf</string>
+		<string>CircularStd-Medium.otf</string>
+		<string>Moon2.0-Bold.otf</string>
+		<string>Moon2.0-Regular.otf</string>
 		<string>pixelmix.ttf</string>
 		<string>Grand9K Pixel.ttf</string>
 		<string>small_pixel-7.ttf</string>
