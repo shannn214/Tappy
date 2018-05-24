@@ -120,7 +120,6 @@ extension CollectionViewController: CollectionListControllerDelegate {
             
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 
-
         }
         if collectionY <= alphaPoint {
             let percentage = collectionY / alphaPoint

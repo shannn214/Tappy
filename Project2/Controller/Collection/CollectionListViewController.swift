@@ -83,10 +83,6 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-//        if LevelStatusManager.shared.level! - 1 <= 9 {
-//            return LevelStatusManager.shared.level!
-//        }
-
         return 10
 
     }
@@ -146,10 +142,3 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
 }
 
-extension CollectionListViewController: UIViewControllerTransitioningDelegate {
-
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return 
-//    }
-
-}
