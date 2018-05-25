@@ -17,4 +17,6 @@ extension Notification.Name {
     static let pressMovingButton = Notification.Name("pressMovingButton")
 
     static let leavePropPopView = Notification.Name("leavePropPopView")
+    
+    static let trackPlayinyStatus = Notification.Name("trackPlayinyStatus")
 }

@@ -17,6 +17,8 @@ protocol CardListControllerDelegate: class {
 class CardListViewController: UIViewController {
 
     @IBOutlet weak var listCollectionView: UICollectionView!
+    
+    var propImages: [UIImage] = []
 
     weak var delegate: CardListControllerDelegate?
 
@@ -102,9 +104,10 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         let cardCell = listCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
+        
 
         guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
-
+        
         self.addChildViewController(cardDetailVC)
 
         cardCell?.cardCellView.addSubview((cardDetailVC.view)!)
@@ -164,16 +167,38 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.delegate = self
 
-        print("-----Point---------")
-        print(point)
-
         UIView.animate(withDuration: 0.3) {
 
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
+            collectionView.isUserInteractionEnabled = false
 
         }
 
+    }
+    
+    func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
+        
+        var imageArray: [UIImage] = []
+        
+        for imageCount in 0..<total {
+            let imageName = "\(imageRefix)\(imageCount).png"
+            let image = UIImage(named: imageName)!
+            
+            imageArray.append(image)
+        }
+        
+        return imageArray
+        
+    }
+    
+    func animate(imageView: UIImageView, images: [UIImage]) {
+        
+        imageView.animationImages = images
+        imageView.animationDuration = 0.8
+        imageView.animationRepeatCount = 0
+        imageView.startAnimating()
+        
     }
 
 }
@@ -200,6 +225,7 @@ extension CardListViewController: CardDetailDelegate {
             selectedCell.addSubview(selectedVC.view)
             selectedVC.view.frame = selectedCell.contentView.frame
             selectedVC.backgroundView.alpha = 1
+            self.listCollectionView.isUserInteractionEnabled = true
         }
 
     }

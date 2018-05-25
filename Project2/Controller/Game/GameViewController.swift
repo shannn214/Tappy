@@ -38,16 +38,16 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         tapGesture.cancelsTouchesInView = false
 //        tapGesture.isEnabled = false
-        
+
         progress.isHidden = true
         movingBtn.isHidden = true
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
 
         switch sender.state {
@@ -79,14 +79,14 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             getInfoData()
             LevelStatusManager.shared.initialGame()
             firstLogin.set(true, forKey: "firstLogin")
-            
+
             popUpView()
         } else {
             //TODO
         }
-        
+
         //For test
-        popUpView()
+//        popUpView()
 
     }
 
@@ -101,7 +101,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
 
     }
-    
+
     func popUpView() {
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
@@ -109,7 +109,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
         popUpRecordView.recordTitle.text = "I'm so tired"
-        
+
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)

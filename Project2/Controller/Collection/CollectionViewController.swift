@@ -15,12 +15,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var gradientView: UIView!
-
+    
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-
+    
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
@@ -36,16 +36,22 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         setup()
-
-        //collection cover animation test
-        createCoverStroke()
-        handleTap()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(trackIsStreaming(notification:)),
+            name: .trackPlayinyStatus,
+            object: nil
+        )
+        
+        self.view.isUserInteractionEnabled = true
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        trackIsStreaming()
+//        trackIsStreaming()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,32 +60,34 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             collectionListViewController.delegate = self
         }
     }
-
-    func createCoverStroke() {
-
-//        let center = topView.center
-
-//        let circularPath = UIBezierPath(ovalIn: collectionCover.bounds)
-//        shapeLayer.path = circularPath.cgPath
-//        shapeLayer.strokeColor = UIColor.blue.cgColor
-//        shapeLayer.fillColor = UIColor.clear.cgColor
-//        shapeLayer.lineWidth = 4
-
-//        collectionCover.layer.addSublayer(shapeLayer)
-//        collectionCover.layer.addSublayer(shapeLayer)
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(trackIsStreaming(notification:)),
+            name: .trackPlayinyStatus,
+            object: nil
+        )
     }
 
-    func handleTap() {
-//        let animation = CABasicAnimation(keyPath: "strokeEnd")
-//        animation.fromValue = 0
-//        animation.toValue = 1
-//        animation.duration = 3
-//        animation.fillMode = kCAFillModeForwards
-//        animation.isRemovedOnCompletion = false
-//        shapeLayer.add(animation, forKey: "ani")
-    }
+    @IBAction func topCoverAction(_ sender: Any) {
+        
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String,
+              let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName as? String,
+              let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name as? String
+        else { return }
 
+        present(playerVC, animated: true) {
+            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
+            playerVC.backgroundCover.sd_setImage(with: URL(string: url))
+            playerVC.playerPanelView.artist.text = artist
+            playerVC.playerPanelView.trackName.text = trackName
+//            self.delegate?.playerViewDismiss(url: url)
+        }
+        
+    }
+    
     func setup() {
 
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
@@ -88,16 +96,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0).cgColor,
             UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
         ]
-
         layer.locations = [0.0, 0.35]
-
         layer.startPoint = CGPoint(x: 0.5, y: 0.0)
-
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-
         layer.frame = UIScreen.main.bounds
-
         self.gradientView.layer.addSublayer(layer)
+        
 
     }
 
@@ -145,14 +149,22 @@ extension CollectionViewController: CollectionListControllerDelegate {
         image.layer.cornerRadius = image.bounds.size.width * 0.5
 
     }
+    
+    func removeAnimation(image: UIImageView) {
+        image.layer.removeAllAnimations()
+        image.layoutIfNeeded()
+    }
 
-    func trackIsStreaming() {
+    @objc func trackIsStreaming(notification: Notification) {
 
-//        if SpotifyManager.shared.player?.playbackState.isPlaying != nil && SpotifyManager.shared.player?.playbackState.isPlaying == true {
-//            rotate(image: collectionCover)
-//        } else if !(SpotifyManager.shared.player?.playbackState.isPlaying)! {
-//            collectionCover.image = #imageLiteral(resourceName: "My-Boo")
-//        }
+        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
+        if SpotifyManager.shared.isPlaying == true {
+            rotate(image: collectionCover)
+            collectionCover.sd_setImage(with: URL(string: url), completed: nil)
+        } else if SpotifyManager.shared.isPlaying == false {
+            collectionCover.image = #imageLiteral(resourceName: "My-Boo")
+            removeAnimation(image: collectionCover)
+        }
 
     }
 }

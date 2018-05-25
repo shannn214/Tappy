@@ -22,6 +22,7 @@ class GameMapTestViewController: UIViewController {
 
     let animation = CAKeyframeAnimation(keyPath: "position")
     var monster: UIImageView!
+    var monsterImages: [UIImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,11 +74,15 @@ class GameMapTestViewController: UIViewController {
     }
 
     func createCharacter() {
+        
+        monster = UIImageView()
 
-        monster = UIImageView(image: #imageLiteral(resourceName: "pink_Qghost"))
-        monster.frame = CGRect(origin: CGPoint(x: 2 * imageView.bounds.width / 100,
-                                               y: 72 * imageView.bounds.height/100),
-                               size: CGSize(width: 70, height: 80))
+        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
+        animate(imageView: monster, images: monsterImages)
+//        monster.frame = CGRect(origin: CGPoint(x: 2 * imageView.bounds.width / 100,
+//                                               y: 72 * imageView.bounds.height/100),
+//                               size: CGSize(width: 70, height: 80))
+        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 73 * imageView.bounds.height/100, width: 70, height: 70)
         self.imageView.addSubview(monster)
 
     }
@@ -134,11 +139,11 @@ class GameMapTestViewController: UIViewController {
         propsButtonArray[7].frame = CGRect(origin: CGPoint(x: 80 * imageView.bounds.width / 100,
                                                            y: 50 * imageView.bounds.height/100),
                                            size: CGSize(width: 60, height: 60))
-        propsButtonArray[8].frame = CGRect(origin: CGPoint(x: 90 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
+        propsButtonArray[8].frame = CGRect(origin: CGPoint(x: 87.5 * imageView.bounds.width / 100,
+                                                           y: 46.4 * imageView.bounds.height/100),
                                            size: CGSize(width: 60, height: 60))
-        propsButtonArray[9].frame = CGRect(origin: CGPoint(x: 95 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
+        propsButtonArray[9].frame = CGRect(origin: CGPoint(x: 12.5 * imageView.bounds.width / 100,
+                                                           y: 21.4 * imageView.bounds.height/100),
                                            size: CGSize(width: 60, height: 60))
 
     }
@@ -214,7 +219,7 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[0].frame = CGRect(origin: CGPoint(x: 4.4 * imageView.bounds.width / 100,
                                                         y: 48 * imageView.bounds.height/100),
                                         size: CGSize(width: 60, height: 60))
-        CDButtonArray[1].frame = CGRect(origin: CGPoint(x: 16 * imageView.bounds.width/100,
+        CDButtonArray[1].frame = CGRect(origin: CGPoint(x: 16.1 * imageView.bounds.width/100,
                                                         y: 53 * imageView.bounds.height/100),
                                         size: CGSize(width: 60, height: 60))
         CDButtonArray[2].frame = CGRect(origin: CGPoint(x: 28 * imageView.bounds.width/100,
@@ -235,11 +240,11 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[7].frame = CGRect(origin: CGPoint(x: 93.75 * imageView.bounds.width/100,
                                                         y: 49 * imageView.bounds.height/100),
                                         size: CGSize(width: 60, height: 60))
-        CDButtonArray[8].frame = CGRect(origin: CGPoint(x: 98 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
+        CDButtonArray[8].frame = CGRect(origin: CGPoint(x: 87.5 * imageView.bounds.width/100,
+                                                        y: 46.4 * imageView.bounds.height/100),
                                         size: CGSize(width: 60, height: 60))
-        CDButtonArray[9].frame = CGRect(origin: CGPoint(x: 97 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
+        CDButtonArray[9].frame = CGRect(origin: CGPoint(x: 12.5 * imageView.bounds.width/100,
+                                                        y: 21.4 * imageView.bounds.height/100),
                                         size: CGSize(width: 60, height: 60))
 
     }
@@ -262,6 +267,17 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
+    
+    func levelCase(index: Int, positionX: CGFloat) {
+        
+        CDButtonArray[index].isHidden = false
+        explosionArray[index].isHidden = false
+        animate(imageView: explosionArray[index], images: explosionImages)
+        UIView.animate(withDuration: 2.0, animations: {
+            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100, y: 73 * self.imageView.bounds.height/100,
+                                        width: self.monster.frame.size.width, height: self.monster.frame.size.height)
+        })
+    }
 
     @objc func showCDButton(notification: Notification) {
 //    func showCDButton() {
@@ -275,64 +291,30 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[0].isHidden = false
             explosionArray[0].isHidden = false
             animate(imageView: explosionArray[0], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 2 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 14 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-            monster.frame = CGRect(x: 14 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100,
-                                   width: monster.bounds.size.width, height: monster.bounds.size.height)
-
+//            self.imageView.bounds = CGRect(x: 2 * self.imageView.bounds.width/100, y: 0 * self.imageView.bounds.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 2:
-            CDButtonArray[1].isHidden = false
-            explosionArray[1].isHidden = false
-            animate(imageView: explosionArray[1], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 14 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 30 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 1, positionX: 14)
+//            self.imageView.bounds = CGRect(x: 13 * self.imageView.frame.width/100, y: 0 * self.imageView.frame.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 3:
-            CDButtonArray[2].isHidden = false
-            explosionArray[2].isHidden = false
-            animate(imageView: explosionArray[2], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 30 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 40 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 2, positionX: 25)
         case 4:
-            CDButtonArray[3].isHidden = false
-            explosionArray[3].isHidden = false
-            animate(imageView: explosionArray[3], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 40 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 50 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 3, positionX: 37)
         case 5:
-            CDButtonArray[4].isHidden = false
-            explosionArray[4].isHidden = false
-            animate(imageView: explosionArray[4], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 50 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 60 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 4, positionX: 48)
         case 6:
-            CDButtonArray[5].isHidden = false
-            explosionArray[5].isHidden = false
-            animate(imageView: explosionArray[5], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 60 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 75 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 5, positionX: 64)
         case 7:
-            CDButtonArray[6].isHidden = false
-            explosionArray[6].isHidden = false
-            animate(imageView: explosionArray[6], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 75 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 85 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 6, positionX: 78)
         case 8:
-            CDButtonArray[7].isHidden = false
-            explosionArray[7].isHidden = false
-            animate(imageView: explosionArray[7], images: explosionImages)
-            movingAnimations(start: CGPoint(x: 85 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100),
-                             end: CGPoint(x: 95 * imageView.bounds.width/100, y: 80 * imageView.bounds.height/100))
-
+            levelCase(index: 7, positionX: 90)
         case 9:
             CDButtonArray[8].isHidden = false
+            explosionArray[8].isHidden = false
+            animate(imageView: explosionArray[8], images: explosionImages)
         default:
             CDButtonArray[9].isHidden = false
+            explosionArray[9].isHidden = false
+            animate(imageView: explosionArray[9], images: explosionImages)
         }
 
     }
@@ -364,6 +346,22 @@ class GameMapTestViewController: UIViewController {
         return imageArray
 
     }
+    
+    func createImageAnimationForGhost(total: Int, imageRefix: String) -> [UIImage] {
+        
+        var imageArray: [UIImage] = []
+        
+        for imageCount in 0..<total {
+            let imageName = "\(imageRefix)\(imageCount).png"
+            let image = UIImage(named: imageName)!
+            
+            imageArray.append(image)
+        }
+        
+        return imageArray
+        
+    }
+
 
     func animate(imageView: UIImageView, images: [UIImage]) {
 
@@ -376,13 +374,17 @@ class GameMapTestViewController: UIViewController {
 
     // NOTE: Pop Prop View
     func popUpView() {
+        //image: UIImage, hint: String --- NOTE: Add to function parameter when image and text is ready
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
+//        popUpRecordView.recordTitle.text = hint
+//        popUpRecordView.recordCover = UIImageView(image: image)
         popUpRecordView.view.alpha = 0
         popUpRecordView.introView.isHidden = true
-        UIView.animate(withDuration: 0.2) {
+//        popUpRecordView.recordCover.image = #imageLiteral(resourceName: "headphone")
+        UIView.animate(withDuration: 0.3) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)
         }

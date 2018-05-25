@@ -97,35 +97,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkV-ms-bMk">
-                                <rect key="frame" x="47" y="188" width="280" height="290"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-zK-ykh" userLabel="Next Button">
-                                        <rect key="frame" x="121" y="246" width="38" height="34"/>
-                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="17"/>
-                                        <state key="normal" title="Next">
-                                            <color key="titleColor" red="0.088099875470000005" green="0.096848503360000004" blue="0.51892430280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextButton:" destination="cDc-D7-mdn" eventType="touchUpInside" id="2qi-oj-fTi"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92316670820000002" green="0.72453672140000003" blue="0.1001995468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="vHb-zK-ykh" secondAttribute="bottom" constant="10" id="1by-rR-ygf"/>
-                                    <constraint firstItem="vHb-zK-ykh" firstAttribute="centerX" secondItem="IkV-ms-bMk" secondAttribute="centerX" id="fq3-w9-80J"/>
-                                    <constraint firstAttribute="width" constant="280" id="iee-WM-zef"/>
-                                    <constraint firstAttribute="height" constant="290" id="t2x-hj-FmR"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6D6-kn-XfE">
                                 <rect key="frame" x="47" y="179" width="280" height="290"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0I2-bY-YM8">
-                                        <rect key="frame" x="117" y="246" width="46" height="34"/>
+                                        <rect key="frame" x="111" y="246" width="58" height="34"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="17"/>
-                                        <state key="normal" title="Leave">
+                                        <state key="normal" title="YA-BEE">
                                             <color key="titleColor" red="0.088099875470000005" green="0.096848503360000004" blue="0.51892430280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -158,6 +136,42 @@
                                     <constraint firstItem="dxU-2c-MIJ" firstAttribute="top" secondItem="nhb-BD-wSB" secondAttribute="bottom" constant="8" id="rAd-JK-CCE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkV-ms-bMk">
+                                <rect key="frame" x="47" y="188" width="280" height="290"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-zK-ykh" userLabel="Next Button">
+                                        <rect key="frame" x="121" y="246" width="38" height="34"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="17"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" red="0.088099875470000005" green="0.096848503360000004" blue="0.51892430280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButton:" destination="cDc-D7-mdn" eventType="touchUpInside" id="2qi-oj-fTi"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tme-D3-hpC">
+                                        <rect key="frame" x="20" y="42" width="240" height="170"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="170" id="G2s-o8-15R"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comodioque civiuda.</string>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92316670820000002" green="0.72453672140000003" blue="0.1001995468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="vHb-zK-ykh" secondAttribute="bottom" constant="10" id="1by-rR-ygf"/>
+                                    <constraint firstItem="tme-D3-hpC" firstAttribute="top" secondItem="IkV-ms-bMk" secondAttribute="top" constant="42" id="HrW-LM-zjs"/>
+                                    <constraint firstAttribute="trailing" secondItem="tme-D3-hpC" secondAttribute="trailing" constant="20" id="L6o-03-l68"/>
+                                    <constraint firstItem="tme-D3-hpC" firstAttribute="centerX" secondItem="IkV-ms-bMk" secondAttribute="centerX" id="Lys-zz-qeS"/>
+                                    <constraint firstItem="vHb-zK-ykh" firstAttribute="centerX" secondItem="IkV-ms-bMk" secondAttribute="centerX" id="fq3-w9-80J"/>
+                                    <constraint firstAttribute="width" constant="280" id="iee-WM-zef"/>
+                                    <constraint firstAttribute="height" constant="290" id="t2x-hj-FmR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -169,6 +183,7 @@
                         <viewLayoutGuide key="safeArea" id="wLg-Tx-ohp"/>
                     </view>
                     <connections>
+                        <outlet property="introTextView" destination="tme-D3-hpC" id="Mh6-gm-9WQ"/>
                         <outlet property="introView" destination="IkV-ms-bMk" id="qtU-Ca-xcb"/>
                         <outlet property="propView" destination="6D6-kn-XfE" id="QFm-tv-CfK"/>
                         <outlet property="recordCover" destination="nhb-BD-wSB" id="hfl-hM-jC2"/>
@@ -177,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8i-xp-nzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="194"/>
+            <point key="canvasLocation" x="952.79999999999995" y="193.85307346326837"/>
         </scene>
         <!--Game Map Test View Controller-->
         <scene sceneID="996-eU-V48">

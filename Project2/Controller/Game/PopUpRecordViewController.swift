@@ -15,29 +15,17 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var recordTitle: UILabel!
     @IBOutlet weak var propView: UIView!
     @IBOutlet weak var introView: UIView!
-    
+    @IBOutlet weak var introTextView: UITextView!
+
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        recordCover.alpha = 0
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(touchCover))
-        recordCover.isUserInteractionEnabled = true
-        recordCover.addGestureRecognizer(tap)
+        introViewSetup()
+        propViewSetup()
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-
-        self.propView.layer.cornerRadius = 20
-        self.introView.layer.cornerRadius = 20
-        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(showInfo(notification:)),
-//            name: .startPlayingTrack,
-//            object: nil
-//        )
 
     }
 
@@ -51,45 +39,29 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    @objc func touchCover() {
+    func introViewSetup() {
 
-        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController()
-        self.present(playerVC!, animated: true, completion: nil)
+        self.introView.layer.cornerRadius = 20
+        self.introTextView.text = "Hi, there. \n Please read the hint below. \n Then try to find something in the map.\n "
+
+    }
+
+    func propViewSetup() {
+
+        self.propView.layer.cornerRadius = 20
 
     }
 
     @IBAction func nextButton(_ sender: Any) {
         self.view.removeFromSuperview()
     }
-    
-    
+
     @IBAction func leaveButton(_ sender: Any) {
 
         NotificationCenter.default.post(name: .leavePropPopView,
                                         object: nil
                                         )
         self.view.removeFromSuperview()
-
-    }
-
-    func showAnimation() {
-//        TO DO
-    }
-
-    func removeAnimation() {
-//        TO DO
-    }
-
-//    Animation
-    func rotate(image: UIImageView) {
-
-        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
-        rotationAnimation.duration = 10
-        rotationAnimation.isCumulative = true
-        rotationAnimation.repeatCount = .infinity
-        image.layer.add(rotationAnimation, forKey: "rotationAnimation")
-        image.layer.cornerRadius = image.bounds.size.width * 0.5
 
     }
 

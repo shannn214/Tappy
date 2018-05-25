@@ -75,7 +75,7 @@ class PlayerViewController: UIViewController {
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 500 {
                 self.dismiss(animated: true) {
-                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
+//                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
                 }
             } else {
                 UIView.animate(withDuration: 0.3, animations: {

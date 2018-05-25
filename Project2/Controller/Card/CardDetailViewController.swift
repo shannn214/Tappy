@@ -25,6 +25,8 @@ class CardDetailViewController: UIViewController {
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
+    
+    var imageView: UIImageView!
 
     let initialPoint = CGPoint(x: 0, y: 0)
 
@@ -33,17 +35,26 @@ class CardDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initialSetup()
+
+    }
+    
+    func initialSetup() {
+        
         cardImage.layer.cornerRadius = 15
+        cardImage.layer.borderWidth = 1
+        cardImage.layer.borderColor = UIColor.lightGray.cgColor
+        
         cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
         cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
         leadingContraint.constant = UIScreen.main.bounds.width * 0.1
         topConstraint.constant = UIScreen.main.bounds.width * 0.1
-
+        
         panGesture.delegate = self
         panGesture.isEnabled = false
-
+        
         tapGesture.cancelsTouchesInView = false
-
+        
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -74,7 +85,12 @@ class CardDetailViewController: UIViewController {
                                          height: self.view.frame.size.height
                 )
 
-                backgroundView.alpha = 1 - touchTrans.y / 100
+//                backgroundView.alpha = 1 - touchTrans.y / 100
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.backgroundView.alpha = 0
+                }
+                
                 if touchTrans.y < 15 {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
@@ -94,6 +110,7 @@ class CardDetailViewController: UIViewController {
                                                                       height: self.view.frame.size.height
                                                                      )
                                              self.backgroundView.alpha = 1
+                                             self.backgroundView.layer.cornerRadius = 0
 
                 })
             }
