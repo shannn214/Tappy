@@ -12,53 +12,78 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
 
-    @IBOutlet weak var cover: UIImageView!
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var artist: UILabel!
-    @IBAction func leaveBtn(_ sender: Any) {
-        self.dismiss(animated: true) {
-        }
-        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
-    }
+    @IBOutlet weak var playerPanelView: PlayerPanelView!
+    @IBOutlet weak var backgroundCover: UIImageView!
 
-    let designSetting = DesignSetting()
-
-    let sortedArray = DBProvider.shared.sortedArray
+    var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        slider.maximumValue = Float(duration!)
-//        slider.value = 0.0
-//        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
-
-        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
-
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(showInfo(notification:)),
+            selector: #selector(trackDuration(notification:)),
             name: .startPlayingTrack,
             object: nil
         )
 
     }
 
-    @objc func showInfo(notification: NSNotification) {
+    // MARK: Notitfication
+    @objc func trackDuration(notification: Notification) {
 
-//        let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String
-//        let title = SpotifyManager.shared.player?.metadata.currentTrack?.playbackSourceName
-//        let artistName = SpotifyManager.shared.player?.metadata.currentTrack?.artistName
-//        cover.sd_setImage(with: URL(string: url!))
-//        trackName.text = title
-//        artist.text = artistName
+        guard let duration = SpotifyManager.shared.player?.metadata.currentTrack?.duration,
+              let statusTime = SpotifyManager.shared.position
+        else { return }
+
+        let trackDuration = formatPlayTime(second: duration)
+        playerPanelView.updateEndTime(time: trackDuration)
+
+        let time = formatPlayTime(second: statusTime)
+        playerPanelView.updateCurrentTime(currentTime: time, proportion: statusTime/duration)
+
+    }
+
+    func formatPlayTime(second: TimeInterval) -> String {
+
+        if second.isNaN {
+            return "00:00"
+        }
+        let min = Int(second / 60)
+        let sec = Int(second) % 60
+        return String(format: "%02d:%02d", min, sec)
 
     }
 
-    func sliderProgress() {
+    @IBAction func playButton(_ sender: Any) {
+
+//        SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
+
     }
 
-    @objc func update() {
+    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+
+        let touchPoint = sender.location(in: self.view.window)
+        let touchTrans = sender.translation(in: self.view.window)
+
+        if sender.state == UIGestureRecognizerState.began {
+//            initialTouchPoint = touchPoint
+        } else if sender.state == UIGestureRecognizerState.changed {
+            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
+                self.view.frame = CGRect(x: 0, y: touchTrans.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            }
+        } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
+            if touchPoint.y - initialPoint.y > 500 {
+                self.dismiss(animated: true) {
+//                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
+                }
+            } else {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                })
+            }
+        }
 
     }
+
 }

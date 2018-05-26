@@ -24,6 +24,8 @@ class SpotifyManager: UIViewController {
     let redirectURL = "project2://callback"
 
     var recordInfo: TrackInfo?
+    var position: TimeInterval?
+    var isPlaying: Bool?
 
     func setup() {
 
@@ -117,6 +119,29 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
             name: .startPlayingTrack,
             object: nil
         )
+
+    }
+
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didReceive event: SpPlaybackEvent) {
+    }
+
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {
+        self.isPlaying = isPlaying
+
+        NotificationCenter.default.post(
+            name: .trackPlayinyStatus,
+            object: nil
+        )
+    }
+
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePosition position: TimeInterval) {
+
+        NotificationCenter.default.post(
+            name: .startPlayingTrack,
+            object: nil
+        )
+
+        self.position = position
 
     }
 

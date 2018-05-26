@@ -10,7 +10,11 @@ import Foundation
 import SDWebImage
 
 protocol CollectionListControllerDelegate: class {
+
     func collectionViewDidScroll(_ controller: CollectionListViewController, translation: CGFloat)
+
+    func playerViewDidDismiss(url: String)
+
 }
 
 class CollectionListViewController: UIViewController {
@@ -22,10 +26,6 @@ class CollectionListViewController: UIViewController {
     let designSetting = DesignSetting()
 
     let sortedArray = DBProvider.shared.sortedArray
-
-    let transitionAnimation = TransitionAnimation()
-
-    var selectedCell: TrackCollectionViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +70,11 @@ class CollectionListViewController: UIViewController {
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2
             setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            setLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+            setLayout.itemSize = CGSize(width: itemSize, height: 210)
             setLayout.minimumLineSpacing = 1
             setLayout.minimumInteritemSpacing = 0
         }
+
     }
 
 }
@@ -81,10 +82,6 @@ class CollectionListViewController: UIViewController {
 extension CollectionListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        if LevelStatusManager.shared.level! - 1 <= 9 {
-            return LevelStatusManager.shared.level!
-        }
 
         return 10
 
@@ -103,24 +100,18 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell?.artist.text = info.artist
         recordCell?.trackName.text = info.trackName
         recordCell?.cover.sd_setImage(with: URL(string: info.cover))
-//
+        recordCell?.cover.isHidden = true
+        recordCell?.artist.isHidden = true
+        recordCell?.trackName.isHidden = true
 
-        //-------------put controller in cell-------
-//        let trackCell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TrackCollectionViewCell.self), for: indexPath) as? TrackCollectionViewCell
-//        let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController
-//        self.addChildViewController(playerVC!)
-//        playerVC!.transitioningDelegate = self
-//        playerVC!.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
-//        playerVC!.view.clipsToBounds = true
-//
-//        trackCell?.trackCellView.addSubview((playerVC?.view)!)
-//        trackCell?.clipsToBounds = true
-//
-//        playerVC?.artist.text = info.artist
-//        playerVC?.trackName.text = info.trackName
-//        playerVC?.cover.sd_setImage(with: URL(string: info.cover))
+        recordCell?.isUserInteractionEnabled = false
 
-//        return trackCell!
+        if indexPath.row < LevelStatusManager.shared.level! {
+            recordCell?.cover.isHidden = false
+            recordCell?.artist.isHidden = false
+            recordCell?.trackName.isHidden = false
+            recordCell?.isUserInteractionEnabled = true
+        }
 
         return recordCell!
     }
@@ -135,50 +126,18 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else {
-            return
-        }
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
         let info = sortedArray![indexPath.row]
         SpotifyManager.shared.playMusic(track: info.trackUri)
 
-//        selectedCell = recordCollectionView.cellForItem(at: indexPath) as? TrackCollectionViewCell
-//        selectedCell?.clipsToBounds = false
-//        selectedCell?.trackCellView.clipsToBounds = false
-//        selectedCell?.trackCellView.frame = CGRect(x: UIScreen.main.bounds.minX, y: UIScreen.main.bounds.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
-//        present(playerVC, animated: true, completion: nil)
-
-//        playerVC.transitioningDelegate = self
         present(playerVC, animated: true) {
-            playerVC.cover.sd_setImage(with: URL(string: info.cover))
-            playerVC.artist.text = info.artist
-            playerVC.trackName.text = info.trackName
+            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+            playerVC.playerPanelView.artist.text = info.artist
+            playerVC.playerPanelView.trackName.text = info.trackName
+            self.delegate?.playerViewDidDismiss(url: info.cover)
         }
 
-    }
-
-}
-
-extension CollectionListViewController: UIViewControllerTransitioningDelegate {
-
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        guard let originFrame = selectedCell?.superview?.convert((selectedCell?.frame)!, to: nil) else { return transitionAnimation }
-
-        transitionAnimation.originFrame = originFrame
-
-        transitionAnimation.presenting = true
-
-//        selectedCell?.isHidden = true
-
-        return transitionAnimation
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        transitionAnimation.presenting = false
-
-        return transitionAnimation
     }
 
 }

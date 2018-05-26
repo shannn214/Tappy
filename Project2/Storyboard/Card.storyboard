@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Medium.otf">
+            <string>CircularStd-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Card View Controller-->
         <scene sceneID="LKu-BU-zGQ">
@@ -26,21 +31,22 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yB-Eh-YzN">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
-                                                <color key="backgroundColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.67883228988806688" green="0.68426294820717137" blue="0.68426294820717137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="255" id="NZF-kF-9Q5"/>
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2U-3P-lEH">
                                                 <rect key="frame" x="122" y="65" width="130" height="130"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="130" id="4Jb-Z2-YdZ"/>
                                                     <constraint firstAttribute="width" constant="130" id="kcR-S5-kVz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-NV-YjH">
-                                                <rect key="frame" x="133.5" y="205" width="108.5" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-NV-YjH">
+                                                <rect key="frame" x="167.5" y="205" width="41" height="23"/>
+                                                <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -90,6 +96,7 @@
                         <outlet property="containerView" destination="1vq-CB-Hex" id="cdk-Ln-NMG"/>
                         <outlet property="gradientHeightConstraint" destination="NZF-kF-9Q5" id="LYf-m5-oLo"/>
                         <outlet property="gradientView" destination="9yB-Eh-YzN" id="RKe-gi-FyA"/>
+                        <outlet property="topImageConstraint" destination="Yhy-3K-zjV" id="Ay2-YP-ZuZ"/>
                         <outlet property="topView" destination="Fz9-P5-ouS" id="onv-6l-A69"/>
                         <outlet property="topViewHeightConstraint" destination="J2l-hs-X5D" id="EqQ-4h-3z5"/>
                         <outlet property="topViewImage" destination="c2U-3P-lEH" id="5Xv-rG-jQy"/>

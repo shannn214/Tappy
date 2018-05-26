@@ -38,4 +38,8 @@ extension UIStoryboard {
         return UIStoryboard(name: "Player", bundle: nil)
     }
 
+    static func cardDetailStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "CardDetail", bundle: nil)
+    }
+
 }
