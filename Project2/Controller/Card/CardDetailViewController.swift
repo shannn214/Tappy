@@ -16,16 +16,18 @@ protocol CardDetailDelegate: class {
 
 class CardDetailViewController: UIViewController {
 
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var cardViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var cardViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var cardViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+
+
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var leadingContraint: NSLayoutConstraint!
-    @IBOutlet weak var cardImageHeight: NSLayoutConstraint!
-    @IBOutlet weak var cardImageWidth: NSLayoutConstraint!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-    
     var imageView: UIImageView!
 
     let initialPoint = CGPoint(x: 0, y: 0)
@@ -38,23 +40,23 @@ class CardDetailViewController: UIViewController {
         initialSetup()
 
     }
-    
+
     func initialSetup() {
+
+        cardView.layer.cornerRadius = 15
+        cardViewWidth.constant = UIScreen.main.bounds.width * 0.3
+        cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
+        cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
+        cardViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
         
-        cardImage.layer.cornerRadius = 15
-        cardImage.layer.borderWidth = 1
-        cardImage.layer.borderColor = UIColor.lightGray.cgColor
-        
-        cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
-        cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
-        leadingContraint.constant = UIScreen.main.bounds.width * 0.1
-        topConstraint.constant = UIScreen.main.bounds.width * 0.1
+//        backgroundView.alpha = 0.6
+
         
         panGesture.delegate = self
         panGesture.isEnabled = false
-        
+
         tapGesture.cancelsTouchesInView = false
-        
+
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -86,11 +88,11 @@ class CardDetailViewController: UIViewController {
                 )
 
 //                backgroundView.alpha = 1 - touchTrans.y / 100
-                
+
                 UIView.animate(withDuration: 0.3) {
                     self.backgroundView.alpha = 0
                 }
-                
+
                 if touchTrans.y < 15 {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
@@ -120,10 +122,11 @@ class CardDetailViewController: UIViewController {
 
     func changeContraintToFullScreen() {
 
-        leadingContraint.constant = UIScreen.main.bounds.width * 0.125
-        cardImageWidth.constant = UIScreen.main.bounds.width * 0.75
-        cardImageHeight.constant = UIScreen.main.bounds.width * 0.75
         backgroundView.layer.cornerRadius = 0
+        
+        cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
+        cardViewWidth.constant = UIScreen.main.bounds.width * 0.75
+        cardViewHeight.constant = UIScreen.main.bounds.width * 0.75
 
         view.layoutIfNeeded()
         panGesture.isEnabled = true
@@ -132,9 +135,9 @@ class CardDetailViewController: UIViewController {
 
     func changeConstraintToCellSize() {
 
-        cardImageWidth.constant = UIScreen.main.bounds.width * 0.3
-        cardImageHeight.constant = UIScreen.main.bounds.width * 0.3
-        leadingContraint.constant = UIScreen.main.bounds.width * 0.1
+        cardViewWidth.constant = UIScreen.main.bounds.width * 0.3
+        cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
+        cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
 
         view.layoutIfNeeded()
         panGesture.isEnabled = false

@@ -17,7 +17,7 @@ protocol CardListControllerDelegate: class {
 class CardListViewController: UIViewController {
 
     @IBOutlet weak var listCollectionView: UICollectionView!
-    
+
     var propImages: [UIImage] = []
 
     weak var delegate: CardListControllerDelegate?
@@ -104,10 +104,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         let cardCell = listCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
-        
 
         guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
-        
+
         self.addChildViewController(cardDetailVC)
 
         cardCell?.cardCellView.addSubview((cardDetailVC.view)!)
@@ -118,13 +117,13 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardCell?.clipsToBounds = true
 
-        cardDetailVC.cardImage.isHidden = true
+        cardDetailVC.cardView.isHidden = true
 
         cardCell?.isUserInteractionEnabled = false
 
         if indexPath.row < LevelStatusManager.shared.level! {
 
-            cardDetailVC.cardImage.isHidden = false
+            cardDetailVC.cardView.isHidden = false
 
             cardCell?.isUserInteractionEnabled = true
 
@@ -176,29 +175,29 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         }
 
     }
-    
+
     func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
-        
+
         var imageArray: [UIImage] = []
-        
+
         for imageCount in 0..<total {
             let imageName = "\(imageRefix)\(imageCount).png"
             let image = UIImage(named: imageName)!
-            
+
             imageArray.append(image)
         }
-        
+
         return imageArray
-        
+
     }
-    
+
     func animate(imageView: UIImageView, images: [UIImage]) {
-        
+
         imageView.animationImages = images
         imageView.animationDuration = 0.8
         imageView.animationRepeatCount = 0
         imageView.startAnimating()
-        
+
     }
 
 }

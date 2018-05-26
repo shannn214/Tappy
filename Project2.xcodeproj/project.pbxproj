@@ -52,7 +52,6 @@
 		09A62B4220AF3FCD00BA5932 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A62B4020AF3FCD00BA5932 /* CardCollectionViewCell.xib */; };
 		09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B4420B15FE600BA5932 /* NavigationController.swift */; };
 		09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */; };
-		09A6855020B5B26D00BE0EA5 /* GameMovingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6854F20B5B26D00BE0EA5 /* GameMovingViewController.swift */; };
 		09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855120B5B91700BE0EA5 /* TapAnimation.swift */; };
 		09A6855420B5BB3400BE0EA5 /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855320B5BB3400BE0EA5 /* PopView.swift */; };
 		09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855520B7005B00BE0EA5 /* Moon2.0-Regular.otf */; };
@@ -119,7 +118,6 @@
 		09A62B4020AF3FCD00BA5932 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		09A62B4420B15FE600BA5932 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapTestViewController.swift; sourceTree = "<group>"; };
-		09A6854F20B5B26D00BE0EA5 /* GameMovingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMovingViewController.swift; sourceTree = "<group>"; };
 		09A6855120B5B91700BE0EA5 /* TapAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAnimation.swift; sourceTree = "<group>"; };
 		09A6855320B5BB3400BE0EA5 /* PopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		09A6855520B7005B00BE0EA5 /* Moon2.0-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moon2.0-Regular.otf"; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
-				09A6854F20B5B26D00BE0EA5 /* GameMovingViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -618,7 +615,6 @@
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
 				09A62B4120AF3FCD00BA5932 /* CardCollectionViewCell.swift in Sources */,
-				09A6855020B5B26D00BE0EA5 /* GameMovingViewController.swift in Sources */,
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
 				09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
@@ -789,7 +785,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -816,7 +815,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

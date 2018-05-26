@@ -15,12 +15,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var gradientView: UIView!
-    
+
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-    
+
     let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
@@ -36,16 +36,16 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         setup()
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(trackIsStreaming(notification:)),
             name: .trackPlayinyStatus,
             object: nil
         )
-        
+
         self.view.isUserInteractionEnabled = true
-        
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +60,10 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             collectionListViewController.delegate = self
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(trackIsStreaming(notification:)),
@@ -70,24 +72,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         )
     }
 
-    @IBAction func topCoverAction(_ sender: Any) {
-        
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
-        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String,
-              let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName as? String,
-              let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name as? String
-        else { return }
-
-        present(playerVC, animated: true) {
-            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
-            playerVC.backgroundCover.sd_setImage(with: URL(string: url))
-            playerVC.playerPanelView.artist.text = artist
-            playerVC.playerPanelView.trackName.text = trackName
-//            self.delegate?.playerViewDismiss(url: url)
-        }
-        
-    }
-    
     func setup() {
 
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
@@ -101,7 +85,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
         layer.frame = UIScreen.main.bounds
         self.gradientView.layer.addSublayer(layer)
-        
 
     }
 
@@ -149,7 +132,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
         image.layer.cornerRadius = image.bounds.size.width * 0.5
 
     }
-    
+
     func removeAnimation(image: UIImageView) {
         image.layer.removeAllAnimations()
         image.layoutIfNeeded()

@@ -152,36 +152,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     }
 
-//    @objc func showRecordInfo(sender: UIButton!) {
-//        popUpView()
-//
-//        var btnSendTag: UIButton = sender
-//        switch btnSendTag.tag {
-//        case 0:
-//            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![0].trackUri)
-//            //use database to insert track value
-//        default:
-//            SpotifyManager.shared.playMusic(track: DBProvider.shared.sortedArray![1].trackUri)
-//        }
-//
-//    }
-
     @IBAction func movingButton(_ sender: Any) {
 
         movingBtn.isHidden = false
         progress.progress = 0
         distance = 0
-
-//        self.checkLevel = LevelStatusManager.shared.level! + 1
-//
-//        if self.checkLevel < 11 {
-//            LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
-//        }
-//
-//        NotificationCenter.default.post(
-//            name: .pressMovingButton,
-//            object: nil
-//        )
 
     }
 

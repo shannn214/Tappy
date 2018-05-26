@@ -74,14 +74,10 @@ class GameMapTestViewController: UIViewController {
     }
 
     func createCharacter() {
-        
-        monster = UIImageView()
 
+        monster = UIImageView()
         monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
         animate(imageView: monster, images: monsterImages)
-//        monster.frame = CGRect(origin: CGPoint(x: 2 * imageView.bounds.width / 100,
-//                                               y: 72 * imageView.bounds.height/100),
-//                               size: CGSize(width: 70, height: 80))
         monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 73 * imageView.bounds.height/100, width: 70, height: 70)
         self.imageView.addSubview(monster)
 
@@ -100,6 +96,14 @@ class GameMapTestViewController: UIViewController {
         view.addSubview(scrollView)
 
     }
+    
+    func propsButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
+        
+        propsButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
+                                                               y: positionY * imageView.bounds.height/100),
+                                               size: CGSize(width: 60, height: 60))
+        
+    }
 
     func createPropsButton() {
 
@@ -114,37 +118,17 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
 
         }
-
-        propsButtonArray[0].frame = CGRect(origin: CGPoint(x: 10 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[1].frame = CGRect(origin: CGPoint(x: 20 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[2].frame = CGRect(origin: CGPoint(x: 30 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[3].frame = CGRect(origin: CGPoint(x: 40 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[4].frame = CGRect(origin: CGPoint(x: 50 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[5].frame = CGRect(origin: CGPoint(x: 60 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[6].frame = CGRect(origin: CGPoint(x: 70 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[7].frame = CGRect(origin: CGPoint(x: 80 * imageView.bounds.width / 100,
-                                                           y: 50 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[8].frame = CGRect(origin: CGPoint(x: 87.5 * imageView.bounds.width / 100,
-                                                           y: 46.4 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
-        propsButtonArray[9].frame = CGRect(origin: CGPoint(x: 12.5 * imageView.bounds.width / 100,
-                                                           y: 21.4 * imageView.bounds.height/100),
-                                           size: CGSize(width: 60, height: 60))
+        
+        propsButtonSetup(index: 0, positionX: 10, positionY: 50)
+        propsButtonSetup(index: 1, positionX: 20, positionY: 50)
+        propsButtonSetup(index: 2, positionX: 30, positionY: 50)
+        propsButtonSetup(index: 3, positionX: 40, positionY: 50)
+        propsButtonSetup(index: 4, positionX: 50, positionY: 50)
+        propsButtonSetup(index: 5, positionX: 60, positionY: 50)
+        propsButtonSetup(index: 6, positionX: 70, positionY: 50)
+        propsButtonSetup(index: 7, positionX: 80, positionY: 50)
+        propsButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
+        propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
 
@@ -202,6 +186,14 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
+    
+    func CDButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
+        
+        CDButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
+                                                            y: positionY * imageView.bounds.height/100),
+                                            size: CGSize(width: 60, height: 60))
+        
+    }
 
     func createButton() {
 
@@ -216,37 +208,17 @@ class GameMapTestViewController: UIViewController {
 
         }
 
-        CDButtonArray[0].frame = CGRect(origin: CGPoint(x: 4.4 * imageView.bounds.width / 100,
-                                                        y: 48 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[1].frame = CGRect(origin: CGPoint(x: 16.1 * imageView.bounds.width/100,
-                                                        y: 53 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[2].frame = CGRect(origin: CGPoint(x: 28 * imageView.bounds.width/100,
-                                                        y: 53 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[3].frame = CGRect(origin: CGPoint(x: 39.25 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[4].frame = CGRect(origin: CGPoint(x: 51.75 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[5].frame = CGRect(origin: CGPoint(x: 65.75 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[6].frame = CGRect(origin: CGPoint(x: 80 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[7].frame = CGRect(origin: CGPoint(x: 93.75 * imageView.bounds.width/100,
-                                                        y: 49 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[8].frame = CGRect(origin: CGPoint(x: 87.5 * imageView.bounds.width/100,
-                                                        y: 46.4 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-        CDButtonArray[9].frame = CGRect(origin: CGPoint(x: 12.5 * imageView.bounds.width/100,
-                                                        y: 21.4 * imageView.bounds.height/100),
-                                        size: CGSize(width: 60, height: 60))
-
+        CDButtonSetup(index: 0, positionX: 4.4, positionY: 48)
+        CDButtonSetup(index: 1, positionX: 16.1, positionY: 53)
+        CDButtonSetup(index: 2, positionX: 28, positionY: 53)
+        CDButtonSetup(index: 3, positionX: 39.25, positionY: 49)
+        CDButtonSetup(index: 4, positionX: 51.75, positionY: 49)
+        CDButtonSetup(index: 5, positionX: 65.75, positionY: 49)
+        CDButtonSetup(index: 6, positionX: 80, positionY: 49)
+        CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
+        CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
+        CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
+        
     }
 
     func setExplosionImage() {
@@ -267,20 +239,22 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
-    
+
     func levelCase(index: Int, positionX: CGFloat) {
-        
+
         CDButtonArray[index].isHidden = false
         explosionArray[index].isHidden = false
         animate(imageView: explosionArray[index], images: explosionImages)
         UIView.animate(withDuration: 2.0, animations: {
-            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100, y: 73 * self.imageView.bounds.height/100,
-                                        width: self.monster.frame.size.width, height: self.monster.frame.size.height)
+            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
+                                        y: 73 * self.imageView.bounds.height/100,
+                                        width: self.monster.frame.size.width,
+                                        height: self.monster.frame.size.height)
         })
+        
     }
 
     @objc func showCDButton(notification: Notification) {
-//    func showCDButton() {
 
         self.checkLevel = LevelStatusManager.shared.level!
 
@@ -294,7 +268,6 @@ class GameMapTestViewController: UIViewController {
 //            self.imageView.bounds = CGRect(x: 2 * self.imageView.bounds.width/100, y: 0 * self.imageView.bounds.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 2:
             levelCase(index: 1, positionX: 14)
-//            self.imageView.bounds = CGRect(x: 13 * self.imageView.frame.width/100, y: 0 * self.imageView.frame.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 3:
             levelCase(index: 2, positionX: 25)
         case 4:
@@ -346,22 +319,21 @@ class GameMapTestViewController: UIViewController {
         return imageArray
 
     }
-    
+
     func createImageAnimationForGhost(total: Int, imageRefix: String) -> [UIImage] {
-        
+
         var imageArray: [UIImage] = []
-        
+
         for imageCount in 0..<total {
             let imageName = "\(imageRefix)\(imageCount).png"
             let image = UIImage(named: imageName)!
-            
+
             imageArray.append(image)
         }
-        
-        return imageArray
-        
-    }
 
+        return imageArray
+
+    }
 
     func animate(imageView: UIImageView, images: [UIImage]) {
 

@@ -47,7 +47,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
             UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
         ]
 
-        layer.locations = [0.0, 0.35]
+        layer.locations = [0.0, 0.3]
 
         layer.startPoint = CGPoint(x: 0.5, y: 0.0)
 

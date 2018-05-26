@@ -127,7 +127,7 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {
         self.isPlaying = isPlaying
-        
+
         NotificationCenter.default.post(
             name: .trackPlayinyStatus,
             object: nil
