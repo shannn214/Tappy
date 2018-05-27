@@ -22,9 +22,7 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var cardViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
 
-
     @IBOutlet weak var backgroundView: UIView!
-
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
@@ -48,10 +46,9 @@ class CardDetailViewController: UIViewController {
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
         cardViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
-        
+
 //        backgroundView.alpha = 0.6
 
-        
         panGesture.delegate = self
         panGesture.isEnabled = false
 
@@ -123,7 +120,7 @@ class CardDetailViewController: UIViewController {
     func changeContraintToFullScreen() {
 
         backgroundView.layer.cornerRadius = 0
-        
+
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
         cardViewWidth.constant = UIScreen.main.bounds.width * 0.75
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.75

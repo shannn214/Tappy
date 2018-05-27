@@ -19,6 +19,7 @@ class GameMapTestViewController: UIViewController {
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
     let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+    let guideArray = [UIButton(), UIButton(), UIButton(), UIButton()]
 
     let animation = CAKeyframeAnimation(keyPath: "position")
     var monster: UIImageView!
@@ -31,6 +32,7 @@ class GameMapTestViewController: UIViewController {
         createButton()
         createCharacter()
         createPropsButton()
+        createGuideButton()
 
         setExplosionImage()
         loadButton()
@@ -73,19 +75,80 @@ class GameMapTestViewController: UIViewController {
 
     }
 
+    func createGuideButton() {
+
+        for btnIndex in 0...3 {
+
+            guideArray[btnIndex].setImage(UIImage(), for: .normal)
+            guideArray[btnIndex].backgroundColor = UIColor.clear
+            guideArray[btnIndex].layer.cornerRadius = 15
+            guideArray[btnIndex].layer.borderWidth = 1
+            guideArray[btnIndex].layer.borderColor = UIColor.lightGray.cgColor
+            guideArray[btnIndex].setTitleColor(UIColor.lightGray, for: .normal)
+            guideArray[btnIndex].isHidden = true
+            guideArray[btnIndex].tag = btnIndex
+            guideArray[btnIndex].addTarget(self, action: #selector(showGuideButton), for: .touchUpInside)
+
+            guideArray[btnIndex].titleLabel?.font = UIFont(name: "CircularStd-Medium", size: 12)
+            self.scrollView.addSubview(guideArray[btnIndex])
+            scrollView.bringSubview(toFront: guideArray[btnIndex])
+        }
+
+        guideArray[0].setTitle("Tap me!", for: .normal)
+        guideArray[1].setTitle("Over here!", for: .normal)
+        guideArray[2].setTitle("YEE-HEE!", for: .normal)
+        guideArray[3].setTitle("Tap the flowrs!", for: .normal)
+
+        guideArray[0].frame = CGRect(origin: CGPoint(x: 6 * imageView.bounds.width / 100,
+                                                     y: 50 * imageView.bounds.height/100),
+                                     size: CGSize(width: 100, height: 30))
+        guideArray[1].frame = CGRect(origin: CGPoint(x: 12 * imageView.bounds.width / 100,
+                                                     y: 75 * imageView.bounds.height/100),
+                                     size: CGSize(width: 100, height: 30))
+        guideArray[2].frame = CGRect(origin: CGPoint(x: 24 * imageView.bounds.width / 100,
+                                                     y: 40 * imageView.bounds.height/100),
+                                     size: CGSize(width: 100, height: 30))
+        guideArray[3].frame = CGRect(origin: CGPoint(x: 30 * imageView.bounds.width / 100,
+                                                     y: 20 * imageView.bounds.height/100),
+                                     size: CGSize(width: 110, height: 30))
+
+    }
+
+    @objc func showGuideButton(sender: UIButton!) {
+
+        let btnSendTag: UIButton = sender
+        switch btnSendTag.tag {
+        case 0:
+            guideArray[0].isHidden = true
+            guideArray[1].isHidden = false
+        case 1:
+            guideArray[1].isHidden = true
+            guideArray[2].isHidden = false
+        case 2:
+            guideArray[2].isHidden = true
+            guideArray[3].isHidden = false
+        case 3:
+            guideArray[3].isHidden = true
+        default:
+            break
+        }
+
+    }
+
     func createCharacter() {
 
         monster = UIImageView()
-        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
-        animate(imageView: monster, images: monsterImages)
-        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 73 * imageView.bounds.height/100, width: 70, height: 70)
+//        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
+//        animate(imageView: monster, images: monsterImages)
+        monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
+        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 60)
         self.imageView.addSubview(monster)
 
     }
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "MapGradientVersion-1"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -96,13 +159,13 @@ class GameMapTestViewController: UIViewController {
         view.addSubview(scrollView)
 
     }
-    
+
     func propsButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-        
+
         propsButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
                                                                y: positionY * imageView.bounds.height/100),
                                                size: CGSize(width: 60, height: 60))
-        
+
     }
 
     func createPropsButton() {
@@ -118,7 +181,7 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
 
         }
-        
+
         propsButtonSetup(index: 0, positionX: 10, positionY: 50)
         propsButtonSetup(index: 1, positionX: 20, positionY: 50)
         propsButtonSetup(index: 2, positionX: 30, positionY: 50)
@@ -186,13 +249,13 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
-    
+
     func CDButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-        
+
         CDButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
                                                             y: positionY * imageView.bounds.height/100),
                                             size: CGSize(width: 60, height: 60))
-        
+
     }
 
     func createButton() {
@@ -218,7 +281,7 @@ class GameMapTestViewController: UIViewController {
         CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
         CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
         CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
-        
+
     }
 
     func setExplosionImage() {
@@ -247,11 +310,11 @@ class GameMapTestViewController: UIViewController {
         animate(imageView: explosionArray[index], images: explosionImages)
         UIView.animate(withDuration: 2.0, animations: {
             self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
-                                        y: 73 * self.imageView.bounds.height/100,
+                                        y: 77 * self.imageView.bounds.height/100,
                                         width: self.monster.frame.size.width,
                                         height: self.monster.frame.size.height)
         })
-        
+
     }
 
     @objc func showCDButton(notification: Notification) {

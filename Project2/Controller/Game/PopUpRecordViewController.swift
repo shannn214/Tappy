@@ -16,6 +16,7 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var propView: UIView!
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var introTextView: UITextView!
+    @IBOutlet weak var startGameButton: UIButton!
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
@@ -42,7 +43,8 @@ class PopUpRecordViewController: UIViewController {
     func introViewSetup() {
 
         self.introView.layer.cornerRadius = 20
-        self.introTextView.text = "Hi, there. \n Please read the hint below. \n Then try to find something in the map.\n "
+        self.introTextView.text = "Yeah!!! \n I know you are a good man. \n Just follow the hint to find the first record. \n \n GOGOGO!"
+        startGameButton.layer.cornerRadius = 15
 
     }
 

@@ -58,6 +58,8 @@
 		09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */; };
 		09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */; };
 		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
+		09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855D20B9E43900BE0EA5 /* Intro.storyboard */; };
+		09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -124,6 +126,8 @@
 		09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moon2.0-Bold.otf"; sourceTree = "<group>"; };
 		09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.otf"; sourceTree = "<group>"; };
 		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
+		09A6855D20B9E43900BE0EA5 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 				090B6975209F403C0095B416 /* Setting.storyboard */,
 				0914190F20A48EB300B7C0F0 /* Player.storyboard */,
 				0951973D20B2CDF0006E468E /* CardDetail.storyboard */,
+				09A6855D20B9E43900BE0EA5 /* Intro.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
+				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */,
 				0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */,
 				09A62B4220AF3FCD00BA5932 /* CardCollectionViewCell.xib in Resources */,
+				09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */,
 				09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */,
 				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
 				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
@@ -629,6 +636,7 @@
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
+				09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
 				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */,

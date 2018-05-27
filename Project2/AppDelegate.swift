@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if self.auth?.session != nil && (self.auth?.session.isValid())! {
                 switchToMainStoryBoard()
+//                switchToIntroStoryBoard()
                 NotificationCenter.default.post(name: .loginSuccessfull, object: nil)
         }
 
@@ -99,6 +100,16 @@ extension AppDelegate: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDeleg
             return
         }
         window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+    }
+
+    func switchToIntroStoryBoard() {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.switchToIntroStoryBoard()
+            }
+            return
+        }
+        window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
     }
 
 }

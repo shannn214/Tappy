@@ -86,7 +86,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         //For test
-//        popUpView()
+        popUpView()
 
     }
 

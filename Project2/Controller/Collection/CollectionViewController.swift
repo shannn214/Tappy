@@ -63,7 +63,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(trackIsStreaming(notification:)),
