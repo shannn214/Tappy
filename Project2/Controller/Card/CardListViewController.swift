@@ -115,9 +115,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.didMove(toParentViewController: self)
 
-        cardCell?.clipsToBounds = true
-
         cardDetailVC.cardView.isHidden = true
+        
+        cardCell?.clipsToBounds = true
 
         cardCell?.isUserInteractionEnabled = false
 

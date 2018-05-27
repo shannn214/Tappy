@@ -62,6 +62,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="IW6-U4-r6t" id="FFu-sq-hur"/>
+                        <outlet property="cardImage" destination="Qs1-Lx-oDf" id="FqN-IN-uji"/>
                         <outlet property="cardView" destination="d1V-nu-8TZ" id="Jk6-7v-JN1"/>
                         <outlet property="cardViewHeight" destination="yAX-8L-Brm" id="4Yr-My-BVR"/>
                         <outlet property="cardViewLeadingConstraint" destination="PnK-3s-6JJ" id="JIN-8p-BlN"/>

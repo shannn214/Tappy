@@ -21,7 +21,8 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var cardViewWidth: NSLayoutConstraint!
     @IBOutlet weak var cardViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var cardImage: UIImageView!
+    
     @IBOutlet weak var backgroundView: UIView!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!

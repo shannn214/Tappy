@@ -14,6 +14,7 @@ class GameMapTestViewController: UIViewController {
     var imageView: UIImageView!
     var explosionImage: UIImageView!
     var explosionImages: [UIImage] = []
+
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
     var checkLevel = 0
@@ -169,7 +170,7 @@ class GameMapTestViewController: UIViewController {
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "MapGradientVersion-1"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -299,8 +300,7 @@ class GameMapTestViewController: UIViewController {
             self.imageView.addSubview(CDButtonArray[btnIndex])
             CDButtonArray[btnIndex].isHidden = true
             CDButtonArray[btnIndex].tag = btnIndex
-
-//            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
+            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordTab), for: .touchUpInside)
 
         }
 
@@ -315,6 +315,12 @@ class GameMapTestViewController: UIViewController {
         CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
         CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
+    }
+    
+    @objc func showRecordTab() {
+        
+        tabBarController?.selectedIndex = 2
+        
     }
 
     func setExplosionImage() {

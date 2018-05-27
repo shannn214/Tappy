@@ -41,6 +41,13 @@
                                             <constraint firstAttribute="width" constant="130" id="qfh-Hb-fXv"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgb-wr-LRi">
+                                        <rect key="frame" x="147" y="90" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="djW-VJ-xmP"/>
+                                            <constraint firstAttribute="width" constant="80" id="lYh-TV-Gwp"/>
+                                        </constraints>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atp-i1-KPm">
                                         <rect key="frame" x="145" y="205" width="85.5" height="23"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="18"/>
@@ -50,6 +57,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Rgb-wr-LRi" firstAttribute="centerX" secondItem="7L0-U8-Wh8" secondAttribute="centerX" id="5Gx-PU-Xov"/>
                                     <constraint firstItem="Zbi-Oi-ztb" firstAttribute="top" secondItem="7L0-U8-Wh8" secondAttribute="top" id="6wQ-uw-WG3"/>
                                     <constraint firstItem="atp-i1-KPm" firstAttribute="centerX" secondItem="7L0-U8-Wh8" secondAttribute="centerX" id="Bkm-D8-Cln"/>
                                     <constraint firstAttribute="height" constant="255" id="LSv-lf-kbs"/>
@@ -57,6 +65,7 @@
                                     <constraint firstItem="0eR-Yv-vTM" firstAttribute="top" secondItem="7L0-U8-Wh8" secondAttribute="top" constant="65" id="cWI-nR-e6n"/>
                                     <constraint firstItem="0eR-Yv-vTM" firstAttribute="centerX" secondItem="7L0-U8-Wh8" secondAttribute="centerX" id="gn7-IE-01w"/>
                                     <constraint firstItem="Zbi-Oi-ztb" firstAttribute="leading" secondItem="7L0-U8-Wh8" secondAttribute="leading" id="peQ-Fo-naM"/>
+                                    <constraint firstItem="Rgb-wr-LRi" firstAttribute="top" secondItem="7L0-U8-Wh8" secondAttribute="top" constant="90" id="yM7-Fk-gfU"/>
                                     <constraint firstAttribute="trailing" secondItem="Zbi-Oi-ztb" secondAttribute="trailing" id="yqS-qY-TSA"/>
                                 </constraints>
                             </view>
@@ -88,6 +97,7 @@
                         <outlet property="gradientView" destination="Zbi-Oi-ztb" id="8oY-bo-9g1"/>
                         <outlet property="recordsContainerView" destination="wfl-Dd-h7D" id="Pps-5p-fc3"/>
                         <outlet property="secondCollectionText" destination="atp-i1-KPm" id="xph-cY-ksy"/>
+                        <outlet property="showPlayerButton" destination="Rgb-wr-LRi" id="r5q-rE-toB"/>
                         <outlet property="topImageConstraint" destination="cWI-nR-e6n" id="MPt-9f-JT7"/>
                         <outlet property="topView" destination="7L0-U8-Wh8" id="UvG-oC-Cvx"/>
                         <outlet property="topViewHeightConstraint" destination="LSv-lf-kbs" id="qZi-jO-Zrq"/>
