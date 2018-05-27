@@ -3,52 +3,72 @@
               {
               "trackUri" : "spotify:track:4dyx5SzxPPaD8xQIid5Wjj",
               "albumUri" : "spotify:album:5g4E06cxsFEMFE9hSekAt2",
-              "level" : 1
+              "level" : 1,
+              "image" : "peek_ghost1",
+              "hint" : "aaa"
               },
               {
               "trackUri" : "spotify:track:3lB0GMiI5KxDbTOG8V3bOx",
               "albumUri" : "spotify:album:4sJXyIfwduIWFISb4iCq2f",
-              "level" : 2
+              "level" : 2,
+              "image" : "peek_ghost0",
+              "hint" : "ccc"
               },
               {
               "trackUri" : "spotify:track:6xiBw5s8JrFnEjrkz3jpUO",
               "albumUri" : "spotify:album:0mRoy97yMXx9AOjqk49dwl",
-              "level" : 3
+              "level" : 3,
+              "image" : "peek_ghost1",
+              "hint" : "eee"
               },
               {
               "trackUri" : "spotify:track:3cPtV3L2SinV7YQhflqFad",
               "albumUri" : "spotify:album:3LDLJX6JTDZvcCdkK7JQit",
-              "level" : 4
+              "level" : 4,
+              "image" : "peek_ghost1",
+              "hint" : "ttt"
               },
               {
               "trackUri" : "spotify:track:5eal7hVNoy3kPhwsrmIsvY",
               "albumUri" : "spotify:album:2ixppkE9iECTTYUlDI7auJ",
-              "level" : 5
+              "level" : 5,
+              "image" : "peek_ghost0",
+              "hint" : "333"
               },
               {
               "trackUri" : "spotify:track:5HcsDG8COSFJcr15Qw7j9e",
               "albumUri" : "spotify:album:2UQpIR7LhOlWecHpN494O5",
-              "level" : 6
+              "level" : 6,
+              "image" : "peek_ghost1",
+              "hint" : "hhh"
               },
               {
               "trackUri" : "spotify:track:7MYulTjMF1SFGFGwnr5vwT",
               "albumUri" : "spotify:album:0AVPusXNzK1jWwefBiPJ5I",
-              "level" : 7
+              "level" : 7,
+              "image" : "peek_ghost0",
+              "hint" : "ggg"
               },
               {
               "trackUri" : "spotify:track:5eal7hVNoy3kPhwsrmIsvY",
               "albumUri" : "spotify:album:2ixppkE9iECTTYUlDI7auJ",
-              "level" : 8
+              "level" : 8,
+              "image" : "peek_ghost1",
+              "hint" : "jjj"
               },
               {
               "trackUri" : "spotify:track:5eal7hVNoy3kPhwsrmIsvY",
               "albumUri" : "spotify:album:2ixppkE9iECTTYUlDI7auJ",
-              "level" : 9
+              "level" : 9,
+              "image" : "peek_ghost0",
+              "hint" : "nnn"
               },
               {
               "trackUri" : "spotify:track:5eal7hVNoy3kPhwsrmIsvY",
               "albumUri" : "spotify:album:2ixppkE9iECTTYUlDI7auJ",
-              "level" : 10
+              "level" : 10,
+              "image" : "peek_ghost1",
+              "hint" : "bbb"
               }
     ]
     

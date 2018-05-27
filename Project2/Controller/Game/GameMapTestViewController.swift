@@ -163,14 +163,14 @@ class GameMapTestViewController: UIViewController {
 //        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
 //        animate(imageView: monster, images: monsterImages)
         monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
-        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 60)
+        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
         self.imageView.addSubview(monster)
 
     }
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "MapGradientVersionFinal-1"))
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -316,11 +316,11 @@ class GameMapTestViewController: UIViewController {
         CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
-    
+
     @objc func showRecordTab() {
-        
+
         tabBarController?.selectedIndex = 2
-        
+
     }
 
     func setExplosionImage() {

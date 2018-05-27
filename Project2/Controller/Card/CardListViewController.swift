@@ -105,6 +105,8 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
 
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+
         guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
 
         self.addChildViewController(cardDetailVC)
@@ -116,10 +118,14 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         cardDetailVC.didMove(toParentViewController: self)
 
         cardDetailVC.cardView.isHidden = true
-        
+
         cardCell?.clipsToBounds = true
 
         cardCell?.isUserInteractionEnabled = false
+
+        cardDetailVC.cardImage.image = UIImage(named: uriManager.uris[indexPath.row].image)
+
+        cardDetailVC.cardViewLabel.text = uriManager.uris[indexPath.row].hint
 
         if indexPath.row < LevelStatusManager.shared.level! {
 
@@ -166,7 +172,7 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.delegate = self
 
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.35) {
 
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
@@ -214,7 +220,7 @@ extension CardListViewController: CardDetailDelegate {
 
         let itemSize = UIScreen.main.bounds.width/2
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.35, animations: {
 
             selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
             selectedVC.changeConstraintToCellSize()

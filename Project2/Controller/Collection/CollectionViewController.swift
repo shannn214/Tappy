@@ -16,7 +16,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var showPlayerButton: UIButton!
-    
+
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
@@ -86,28 +86,27 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
         layer.frame = UIScreen.main.bounds
         self.gradientView.layer.addSublayer(layer)
-        
+
         showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
         showPlayerButton.isHidden = true
 
-
     }
-    
+
     @objc func showPlayerView() {
-        
+
         guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
         guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String,
               let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
-        
+
         present(playerVC, animated: true) {
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
             playerVC.backgroundCover.sd_setImage(with: URL(string: url))
             playerVC.playerPanelView.artist.text = artist
             playerVC.playerPanelView.trackName.text = trackName
         }
-        
+
     }
 
 }

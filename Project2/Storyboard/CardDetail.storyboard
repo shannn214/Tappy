@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Medium.otf">
+            <string>CircularStd-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Card Detail View Controller-->
         <scene sceneID="Ex9-RG-yz4">
@@ -20,8 +25,43 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-U4-r6t">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_head" translatesAutoresizingMaskIntoConstraints="NO" id="Scw-Uj-Sih">
+                                        <rect key="frame" x="20" y="185" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="QiP-vQ-6vw"/>
+                                            <constraint firstAttribute="width" constant="40" id="oe0-jQ-u0c"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-RH-ydZ">
+                                        <rect key="frame" x="70" y="187" width="60.5" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU0-mF-Z2d">
+                                                <rect key="frame" x="10" y="8" width="40.5" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="dEj-x1-EQq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="16"/>
+                                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.78752038749999997" green="0.05913377677" blue="0.35941043109999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="CRi-bv-Mmj"/>
+                                            <constraint firstItem="JU0-mF-Z2d" firstAttribute="leading" secondItem="EUS-RH-ydZ" secondAttribute="leading" constant="10" id="jWU-HT-cX4"/>
+                                            <constraint firstItem="JU0-mF-Z2d" firstAttribute="centerY" secondItem="EUS-RH-ydZ" secondAttribute="centerY" id="pR9-4B-CFZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="JU0-mF-Z2d" secondAttribute="trailing" constant="10" id="qEa-76-JbN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="Scw-Uj-Sih" firstAttribute="leading" secondItem="IW6-U4-r6t" secondAttribute="leading" constant="20" id="Z8T-bJ-lWY"/>
+                                    <constraint firstItem="EUS-RH-ydZ" firstAttribute="leading" secondItem="Scw-Uj-Sih" secondAttribute="trailing" constant="10" id="rK1-Vc-2vP"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Yey-ry-B9H" appends="YES" id="EAs-UY-yPy"/>
                                 </connections>
@@ -34,7 +74,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.86023095119521908" green="0.64609604031520029" blue="0.24571270278225021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.22875236742424243" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Qs1-Lx-oDf" secondAttribute="bottom" constant="40" id="5iA-3U-czw"/>
                                     <constraint firstAttribute="trailing" secondItem="Qs1-Lx-oDf" secondAttribute="trailing" constant="40" id="Ffx-Ee-Wfe"/>
@@ -49,9 +89,11 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="d1V-nu-8TZ" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" id="0x7-ph-h94"/>
+                            <constraint firstItem="Scw-Uj-Sih" firstAttribute="top" secondItem="d1V-nu-8TZ" secondAttribute="bottom" constant="45" id="5sl-Ib-SBM"/>
                             <constraint firstItem="d1V-nu-8TZ" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="PnK-3s-6JJ"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="bottom" secondItem="IW6-U4-r6t" secondAttribute="bottom" id="W3U-fm-gf7"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="trailing" secondItem="IW6-U4-r6t" secondAttribute="trailing" id="amu-cU-szO"/>
+                            <constraint firstItem="EUS-RH-ydZ" firstAttribute="top" secondItem="d1V-nu-8TZ" secondAttribute="bottom" constant="47" id="lcb-iS-it9"/>
                             <constraint firstItem="IW6-U4-r6t" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" id="qgx-OJ-1eN"/>
                             <constraint firstItem="IW6-U4-r6t" firstAttribute="top" secondItem="UM8-DS-wl9" secondAttribute="top" id="xNT-BY-S5e"/>
                         </constraints>
@@ -63,11 +105,14 @@
                     <connections>
                         <outlet property="backgroundView" destination="IW6-U4-r6t" id="FFu-sq-hur"/>
                         <outlet property="cardImage" destination="Qs1-Lx-oDf" id="FqN-IN-uji"/>
+                        <outlet property="cardLabelView" destination="EUS-RH-ydZ" id="IXZ-Sg-0NI"/>
                         <outlet property="cardView" destination="d1V-nu-8TZ" id="Jk6-7v-JN1"/>
                         <outlet property="cardViewHeight" destination="yAX-8L-Brm" id="4Yr-My-BVR"/>
+                        <outlet property="cardViewLabel" destination="JU0-mF-Z2d" id="zLv-Yp-5lv"/>
                         <outlet property="cardViewLeadingConstraint" destination="PnK-3s-6JJ" id="JIN-8p-BlN"/>
                         <outlet property="cardViewTopConstraint" destination="0x7-ph-h94" id="zFr-nG-2N5"/>
                         <outlet property="cardViewWidth" destination="VCN-4H-AbN" id="QP3-Ih-V8v"/>
+                        <outlet property="headImageLeadingConstraint" destination="Z8T-bJ-lWY" id="iOb-Uk-mg7"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
                         <outlet property="tapGesture" destination="Yey-ry-B9H" id="xrX-62-j9y"/>
                     </connections>
@@ -88,6 +133,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gray_head" width="1058" height="1058"/>
         <image name="headphone" width="700" height="495"/>
     </resources>
 </document>
