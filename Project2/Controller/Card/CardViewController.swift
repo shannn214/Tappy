@@ -60,7 +60,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         topViewImage.layer.cornerRadius = 15
 //        topViewImage.layer.borderWidth = 1
 //        topViewImage.layer.borderColor = UIColor.lightGray.cgColor
-        topViewImage.image = #imageLiteral(resourceName: "peek_ghost0")
+        topViewImage.image = #imageLiteral(resourceName: "pinkQ_ghost")
 
     }
 
@@ -80,7 +80,7 @@ extension CardViewController: CardListControllerDelegate {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
             topViewHeightConstraint.constant = topView.frame.height - cardY
-            topImageConstraint.constant = 65 - cardY
+            topImageConstraint.constant = 105 - cardY
 
             self.gradientHeightConstraint.constant = topView.frame.height - cardY
         }

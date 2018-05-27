@@ -37,11 +37,11 @@
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2U-3P-lEH">
-                                                <rect key="frame" x="122" y="65" width="130" height="130"/>
+                                                <rect key="frame" x="132" y="105" width="110" height="90"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="4Jb-Z2-YdZ"/>
-                                                    <constraint firstAttribute="width" constant="130" id="kcR-S5-kVz"/>
+                                                    <constraint firstAttribute="height" constant="90" id="4Jb-Z2-YdZ"/>
+                                                    <constraint firstAttribute="width" constant="110" id="kcR-S5-kVz"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-NV-YjH">
@@ -58,7 +58,7 @@
                                             <constraint firstItem="9yB-Eh-YzN" firstAttribute="top" secondItem="Fz9-P5-ouS" secondAttribute="top" id="J3K-PT-lZV"/>
                                             <constraint firstItem="c2U-3P-lEH" firstAttribute="centerX" secondItem="Fz9-P5-ouS" secondAttribute="centerX" id="Qga-Fd-mX8"/>
                                             <constraint firstItem="9yB-Eh-YzN" firstAttribute="leading" secondItem="Fz9-P5-ouS" secondAttribute="leading" id="RM6-mx-kOi"/>
-                                            <constraint firstItem="c2U-3P-lEH" firstAttribute="top" secondItem="Fz9-P5-ouS" secondAttribute="top" constant="65" id="Yhy-3K-zjV"/>
+                                            <constraint firstItem="c2U-3P-lEH" firstAttribute="top" secondItem="Fz9-P5-ouS" secondAttribute="top" constant="105" id="Yhy-3K-zjV"/>
                                             <constraint firstItem="xoZ-NV-YjH" firstAttribute="centerX" secondItem="Fz9-P5-ouS" secondAttribute="centerX" id="cgm-Iy-rXG"/>
                                             <constraint firstItem="xoZ-NV-YjH" firstAttribute="top" secondItem="c2U-3P-lEH" secondAttribute="bottom" constant="10" id="xB8-he-WND"/>
                                         </constraints>

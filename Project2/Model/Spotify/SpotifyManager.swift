@@ -110,16 +110,16 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
 
         let firstLogin = UserDefaults.standard
 
-//        if firstLogin.value(forKey: "firstLogin") == nil {
-//            let delegate = UIApplication.shared.delegate as? AppDelegate
-//            delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
-//        } else {
-//            let delegate = UIApplication.shared.delegate as? AppDelegate
-//            delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
-//        }
+        if firstLogin.value(forKey: "firstLogin") == nil {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
+        } else {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+        }
 
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
+//        let delegate = UIApplication.shared.delegate as? AppDelegate
+//        delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
 
     }
 

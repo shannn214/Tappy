@@ -17,6 +17,7 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var getPropButton: UIButton!
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
@@ -51,6 +52,8 @@ class PopUpRecordViewController: UIViewController {
     func propViewSetup() {
 
         self.propView.layer.cornerRadius = 20
+        getPropButton.layer.cornerRadius = 15
+        recordCover.layer.cornerRadius = 60
 
     }
 

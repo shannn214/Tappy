@@ -14,6 +14,7 @@ class GameMapTestViewController: UIViewController {
     var imageView: UIImageView!
     var explosionImage: UIImageView!
     var explosionImages: [UIImage] = []
+    @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
     var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
@@ -32,7 +33,6 @@ class GameMapTestViewController: UIViewController {
         createButton()
         createCharacter()
         createPropsButton()
-        createGuideButton()
 
         setExplosionImage()
         loadButton()
@@ -44,13 +44,30 @@ class GameMapTestViewController: UIViewController {
             object: nil
         )
 
+//        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
+        guideArray[0].isHidden = false
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func ghostGestureAction(_ sender: UITapGestureRecognizer) {
+
+        let touchPoint = sender.location(in: self.view.window)
+
+        if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
+                UIView.animate(withDuration: 0.5) {
+                    self.monster.frame = CGRect(x: touchPoint.x, y: 77,
+                                           width: self.monster.frame.size.width,
+                                           height: self.monster.frame.size.height)
+
+            }
+        }
+
     }
 
     func loadButton() {
@@ -71,6 +88,10 @@ class GameMapTestViewController: UIViewController {
         if LevelStatusManager.shared.level! < 10 {
             let level = LevelStatusManager.shared.level!
             propsButtonArray[level].isHidden = false
+        }
+
+        if LevelStatusManager.shared.level! == 0 {
+            createGuideButton()
         }
 
     }
@@ -105,10 +126,10 @@ class GameMapTestViewController: UIViewController {
         guideArray[1].frame = CGRect(origin: CGPoint(x: 12 * imageView.bounds.width / 100,
                                                      y: 75 * imageView.bounds.height/100),
                                      size: CGSize(width: 100, height: 30))
-        guideArray[2].frame = CGRect(origin: CGPoint(x: 24 * imageView.bounds.width / 100,
+        guideArray[2].frame = CGRect(origin: CGPoint(x: 20 * imageView.bounds.width / 100,
                                                      y: 40 * imageView.bounds.height/100),
                                      size: CGSize(width: 100, height: 30))
-        guideArray[3].frame = CGRect(origin: CGPoint(x: 30 * imageView.bounds.width / 100,
+        guideArray[3].frame = CGRect(origin: CGPoint(x: 26 * imageView.bounds.width / 100,
                                                      y: 20 * imageView.bounds.height/100),
                                      size: CGSize(width: 110, height: 30))
 
@@ -181,7 +202,7 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
 
         }
-
+        // NOTE: Set music and props position
         propsButtonSetup(index: 0, positionX: 10, positionY: 50)
         propsButtonSetup(index: 1, positionX: 20, positionY: 50)
         propsButtonSetup(index: 2, positionX: 30, positionY: 50)
@@ -197,6 +218,8 @@ class GameMapTestViewController: UIViewController {
 
     @objc func showCDAndProp(sender: UIButton!) {
 
+        let sortedArray = DBProvider.shared.sortedArray
+
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
         if self.checkLevel < 11 {
@@ -208,42 +231,52 @@ class GameMapTestViewController: UIViewController {
         case 0:
             propsButtonArray[0].isHidden = true
             propsButtonArray[1].isHidden = false
-            popUpView()
+            let info = sortedArray![0]
+            popUpPropView(image: info.cover, hint: "You got the first record!")
         case 1:
             propsButtonArray[1].isHidden = true
             propsButtonArray[2].isHidden = false
-            popUpView()
+            let info = sortedArray![1]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 2:
             propsButtonArray[2].isHidden = true
             propsButtonArray[3].isHidden = false
-            popUpView()
+            let info = sortedArray![2]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 3:
             propsButtonArray[3].isHidden = true
             propsButtonArray[4].isHidden = false
-            popUpView()
+            let info = sortedArray![3]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 4:
             propsButtonArray[4].isHidden = true
             propsButtonArray[5].isHidden = false
-            popUpView()
+            let info = sortedArray![4]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 5:
             propsButtonArray[5].isHidden = true
             propsButtonArray[6].isHidden = false
-            popUpView()
+            let info = sortedArray![5]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 6:
             propsButtonArray[6].isHidden = true
             propsButtonArray[7].isHidden = false
-            popUpView()
+            let info = sortedArray![6]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 7:
             propsButtonArray[7].isHidden = true
             propsButtonArray[8].isHidden = false
-            popUpView()
+            let info = sortedArray![7]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 8:
             propsButtonArray[8].isHidden = true
             propsButtonArray[9].isHidden = false
-            popUpView()
+            let info = sortedArray![8]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         case 9:
             propsButtonArray[9].isHidden = true
-            popUpView()
+            let info = sortedArray![9]
+            popUpPropView(image: info.cover, hint: "You got the record!")
         default:
             return
         }
@@ -328,7 +361,6 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[0].isHidden = false
             explosionArray[0].isHidden = false
             animate(imageView: explosionArray[0], images: explosionImages)
-//            self.imageView.bounds = CGRect(x: 2 * self.imageView.bounds.width/100, y: 0 * self.imageView.bounds.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 2:
             levelCase(index: 1, positionX: 14)
         case 3:
@@ -409,20 +441,33 @@ class GameMapTestViewController: UIViewController {
 
     // NOTE: Pop Prop View
     func popUpView() {
-        //image: UIImage, hint: String --- NOTE: Add to function parameter when image and text is ready
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
-//        popUpRecordView.recordTitle.text = hint
-//        popUpRecordView.recordCover = UIImageView(image: image)
         popUpRecordView.view.alpha = 0
         popUpRecordView.introView.isHidden = true
-//        popUpRecordView.recordCover.image = #imageLiteral(resourceName: "headphone")
         UIView.animate(withDuration: 0.3) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)
         }
+    }
+
+    func popUpPropView(image: String, hint: String) {
+
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.recordTitle.text = hint
+        popUpRecordView.recordCover.sd_setImage(with: URL(string: image))
+        popUpRecordView.view.alpha = 0
+        popUpRecordView.introView.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
+
     }
 
 }

@@ -86,7 +86,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         //For test
-        popUpView()
+//        popUpView()
 
     }
 
@@ -108,7 +108,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
-        popUpRecordView.recordTitle.text = "I'm so tired"
+        popUpRecordView.propView.isHidden = true
+        popUpRecordView.introView.isHidden = false
 
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
