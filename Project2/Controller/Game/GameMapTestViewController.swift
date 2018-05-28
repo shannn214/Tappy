@@ -9,12 +9,12 @@
 import UIKit
 
 class GameMapTestViewController: UIViewController {
-    
+
     var scrollView: UIScrollView!
     var imageView: UIImageView!
     var explosionImage: UIImageView!
     var explosionImages: [UIImage] = []
-    
+
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
     var checkLevel = 0
@@ -329,12 +329,12 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[index].isHidden = false
         explosionArray[index].isHidden = false
         animate(imageView: explosionArray[index], images: explosionImages)
-        UIView.animate(withDuration: 2.0, animations: {
-            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
-                                        y: 77 * self.imageView.bounds.height/100,
-                                        width: self.monster.frame.size.width,
-                                        height: self.monster.frame.size.height)
-        })
+//        UIView.animate(withDuration: 2.0, animations: {
+//            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
+//                                        y: 77 * self.imageView.bounds.height/100,
+//                                        width: self.monster.frame.size.width,
+//                                        height: self.monster.frame.size.height)
+//        })
 
     }
 

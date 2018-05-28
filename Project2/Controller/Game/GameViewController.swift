@@ -34,7 +34,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     var scrollView: UIScrollView!
     var imageView: UIImageView!
-    
+
     var gameMapViewController: GameMapTestViewController?
 
     override func viewDidLoad() {
@@ -69,20 +69,23 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             view.addSubview(pop)
             let point = view.window?.convert(tapPoint, to: gameMapViewController?.scrollView)
 //            self.delegate?.gameMapDidTap(controller: self, position: tapPoint.x)
-            gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77, width: 75, height: 62)
+            UIView.animate(withDuration: 0.4) {
+                self.gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77 * (self.gameMapViewController?.imageView.bounds.height)!/100, width: 75, height: 62)
+            }
+//            gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77, width: 75, height: 62)
         default:
             print("Nope")
         }
 
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if let gameMapVC = segue.destination as? GameMapTestViewController {
 //            self.delegate = gameMapVC
             self.gameMapViewController = gameMapVC
         }
-        
+
     }
 
     func setupLocation() {

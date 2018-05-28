@@ -27,6 +27,7 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var cardViewLabel: UILabel!
     @IBOutlet weak var cardLabelView: UIView!
     @IBOutlet weak var headImageLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headImage: UIImageView!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
@@ -53,6 +54,9 @@ class CardDetailViewController: UIViewController {
         cardLabelView.layer.cornerRadius = 18
 
 //        backgroundView.alpha = 0.6
+
+        headImage.alpha = 0
+        cardViewLabel.alpha = 0
 
         panGesture.delegate = self
         panGesture.isEnabled = false
@@ -131,6 +135,9 @@ class CardDetailViewController: UIViewController {
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.75
         headImageLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
 
+        headImage.alpha = 1
+        cardViewLabel.alpha = 1
+
         view.layoutIfNeeded()
         panGesture.isEnabled = true
 
@@ -142,6 +149,9 @@ class CardDetailViewController: UIViewController {
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
         headImageLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
+
+        headImage.alpha = 0
+        cardViewLabel.alpha = 0
 
         view.layoutIfNeeded()
         panGesture.isEnabled = false

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,6 +111,7 @@
                         <outlet property="cardViewLeadingConstraint" destination="PnK-3s-6JJ" id="JIN-8p-BlN"/>
                         <outlet property="cardViewTopConstraint" destination="0x7-ph-h94" id="zFr-nG-2N5"/>
                         <outlet property="cardViewWidth" destination="VCN-4H-AbN" id="QP3-Ih-V8v"/>
+                        <outlet property="headImage" destination="Scw-Uj-Sih" id="bWS-fH-Nz1"/>
                         <outlet property="headImageLeadingConstraint" destination="Z8T-bJ-lWY" id="iOb-Uk-mg7"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
                         <outlet property="tapGesture" destination="Yey-ry-B9H" id="xrX-62-j9y"/>

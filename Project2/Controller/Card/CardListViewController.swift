@@ -16,7 +16,7 @@ protocol CardListControllerDelegate: class {
 
 class CardListViewController: UIViewController {
 
-    @IBOutlet weak var listCollectionView: UICollectionView!
+    @IBOutlet weak var listCollectionView: LukeCollectionView!
 
     var propImages: [UIImage] = []
 
@@ -47,6 +47,8 @@ class CardListViewController: UIViewController {
 
     var cell: UICollectionViewCell?
 
+    var cardFlag: Bool?
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -57,13 +59,16 @@ class CardListViewController: UIViewController {
 
         designSetting.designSetting(view: listCollectionView)
 
+        cardFlag = false
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
         super.viewWillAppear(animated)
 
-        listCollectionView.reloadData()
+        if cardFlag == false {
+            listCollectionView.reloadData()
+        }
 
     }
 
@@ -177,6 +182,7 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
             collectionView.isUserInteractionEnabled = false
+            self.cardFlag = true
 
         }
 
@@ -231,6 +237,8 @@ extension CardListViewController: CardDetailDelegate {
             selectedVC.view.frame = selectedCell.contentView.frame
             selectedVC.backgroundView.alpha = 1
             self.listCollectionView.isUserInteractionEnabled = true
+            self.cardFlag = false
+            self.listCollectionView.reloadData()
         }
 
     }

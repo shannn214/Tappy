@@ -60,6 +60,7 @@
 		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
 		09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855D20B9E43900BE0EA5 /* Intro.storyboard */; };
 		09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */; };
+		09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -128,6 +129,7 @@
 		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		09A6855D20B9E43900BE0EA5 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeCollectionView.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
+				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
+				09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,8 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     var alphaPoint: CGFloat = 190
     var recordTransition: CGFloat?
     var collectionTransition: CGFloat?
+    var rotateFlag: Bool?
+
     let layer = CAGradientLayer()
 
     let designSetting = DesignSetting()
@@ -52,7 +54,9 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        trackIsStreaming()
+        if rotateFlag == true {
+            rotate(image: collectionCover)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,17 +64,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         if let collectionListViewController = segue.destination as? CollectionListViewController {
             collectionListViewController.delegate = self
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(trackIsStreaming(notification:)),
-            name: .trackPlayinyStatus,
-            object: nil
-        )
     }
 
     func setup() {
@@ -88,7 +81,8 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         self.gradientView.layer.addSublayer(layer)
 
         showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
-        showPlayerButton.isHidden = true
+        showPlayerButton.isHidden = false
+        rotateFlag = false
 
     }
 
@@ -165,10 +159,12 @@ extension CollectionViewController: CollectionListControllerDelegate {
         if SpotifyManager.shared.isPlaying == true {
             rotate(image: collectionCover)
             collectionCover.sd_setImage(with: URL(string: url), completed: nil)
+            rotateFlag = true
             showPlayerButton.isHidden = false
         } else if SpotifyManager.shared.isPlaying == false {
             collectionCover.image = #imageLiteral(resourceName: "My-Boo")
             removeAnimation(image: collectionCover)
+            rotateFlag = false
             showPlayerButton.isHidden = true
         }
 
