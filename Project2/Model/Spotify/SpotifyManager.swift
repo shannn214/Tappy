@@ -21,7 +21,7 @@ class SpotifyManager: UIViewController {
     var player: SPTAudioStreamingController?
     var session: SPTSession!
     let clientID = "d030ac4b117b47ec835c425d436cb5c0"
-    let redirectURL = "project2://callback"
+    let redirectURL = "tappy://callback"
 
     var recordInfo: TrackInfo?
     var position: TimeInterval?

@@ -9,6 +9,10 @@ pod 'Alamofire', '~> 4.7'
 pod 'SDWebImage', '~> 4.0'
 pod 'SwiftLint'
 pod 'RealmSwift'
+pod 'Fabric'
+pod 'Crashlytics'
+pod 'Firebase/Core'
+
 
   # Pods for Project2
 
