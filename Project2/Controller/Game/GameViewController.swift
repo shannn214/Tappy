@@ -9,6 +9,12 @@
 import Foundation
 import CoreLocation
 
+protocol GameViewControllerDelegate: class {
+
+    func gameMapDidTap(controller: GameViewController, position: CGFloat)
+
+}
+
 class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var progress: UIProgressView!
@@ -16,6 +22,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var gameMapContainer: UIView!
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
+
+    weak var delegate: GameViewControllerDelegate?
 
     let locationManager = CLLocationManager()
     var distance = 0.0
@@ -26,6 +34,8 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     var scrollView: UIScrollView!
     var imageView: UIImageView!
+    
+    var gameMapViewController: GameMapTestViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,15 +60,29 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
 
+        let tapPoint = sender.location(in: view)
+
         switch sender.state {
         case .ended:
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
+            let point = view.window?.convert(tapPoint, to: gameMapViewController?.scrollView)
+//            self.delegate?.gameMapDidTap(controller: self, position: tapPoint.x)
+            gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77, width: 75, height: 62)
         default:
             print("Nope")
         }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let gameMapVC = segue.destination as? GameMapTestViewController {
+//            self.delegate = gameMapVC
+            self.gameMapViewController = gameMapVC
+        }
+        
     }
 
     func setupLocation() {

@@ -9,12 +9,12 @@
 import UIKit
 
 class GameMapTestViewController: UIViewController {
-
+    
     var scrollView: UIScrollView!
     var imageView: UIImageView!
     var explosionImage: UIImageView!
     var explosionImages: [UIImage] = []
-
+    
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
     var checkLevel = 0
@@ -47,7 +47,6 @@ class GameMapTestViewController: UIViewController {
 
 //        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
-        guideArray[0].isHidden = false
 
     }
 
@@ -56,19 +55,10 @@ class GameMapTestViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func ghostGestureAction(_ sender: UITapGestureRecognizer) {
-
-        let touchPoint = sender.location(in: self.view.window)
-
-        if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-                UIView.animate(withDuration: 0.5) {
-                    self.monster.frame = CGRect(x: touchPoint.x, y: 77,
-                                           width: self.monster.frame.size.width,
-                                           height: self.monster.frame.size.height)
-
-            }
-        }
-
+    func gameMapDidTap(controller: GameViewController, position: CGFloat) {
+        self.monster.frame = CGRect(x: position, y: 77,
+                                    width: self.monster.frame.size.width,
+                                    height: self.monster.frame.size.height)
     }
 
     func loadButton() {
@@ -93,6 +83,7 @@ class GameMapTestViewController: UIViewController {
 
         if LevelStatusManager.shared.level! == 0 {
             createGuideButton()
+            guideArray[0].isHidden = false
         }
 
     }
@@ -102,10 +93,10 @@ class GameMapTestViewController: UIViewController {
         for btnIndex in 0...3 {
 
             guideArray[btnIndex].setImage(UIImage(), for: .normal)
-            guideArray[btnIndex].backgroundColor = UIColor.clear
+            guideArray[btnIndex].backgroundColor = UIColor.black
             guideArray[btnIndex].layer.cornerRadius = 15
-            guideArray[btnIndex].layer.borderWidth = 1
-            guideArray[btnIndex].layer.borderColor = UIColor.lightGray.cgColor
+//            guideArray[btnIndex].layer.borderWidth = 1
+//            guideArray[btnIndex].layer.borderColor = UIColor.lightGray.cgColor
             guideArray[btnIndex].setTitleColor(UIColor.lightGray, for: .normal)
             guideArray[btnIndex].isHidden = true
             guideArray[btnIndex].tag = btnIndex
@@ -305,17 +296,6 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
 
         }
-
-//        CDButtonSetup(index: 0, positionX: 4.4, positionY: 48)
-//        CDButtonSetup(index: 1, positionX: 16.1, positionY: 53)
-//        CDButtonSetup(index: 2, positionX: 28, positionY: 53)
-//        CDButtonSetup(index: 3, positionX: 39.25, positionY: 49)
-//        CDButtonSetup(index: 4, positionX: 51.75, positionY: 49)
-//        CDButtonSetup(index: 5, positionX: 65.75, positionY: 49)
-//        CDButtonSetup(index: 6, positionX: 80, positionY: 49)
-//        CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
-//        CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
-//        CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
 
