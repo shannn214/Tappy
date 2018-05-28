@@ -31,9 +31,9 @@ class GameMapTestViewController: UIViewController {
         super.viewDidLoad()
 
         createScrollViewAndMap()
-        createButton()
         createCharacter()
         createPropsButton()
+        createButton()
 
         setExplosionImage()
         loadButton()
@@ -204,15 +204,15 @@ class GameMapTestViewController: UIViewController {
 
         }
         // NOTE: Set music and props position
-        propsButtonSetup(index: 0, positionX: 10, positionY: 50)
-        propsButtonSetup(index: 1, positionX: 20, positionY: 50)
-        propsButtonSetup(index: 2, positionX: 30, positionY: 50)
-        propsButtonSetup(index: 3, positionX: 40, positionY: 50)
-        propsButtonSetup(index: 4, positionX: 50, positionY: 50)
-        propsButtonSetup(index: 5, positionX: 60, positionY: 50)
-        propsButtonSetup(index: 6, positionX: 70, positionY: 50)
-        propsButtonSetup(index: 7, positionX: 80, positionY: 50)
-        propsButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
+        propsButtonSetup(index: 0, positionX: 50, positionY: 80)
+        propsButtonSetup(index: 1, positionX: 32, positionY: 53)
+        propsButtonSetup(index: 2, positionX: 88, positionY: 20)
+        propsButtonSetup(index: 3, positionX: 62, positionY: 40)
+        propsButtonSetup(index: 4, positionX: 14.5, positionY: 4)
+        propsButtonSetup(index: 5, positionX: 82.5, positionY: 71)
+        propsButtonSetup(index: 6, positionX: 22, positionY: 30)
+        propsButtonSetup(index: 7, positionX: 2, positionY: 77)
+        propsButtonSetup(index: 8, positionX: 72, positionY: 16)
         propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
@@ -233,51 +233,51 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[0].isHidden = true
             propsButtonArray[1].isHidden = false
             let info = sortedArray![0]
-            popUpPropView(image: info.cover, hint: "You got the first record!")
+            popUpPropView(image: info.cover, hint: "You found the first record!")
         case 1:
             propsButtonArray[1].isHidden = true
             propsButtonArray[2].isHidden = false
             let info = sortedArray![1]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 2:
             propsButtonArray[2].isHidden = true
             propsButtonArray[3].isHidden = false
             let info = sortedArray![2]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 3:
             propsButtonArray[3].isHidden = true
             propsButtonArray[4].isHidden = false
             let info = sortedArray![3]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 4:
             propsButtonArray[4].isHidden = true
             propsButtonArray[5].isHidden = false
             let info = sortedArray![4]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 5:
             propsButtonArray[5].isHidden = true
             propsButtonArray[6].isHidden = false
             let info = sortedArray![5]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 6:
             propsButtonArray[6].isHidden = true
             propsButtonArray[7].isHidden = false
             let info = sortedArray![6]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 7:
             propsButtonArray[7].isHidden = true
             propsButtonArray[8].isHidden = false
             let info = sortedArray![7]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 8:
             propsButtonArray[8].isHidden = true
             propsButtonArray[9].isHidden = false
             let info = sortedArray![8]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 9:
             propsButtonArray[9].isHidden = true
             let info = sortedArray![9]
-            popUpPropView(image: info.cover, hint: "You got the record!")
+            popUpPropView(image: info.cover, hint: "You found the record!")
         default:
             return
         }
@@ -301,19 +301,21 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[btnIndex].isHidden = true
             CDButtonArray[btnIndex].tag = btnIndex
             CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordTab), for: .touchUpInside)
+            CDButtonArray[btnIndex].center = propsButtonArray[btnIndex].center
+            CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
 
         }
 
-        CDButtonSetup(index: 0, positionX: 4.4, positionY: 48)
-        CDButtonSetup(index: 1, positionX: 16.1, positionY: 53)
-        CDButtonSetup(index: 2, positionX: 28, positionY: 53)
-        CDButtonSetup(index: 3, positionX: 39.25, positionY: 49)
-        CDButtonSetup(index: 4, positionX: 51.75, positionY: 49)
-        CDButtonSetup(index: 5, positionX: 65.75, positionY: 49)
-        CDButtonSetup(index: 6, positionX: 80, positionY: 49)
-        CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
-        CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
-        CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
+//        CDButtonSetup(index: 0, positionX: 4.4, positionY: 48)
+//        CDButtonSetup(index: 1, positionX: 16.1, positionY: 53)
+//        CDButtonSetup(index: 2, positionX: 28, positionY: 53)
+//        CDButtonSetup(index: 3, positionX: 39.25, positionY: 49)
+//        CDButtonSetup(index: 4, positionX: 51.75, positionY: 49)
+//        CDButtonSetup(index: 5, positionX: 65.75, positionY: 49)
+//        CDButtonSetup(index: 6, positionX: 80, positionY: 49)
+//        CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
+//        CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
+//        CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
 
