@@ -121,8 +121,8 @@ class GameMapTestViewController: UIViewController {
         guideArray[2].frame = CGRect(origin: CGPoint(x: 20 * imageView.bounds.width / 100,
                                                      y: 40 * imageView.bounds.height/100),
                                      size: CGSize(width: 100, height: 30))
-        guideArray[3].frame = CGRect(origin: CGPoint(x: 26 * imageView.bounds.width / 100,
-                                                     y: 20 * imageView.bounds.height/100),
+        guideArray[3].frame = CGRect(origin: CGPoint(x: 50 * imageView.bounds.width / 100,
+                                                     y: 50 * imageView.bounds.height/100),
                                      size: CGSize(width: 110, height: 30))
 
     }
@@ -186,7 +186,7 @@ class GameMapTestViewController: UIViewController {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.red
+            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
             self.imageView.addSubview(propsButtonArray[btnIndex])
             imageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true

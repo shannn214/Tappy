@@ -93,7 +93,9 @@ enum TabBar {
 
 class TabBarViewController: UITabBarController {
 
-    let tabs: [TabBar] = [.game, .achievement, .collection, .setting]
+    let tabs: [TabBar] = [.game, .achievement, .collection]
+    
+    //TODO: Hide .setting for first publish
 
     override func viewDidLoad() {
         super.viewDidLoad()
