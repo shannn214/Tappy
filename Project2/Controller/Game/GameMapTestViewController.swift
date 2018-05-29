@@ -161,7 +161,11 @@ class GameMapTestViewController: UIViewController {
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "MapGradientVersionFinal-1"))
+        guard let url = Bundle.main.path(forResource: "mapppp-01", ofType: ".png") else { return }
+
+        let image = UIImage(contentsOfFile: url)
+
+        imageView = UIImageView(image: image)
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -186,7 +190,7 @@ class GameMapTestViewController: UIViewController {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
+            propsButtonArray[btnIndex].backgroundColor = UIColor.red
             self.imageView.addSubview(propsButtonArray[btnIndex])
             imageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true
@@ -195,7 +199,7 @@ class GameMapTestViewController: UIViewController {
 
         }
         // NOTE: Set music and props position
-        propsButtonSetup(index: 0, positionX: 50, positionY: 80)
+        propsButtonSetup(index: 0, positionX: 50, positionY: 70)
         propsButtonSetup(index: 1, positionX: 32, positionY: 53)
         propsButtonSetup(index: 2, positionX: 88, positionY: 20)
         propsButtonSetup(index: 3, positionX: 62, positionY: 40)

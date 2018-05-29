@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 protocol GameViewControllerDelegate: class {
 
@@ -15,7 +14,7 @@ protocol GameViewControllerDelegate: class {
 
 }
 
-class GameViewController: UIViewController, CLLocationManagerDelegate {
+class GameViewController: UIViewController {
 
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var movingBtn: UIButton!
@@ -25,9 +24,7 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
     weak var delegate: GameViewControllerDelegate?
 
-    let locationManager = CLLocationManager()
     var distance = 0.0
-    var locations = [CLLocation]()
     var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton()]
     let firstLogin = UserDefaults.standard
@@ -68,11 +65,11 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
             pop.center = sender.location(in: view)
             view.addSubview(pop)
             let point = view.window?.convert(tapPoint, to: gameMapViewController?.scrollView)
-//            self.delegate?.gameMapDidTap(controller: self, position: tapPoint.x)
             UIView.animate(withDuration: 0.4) {
-                self.gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77 * (self.gameMapViewController?.imageView.bounds.height)!/100, width: 75, height: 62)
+                self.gameMapViewController?.monster.frame = CGRect(x: (point?.x)!,
+                                                                   y: 77 * (self.gameMapViewController?.imageView.bounds.height)!/100,
+                                                                   width: 75, height: 62)
             }
-//            gameMapViewController?.monster.frame = CGRect(x: (point?.x)!, y: 77, width: 75, height: 62)
         default:
             print("Nope")
         }
@@ -85,14 +82,6 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 //            self.delegate = gameMapVC
             self.gameMapViewController = gameMapVC
         }
-
-    }
-
-    func setupLocation() {
-
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
     }
 
@@ -148,43 +137,13 @@ class GameViewController: UIViewController, CLLocationManagerDelegate {
 
         super.viewDidAppear(animated)
 
-//        if CLLocationManager.authorizationStatus() == .notDetermined {
-//            locationManager.requestAlwaysAuthorization()
-//        } else if CLLocationManager.authorizationStatus() == .denied {
-//            print("Please enable getting location.")
-//        } else if CLLocationManager.authorizationStatus() == .authorizedAlways {
-//            locationManager.startUpdatingLocation()
-//        }
-
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        let curLocation: CLLocation = locations[0]
-
-        for location in locations as [CLLocation] {
-            if location.horizontalAccuracy < 20 {
-                if self.locations.count > 0 {
-                    distance += location.distance(from: self.locations.last!)
-                    let complete = 25.0
-                    if distance <= complete {
-                        progress.progress = Float(distance) / Float(complete)
-                    } else {
-                        progress.progress = Float(complete)
-                        movingBtn.isHidden = false
-                    }
-                }
-                self.locations.append(location)
-            }
-        }
-
     }
 
     @IBAction func movingButton(_ sender: Any) {
 
-        movingBtn.isHidden = false
-        progress.progress = 0
-        distance = 0
+//        movingBtn.isHidden = false
+//        progress.progress = 0
+//        distance = 0
 
     }
 

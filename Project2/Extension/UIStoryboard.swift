@@ -46,4 +46,8 @@ extension UIStoryboard {
         return UIStoryboard(name: "Intro", bundle: nil)
     }
 
+    static func sampleStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "SampleMode", bundle: nil)
+    }
+
 }

@@ -97,7 +97,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkV-ms-bMk">
-                                <rect key="frame" x="67" y="220" width="240" height="240"/>
+                                <rect key="frame" x="67" y="193.5" width="240" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-zK-ykh" userLabel="Next Button">
                                         <rect key="frame" x="30" y="195" width="180" height="30"/>
@@ -138,7 +138,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6D6-kn-XfE">
-                                <rect key="frame" x="67" y="220" width="240" height="240"/>
+                                <rect key="frame" x="67" y="193.5" width="240" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0I2-bY-YM8">
                                         <rect key="frame" x="30" y="200" width="180" height="30"/>
@@ -185,9 +185,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IkV-ms-bMk" firstAttribute="centerX" secondItem="KlV-gh-BvC" secondAttribute="centerX" id="20L-EG-KDQ"/>
-                            <constraint firstItem="6D6-kn-XfE" firstAttribute="top" secondItem="wLg-Tx-ohp" secondAttribute="top" constant="200" id="Cwc-yW-6gl"/>
+                            <constraint firstItem="6D6-kn-XfE" firstAttribute="centerY" secondItem="KlV-gh-BvC" secondAttribute="centerY" constant="-20" id="Pfo-r4-q6A"/>
                             <constraint firstItem="6D6-kn-XfE" firstAttribute="centerX" secondItem="KlV-gh-BvC" secondAttribute="centerX" id="STn-H9-dUk"/>
-                            <constraint firstItem="IkV-ms-bMk" firstAttribute="top" secondItem="wLg-Tx-ohp" secondAttribute="top" constant="200" id="aAr-gU-4fE"/>
+                            <constraint firstItem="IkV-ms-bMk" firstAttribute="centerY" secondItem="KlV-gh-BvC" secondAttribute="centerY" constant="-20" id="eDF-H0-mRf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wLg-Tx-ohp"/>
                     </view>
