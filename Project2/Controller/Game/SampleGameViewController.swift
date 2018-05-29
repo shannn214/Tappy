@@ -13,6 +13,8 @@ class SampleGameViewController: UIViewController {
     var scrollView: UIScrollView!
     var imageView: UIImageView!
     var monster: UIImageView!
+    let loginSpotifyBtn = UIButton()
+    @IBOutlet weak var logoutButton: UIButton!
 
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
@@ -22,11 +24,30 @@ class SampleGameViewController: UIViewController {
         createScrollViewAndMap()
         createCharactor()
         self.imageView.isUserInteractionEnabled = true
+        setupButton()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func logoutAction(_ sender: Any) {
+
+        DispatchQueue.main.async {
+            //            AppDelegate.shared?.switchToMainStoryBoard()
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
+        }
+
+    }
+
+    func setupButton() {
+
+        logoutButton.layer.cornerRadius = 15
+        self.view.bringSubview(toFront: logoutButton)
+
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {

@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Medium.otf">
+            <string>CircularStd-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sample Game View Controller-->
         <scene sceneID="Jb5-Sy-3bH">
@@ -16,8 +21,29 @@
                     <view key="view" contentMode="scaleToFill" id="nqu-Rr-aKk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7t-t7-dsv">
+                                <rect key="frame" x="127" y="627" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.64705882349999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="LIM-Wg-Xbi"/>
+                                    <constraint firstAttribute="height" constant="30" id="VjS-cz-fqz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="16"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutAction:" destination="78G-9q-Jhj" eventType="touchUpInside" id="OE5-0z-7cc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="m7t-t7-dsv" firstAttribute="centerX" secondItem="nqu-Rr-aKk" secondAttribute="centerX" id="2Wm-ir-YeJ"/>
+                            <constraint firstItem="aGL-t4-iag" firstAttribute="bottom" secondItem="m7t-t7-dsv" secondAttribute="bottom" constant="10" id="NQf-BV-gcn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aGL-t4-iag"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="yNK-Kb-wHS" appends="YES" id="dFB-zA-JwT"/>
@@ -25,6 +51,7 @@
                     </view>
                     <connections>
                         <outlet property="ghostTapGesture" destination="yNK-Kb-wHS" id="tnO-JJ-PTf"/>
+                        <outlet property="logoutButton" destination="m7t-t7-dsv" id="9C3-cE-qB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2x-mZ-8tz" userLabel="First Responder" sceneMemberID="firstResponder"/>

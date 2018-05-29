@@ -190,7 +190,7 @@ class GameMapTestViewController: UIViewController {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.red
+            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
             self.imageView.addSubview(propsButtonArray[btnIndex])
             imageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true
