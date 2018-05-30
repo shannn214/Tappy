@@ -150,7 +150,7 @@ class GameMapTestViewController: UIViewController {
         monster = UIImageView()
 //        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
 //        animate(imageView: monster, images: monsterImages)
-        monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
+        monster.image = #imageLiteral(resourceName: "right_pink")
         monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
         self.imageView.addSubview(monster)
 

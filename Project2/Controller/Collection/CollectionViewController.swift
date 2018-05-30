@@ -47,14 +47,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             object: nil
         )
 
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(trackIsStreaming(notification:)),
-//            name: .startPlayingTrack,
-//            object: nil
-//        )
-
         self.view.isUserInteractionEnabled = true
+        self.view.isMultipleTouchEnabled = true
+        self.recordsContainerView.isUserInteractionEnabled = true
+
+//        let btn_1_Point = showPlayerButton.convert(CGPoint(x: 0, y: 0), from: self.recordsContainerView)
+//        recordsContainerView.hitTest(btn_1_Point, with: )
 
     }
 
@@ -72,6 +70,25 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             collectionListViewController.delegate = self
         }
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch: AnyObject in touches {
+            guard let ttttouch: UITouch = touch as? UITouch else { return }
+            if ttttouch.tapCount == 1 {
+                let point = showPlayerButton.convert(CGPoint(x: 0, y: 0), from: self.view)
+                topView.hitTest(point, with: event)
+            }
+        }
+        super.touchesBegan(touches, with: event)
+    }
+
+//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+//        let btn_1_Point = button_1.convertPoint(point, fromView: self)
+//        guard button_1.pointInside(btn_1_Point, withEvent: event) else {
+//            return super.hitTest(point, withEvent: event)
+//        }
+//        return button_1
+//    }
 
     func setup() {
 

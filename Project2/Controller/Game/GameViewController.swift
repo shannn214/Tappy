@@ -68,9 +68,9 @@ class GameViewController: UIViewController {
             let dddd = point?.x
 
             if Int(dddd!) < Int((self.gameMapViewController?.monster.center.x)!) {
-                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "left_pinkQ_ghost")
+                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "left_pink")
             } else {
-                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
+                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "right_pink")
             }
 
             UIView.animate(withDuration: 0.4) {

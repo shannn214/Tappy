@@ -52,7 +52,7 @@
                                     <action selector="anonymousAction:" destination="wGR-qC-vze" eventType="touchUpInside" id="YAc-4F-jwa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pinkQ_ghost" translatesAutoresizingMaskIntoConstraints="NO" id="wiK-Mm-7NS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_pink" translatesAutoresizingMaskIntoConstraints="NO" id="wiK-Mm-7NS">
                                 <rect key="frame" x="147" y="251" width="80" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="GTe-py-rRo"/>
@@ -82,6 +82,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pinkQ_ghost" width="1129" height="980"/>
+        <image name="right_pink" width="271" height="235"/>
     </resources>
 </document>

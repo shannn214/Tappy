@@ -60,7 +60,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         topViewImage.layer.cornerRadius = 15
 //        topViewImage.layer.borderWidth = 1
 //        topViewImage.layer.borderColor = UIColor.lightGray.cgColor
-        topViewImage.image = #imageLiteral(resourceName: "pinkQ_ghost")
+        topViewImage.image = #imageLiteral(resourceName: "right_pink")
 
     }
 

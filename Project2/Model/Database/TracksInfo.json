@@ -4,56 +4,56 @@
               "trackUri" : "spotify:track:4UZmRayMrFI8pHeK5zb7GU",
               "albumUri" : "spotify:album:6anOpUuzfcD0zNPDW1zPOT",
               "level" : 1,
-              "image" : "flower_ghost",
+              "image" : "flower_jelly0",
               "hint" : "Next hint: Fire!!!"
               },
               {
               "trackUri" : "spotify:track:1nXRacxi1isUvleBB6Jgx7",
               "albumUri" : "spotify:album:0AVPusXNzK1jWwefBiPJ5I",
               "level" : 2,
-              "image" : "hot_ghost",
+              "image" : "fire_jelly0",
               "hint" : "Next hint: Cloud!"
               },
               {
               "trackUri" : "spotify:track:0oks4FnzhNp5QPTZtoet7c",
               "albumUri" : "spotify:album:4m2880jivSbbyEGAKfITCa",
               "level" : 3,
-              "image" : "cloud_ghost",
+              "image" : "cloud_jelly0",
               "hint" : "Next hint: Water!"
               },
               {
               "trackUri" : "spotify:track:6jPSxPbNzV64hdwrFIPaIl",
               "albumUri" : "spotify:album:0X8YRrzzbL4RE1bPgRz6eW",
               "level" : 4,
-              "image" : "water_ghost",
+              "image" : "cry_jelly0",
               "hint" : "Next hint: Star!"
               },
               {
               "trackUri" : "spotify:track:4GKk1uNzpxIptBuaY97Dkj",
               "albumUri" : "spotify:album:2G4AUqfwxcV1UdQjm2ouYr",
               "level" : 5,
-              "image" : "star_ghost",
+              "image" : "star_jelly0",
               "hint" : "Next hint: Weapon!"
               },
               {
               "trackUri" : "spotify:track:62LJFaYihsdVrrkgUOJC05",
               "albumUri" : "spotify:album:54DjkEN3wdCQgfCTZ9WjdB",
               "level" : 6,
-              "image" : "master_ghost",
+              "image" : "master_jelly0",
               "hint" : "Next hint: Shadow!"
               },
               {
               "trackUri" : "spotify:track:3cPtV3L2SinV7YQhflqFad",
               "albumUri" : "spotify:album:3LDLJX6JTDZvcCdkK7JQit",
               "level" : 7,
-              "image" : "dark_ghost",
+              "image" : "black_jelly",
               "hint" : "Next hint: Original position!"
               },
               {
               "trackUri" : "spotify:track:4dyx5SzxPPaD8xQIid5Wjj",
               "albumUri" : "spotify:album:5g4E06cxsFEMFE9hSekAt2",
               "level" : 8,
-              "image" : "peek_ghost0",
+              "image" : "flower_jelly1",
               "hint" : "No more hint now."
               },
               {
