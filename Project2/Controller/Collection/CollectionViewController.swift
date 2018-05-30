@@ -47,6 +47,13 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
             object: nil
         )
 
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(trackIsStreaming(notification:)),
+//            name: .startPlayingTrack,
+//            object: nil
+//        )
+
         self.view.isUserInteractionEnabled = true
 
     }
@@ -121,7 +128,6 @@ extension CollectionViewController: CollectionListControllerDelegate {
             self.gradientHeightConstraint.constant = topViewHeight - collectionY
 
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
-
         }
         if collectionY <= alphaPoint {
             let percentage = collectionY / alphaPoint

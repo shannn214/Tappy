@@ -90,10 +90,10 @@
                                             <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="play-button-6">
+                                        <state key="normal" backgroundImage="play-button-8">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <state key="selected" backgroundImage="pause-3">
+                                        <state key="selected" backgroundImage="pause-4">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -176,7 +176,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pause-3" width="64" height="64"/>
-        <image name="play-button-6" width="64" height="64"/>
+        <image name="pause-4" width="128" height="128"/>
+        <image name="play-button-8" width="128" height="128"/>
     </resources>
 </document>

@@ -65,6 +65,14 @@ class GameViewController: UIViewController {
             pop.center = sender.location(in: view)
             view.addSubview(pop)
             let point = view.window?.convert(tapPoint, to: gameMapViewController?.scrollView)
+            let dddd = point?.x
+
+            if Int(dddd!) < Int((self.gameMapViewController?.monster.center.x)!) {
+                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "left_pinkQ_ghost")
+            } else {
+                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
+            }
+
             UIView.animate(withDuration: 0.4) {
                 self.gameMapViewController?.monster.frame = CGRect(x: (point?.x)!,
                                                                    y: 77 * (self.gameMapViewController?.imageView.bounds.height)!/100,

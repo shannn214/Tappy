@@ -118,9 +118,6 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
             delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
         }
 
-//        let delegate = UIApplication.shared.delegate as? AppDelegate
-//        delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
-
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: String!) {
@@ -132,7 +129,11 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
 
     }
 
-    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didReceive event: SpPlaybackEvent) {
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChange metadata: SPTPlaybackMetadata!) {
+        NotificationCenter.default.post(
+            name: .trackPlayinyStatus,
+            object: nil
+        )
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {

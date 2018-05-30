@@ -71,7 +71,6 @@ class GameMapTestViewController: UIViewController {
                 CDButtonArray[level].isHidden = false
                 explosionArray[level].isHidden = false
                 animate(imageView: explosionArray[level], images: explosionImages)
-
             }
 
         }
@@ -95,16 +94,14 @@ class GameMapTestViewController: UIViewController {
             guideArray[btnIndex].setImage(UIImage(), for: .normal)
             guideArray[btnIndex].backgroundColor = UIColor.black
             guideArray[btnIndex].layer.cornerRadius = 15
-//            guideArray[btnIndex].layer.borderWidth = 1
-//            guideArray[btnIndex].layer.borderColor = UIColor.lightGray.cgColor
             guideArray[btnIndex].setTitleColor(UIColor.lightGray, for: .normal)
             guideArray[btnIndex].isHidden = true
             guideArray[btnIndex].tag = btnIndex
             guideArray[btnIndex].addTarget(self, action: #selector(showGuideButton), for: .touchUpInside)
-
             guideArray[btnIndex].titleLabel?.font = UIFont(name: "CircularStd-Medium", size: 12)
             self.scrollView.addSubview(guideArray[btnIndex])
             scrollView.bringSubview(toFront: guideArray[btnIndex])
+
         }
 
         guideArray[0].setTitle("Tap me!", for: .normal)
@@ -303,9 +300,53 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    @objc func showRecordTab() {
+    @objc func showRecordTab(sender: UIButton!) {
 
-        tabBarController?.selectedIndex = 2
+//        let sortedArray = DBProvider.shared.sortedArray
+
+        let btnSendTag: UIButton = sender
+        switch btnSendTag.tag {
+        case 0:
+            presentPlayerVC(level: 0)
+        case 1:
+            presentPlayerVC(level: 1)
+        case 2:
+            presentPlayerVC(level: 2)
+        case 3:
+            presentPlayerVC(level: 3)
+        case 4:
+            presentPlayerVC(level: 4)
+        case 5:
+            presentPlayerVC(level: 5)
+        case 6:
+            presentPlayerVC(level: 6)
+        case 7:
+            presentPlayerVC(level: 7)
+        case 8:
+            presentPlayerVC(level: 8)
+        case 9:
+            presentPlayerVC(level: 9)
+        default:
+            break
+        }
+
+//        tabBarController?.selectedIndex = 2
+    }
+
+    func presentPlayerVC(level: Int) {
+
+        guard let sortedArray = DBProvider.shared.sortedArray else { return }
+
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+        let info = sortedArray[level]
+        SpotifyManager.shared.playMusic(track: info.trackUri)
+
+        present(playerVC, animated: true) {
+            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+            playerVC.playerPanelView.artist.text = info.artist
+            playerVC.playerPanelView.trackName.text = info.trackName
+        }
 
     }
 
