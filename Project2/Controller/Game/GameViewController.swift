@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
     var imageView: UIImageView!
 
     var gameMapViewController: GameMapTestViewController?
-    
+
 //    let coachMarksController = CoachMarksController()
 //    let pointOfInsert = UIView()
 
@@ -52,11 +52,10 @@ class GameViewController: UIViewController {
 
         progress.isHidden = true
         movingBtn.isHidden = true
-        
+
 //        self.coachMarksController.delegate = self
 
     }
-
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
 
@@ -135,8 +134,7 @@ class GameViewController: UIViewController {
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
-        popUpRecordView.propView.isHidden = true
-        popUpRecordView.introView.isHidden = false
+        popUpRecordView.popUpIntro()
 
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
@@ -144,41 +142,4 @@ class GameViewController: UIViewController {
         }
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//
-//        super.viewDidAppear(animated)
-//        
-//        self.coachMarksController.start(on: self)
-//
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        
-//        self.coachMarksController.stop(immediately: true)
-//    }
-
 }
-
-//extension GameViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
-//    
-//    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
-//        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
-//        
-//        coachViews.bodyView.hintLabel.text = "balalalalala"
-//        coachViews.bodyView.nextLabel.text = "OKOK"
-//        
-//        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
-//    }
-//    
-//    
-//    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
-//        return coachMarksController.helper.makeCoachMark(for: pointOfInsert)
-//    }
-//    
-//    
-//    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-//        return 1
-//    }
-//    
-//}

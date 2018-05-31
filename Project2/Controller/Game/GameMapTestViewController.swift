@@ -45,8 +45,36 @@ class GameMapTestViewController: UIViewController {
             object: nil
         )
 
+        NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
+
 //        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
+
+    }
+
+    @objc func changeFrameForGuide(notification: Notification) {
+
+        UIView.animate(withDuration: 2, animations: {
+            //animation
+            self.scrollView.contentOffset = CGPoint(x: 45 * self.imageView.frame.width / 100, y: 0)
+        }) { (_) in
+            //completion
+            self.secondGuide()
+        }
+
+    }
+
+    func secondGuide() {
+
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.popUpfirstGuide()
+        UIView.animate(withDuration: 0.3) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
 
     }
 
@@ -84,64 +112,6 @@ class GameMapTestViewController: UIViewController {
 //            createGuideButton()
 //            guideArray[0].isHidden = false
 //        }
-
-    }
-
-    func createGuideButton() {
-
-        for btnIndex in 0...3 {
-
-            guideArray[btnIndex].setImage(UIImage(), for: .normal)
-            guideArray[btnIndex].backgroundColor = UIColor.black
-            guideArray[btnIndex].layer.cornerRadius = 15
-            guideArray[btnIndex].setTitleColor(UIColor.lightGray, for: .normal)
-            guideArray[btnIndex].isHidden = true
-            guideArray[btnIndex].tag = btnIndex
-            guideArray[btnIndex].addTarget(self, action: #selector(showGuideButton), for: .touchUpInside)
-            guideArray[btnIndex].titleLabel?.font = UIFont(name: "CircularStd-Medium", size: 12)
-            self.scrollView.addSubview(guideArray[btnIndex])
-            scrollView.bringSubview(toFront: guideArray[btnIndex])
-
-        }
-
-        guideArray[0].setTitle("Tap me!", for: .normal)
-        guideArray[1].setTitle("Over here!", for: .normal)
-        guideArray[2].setTitle("YEE-HEE!", for: .normal)
-        guideArray[3].setTitle("Tap the flowrs!", for: .normal)
-
-        guideArray[0].frame = CGRect(origin: CGPoint(x: 6 * imageView.bounds.width / 100,
-                                                     y: 50 * imageView.bounds.height/100),
-                                     size: CGSize(width: 100, height: 30))
-        guideArray[1].frame = CGRect(origin: CGPoint(x: 12 * imageView.bounds.width / 100,
-                                                     y: 75 * imageView.bounds.height/100),
-                                     size: CGSize(width: 100, height: 30))
-        guideArray[2].frame = CGRect(origin: CGPoint(x: 20 * imageView.bounds.width / 100,
-                                                     y: 40 * imageView.bounds.height/100),
-                                     size: CGSize(width: 100, height: 30))
-        guideArray[3].frame = CGRect(origin: CGPoint(x: 50 * imageView.bounds.width / 100,
-                                                     y: 50 * imageView.bounds.height/100),
-                                     size: CGSize(width: 110, height: 30))
-
-    }
-
-    @objc func showGuideButton(sender: UIButton!) {
-
-        let btnSendTag: UIButton = sender
-        switch btnSendTag.tag {
-        case 0:
-            guideArray[0].isHidden = true
-            guideArray[1].isHidden = false
-        case 1:
-            guideArray[1].isHidden = true
-            guideArray[2].isHidden = false
-        case 2:
-            guideArray[2].isHidden = true
-            guideArray[3].isHidden = false
-        case 3:
-            guideArray[3].isHidden = true
-        default:
-            break
-        }
 
     }
 
@@ -374,12 +344,6 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[index].isHidden = false
         explosionArray[index].isHidden = false
         animate(imageView: explosionArray[index], images: explosionImages)
-//        UIView.animate(withDuration: 2.0, animations: {
-//            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
-//                                        y: 77 * self.imageView.bounds.height/100,
-//                                        width: self.monster.frame.size.width,
-//                                        height: self.monster.frame.size.height)
-//        })
 
     }
 
@@ -483,7 +447,8 @@ class GameMapTestViewController: UIViewController {
         popUpRecordView.recordTitle.text = hint
         popUpRecordView.recordCover.sd_setImage(with: URL(string: image))
         popUpRecordView.view.alpha = 0
-        popUpRecordView.introView.isHidden = true
+//        popUpRecordView.introView.isHidden = true
+        popUpRecordView.popProp()
         UIView.animate(withDuration: 0.3) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)

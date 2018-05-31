@@ -18,6 +18,8 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var getPropButton: UIButton!
+    @IBOutlet weak var firstGuideButton: UIButton!
+    @IBOutlet weak var firstGuideView: UIView!
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
@@ -26,9 +28,14 @@ class PopUpRecordViewController: UIViewController {
 
         introViewSetup()
         propViewSetup()
+        firstGuideViewSetup()
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 
+    }
+
+    @IBAction func firstGuideAction(_ sender: Any) {
+        self.view.removeFromSuperview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +48,17 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
+    func firstGuideViewSetup() {
+
+        firstGuideButton.layer.cornerRadius = 15
+        self.firstGuideView.layer.cornerRadius = 20
+
+    }
+
     func introViewSetup() {
 
         self.introView.layer.cornerRadius = 20
-        self.introTextView.text = "Yeah!!! \n I know you are a good man. \n Just follow the hint to find the first record. \n \n GOGOGO!"
+        self.introTextView.text = "Yeah!!! \n I know you are a good man. \n I'll guide you to find the first record. \n \n GOGOGO!"
         startGameButton.layer.cornerRadius = 15
 
     }
@@ -57,15 +71,49 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    @IBAction func nextButton(_ sender: Any) {
+    func popUpLastGuide() {
+
+        self.propView.isHidden = true
+        self.introView.isHidden = true
+        self.firstGuideView.isHidden = true
+
+    }
+
+    func popUpfirstGuide() {
+
+        self.propView.isHidden = true
+        self.introView.isHidden = true
+        self.firstGuideView.isHidden = false
+
+    }
+
+    func popUpIntro() {
+
+        self.propView.isHidden = true
+        self.introView.isHidden = false
+        self.firstGuideView.isHidden = true
+
+    }
+
+    func popProp() {
+
+        self.propView.isHidden = false
+        self.introView.isHidden = true
+        self.firstGuideView.isHidden = true
+
+    }
+
+    @IBAction func startButton(_ sender: Any) {
+        // Note: Notify game map to change frame to first record position
+        NotificationCenter.default.post(name: .startGuideFlow, object: nil)
+
         self.view.removeFromSuperview()
     }
 
     @IBAction func leaveButton(_ sender: Any) {
 
-        NotificationCenter.default.post(name: .leavePropPopView,
-                                        object: nil
-                                        )
+        NotificationCenter.default.post(name: .leavePropPopView, object: nil)
+
         self.view.removeFromSuperview()
 
     }
