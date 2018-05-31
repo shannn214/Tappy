@@ -60,6 +60,14 @@ class SampleGameViewController: UIViewController {
             pop.center = sender.location(in: view)
             view.addSubview(pop)
             let point = view.window?.convert(tapPoint, to: self.scrollView)
+            let dddd = point?.x
+
+            if Int(dddd!) < Int(self.monster.center.x) {
+                self.monster.image = #imageLiteral(resourceName: "left_pink")
+            } else {
+                self.monster.image = #imageLiteral(resourceName: "right_pink")
+            }
+
             UIView.animate(withDuration: 0.4) {
                 self.monster.frame = CGRect(x: (point?.x)!,
                                             y: 77 * self.imageView.bounds.height/100,
@@ -74,7 +82,7 @@ class SampleGameViewController: UIViewController {
     func createCharactor() {
 
         monster = UIImageView()
-        monster.image = #imageLiteral(resourceName: "pinkQ_ghost")
+        monster.image = #imageLiteral(resourceName: "right_pink")
         monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
         self.imageView.addSubview(monster)
 

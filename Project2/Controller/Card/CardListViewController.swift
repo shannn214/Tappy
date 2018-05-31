@@ -130,7 +130,7 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.cardImage.image = UIImage(named: uriManager.uris[indexPath.row].image)
 
-        cardDetailVC.cardViewLabel.text = uriManager.uris[indexPath.row].hint
+        cardDetailVC.cardContentLabel.text = uriManager.uris[indexPath.row].hint
 
         if indexPath.row < LevelStatusManager.shared.level! {
 
@@ -177,13 +177,24 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.delegate = self
 
-        UIView.animate(withDuration: 0.35) {
+//        UIView.animate(withDuration: 0.35) {
+//
+//            cardDetailVC.view.frame = self.view.frame
+//            cardDetailVC.changeContraintToFullScreen()
+//            collectionView.isUserInteractionEnabled = false
+//            self.cardFlag = true
+//
+//        }
+
+        UIView.animate(withDuration: 0.35, animations: {
 
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
             collectionView.isUserInteractionEnabled = false
             self.cardFlag = true
 
+        }) { (_) in
+            cardDetailVC.startToMoveContent()
         }
 
     }

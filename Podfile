@@ -12,7 +12,7 @@ pod 'RealmSwift'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Firebase/Core'
-
+pod 'Instructions', '~> 1.0.0'
 
   # Pods for Project2
 

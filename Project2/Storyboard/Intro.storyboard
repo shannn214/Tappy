@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -269,7 +268,7 @@
                                     <constraint firstAttribute="bottom" secondItem="5vT-Ty-cTR" secondAttribute="bottom" constant="15" id="f9M-ya-GbR"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headphone_ghost0" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-SW-py9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_pink" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-SW-py9">
                                 <rect key="frame" x="152" y="160" width="70" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="bLn-WC-HEV"/>
@@ -322,6 +321,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="headphone_ghost0" width="1021" height="875"/>
+        <image name="right_pink" width="271" height="235"/>
     </resources>
 </document>

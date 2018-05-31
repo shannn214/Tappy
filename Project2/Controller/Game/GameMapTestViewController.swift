@@ -80,10 +80,10 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[level].isHidden = false
         }
 
-        if LevelStatusManager.shared.level! == 0 {
-            createGuideButton()
-            guideArray[0].isHidden = false
-        }
+//        if LevelStatusManager.shared.level! == 0 {
+//            createGuideButton()
+//            guideArray[0].isHidden = false
+//        }
 
     }
 
@@ -473,18 +473,6 @@ class GameMapTestViewController: UIViewController {
     }
 
     // NOTE: Pop Prop View
-    func popUpView() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        popUpRecordView.introView.isHidden = true
-        UIView.animate(withDuration: 0.3) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
-    }
 
     func popUpPropView(image: String, hint: String) {
 

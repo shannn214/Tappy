@@ -185,7 +185,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
             rotateFlag = true
             showPlayerButton.isHidden = false
         } else if SpotifyManager.shared.isPlaying == false {
-            collectionCover.image = #imageLiteral(resourceName: "My-Boo")
+            collectionCover.image = #imageLiteral(resourceName: "black_record")
             removeAnimation(image: collectionCover)
             rotateFlag = false
             showPlayerButton.isHidden = true
