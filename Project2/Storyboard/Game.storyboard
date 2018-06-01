@@ -182,7 +182,7 @@
                                     <constraint firstItem="dxU-2c-MIJ" firstAttribute="top" secondItem="nhb-BD-wSB" secondAttribute="bottom" constant="8" id="rAd-JK-CCE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjh-Qb-9I5">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjh-Qb-9I5">
                                 <rect key="frame" x="67" y="300" width="240" height="128"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eA-zQ-8eF">
@@ -232,6 +232,8 @@
                     <connections>
                         <outlet property="firstGuideButton" destination="5eA-zQ-8eF" id="7eZ-mz-wBz"/>
                         <outlet property="firstGuideView" destination="Bjh-Qb-9I5" id="i3H-FO-XgH"/>
+                        <outlet property="firstGuideViewHeight" destination="RCj-XB-Uoz" id="VgI-0Z-ScS"/>
+                        <outlet property="firstGuideViewWidth" destination="Bvo-VF-8Ji" id="jHF-rg-QTq"/>
                         <outlet property="getPropButton" destination="0I2-bY-YM8" id="TtN-Sz-xXd"/>
                         <outlet property="introTextView" destination="tme-D3-hpC" id="Mh6-gm-9WQ"/>
                         <outlet property="introView" destination="IkV-ms-bMk" id="qtU-Ca-xcb"/>

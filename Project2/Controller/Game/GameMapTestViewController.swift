@@ -27,6 +27,8 @@ class GameMapTestViewController: UIViewController {
     var monster: UIImageView!
     var monsterImages: [UIImage] = []
 
+    let maskLayer = CAShapeLayer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,8 +49,35 @@ class GameMapTestViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(showMaskLayer(notification:)), name: .showMaskAction, object: nil)
+
 //        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        firstGuide()
+
+    }
+
+    @objc func showMaskLayer(notification: Notification) {
+
+        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
+        path.append(maskPath.reversing())
+
+        maskLayer.path = path.cgPath
+        maskLayer.fillColor = UIColor.black.cgColor
+        maskLayer.opacity = 0.7
+        view.layer.addSublayer(maskLayer)
+
+    }
+
+    func removeMask() {
+
+        maskLayer.removeFromSuperlayer()
 
     }
 
@@ -59,22 +88,18 @@ class GameMapTestViewController: UIViewController {
             self.scrollView.contentOffset = CGPoint(x: 45 * self.imageView.frame.width / 100, y: 0)
         }) { (_) in
             //completion
-            self.secondGuide()
+            self.firstGuide()
         }
 
     }
 
-    func secondGuide() {
+    func firstGuide() {
 
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.popUpfirstGuide()
-        UIView.animate(withDuration: 0.3) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
+        popUpRecordView.popUpfirstGuide(parent: self)
 
     }
 
@@ -107,11 +132,6 @@ class GameMapTestViewController: UIViewController {
             let level = LevelStatusManager.shared.level!
             propsButtonArray[level].isHidden = false
         }
-
-//        if LevelStatusManager.shared.level! == 0 {
-//            createGuideButton()
-//            guideArray[0].isHidden = false
-//        }
 
     }
 
@@ -194,6 +214,7 @@ class GameMapTestViewController: UIViewController {
         case 0:
             propsButtonArray[0].isHidden = true
             propsButtonArray[1].isHidden = false
+            removeMask()
             let info = sortedArray![0]
             popUpPropView(image: info.cover, hint: "You found the first record!")
         case 1:
@@ -444,11 +465,7 @@ class GameMapTestViewController: UIViewController {
         self.addChildViewController(popUpRecordView)
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.recordTitle.text = hint
-        popUpRecordView.recordCover.sd_setImage(with: URL(string: image))
-        popUpRecordView.view.alpha = 0
-//        popUpRecordView.introView.isHidden = true
-        popUpRecordView.popProp()
+        popUpRecordView.popProp(hint: hint, image: image)
         UIView.animate(withDuration: 0.3) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)

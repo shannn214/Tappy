@@ -14,12 +14,16 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var recordCover: UIImageView!
     @IBOutlet weak var recordTitle: UILabel!
     @IBOutlet weak var propView: UIView!
+
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var getPropButton: UIButton!
+
     @IBOutlet weak var firstGuideButton: UIButton!
     @IBOutlet weak var firstGuideView: UIView!
+    @IBOutlet weak var firstGuideViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var firstGuideViewHeight: NSLayoutConstraint!
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
@@ -35,6 +39,9 @@ class PopUpRecordViewController: UIViewController {
     }
 
     @IBAction func firstGuideAction(_ sender: Any) {
+
+        NotificationCenter.default.post(name: .showMaskAction, object: nil)
+
         self.view.removeFromSuperview()
     }
 
@@ -52,7 +59,9 @@ class PopUpRecordViewController: UIViewController {
 
         firstGuideButton.layer.cornerRadius = 15
         self.firstGuideView.layer.cornerRadius = 20
-
+        self.firstGuideView.alpha = 1
+        self.firstGuideView.isHidden = true
+        firstGuideView.frame.size = CGSize(width: 0, height: 0)
     }
 
     func introViewSetup() {
@@ -79,11 +88,30 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func popUpfirstGuide() {
+    func popUpfirstGuide(parent: UIViewController) {
 
         self.propView.isHidden = true
         self.introView.isHidden = true
         self.firstGuideView.isHidden = false
+
+        UIView.animate(withDuration: 0.3, animations: {
+
+            self.firstGuideView.alpha = 1
+            self.firstGuideViewWidth.constant = 0
+            self.firstGuideViewHeight.constant = 128
+            self.view.layoutIfNeeded()
+
+        }) { (_) in
+
+            UIView.animate(withDuration: 0.35, animations: {
+                self.firstGuideViewWidth.constant = 240
+                self.didMove(toParentViewController: parent)
+                self.view.layoutIfNeeded()
+            })
+
+        }
+
+        self.view.layoutIfNeeded()
 
     }
 
@@ -95,8 +123,11 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func popProp() {
+    func popProp(hint: String, image: String) {
 
+        self.recordTitle.text = hint
+        self.recordCover.sd_setImage(with: URL(string: image))
+        self.view.alpha = 0
         self.propView.isHidden = false
         self.introView.isHidden = true
         self.firstGuideView.isHidden = true

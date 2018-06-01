@@ -23,4 +23,6 @@ extension Notification.Name {
     static let startGuideFlow = Notification.Name("startGuideFlow")
 
     static let firstGuideAction = Notification.Name("firstGuideAction")
+
+    static let showMaskAction = Notification.Name("showMaskAction")
 }

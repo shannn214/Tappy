@@ -112,10 +112,22 @@
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vO-QW-UlC">
+                                        <rect key="frame" x="177" y="28" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="oSU-re-fAi"/>
+                                            <constraint firstAttribute="width" constant="20" id="tKG-an-ZTF"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="arrow"/>
+                                        <connections>
+                                            <action selector="leaveArrow:" destination="aws-MT-OLZ" eventType="touchUpInside" id="qat-RH-foe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="76I-0s-gRA"/>
+                                    <constraint firstItem="6vO-QW-UlC" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="9W7-as-CPU"/>
                                     <constraint firstAttribute="trailing" secondItem="OaG-Gs-lLZ" secondAttribute="trailing" constant="45" id="CyJ-a8-Eh0"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="JhL-L7-jSk"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="Os0-tW-Dlv"/>
@@ -125,6 +137,7 @@
                                     <constraint firstItem="Onb-m6-YVb" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="30" id="aKE-Mj-Z2P"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="ah6-c2-uYH"/>
                                     <constraint firstAttribute="trailing" secondItem="PyC-k8-G0p" secondAttribute="trailing" constant="45" id="bcr-AI-aHH"/>
+                                    <constraint firstItem="6vO-QW-UlC" firstAttribute="top" secondItem="jQo-UL-sX6" secondAttribute="top" constant="28" id="cDJ-yl-MJY"/>
                                     <constraint firstItem="OaG-Gs-lLZ" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="flx-GU-hiW"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="top" secondItem="yel-hK-dSJ" secondAttribute="bottom" constant="10" id="jSo-dn-u3y"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="nat-NS-2m5"/>
@@ -176,6 +189,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow" width="128" height="128"/>
         <image name="pause-4" width="128" height="128"/>
         <image name="play-button-8" width="128" height="128"/>
     </resources>

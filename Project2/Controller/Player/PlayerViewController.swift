@@ -61,6 +61,10 @@ class PlayerViewController: UIViewController {
 
     }
 
+    @IBAction func leaveArrow(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
 
         let touchPoint = sender.location(in: self.view.window)
