@@ -29,6 +29,8 @@ class GameMapTestViewController: UIViewController {
 
     let maskLayer = CAShapeLayer()
 
+    let tabarVC = AppDelegate.shared?.window?.rootViewController as? TabBarViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +53,8 @@ class GameMapTestViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(showMaskLayer(notification:)), name: .showMaskAction, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(showSecondGuide(notification:)), name: .showSecondGuideAction, object: nil)
+
 //        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
 
@@ -69,15 +73,28 @@ class GameMapTestViewController: UIViewController {
         path.append(maskPath.reversing())
 
         maskLayer.path = path.cgPath
-        maskLayer.fillColor = UIColor.black.cgColor
-        maskLayer.opacity = 0.7
+        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
+//        maskLayer.opacity = 0.7
         view.layer.addSublayer(maskLayer)
 
+        let item = tabarVC?.tabBar.items![1]
+        item?.isEnabled = false
     }
 
     func removeMask() {
-
+        let item = tabarVC?.tabBar.items![1]
+        item?.isEnabled = true
         maskLayer.removeFromSuperlayer()
+
+    }
+
+    @objc func showSecondGuide(notification: Notification) {
+
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.popUpsecondGuide(parent: self)
 
     }
 
@@ -97,7 +114,7 @@ class GameMapTestViewController: UIViewController {
 
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.popUpfirstGuide(parent: self)
 
@@ -463,7 +480,7 @@ class GameMapTestViewController: UIViewController {
 
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.popProp(hint: hint, image: image)
         UIView.animate(withDuration: 0.3) {

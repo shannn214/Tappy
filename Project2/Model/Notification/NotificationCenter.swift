@@ -25,4 +25,8 @@ extension Notification.Name {
     static let firstGuideAction = Notification.Name("firstGuideAction")
 
     static let showMaskAction = Notification.Name("showMaskAction")
+
+    static let showSecondGuideAction = Notification.Name("showSecondGuideAction")
+
+    static let showCardGuideMaskAction = Notification.Name("showCardGuideMaskAction")
 }

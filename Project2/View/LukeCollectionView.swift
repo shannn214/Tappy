@@ -12,7 +12,7 @@ class LukeCollectionView: UICollectionView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("yoyoyo")
+//        print("yoyoyo")
     }
 
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

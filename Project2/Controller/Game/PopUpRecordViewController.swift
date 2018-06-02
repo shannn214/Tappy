@@ -25,6 +25,11 @@ class PopUpRecordViewController: UIViewController {
     @IBOutlet weak var firstGuideViewWidth: NSLayoutConstraint!
     @IBOutlet weak var firstGuideViewHeight: NSLayoutConstraint!
 
+    @IBOutlet weak var secondGuideViewButton: UIButton!
+    @IBOutlet weak var secondGuideView: UIView!
+    @IBOutlet weak var secondGuideViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var secondGuideViewWidth: NSLayoutConstraint!
+
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
     override func viewDidLoad() {
@@ -33,6 +38,7 @@ class PopUpRecordViewController: UIViewController {
         introViewSetup()
         propViewSetup()
         firstGuideViewSetup()
+        secondGuideSetup()
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 
@@ -45,13 +51,27 @@ class PopUpRecordViewController: UIViewController {
         self.view.removeFromSuperview()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func secondGuideAction(_ sender: Any) {
+
+        NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
+
+        tabBarController?.selectedIndex = 1
+
+        self.view.removeFromSuperview()
+
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    func secondGuideSetup() {
+
+        secondGuideViewButton.layer.cornerRadius = 15
+        self.secondGuideView.layer.cornerRadius = 20
+        self.secondGuideView.alpha = 1
+        self.secondGuideView.isHidden = true
+        secondGuideView.frame.size = CGSize(width: 0, height: 0)
 
     }
 
@@ -80,18 +100,11 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func popUpLastGuide() {
-
-        self.propView.isHidden = true
-        self.introView.isHidden = true
-        self.firstGuideView.isHidden = true
-
-    }
-
     func popUpfirstGuide(parent: UIViewController) {
 
         self.propView.isHidden = true
         self.introView.isHidden = true
+        self.secondGuideView.isHidden = true
         self.firstGuideView.isHidden = false
 
         UIView.animate(withDuration: 0.3, animations: {
@@ -115,11 +128,40 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
+    func popUpsecondGuide(parent: UIViewController) {
+
+        self.propView.isHidden = true
+        self.introView.isHidden = true
+        self.firstGuideView.isHidden = true
+        self.secondGuideView.isHidden = false
+
+        UIView.animate(withDuration: 0.3, animations: {
+
+            self.secondGuideView.alpha = 1
+            self.secondGuideViewWidth.constant = 0
+            self.secondGuideViewHeight.constant = 128
+            self.view.layoutIfNeeded()
+
+        }) { (_) in
+
+            UIView.animate(withDuration: 0.35, animations: {
+                self.secondGuideViewWidth.constant = 240
+                self.didMove(toParentViewController: parent)
+                self.view.layoutIfNeeded()
+            })
+
+        }
+
+        self.view.layoutIfNeeded()
+
+    }
+
     func popUpIntro() {
 
         self.propView.isHidden = true
         self.introView.isHidden = false
         self.firstGuideView.isHidden = true
+        self.secondGuideView.isHidden = true
 
     }
 
@@ -131,6 +173,7 @@ class PopUpRecordViewController: UIViewController {
         self.propView.isHidden = false
         self.introView.isHidden = true
         self.firstGuideView.isHidden = true
+        self.secondGuideView.isHidden = true
 
     }
 
@@ -144,6 +187,10 @@ class PopUpRecordViewController: UIViewController {
     @IBAction func leaveButton(_ sender: Any) {
 
         NotificationCenter.default.post(name: .leavePropPopView, object: nil)
+
+        if LevelStatusManager.shared.level == 1 {
+            NotificationCenter.default.post(name: .showSecondGuideAction, object: nil)
+        }
 
         self.view.removeFromSuperview()
 

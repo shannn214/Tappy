@@ -55,11 +55,6 @@ class CardDetailViewController: UIViewController {
         cardViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
         cardContentTextView.layer.cornerRadius = 18
 
-//        backgroundView.alpha = 0.6
-
-//        headImage.alpha = 0
-//        cardViewLabel.alpha = 0
-
         cardContentView.alpha = 0
         cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
         cardContentLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
@@ -110,7 +105,7 @@ class CardDetailViewController: UIViewController {
                     //------
                 }
 
-                if touchTrans.y < 15 {
+                if touchTrans.y < 16 {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
                 backgroundView.clipsToBounds = true
@@ -132,9 +127,9 @@ class CardDetailViewController: UIViewController {
                                              self.backgroundView.alpha = 1
                                              self.backgroundView.layer.cornerRadius = 0
 
-                                            //------
-                                            self.cardContentView.alpha = 1
-                                            self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+                                             //------
+                                             self.cardContentView.alpha = 1
+                                             self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
 
                 })
             }
@@ -173,11 +168,6 @@ class CardDetailViewController: UIViewController {
         cardViewWidth.constant = UIScreen.main.bounds.width * 0.75
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.75
 
-//        headImageLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
-
-//        headImage.alpha = 1
-//        cardViewLabel.alpha = 1
-
         //----
         self.cardContentView.alpha = 0
         self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
@@ -195,11 +185,6 @@ class CardDetailViewController: UIViewController {
         cardViewWidth.constant = UIScreen.main.bounds.width * 0.3
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
-
-//        headImageLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
-
-//        headImage.alpha = 0
-//        cardViewLabel.alpha = 0
 
         view.layoutIfNeeded()
         panGesture.isEnabled = false

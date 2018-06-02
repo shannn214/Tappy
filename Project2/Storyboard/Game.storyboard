@@ -217,6 +217,42 @@
                                     <constraint firstItem="5eA-zQ-8eF" firstAttribute="centerX" secondItem="Bjh-Qb-9I5" secondAttribute="centerX" id="xle-Qh-UMF"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-lc-Qr4">
+                                <rect key="frame" x="67" y="300" width="240" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJa-Kd-r6k">
+                                        <rect key="frame" x="30" y="88" width="180" height="30"/>
+                                        <color key="backgroundColor" red="0.085428109579999995" green="0.084800842069999993" blue="0.41647472610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="UQb-pv-4Cq"/>
+                                            <constraint firstAttribute="width" constant="180" id="cQs-an-3PK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
+                                        <state key="normal" title="All right.">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="secondGuideAction:" destination="cDc-D7-mdn" eventType="touchUpInside" id="HxY-9y-l5O"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next hint is in the second page. Go and find it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VE-Da-4SB">
+                                        <rect key="frame" x="20.5" y="25" width="199.5" height="38"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.64705882349999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="YJa-Kd-r6k" firstAttribute="centerX" secondItem="L7p-lc-Qr4" secondAttribute="centerX" id="AWo-LK-O3b"/>
+                                    <constraint firstAttribute="trailing" secondItem="8VE-Da-4SB" secondAttribute="trailing" constant="20" id="HLh-6U-KG7"/>
+                                    <constraint firstItem="8VE-Da-4SB" firstAttribute="centerX" secondItem="L7p-lc-Qr4" secondAttribute="centerX" id="Kus-LE-jFc"/>
+                                    <constraint firstItem="8VE-Da-4SB" firstAttribute="top" secondItem="L7p-lc-Qr4" secondAttribute="top" constant="25" id="L2L-xg-feH"/>
+                                    <constraint firstAttribute="bottom" secondItem="YJa-Kd-r6k" secondAttribute="bottom" constant="10" id="PTG-ZF-dKB"/>
+                                    <constraint firstAttribute="height" constant="128" id="dcA-Vp-6wz"/>
+                                    <constraint firstAttribute="width" constant="240" id="sh8-ai-owA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -224,6 +260,8 @@
                             <constraint firstItem="6D6-kn-XfE" firstAttribute="centerY" secondItem="KlV-gh-BvC" secondAttribute="centerY" constant="-20" id="Pfo-r4-q6A"/>
                             <constraint firstItem="6D6-kn-XfE" firstAttribute="centerX" secondItem="KlV-gh-BvC" secondAttribute="centerX" id="STn-H9-dUk"/>
                             <constraint firstItem="Bjh-Qb-9I5" firstAttribute="top" secondItem="KlV-gh-BvC" secondAttribute="topMargin" constant="280" id="Xhw-Uo-rul"/>
+                            <constraint firstItem="L7p-lc-Qr4" firstAttribute="top" secondItem="wLg-Tx-ohp" secondAttribute="top" constant="280" id="djn-OA-Ce7"/>
+                            <constraint firstItem="L7p-lc-Qr4" firstAttribute="centerX" secondItem="KlV-gh-BvC" secondAttribute="centerX" id="dmv-Iv-tJG"/>
                             <constraint firstItem="IkV-ms-bMk" firstAttribute="centerY" secondItem="KlV-gh-BvC" secondAttribute="centerY" constant="-20" id="eDF-H0-mRf"/>
                             <constraint firstItem="Bjh-Qb-9I5" firstAttribute="centerX" secondItem="KlV-gh-BvC" secondAttribute="centerX" id="p9w-kG-Rtx"/>
                         </constraints>
@@ -240,6 +278,10 @@
                         <outlet property="propView" destination="6D6-kn-XfE" id="QFm-tv-CfK"/>
                         <outlet property="recordCover" destination="nhb-BD-wSB" id="hfl-hM-jC2"/>
                         <outlet property="recordTitle" destination="dxU-2c-MIJ" id="0Op-lo-m9A"/>
+                        <outlet property="secondGuideView" destination="L7p-lc-Qr4" id="1Zy-eX-Moa"/>
+                        <outlet property="secondGuideViewButton" destination="YJa-Kd-r6k" id="jZu-sY-nMv"/>
+                        <outlet property="secondGuideViewHeight" destination="dcA-Vp-6wz" id="eu9-9F-7vH"/>
+                        <outlet property="secondGuideViewWidth" destination="sh8-ai-owA" id="RTz-kP-oUp"/>
                         <outlet property="startGameButton" destination="vHb-zK-ykh" id="ogQ-e7-STA"/>
                     </connections>
                 </viewController>

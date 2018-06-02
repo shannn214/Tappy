@@ -75,6 +75,7 @@
 		09C6CF3E20A9466600A6C567 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* Track.swift */; };
 		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
 		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
+		09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		09C6CF3D20A9466600A6C567 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
 		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
+		09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
 				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
 				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
+				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
+				09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
