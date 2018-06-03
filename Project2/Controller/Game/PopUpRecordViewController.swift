@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol PopUpViewDelegate: class {
+    func showCardViewMask(_ controller: PopUpRecordViewController)
+}
+
 class PopUpRecordViewController: UIViewController {
 
     @IBOutlet weak var recordCover: UIImageView!
@@ -32,6 +36,8 @@ class PopUpRecordViewController: UIViewController {
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
+    weak var popUpDelegate: PopUpViewDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,9 +59,11 @@ class PopUpRecordViewController: UIViewController {
 
     @IBAction func secondGuideAction(_ sender: Any) {
 
-        NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
-
         tabBarController?.selectedIndex = 1
+
+//        self.popUpDelegate?.showCardViewMask(self)
+
+        NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
 
         self.view.removeFromSuperview()
 

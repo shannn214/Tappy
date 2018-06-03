@@ -35,25 +35,18 @@ class GameViewController: UIViewController {
 
     var gameMapViewController: GameMapTestViewController?
 
-//    let coachMarksController = CoachMarksController()
-//    let pointOfInsert = UIView()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialSetting()
-//        setupLocation()
 
         LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
 
         tapGesture.cancelsTouchesInView = false
-//        tapGesture.isEnabled = false
 
         progress.isHidden = true
         movingBtn.isHidden = true
-
-//        self.coachMarksController.delegate = self
 
     }
 

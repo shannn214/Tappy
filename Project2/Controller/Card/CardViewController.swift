@@ -30,15 +30,16 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     let pointOfInterest = UIView()
     let customView = UIView()
     let overlayView = UIView()
+    let popUpRecordVC = AppDelegate.shared?.window?.rootViewController as? PopUpRecordViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
 
-        self.coachMarksController.delegate = self
-        self.coachMarksController.dataSource = self
         coachMarksController.overlay.color = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
 
     }
 
@@ -52,15 +53,10 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-//        popUpGuideView()
-//        self.coachMarksController.start(on: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-//        self.coachMarksController.stop(immediately: true)
     }
 
     func setup() {
@@ -86,7 +82,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
-    func popUpGuideView() {
+    @objc func popUpGuideView(notification: Notification) {
 
         guard let guideView = UIStoryboard.introStoryboard().instantiateViewController(withIdentifier: "GuideViewController") as? GuideViewController else { return }
         self.addChildViewController(guideView)
@@ -122,34 +118,6 @@ extension CardViewController: CardListControllerDelegate {
             topViewImage.alpha = 1.0 - percentage
         }
 
-    }
-
-}
-
-//----------
-extension CardViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
-
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
-
-        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
-
-        coachViews.bodyView.hintLabel.text = "Tap the card!"
-//        coachViews.bodyView. = "OK"
-
-        return (bodyView: coachViews.bodyView, arrowView: nil)
-    }
-
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
-
-        var coachMark = coachMarksController.helper.makeCoachMark(for: customView, pointOfInterest: CGPoint(x: 20, y: 200)) { (_) -> UIBezierPath in
-            return UIBezierPath(roundedRect: CGRect(x: 10, y: UIScreen.main.bounds.height * 0.4, width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45), cornerRadius: 20)
-        }
-
-        return coachMark
-    }
-
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 1
     }
 
 }

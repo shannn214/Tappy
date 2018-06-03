@@ -28,7 +28,11 @@ enum TabBar {
 
         case .achievement:
 
-            return UIStoryboard.cardStoryboard().instantiateInitialViewController()!
+            let nav = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? UINavigationController
+
+            nav!.viewControllers[0].loadViewIfNeeded()
+
+            return nav!
 
         case .collection:
 
@@ -95,14 +99,14 @@ class TabBarViewController: UITabBarController {
 
     let tabs: [TabBar] = [.game, .achievement, .collection]
 
-    //TODO: Hide .setting for first publish
+    // NOTE: Hide .setting for first publish
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTab()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
 
     }
 
@@ -135,19 +139,19 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController {
 
-    @objc func popUpGuideView(notification: Notification) {
-
-        guard let guideView = UIStoryboard.introStoryboard().instantiateViewController(withIdentifier: "GuideViewController") as? GuideViewController else { return }
-        self.addChildViewController(guideView)
-        guideView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(guideView.view)
-        guideView.cardGuideViewAnimation()
-
-    }
-
-    func orderedTabBarItemViews() -> [UIView] {
-        let interactionViews = tabBar.subviews.filter({$0.isUserInteractionEnabled})
-        return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
-    }
+//    @objc func popUpGuideView(notification: Notification) {
+//
+//        guard let guideView = UIStoryboard.introStoryboard().instantiateViewController(withIdentifier: "GuideViewController") as? GuideViewController else { return }
+//        self.addChildViewController(guideView)
+//        guideView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        self.view.addSubview(guideView.view)
+//        guideView.cardGuideViewAnimation()
+//
+//    }
+//
+//    func orderedTabBarItemViews() -> [UIView] {
+//        let interactionViews = tabBar.subviews.filter({$0.isUserInteractionEnabled})
+//        return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
+//    }
 
 }
