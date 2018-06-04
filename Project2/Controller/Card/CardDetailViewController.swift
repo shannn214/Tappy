@@ -23,6 +23,12 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardImage: UIImageView!
 
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var shadowViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewTopConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var backgroundView: UIView!
 
     @IBOutlet weak var cardContentLabel: UILabel!
@@ -54,6 +60,12 @@ class CardDetailViewController: UIViewController {
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
         cardViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
         cardContentTextView.layer.cornerRadius = 18
+
+        shadowView.layer.cornerRadius = 15
+        shadowViewWidth.constant = UIScreen.main.bounds.width * 0.3
+        shadowViewHeight.constant = UIScreen.main.bounds.width * 0.3
+        shadowViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
+        shadowViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
 
         cardContentView.alpha = 0
         cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3

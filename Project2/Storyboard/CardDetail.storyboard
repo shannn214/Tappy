@@ -75,6 +75,24 @@
                                     <outletCollection property="gestureRecognizers" destination="Yey-ry-B9H" appends="YES" id="EAs-UY-yPy"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJq-vF-68b">
+                                <rect key="frame" x="20" y="20" width="120" height="120"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_jelly" translatesAutoresizingMaskIntoConstraints="NO" id="5hp-cL-k8d">
+                                        <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.22875236739999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5hp-cL-k8d" secondAttribute="bottom" constant="20" id="0ju-EX-dwt"/>
+                                    <constraint firstAttribute="trailing" secondItem="5hp-cL-k8d" secondAttribute="trailing" constant="20" id="Dxj-sr-Qtj"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZhI-Is-BzO"/>
+                                    <constraint firstItem="5hp-cL-k8d" firstAttribute="leading" secondItem="CJq-vF-68b" secondAttribute="leading" constant="20" id="oQz-Zi-d4n"/>
+                                    <constraint firstAttribute="height" constant="120" id="ouL-Wi-cqG"/>
+                                    <constraint firstItem="5hp-cL-k8d" firstAttribute="top" secondItem="CJq-vF-68b" secondAttribute="top" constant="20" id="wlm-GL-fPN"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1V-nu-8TZ">
                                 <rect key="frame" x="20" y="20" width="120" height="120"/>
                                 <subviews>
@@ -98,6 +116,8 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="d1V-nu-8TZ" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" id="0x7-ph-h94"/>
+                            <constraint firstItem="CJq-vF-68b" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="CK3-jr-bTp"/>
+                            <constraint firstItem="CJq-vF-68b" firstAttribute="top" secondItem="gbb-9Z-HNi" secondAttribute="top" id="E8S-dL-K3L"/>
                             <constraint firstItem="d1V-nu-8TZ" firstAttribute="leading" secondItem="gbb-9Z-HNi" secondAttribute="leading" constant="20" id="PnK-3s-6JJ"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="bottom" secondItem="IW6-U4-r6t" secondAttribute="bottom" id="W3U-fm-gf7"/>
                             <constraint firstItem="gbb-9Z-HNi" firstAttribute="trailing" secondItem="IW6-U4-r6t" secondAttribute="trailing" id="amu-cU-szO"/>
@@ -123,6 +143,11 @@
                         <outlet property="cardViewTopConstraint" destination="0x7-ph-h94" id="zFr-nG-2N5"/>
                         <outlet property="cardViewWidth" destination="VCN-4H-AbN" id="QP3-Ih-V8v"/>
                         <outlet property="panGesture" destination="aoY-Ze-aW5" id="ExM-Kn-eDZ"/>
+                        <outlet property="shadowView" destination="CJq-vF-68b" id="5vQ-o3-z7f"/>
+                        <outlet property="shadowViewHeight" destination="ouL-Wi-cqG" id="iBV-4N-PWH"/>
+                        <outlet property="shadowViewLeadingConstraint" destination="CK3-jr-bTp" id="K0z-fF-bmp"/>
+                        <outlet property="shadowViewTopConstraint" destination="E8S-dL-K3L" id="udg-WY-v0T"/>
+                        <outlet property="shadowViewWidth" destination="ZhI-Is-BzO" id="SlZ-fe-RMY"/>
                         <outlet property="tapGesture" destination="Yey-ry-B9H" id="xrX-62-j9y"/>
                     </connections>
                 </viewController>
@@ -144,5 +169,6 @@
     <resources>
         <image name="ghead_jelly" width="371" height="372"/>
         <image name="left_pink" width="271" height="235"/>
+        <image name="shadow_jelly" width="1083" height="935"/>
     </resources>
 </document>

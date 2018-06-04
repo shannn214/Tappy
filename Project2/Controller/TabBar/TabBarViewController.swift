@@ -36,7 +36,11 @@ enum TabBar {
 
         case .collection:
 
-            return UIStoryboard.collectionStoryboard().instantiateInitialViewController()!
+            let navC = UIStoryboard.collectionStoryboard().instantiateInitialViewController() as? UINavigationController
+
+            navC!.viewControllers[0].loadViewIfNeeded()
+
+            return navC!
 
         case .setting:
 
@@ -134,24 +138,5 @@ class TabBarViewController: UITabBarController {
         setViewControllers(controllers, animated: false)
 
     }
-
-}
-
-extension TabBarViewController {
-
-//    @objc func popUpGuideView(notification: Notification) {
-//
-//        guard let guideView = UIStoryboard.introStoryboard().instantiateViewController(withIdentifier: "GuideViewController") as? GuideViewController else { return }
-//        self.addChildViewController(guideView)
-//        guideView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        self.view.addSubview(guideView.view)
-//        guideView.cardGuideViewAnimation()
-//
-//    }
-//
-//    func orderedTabBarItemViews() -> [UIView] {
-//        let interactionViews = tabBar.subviews.filter({$0.isUserInteractionEnabled})
-//        return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
-//    }
 
 }

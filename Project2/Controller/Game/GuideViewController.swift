@@ -14,6 +14,7 @@ class GuideViewController: UIViewController {
     @IBOutlet weak var cardGuideButton: UIButton!
     @IBOutlet weak var cardGuideViewHeight: NSLayoutConstraint!
     @IBOutlet weak var cardGuideViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var cardGuideViewTopConstraint: NSLayoutConstraint!
 
     let maskLayer = CAShapeLayer()
 
@@ -36,6 +37,7 @@ class GuideViewController: UIViewController {
         cardGuideButton.layer.cornerRadius = 15
 
         cardGuideView.frame.size = CGSize(width: 0, height: 0)
+        cardGuideViewTopConstraint.constant = UIScreen.main.bounds.height * 0.55
 
     }
 
@@ -65,7 +67,7 @@ class GuideViewController: UIViewController {
     func createMaskLayer() {
 
         let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 10, y: UIScreen.main.bounds.height * 0.4, width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45), cornerRadius: 20)
+        let maskPath = UIBezierPath(roundedRect: CGRect(x: 10, y: 260, width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45), cornerRadius: 20)
         path.append(maskPath.reversing())
 
         maskLayer.path = path.cgPath

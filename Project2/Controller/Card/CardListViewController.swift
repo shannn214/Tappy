@@ -136,6 +136,8 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
             cardDetailVC.cardView.isHidden = false
 
+            cardDetailVC.shadowView.isHidden = true
+
             cardCell?.isUserInteractionEnabled = true
 
         }
@@ -176,15 +178,6 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         self.view.bringSubview(toFront: cardDetailVC.view)
 
         cardDetailVC.delegate = self
-
-//        UIView.animate(withDuration: 0.35) {
-//
-//            cardDetailVC.view.frame = self.view.frame
-//            cardDetailVC.changeContraintToFullScreen()
-//            collectionView.isUserInteractionEnabled = false
-//            self.cardFlag = true
-//
-//        }
 
         UIView.animate(withDuration: 0.35, animations: {
 

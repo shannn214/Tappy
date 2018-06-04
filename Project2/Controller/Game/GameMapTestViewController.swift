@@ -38,16 +38,10 @@ class GameMapTestViewController: UIViewController {
         createCharacter()
         createPropsButton()
         createButton()
-
         setExplosionImage()
         loadButton()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(showCDButton(notification:)),
-            name: .leavePropPopView,
-            object: nil
-        )
+        NotificationCenter.default.addObserver(self, selector: #selector(showCDButton(notification:)), name: .leavePropPopView, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
 
@@ -62,8 +56,6 @@ class GameMapTestViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        firstGuide()
-
     }
 
     @objc func showMaskLayer(notification: Notification) {
@@ -74,16 +66,11 @@ class GameMapTestViewController: UIViewController {
 
         maskLayer.path = path.cgPath
         maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
-//        maskLayer.opacity = 0.7
         view.layer.addSublayer(maskLayer)
 
-        let item = tabarVC?.tabBar.items![1]
-        item?.isEnabled = false
     }
 
     func removeMask() {
-        let item = tabarVC?.tabBar.items![1]
-        item?.isEnabled = true
         maskLayer.removeFromSuperlayer()
 
     }
@@ -159,7 +146,24 @@ class GameMapTestViewController: UIViewController {
 //        animate(imageView: monster, images: monsterImages)
         monster.image = #imageLiteral(resourceName: "right_pink")
         monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
+        
+        // NOTE: test add dialog
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterTapped(tapGestureRecognizer:)))
+//        monster.isUserInteractionEnabled = true
+//        monster.addGestureRecognizer(tapGestureRecognizer)
+        //-----
+        
         self.imageView.addSubview(monster)
+
+    }
+
+    @objc func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+
+        if tapGestureRecognizer.state == .ended {
+            let murmur = MurmurView()
+            murmur.center = monster.center
+            monster.addSubview(murmur)
+        }
 
     }
 

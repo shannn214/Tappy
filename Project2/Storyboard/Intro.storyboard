@@ -375,6 +375,7 @@
                         <outlet property="cardGuideButton" destination="TJD-AC-8QF" id="ioQ-3v-uZp"/>
                         <outlet property="cardGuideView" destination="kIW-fq-Gfq" id="O7k-Pt-s5M"/>
                         <outlet property="cardGuideViewHeight" destination="ewN-0Z-DQp" id="GZs-xx-wyc"/>
+                        <outlet property="cardGuideViewTopConstraint" destination="AJ8-Gq-Mbv" id="5YQ-pT-3Ez"/>
                         <outlet property="cardGuideViewWidth" destination="LCc-pI-3xR" id="ppG-4W-G2b"/>
                     </connections>
                 </viewController>
