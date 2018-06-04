@@ -36,6 +36,7 @@
 		0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973B20B1B9C1006E468E /* PlayerPanelView.swift */; };
 		0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0951973D20B2CDF0006E468E /* CardDetail.storyboard */; };
 		0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973F20B2CE2D006E468E /* CardDetailViewController.swift */; };
+		098E102E20C517E600B9D7F2 /* GameMapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */; };
 		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
 		09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2620AD2D6200BA5932 /* DBProvider.swift */; };
 		09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */; };
@@ -113,6 +114,7 @@
 		0951973B20B1B9C1006E468E /* PlayerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPanelView.swift; sourceTree = "<group>"; };
 		0951973D20B2CDF0006E468E /* CardDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardDetail.storyboard; sourceTree = "<group>"; };
 		0951973F20B2CE2D006E468E /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapScrollView.swift; sourceTree = "<group>"; };
 		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
 		09A62B2620AD2D6200BA5932 /* DBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				098E102C20C517B500B9D7F2 /* Game */,
 				09D9D55F20C433C100A188CE /* UIViewTest */,
 				0951973A20B1B9A0006E468E /* Player */,
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
@@ -310,12 +313,12 @@
 			isa = PBXGroup;
 			children = (
 				090B6977209F47D10095B416 /* GameViewController.swift */,
-				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
 				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
-				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
 				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
+				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
+				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -391,6 +394,14 @@
 				0951973B20B1B9C1006E468E /* PlayerPanelView.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		098E102C20C517B500B9D7F2 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		09A62B2220AAAD9800BA5932 /* Game */ = {
@@ -706,6 +717,7 @@
 				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
 				09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */,
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
+				098E102E20C517E600B9D7F2 /* GameMapScrollView.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
 				09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */,

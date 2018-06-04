@@ -21,7 +21,7 @@ class GameMapTestViewController: UIViewController {
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
     let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
-    let guideArray = [UIButton(), UIButton(), UIButton(), UIButton()]
+//    let guideArray = [UIButton(), UIButton(), UIButton(), UIButton()]
 
     let animation = CAKeyframeAnimation(keyPath: "position")
     var monster: UIImageView!
@@ -29,7 +29,7 @@ class GameMapTestViewController: UIViewController {
 
     let maskLayer = CAShapeLayer()
 
-    let tabarVC = AppDelegate.shared?.window?.rootViewController as? TabBarViewController
+//    let tabarVC = AppDelegate.shared?.window?.rootViewController as? TabBarViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,15 @@ class GameMapTestViewController: UIViewController {
         setExplosionImage()
         loadButton()
 
+        notificationField()
+
+//        ghostTapGesture.cancelsTouchesInView = false
+        self.imageView.isUserInteractionEnabled = true
+
+    }
+
+    func notificationField() {
+
         NotificationCenter.default.addObserver(self, selector: #selector(showCDButton(notification:)), name: .leavePropPopView, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
@@ -49,13 +58,6 @@ class GameMapTestViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(showSecondGuide(notification:)), name: .showSecondGuideAction, object: nil)
 
-//        ghostTapGesture.cancelsTouchesInView = false
-        self.imageView.isUserInteractionEnabled = true
-
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     @objc func showMaskLayer(notification: Notification) {
@@ -72,7 +74,6 @@ class GameMapTestViewController: UIViewController {
 
     func removeMask() {
         maskLayer.removeFromSuperlayer()
-
     }
 
     @objc func showSecondGuide(notification: Notification) {
@@ -109,7 +110,6 @@ class GameMapTestViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func gameMapDidTap(controller: GameViewController, position: CGFloat) {
@@ -146,14 +146,12 @@ class GameMapTestViewController: UIViewController {
 //        animate(imageView: monster, images: monsterImages)
         monster.image = #imageLiteral(resourceName: "right_pink")
         monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
-        
-        // NOTE: test add dialog
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterTapped(tapGestureRecognizer:)))
-//        monster.isUserInteractionEnabled = true
-//        monster.addGestureRecognizer(tapGestureRecognizer)
-        //-----
-        
+
         self.imageView.addSubview(monster)
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterTapped(tapGestureRecognizer:)))
+        monster.isUserInteractionEnabled = true
+        monster.addGestureRecognizer(tapGestureRecognizer)
 
     }
 
@@ -161,12 +159,16 @@ class GameMapTestViewController: UIViewController {
 
         if tapGestureRecognizer.state == .ended {
             let murmur = MurmurView()
-            murmur.center = monster.center
+            murmur.frame = CGRect(x: -10, y: -35, width: murmur.frame.width, height: murmur.frame.height)
             monster.addSubview(murmur)
+            murmur.createMurmur {
+                murmur.removeFromSuperview()
+            }
         }
 
     }
 
+    // 1) Start to move code
     func createScrollViewAndMap() {
 
         guard let url = Bundle.main.path(forResource: "mapppp-01", ofType: ".png") else { return }
@@ -184,7 +186,9 @@ class GameMapTestViewController: UIViewController {
         view.addSubview(scrollView)
 
     }
+    //-----
 
+    //2)
     func propsButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
 
         propsButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
@@ -206,7 +210,7 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
 
         }
-        // NOTE: Set music and props position
+        // NOTE: Setup props position
         propsButtonSetup(index: 0, positionX: 50, positionY: 70)
         propsButtonSetup(index: 1, positionX: 32, positionY: 53)
         propsButtonSetup(index: 2, positionX: 88, positionY: 20)
@@ -219,6 +223,7 @@ class GameMapTestViewController: UIViewController {
         propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
+    //----------
 
     @objc func showCDAndProp(sender: UIButton!) {
 
@@ -288,14 +293,7 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    func CDButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-
-        CDButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
-                                                            y: positionY * imageView.bounds.height/100),
-                                            size: CGSize(width: 60, height: 60))
-
-    }
-
+    //3)
     func createButton() {
 
         for btnIndex in 0...9 {
@@ -311,10 +309,9 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
+    //---------
 
     @objc func showRecordTab(sender: UIButton!) {
-
-//        let sortedArray = DBProvider.shared.sortedArray
 
         let btnSendTag: UIButton = sender
         switch btnSendTag.tag {
@@ -342,7 +339,6 @@ class GameMapTestViewController: UIViewController {
             break
         }
 
-//        tabBarController?.selectedIndex = 2
     }
 
     func presentPlayerVC(level: Int) {
