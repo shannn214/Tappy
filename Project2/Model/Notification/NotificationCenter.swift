@@ -19,4 +19,14 @@ extension Notification.Name {
     static let leavePropPopView = Notification.Name("leavePropPopView")
 
     static let trackPlayinyStatus = Notification.Name("trackPlayinyStatus")
+
+    static let startGuideFlow = Notification.Name("startGuideFlow")
+
+    static let firstGuideAction = Notification.Name("firstGuideAction")
+
+    static let showMaskAction = Notification.Name("showMaskAction")
+
+    static let showSecondGuideAction = Notification.Name("showSecondGuideAction")
+
+    static let showCardGuideMaskAction = Notification.Name("showCardGuideMaskAction")
 }

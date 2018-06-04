@@ -15,6 +15,10 @@ protocol SpotifyUri {
     var albumUri: String { get }
 
     var level: Int { get }
+
+    var image: String { get }
+
+    var hint: String { get }
 }
 
 struct SpotifyUris: Codable, SpotifyUri {
@@ -24,6 +28,10 @@ struct SpotifyUris: Codable, SpotifyUri {
     var albumUri: String
 
     var level: Int
+
+    var image: String
+
+    var hint: String
 
 }
 

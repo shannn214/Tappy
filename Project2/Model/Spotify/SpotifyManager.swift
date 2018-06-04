@@ -21,7 +21,7 @@ class SpotifyManager: UIViewController {
     var player: SPTAudioStreamingController?
     var session: SPTSession!
     let clientID = "d030ac4b117b47ec835c425d436cb5c0"
-    let redirectURL = "project2://callback"
+    let redirectURL = "tappy://callback"
 
     var recordInfo: TrackInfo?
     var position: TimeInterval?
@@ -108,8 +108,15 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
 
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
 
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+        let firstLogin = UserDefaults.standard
+
+        if firstLogin.value(forKey: "firstLogin") == nil {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.window?.rootViewController = UIStoryboard.introStoryboard().instantiateInitialViewController()
+        } else {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+        }
 
     }
 
@@ -122,7 +129,11 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
 
     }
 
-    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didReceive event: SpPlaybackEvent) {
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChange metadata: SPTPlaybackMetadata!) {
+        NotificationCenter.default.post(
+            name: .trackPlayinyStatus,
+            object: nil
+        )
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {

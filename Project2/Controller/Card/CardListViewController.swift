@@ -16,7 +16,7 @@ protocol CardListControllerDelegate: class {
 
 class CardListViewController: UIViewController {
 
-    @IBOutlet weak var listCollectionView: UICollectionView!
+    @IBOutlet weak var listCollectionView: LukeCollectionView!
 
     var propImages: [UIImage] = []
 
@@ -47,6 +47,8 @@ class CardListViewController: UIViewController {
 
     var cell: UICollectionViewCell?
 
+    var cardFlag: Bool?
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -57,13 +59,16 @@ class CardListViewController: UIViewController {
 
         designSetting.designSetting(view: listCollectionView)
 
+        cardFlag = false
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
         super.viewWillAppear(animated)
 
-        listCollectionView.reloadData()
+        if cardFlag == false {
+            listCollectionView.reloadData()
+        }
 
     }
 
@@ -105,6 +110,8 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: String(describing: CardCollectionViewCell.self),
             for: indexPath) as? CardCollectionViewCell
 
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+
         guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
 
         self.addChildViewController(cardDetailVC)
@@ -115,15 +122,21 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.didMove(toParentViewController: self)
 
-        cardCell?.clipsToBounds = true
-
         cardDetailVC.cardView.isHidden = true
 
+        cardCell?.clipsToBounds = true
+
         cardCell?.isUserInteractionEnabled = false
+
+        cardDetailVC.cardImage.image = UIImage(named: uriManager.uris[indexPath.row].image)
+
+        cardDetailVC.cardContentLabel.text = uriManager.uris[indexPath.row].hint
 
         if indexPath.row < LevelStatusManager.shared.level! {
 
             cardDetailVC.cardView.isHidden = false
+
+            cardDetailVC.shadowView.isHidden = true
 
             cardCell?.isUserInteractionEnabled = true
 
@@ -166,12 +179,15 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.delegate = self
 
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.35, animations: {
 
             cardDetailVC.view.frame = self.view.frame
             cardDetailVC.changeContraintToFullScreen()
             collectionView.isUserInteractionEnabled = false
+            self.cardFlag = true
 
+        }) { (_) in
+            cardDetailVC.startToMoveContent()
         }
 
     }
@@ -214,7 +230,7 @@ extension CardListViewController: CardDetailDelegate {
 
         let itemSize = UIScreen.main.bounds.width/2
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.35, animations: {
 
             selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
             selectedVC.changeConstraintToCellSize()
@@ -225,6 +241,8 @@ extension CardListViewController: CardDetailDelegate {
             selectedVC.view.frame = selectedCell.contentView.frame
             selectedVC.backgroundView.alpha = 1
             self.listCollectionView.isUserInteractionEnabled = true
+            self.cardFlag = false
+            self.listCollectionView.reloadData()
         }
 
     }

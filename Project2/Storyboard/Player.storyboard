@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -55,19 +54,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-7K-qDA">
-                                        <rect key="frame" x="87" y="140" width="200" height="200"/>
+                                        <rect key="frame" x="87" y="133.5" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="5oy-vi-g14"/>
                                             <constraint firstAttribute="width" constant="200" id="e3e-Ks-0J2"/>
                                         </constraints>
                                     </imageView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-k8-G0p">
-                                        <rect key="frame" x="43" y="435.5" width="289" height="31"/>
+                                        <rect key="frame" x="43" y="429" width="289" height="31"/>
                                         <color key="minimumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="maximumTrackTintColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="0.29345703125" colorSpace="custom" customColorSpace="sRGB"/>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yel-hK-dSJ">
-                                        <rect key="frame" x="88" y="370" width="200" height="22"/>
+                                        <rect key="frame" x="88" y="363.5" width="200" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Gjj-6b-qb4"/>
                                         </constraints>
@@ -76,7 +75,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1m-yr-VaV">
-                                        <rect key="frame" x="88" y="402" width="200" height="18"/>
+                                        <rect key="frame" x="88" y="395.5" width="200" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="j7n-7l-gjH"/>
                                         </constraints>
@@ -85,16 +84,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-m6-YVb">
-                                        <rect key="frame" x="163" y="495.5" width="50" height="50"/>
+                                        <rect key="frame" x="163" y="489" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1sk-gi-5K8"/>
                                             <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="play-button-6">
+                                        <state key="normal" backgroundImage="play-button-8">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <state key="selected" backgroundImage="pause-3">
+                                        <state key="selected" backgroundImage="pause-4">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -102,24 +101,35 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOc-L0-U3A">
-                                        <rect key="frame" x="45" y="470.5" width="26" height="18"/>
+                                        <rect key="frame" x="45" y="464" width="26" height="18"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-Gs-lLZ">
-                                        <rect key="frame" x="304" y="470.5" width="26" height="18"/>
+                                        <rect key="frame" x="304" y="464" width="26" height="18"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vO-QW-UlC">
+                                        <rect key="frame" x="177" y="28" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="oSU-re-fAi"/>
+                                            <constraint firstAttribute="width" constant="20" id="tKG-an-ZTF"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="arrow"/>
+                                        <connections>
+                                            <action selector="leaveArrow:" destination="aws-MT-OLZ" eventType="touchUpInside" id="qat-RH-foe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="76I-0s-gRA"/>
+                                    <constraint firstItem="6vO-QW-UlC" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="9W7-as-CPU"/>
                                     <constraint firstAttribute="trailing" secondItem="OaG-Gs-lLZ" secondAttribute="trailing" constant="45" id="CyJ-a8-Eh0"/>
                                     <constraint firstItem="SCH-7K-qDA" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="JhL-L7-jSk"/>
-                                    <constraint firstItem="SCH-7K-qDA" firstAttribute="top" secondItem="jQo-UL-sX6" secondAttribute="top" constant="140" id="MEy-uK-2KS"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="Os0-tW-Dlv"/>
                                     <constraint firstItem="Onb-m6-YVb" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="PZu-V6-DKh"/>
                                     <constraint firstItem="yel-hK-dSJ" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="Qkp-uR-pvf"/>
@@ -127,11 +137,13 @@
                                     <constraint firstItem="Onb-m6-YVb" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="30" id="aKE-Mj-Z2P"/>
                                     <constraint firstItem="vOc-L0-U3A" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="ah6-c2-uYH"/>
                                     <constraint firstAttribute="trailing" secondItem="PyC-k8-G0p" secondAttribute="trailing" constant="45" id="bcr-AI-aHH"/>
+                                    <constraint firstItem="6vO-QW-UlC" firstAttribute="top" secondItem="jQo-UL-sX6" secondAttribute="top" constant="28" id="cDJ-yl-MJY"/>
                                     <constraint firstItem="OaG-Gs-lLZ" firstAttribute="top" secondItem="PyC-k8-G0p" secondAttribute="bottom" constant="5" id="flx-GU-hiW"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="top" secondItem="yel-hK-dSJ" secondAttribute="bottom" constant="10" id="jSo-dn-u3y"/>
                                     <constraint firstItem="A1m-yr-VaV" firstAttribute="centerX" secondItem="jQo-UL-sX6" secondAttribute="centerX" id="nat-NS-2m5"/>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="top" secondItem="A1m-yr-VaV" secondAttribute="bottom" constant="15.5" id="rpl-a4-fu4"/>
                                     <constraint firstItem="PyC-k8-G0p" firstAttribute="leading" secondItem="jQo-UL-sX6" secondAttribute="leading" constant="45" id="u01-o4-7ts"/>
+                                    <constraint firstItem="SCH-7K-qDA" firstAttribute="centerY" secondItem="jQo-UL-sX6" secondAttribute="centerY" constant="-100" id="wf4-Ef-ebF"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="artist" destination="A1m-yr-VaV" id="hsk-YA-zKb"/>
@@ -177,7 +189,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pause-3" width="64" height="64"/>
-        <image name="play-button-6" width="64" height="64"/>
+        <image name="arrow" width="128" height="128"/>
+        <image name="pause-4" width="128" height="128"/>
+        <image name="play-button-8" width="128" height="128"/>
     </resources>
 </document>

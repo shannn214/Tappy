@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Instructions
 
 class CardViewController: UIViewController, UIScrollViewDelegate {
 
@@ -25,10 +26,20 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     var cardTransition: CGFloat?
     let layer = CAGradientLayer()
 
+    let coachMarksController = CoachMarksController()
+    let pointOfInterest = UIView()
+    let customView = UIView()
+    let overlayView = UIView()
+    let popUpRecordVC = AppDelegate.shared?.window?.rootViewController as? PopUpRecordViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
+
+        coachMarksController.overlay.color = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
 
     }
 
@@ -38,6 +49,14 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
             cardListViewController.delegate = self
         }
 
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     func setup() {
@@ -58,9 +77,18 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         self.gradientView.layer.addSublayer(layer)
 
         topViewImage.layer.cornerRadius = 15
-//        topViewImage.layer.borderWidth = 1
-//        topViewImage.layer.borderColor = UIColor.lightGray.cgColor
-        topViewImage.image = #imageLiteral(resourceName: "peek_ghost0")
+
+        topViewImage.image = #imageLiteral(resourceName: "right_pink")
+
+    }
+
+    @objc func popUpGuideView(notification: Notification) {
+
+        guard let guideView = UIStoryboard.introStoryboard().instantiateViewController(withIdentifier: "GuideViewController") as? GuideViewController else { return }
+        self.addChildViewController(guideView)
+        guideView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(guideView.view)
+        guideView.cardGuideViewAnimation()
 
     }
 
@@ -80,7 +108,7 @@ extension CardViewController: CardListControllerDelegate {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
             topViewHeightConstraint.constant = topView.frame.height - cardY
-            topImageConstraint.constant = 65 - cardY
+            topImageConstraint.constant = 105 - cardY
 
             self.gradientHeightConstraint.constant = topView.frame.height - cardY
         }

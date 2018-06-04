@@ -15,40 +15,107 @@ class GameMapTestViewController: UIViewController {
     var explosionImage: UIImageView!
     var explosionImages: [UIImage] = []
 
+    @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
+
     var checkLevel = 0
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
     let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+    let guideArray = [UIButton(), UIButton(), UIButton(), UIButton()]
 
     let animation = CAKeyframeAnimation(keyPath: "position")
     var monster: UIImageView!
     var monsterImages: [UIImage] = []
 
+    let maskLayer = CAShapeLayer()
+
+    let tabarVC = AppDelegate.shared?.window?.rootViewController as? TabBarViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         createScrollViewAndMap()
-        createButton()
         createCharacter()
         createPropsButton()
-
+        createButton()
         setExplosionImage()
         loadButton()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(showCDButton(notification:)),
-            name: .leavePropPopView,
-            object: nil
-        )
+        NotificationCenter.default.addObserver(self, selector: #selector(showCDButton(notification:)), name: .leavePropPopView, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showMaskLayer(notification:)), name: .showMaskAction, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showSecondGuide(notification:)), name: .showSecondGuideAction, object: nil)
+
+//        ghostTapGesture.cancelsTouchesInView = false
         self.imageView.isUserInteractionEnabled = true
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    @objc func showMaskLayer(notification: Notification) {
+
+        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
+        path.append(maskPath.reversing())
+
+        maskLayer.path = path.cgPath
+        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
+        view.layer.addSublayer(maskLayer)
+
+    }
+
+    func removeMask() {
+        maskLayer.removeFromSuperlayer()
+
+    }
+
+    @objc func showSecondGuide(notification: Notification) {
+
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.popUpsecondGuide(parent: self)
+
+    }
+
+    @objc func changeFrameForGuide(notification: Notification) {
+
+        UIView.animate(withDuration: 2, animations: {
+            //animation
+            self.scrollView.contentOffset = CGPoint(x: 45 * self.imageView.frame.width / 100, y: 0)
+        }) { (_) in
+            //completion
+            self.firstGuide()
+        }
+
+    }
+
+    func firstGuide() {
+
+        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.popUpfirstGuide(parent: self)
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func gameMapDidTap(controller: GameViewController, position: CGFloat) {
+        self.monster.frame = CGRect(x: position, y: 77,
+                                    width: self.monster.frame.size.width,
+                                    height: self.monster.frame.size.height)
     }
 
     func loadButton() {
@@ -61,7 +128,6 @@ class GameMapTestViewController: UIViewController {
                 CDButtonArray[level].isHidden = false
                 explosionArray[level].isHidden = false
                 animate(imageView: explosionArray[level], images: explosionImages)
-
             }
 
         }
@@ -76,16 +142,38 @@ class GameMapTestViewController: UIViewController {
     func createCharacter() {
 
         monster = UIImageView()
-        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
-        animate(imageView: monster, images: monsterImages)
-        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 73 * imageView.bounds.height/100, width: 70, height: 70)
+//        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
+//        animate(imageView: monster, images: monsterImages)
+        monster.image = #imageLiteral(resourceName: "right_pink")
+        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
+        
+        // NOTE: test add dialog
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterTapped(tapGestureRecognizer:)))
+//        monster.isUserInteractionEnabled = true
+//        monster.addGestureRecognizer(tapGestureRecognizer)
+        //-----
+        
         self.imageView.addSubview(monster)
+
+    }
+
+    @objc func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+
+        if tapGestureRecognizer.state == .ended {
+            let murmur = MurmurView()
+            murmur.center = monster.center
+            monster.addSubview(murmur)
+        }
 
     }
 
     func createScrollViewAndMap() {
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "Mapkkk"))
+        guard let url = Bundle.main.path(forResource: "mapppp-01", ofType: ".png") else { return }
+
+        let image = UIImage(contentsOfFile: url)
+
+        imageView = UIImageView(image: image)
         imageView.frame.size.height = UIScreen.main.bounds.height
         imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
         scrollView = UIScrollView(frame: view.bounds)
@@ -96,13 +184,13 @@ class GameMapTestViewController: UIViewController {
         view.addSubview(scrollView)
 
     }
-    
+
     func propsButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-        
+
         propsButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
                                                                y: positionY * imageView.bounds.height/100),
                                                size: CGSize(width: 60, height: 60))
-        
+
     }
 
     func createPropsButton() {
@@ -110,7 +198,7 @@ class GameMapTestViewController: UIViewController {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.red
+            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
             self.imageView.addSubview(propsButtonArray[btnIndex])
             imageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true
@@ -118,21 +206,23 @@ class GameMapTestViewController: UIViewController {
             propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
 
         }
-        
-        propsButtonSetup(index: 0, positionX: 10, positionY: 50)
-        propsButtonSetup(index: 1, positionX: 20, positionY: 50)
-        propsButtonSetup(index: 2, positionX: 30, positionY: 50)
-        propsButtonSetup(index: 3, positionX: 40, positionY: 50)
-        propsButtonSetup(index: 4, positionX: 50, positionY: 50)
-        propsButtonSetup(index: 5, positionX: 60, positionY: 50)
-        propsButtonSetup(index: 6, positionX: 70, positionY: 50)
-        propsButtonSetup(index: 7, positionX: 80, positionY: 50)
-        propsButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
+        // NOTE: Set music and props position
+        propsButtonSetup(index: 0, positionX: 50, positionY: 70)
+        propsButtonSetup(index: 1, positionX: 32, positionY: 53)
+        propsButtonSetup(index: 2, positionX: 88, positionY: 20)
+        propsButtonSetup(index: 3, positionX: 62, positionY: 40)
+        propsButtonSetup(index: 4, positionX: 14.5, positionY: 4)
+        propsButtonSetup(index: 5, positionX: 82.5, positionY: 71)
+        propsButtonSetup(index: 6, positionX: 22, positionY: 30)
+        propsButtonSetup(index: 7, positionX: 2, positionY: 77)
+        propsButtonSetup(index: 8, positionX: 72, positionY: 16)
         propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
 
     }
 
     @objc func showCDAndProp(sender: UIButton!) {
+
+        let sortedArray = DBProvider.shared.sortedArray
 
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
@@ -145,54 +235,65 @@ class GameMapTestViewController: UIViewController {
         case 0:
             propsButtonArray[0].isHidden = true
             propsButtonArray[1].isHidden = false
-            popUpView()
+            removeMask()
+            let info = sortedArray![0]
+            popUpPropView(image: info.cover, hint: "You found the first record!")
         case 1:
             propsButtonArray[1].isHidden = true
             propsButtonArray[2].isHidden = false
-            popUpView()
+            let info = sortedArray![1]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 2:
             propsButtonArray[2].isHidden = true
             propsButtonArray[3].isHidden = false
-            popUpView()
+            let info = sortedArray![2]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 3:
             propsButtonArray[3].isHidden = true
             propsButtonArray[4].isHidden = false
-            popUpView()
+            let info = sortedArray![3]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 4:
             propsButtonArray[4].isHidden = true
             propsButtonArray[5].isHidden = false
-            popUpView()
+            let info = sortedArray![4]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 5:
             propsButtonArray[5].isHidden = true
             propsButtonArray[6].isHidden = false
-            popUpView()
+            let info = sortedArray![5]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 6:
             propsButtonArray[6].isHidden = true
             propsButtonArray[7].isHidden = false
-            popUpView()
+            let info = sortedArray![6]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 7:
             propsButtonArray[7].isHidden = true
             propsButtonArray[8].isHidden = false
-            popUpView()
+            let info = sortedArray![7]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 8:
             propsButtonArray[8].isHidden = true
             propsButtonArray[9].isHidden = false
-            popUpView()
+            let info = sortedArray![8]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         case 9:
             propsButtonArray[9].isHidden = true
-            popUpView()
+            let info = sortedArray![9]
+            popUpPropView(image: info.cover, hint: "You found the record!")
         default:
             return
         }
 
     }
-    
+
     func CDButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-        
+
         CDButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
                                                             y: positionY * imageView.bounds.height/100),
                                             size: CGSize(width: 60, height: 60))
-        
+
     }
 
     func createButton() {
@@ -203,22 +304,62 @@ class GameMapTestViewController: UIViewController {
             self.imageView.addSubview(CDButtonArray[btnIndex])
             CDButtonArray[btnIndex].isHidden = true
             CDButtonArray[btnIndex].tag = btnIndex
-
-//            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordInfo), for: .touchUpInside)
+            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordTab), for: .touchUpInside)
+            CDButtonArray[btnIndex].center = propsButtonArray[btnIndex].center
+            CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
 
         }
 
-        CDButtonSetup(index: 0, positionX: 4.4, positionY: 48)
-        CDButtonSetup(index: 1, positionX: 16.1, positionY: 53)
-        CDButtonSetup(index: 2, positionX: 28, positionY: 53)
-        CDButtonSetup(index: 3, positionX: 39.25, positionY: 49)
-        CDButtonSetup(index: 4, positionX: 51.75, positionY: 49)
-        CDButtonSetup(index: 5, positionX: 65.75, positionY: 49)
-        CDButtonSetup(index: 6, positionX: 80, positionY: 49)
-        CDButtonSetup(index: 7, positionX: 93.75, positionY: 49)
-        CDButtonSetup(index: 8, positionX: 87.5, positionY: 46.4)
-        CDButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
-        
+    }
+
+    @objc func showRecordTab(sender: UIButton!) {
+
+//        let sortedArray = DBProvider.shared.sortedArray
+
+        let btnSendTag: UIButton = sender
+        switch btnSendTag.tag {
+        case 0:
+            presentPlayerVC(level: 0)
+        case 1:
+            presentPlayerVC(level: 1)
+        case 2:
+            presentPlayerVC(level: 2)
+        case 3:
+            presentPlayerVC(level: 3)
+        case 4:
+            presentPlayerVC(level: 4)
+        case 5:
+            presentPlayerVC(level: 5)
+        case 6:
+            presentPlayerVC(level: 6)
+        case 7:
+            presentPlayerVC(level: 7)
+        case 8:
+            presentPlayerVC(level: 8)
+        case 9:
+            presentPlayerVC(level: 9)
+        default:
+            break
+        }
+
+//        tabBarController?.selectedIndex = 2
+    }
+
+    func presentPlayerVC(level: Int) {
+
+        guard let sortedArray = DBProvider.shared.sortedArray else { return }
+
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+        let info = sortedArray[level]
+        SpotifyManager.shared.playMusic(track: info.trackUri)
+
+        present(playerVC, animated: true) {
+            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+            playerVC.playerPanelView.artist.text = info.artist
+            playerVC.playerPanelView.trackName.text = info.trackName
+        }
+
     }
 
     func setExplosionImage() {
@@ -245,13 +386,7 @@ class GameMapTestViewController: UIViewController {
         CDButtonArray[index].isHidden = false
         explosionArray[index].isHidden = false
         animate(imageView: explosionArray[index], images: explosionImages)
-        UIView.animate(withDuration: 2.0, animations: {
-            self.monster.frame = CGRect(x: positionX * self.imageView.bounds.width/100,
-                                        y: 73 * self.imageView.bounds.height/100,
-                                        width: self.monster.frame.size.width,
-                                        height: self.monster.frame.size.height)
-        })
-        
+
     }
 
     @objc func showCDButton(notification: Notification) {
@@ -265,7 +400,6 @@ class GameMapTestViewController: UIViewController {
             CDButtonArray[0].isHidden = false
             explosionArray[0].isHidden = false
             animate(imageView: explosionArray[0], images: explosionImages)
-//            self.imageView.bounds = CGRect(x: 2 * self.imageView.bounds.width/100, y: 0 * self.imageView.bounds.height/100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         case 2:
             levelCase(index: 1, positionX: 14)
         case 3:
@@ -345,21 +479,19 @@ class GameMapTestViewController: UIViewController {
     }
 
     // NOTE: Pop Prop View
-    func popUpView() {
-        //image: UIImage, hint: String --- NOTE: Add to function parameter when image and text is ready
+
+    func popUpPropView(image: String, hint: String) {
+
         guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
         self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
+        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(popUpRecordView.view)
-//        popUpRecordView.recordTitle.text = hint
-//        popUpRecordView.recordCover = UIImageView(image: image)
-        popUpRecordView.view.alpha = 0
-        popUpRecordView.introView.isHidden = true
-//        popUpRecordView.recordCover.image = #imageLiteral(resourceName: "headphone")
+        popUpRecordView.popProp(hint: hint, image: image)
         UIView.animate(withDuration: 0.3) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)
         }
+
     }
 
 }

@@ -58,6 +58,15 @@
 		09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */; };
 		09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */; };
 		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
+		09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855D20B9E43900BE0EA5 /* Intro.storyboard */; };
+		09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */; };
+		09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */; };
+		09A6856A20BCF2AA00BE0EA5 /* MapFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856920BCF2AA00BE0EA5 /* MapFinal.png */; };
+		09A6856C20BCFCFB00BE0EA5 /* harden.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856B20BCFCFA00BE0EA5 /* harden.png */; };
+		09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */; };
+		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
+		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
+		09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6857320BF024A00BE0EA5 /* HitTest.swift */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -66,6 +75,8 @@
 		09C6CF3E20A9466600A6C567 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* Track.swift */; };
 		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
 		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
+		09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */; };
+		09D9D56120C433E600A188CE /* MurmurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D56020C433E600A188CE /* MurmurView.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +135,15 @@
 		09A6855620B7005B00BE0EA5 /* Moon2.0-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moon2.0-Bold.otf"; sourceTree = "<group>"; };
 		09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.otf"; sourceTree = "<group>"; };
 		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
+		09A6855D20B9E43900BE0EA5 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeCollectionView.swift; sourceTree = "<group>"; };
+		09A6856920BCF2AA00BE0EA5 /* MapFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapFinal.png; sourceTree = "<group>"; };
+		09A6856B20BCFCFA00BE0EA5 /* harden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = harden.png; sourceTree = "<group>"; };
+		09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapppp-01.png"; sourceTree = "<group>"; };
+		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
+		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
+		09A6857320BF024A00BE0EA5 /* HitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTest.swift; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -132,6 +152,8 @@
 		09C6CF3D20A9466600A6C567 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
 		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
+		09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		09D9D56020C433E600A188CE /* MurmurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MurmurView.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		59B982F5871BB1854FF20E49 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFB6B98727A92AEF309F2A7 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +196,7 @@
 		090B6913209F03260095B416 /* Project2 */ = {
 			isa = PBXGroup;
 			children = (
+				09A6856620BCF21200BE0EA5 /* Resource */,
 				090B694C209F04610095B416 /* Model */,
 				090B694D209F04670095B416 /* View */,
 				090B694E209F046D0095B416 /* Controller */,
@@ -217,10 +240,12 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09D9D55F20C433C100A188CE /* UIViewTest */,
 				0951973A20B1B9A0006E468E /* Player */,
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
+				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +276,8 @@
 				090B6975209F403C0095B416 /* Setting.storyboard */,
 				0914190F20A48EB300B7C0F0 /* Player.storyboard */,
 				0951973D20B2CDF0006E468E /* CardDetail.storyboard */,
+				09A6855D20B9E43900BE0EA5 /* Intro.storyboard */,
+				09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -286,6 +313,9 @@
 				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
+				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
+				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
+				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -322,6 +352,7 @@
 				090B6969209F3FC00095B416 /* CollectionViewController.swift */,
 				09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */,
 				0914190D20A4839500B7C0F0 /* DesignSetting.swift */,
+				09A6857320BF024A00BE0EA5 /* HitTest.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -418,6 +449,16 @@
 			path = Navigate;
 			sourceTree = "<group>";
 		};
+		09A6856620BCF21200BE0EA5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */,
+				09A6856920BCF2AA00BE0EA5 /* MapFinal.png */,
+				09A6856B20BCFCFA00BE0EA5 /* harden.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		09C6CF3820A82D2800A6C567 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +478,14 @@
 				09A62B2620AD2D6200BA5932 /* DBProvider.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		09D9D55F20C433C100A188CE /* UIViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				09D9D56020C433E600A188CE /* MurmurView.swift */,
+			);
+			path = UIViewTest;
 			sourceTree = "<group>";
 		};
 		E40AB426BB8F9BBC538BF7EA /* Pods */ = {
@@ -461,6 +510,7 @@
 				090B690E209F03260095B416 /* Frameworks */,
 				090B690F209F03260095B416 /* Resources */,
 				FBCC0B59DB1B251D86A9D305 /* [CP] Embed Pods Frameworks */,
+				09A6856320BBD24800BE0EA5 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -514,11 +564,14 @@
 				090B696E209F3FF90095B416 /* Login.storyboard in Resources */,
 				090B691F209F03290095B416 /* LaunchScreen.storyboard in Resources */,
 				090B691C209F03290095B416 /* Assets.xcassets in Resources */,
+				09A6856A20BCF2AA00BE0EA5 /* MapFinal.png in Resources */,
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
 				090B6974209F402C0095B416 /* Card.storyboard in Resources */,
+				09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */,
 				09A6855820B7005B00BE0EA5 /* Moon2.0-Bold.otf in Resources */,
 				0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */,
 				09A62B4220AF3FCD00BA5932 /* CardCollectionViewCell.xib in Resources */,
+				09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */,
 				09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */,
 				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
 				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
@@ -528,9 +581,11 @@
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
+				09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */,
 				09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */,
 				09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */,
 				09A62B3420ADCF8300BA5932 /* pixelmix.ttf in Resources */,
+				09A6856C20BCFCFB00BE0EA5 /* harden.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +604,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
+		09A6856320BBD24800BE0EA5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 73a69e1cfb497db087d7b0e71be78b2e2eedd71e 1379c866655238d68bd0095ae4307b1fbe0e60e1f942c05f1600d59fc1661c22";
 		};
 		B32AEB198F0FDEFC94E478D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -576,16 +645,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -602,6 +677,7 @@
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
+				09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */,
 				090B696C209F3FD30095B416 /* CardViewController.swift in Sources */,
 				09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */,
 				09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */,
@@ -609,15 +685,18 @@
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
+				09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
 				09A62B4120AF3FCD00BA5932 /* CardCollectionViewCell.swift in Sources */,
+				09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */,
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
 				09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
+				09D9D56120C433E600A188CE /* MurmurView.swift in Sources */,
 				0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */,
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
@@ -629,10 +708,12 @@
 				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
+				09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
 				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
+				09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +866,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -793,12 +875,12 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Project2;
+				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Tappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project2/Project2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -815,6 +897,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Project2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -823,11 +906,11 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Project2;
+				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Tappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project2/Project2-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

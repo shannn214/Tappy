@@ -21,10 +21,21 @@ class CardDetailViewController: UIViewController {
     @IBOutlet weak var cardViewWidth: NSLayoutConstraint!
     @IBOutlet weak var cardViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardImage: UIImageView!
 
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var shadowViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewTopConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var backgroundView: UIView!
 
+    @IBOutlet weak var cardContentLabel: UILabel!
+    @IBOutlet weak var cardContentTextView: UIView!
+    @IBOutlet weak var cardContentView: UIView!
+    @IBOutlet weak var cardContentTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardContentLeadingConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
@@ -48,10 +59,18 @@ class CardDetailViewController: UIViewController {
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.3
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
         cardViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
-        
-//        backgroundView.alpha = 0.6
+        cardContentTextView.layer.cornerRadius = 18
 
-        
+        shadowView.layer.cornerRadius = 15
+        shadowViewWidth.constant = UIScreen.main.bounds.width * 0.3
+        shadowViewHeight.constant = UIScreen.main.bounds.width * 0.3
+        shadowViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
+        shadowViewTopConstraint.constant = UIScreen.main.bounds.width * 0.1
+
+        cardContentView.alpha = 0
+        cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+        cardContentLeadingConstraint.constant = UIScreen.main.bounds.width * 0.1
+
         panGesture.delegate = self
         panGesture.isEnabled = false
 
@@ -78,7 +97,7 @@ class CardDetailViewController: UIViewController {
         let touchTrans = sender.translation(in: self.view.window)
 
         if sender.state == UIGestureRecognizerState.began {
-            //            initialTouchPoint = touchPoint
+//            initialTouchPoint = touchPoint
         } else if sender.state == UIGestureRecognizerState.changed {
             if touchPoint.y - initialPoint.y > 0 {
                 self.view.frame = CGRect(x: touchTrans.x,
@@ -89,18 +108,24 @@ class CardDetailViewController: UIViewController {
 
 //                backgroundView.alpha = 1 - touchTrans.y / 100
 
-                UIView.animate(withDuration: 0.3) {
+                UIView.animate(withDuration: 0.35) {
                     self.backgroundView.alpha = 0
+                    //------
+                    self.cardContentView.alpha = 0
+                    self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+                    self.view.layoutIfNeeded()
+                    //------
                 }
 
-                if touchTrans.y < 15 {
+                if touchTrans.y < 16 {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
                 backgroundView.clipsToBounds = true
 
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-            if touchPoint.y - initialPoint.y > 300 {
+//            if touchPoint.y - initialPoint.y > 300 {
+            if touchTrans.y > 150 {
                 // Back to cell view
                 self.delegate?.cardDetailDidTransition(controller: self)
 
@@ -114,8 +139,35 @@ class CardDetailViewController: UIViewController {
                                              self.backgroundView.alpha = 1
                                              self.backgroundView.layer.cornerRadius = 0
 
+                                             //------
+                                             self.cardContentView.alpha = 1
+                                             self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+
                 })
             }
+
+        }
+
+    }
+
+    func startToMoveContent() {
+
+        UIView.animate(withDuration: 0.4) {
+
+            self.cardContentView.alpha = 1
+            self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+
+            self.view.layoutIfNeeded()
+
+        }
+
+    }
+
+    func pullBackContent() {
+
+        UIView.animate(withDuration: 0.4) {
+            self.cardContentView.alpha = 0
+            self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
         }
 
     }
@@ -123,10 +175,17 @@ class CardDetailViewController: UIViewController {
     func changeContraintToFullScreen() {
 
         backgroundView.layer.cornerRadius = 0
-        
+
         cardViewLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
         cardViewWidth.constant = UIScreen.main.bounds.width * 0.75
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.75
+
+        //----
+        self.cardContentView.alpha = 0
+        self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+        cardContentLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
+
+        //----
 
         view.layoutIfNeeded()
         panGesture.isEnabled = true

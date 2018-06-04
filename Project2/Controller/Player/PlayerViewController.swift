@@ -61,6 +61,10 @@ class PlayerViewController: UIViewController {
 
     }
 
+    @IBAction func leaveArrow(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
 
         let touchPoint = sender.location(in: self.view.window)
@@ -73,7 +77,7 @@ class PlayerViewController: UIViewController {
                 self.view.frame = CGRect(x: 0, y: touchTrans.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-            if touchPoint.y - initialPoint.y > 500 {
+            if touchPoint.y - initialPoint.y > 300 {
                 self.dismiss(animated: true) {
 //                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
                 }

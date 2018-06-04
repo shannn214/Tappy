@@ -28,11 +28,19 @@ enum TabBar {
 
         case .achievement:
 
-            return UIStoryboard.cardStoryboard().instantiateInitialViewController()!
+            let nav = UIStoryboard.cardStoryboard().instantiateInitialViewController() as? UINavigationController
+
+            nav!.viewControllers[0].loadViewIfNeeded()
+
+            return nav!
 
         case .collection:
 
-            return UIStoryboard.collectionStoryboard().instantiateInitialViewController()!
+            let navC = UIStoryboard.collectionStoryboard().instantiateInitialViewController() as? UINavigationController
+
+            navC!.viewControllers[0].loadViewIfNeeded()
+
+            return navC!
 
         case .setting:
 
@@ -93,12 +101,17 @@ enum TabBar {
 
 class TabBarViewController: UITabBarController {
 
-    let tabs: [TabBar] = [.game, .achievement, .collection, .setting]
+    let tabs: [TabBar] = [.game, .achievement, .collection]
+
+    // NOTE: Hide .setting for first publish
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTab()
+
+//        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
+
     }
 
     private func setupTab() {
