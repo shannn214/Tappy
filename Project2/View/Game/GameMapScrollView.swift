@@ -18,6 +18,7 @@ class GameMapScrollView: UIScrollView {
     }
 
     var mapImageView: UIImageView!
+    var monster: UIImageView!
     var explosionImages: [UIImage] = []
 
     let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
@@ -36,10 +37,12 @@ class GameMapScrollView: UIScrollView {
         self.contentSize = CGSize(width: mapImageView.bounds.width, height: UIScreen.main.bounds.height)
         self.autoresizingMask = [.flexibleWidth]
         self.addSubview(mapImageView)
+        mapImageView.isUserInteractionEnabled = true
 
         createPropsButton()
         createButton()
         setExplosionImage()
+        createCharacter()
 
     }
 
@@ -110,6 +113,22 @@ class GameMapScrollView: UIScrollView {
             explosionArray[explosionIndex].bounds.size = CGSize(width: 180, height: 180)
 
         }
+
+    }
+
+    func createCharacter() {
+
+        monster = UIImageView()
+//        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
+//        animate(imageView: monster, images: monsterImages)
+        monster.image = #imageLiteral(resourceName: "right_pink")
+        monster.frame = CGRect(x: 2 * mapImageView.bounds.width / 100, y: 77 * mapImageView.bounds.height/100, width: 75, height: 62)
+
+        mapImageView.addSubview(monster)
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameMapTestViewController.monsterTapped(tapGestureRecognizer:)))
+        monster.isUserInteractionEnabled = true
+        monster.addGestureRecognizer(tapGestureRecognizer)
 
     }
 
