@@ -18,9 +18,11 @@ class GameMapScrollView: UIScrollView {
     }
 
     var mapImageView: UIImageView!
+    var explosionImages: [UIImage] = []
 
     let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+    let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
     func setupScrollView() {
 
@@ -34,6 +36,10 @@ class GameMapScrollView: UIScrollView {
         self.contentSize = CGSize(width: mapImageView.bounds.width, height: UIScreen.main.bounds.height)
         self.autoresizingMask = [.flexibleWidth]
         self.addSubview(mapImageView)
+
+        createPropsButton()
+        createButton()
+        setExplosionImage()
 
     }
 
@@ -85,6 +91,50 @@ class GameMapScrollView: UIScrollView {
             CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
 
         }
+
+    }
+
+    func setExplosionImage() {
+
+        for explosionIndex in 0...9 {
+
+            explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
+
+            mapImageView.addSubview(explosionArray[explosionIndex])
+            explosionArray[explosionIndex].backgroundColor = UIColor.clear
+            explosionArray[explosionIndex].isHidden = true
+            explosionArray[explosionIndex].tag = explosionIndex
+            animate(imageView: explosionArray[explosionIndex], images: explosionImages)
+
+            explosionArray[explosionIndex].center = CDButtonArray[explosionIndex].center
+            explosionArray[explosionIndex].bounds.size = CGSize(width: 180, height: 180)
+
+        }
+
+    }
+
+    // Animation
+    func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
+
+        var imageArray: [UIImage] = []
+
+        for imageCount in 10..<total {
+            let imageName = "\(imageRefix)\(imageCount).png"
+            let image = UIImage(named: imageName)!
+
+            imageArray.append(image)
+        }
+
+        return imageArray
+
+    }
+
+    func animate(imageView: UIImageView, images: [UIImage]) {
+
+        imageView.animationImages = images
+        imageView.animationDuration = 0.8
+        imageView.animationRepeatCount = 0
+        imageView.startAnimating()
 
     }
 

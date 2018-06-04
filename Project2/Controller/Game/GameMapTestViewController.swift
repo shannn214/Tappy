@@ -358,6 +358,7 @@ class GameMapTestViewController: UIViewController {
 
     }
 
+    //4)
     func setExplosionImage() {
 
         for explosionIndex in 0...9 {
@@ -376,6 +377,7 @@ class GameMapTestViewController: UIViewController {
         }
 
     }
+    //---------
 
     func levelCase(index: Int, positionX: CGFloat) {
 
