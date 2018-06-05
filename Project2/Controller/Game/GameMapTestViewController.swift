@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameMapTestViewController: UIViewController {
+class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
@@ -21,8 +21,13 @@ class GameMapTestViewController: UIViewController {
 
     var popUprecordVC: PopUpRecordViewController!
 
+    var backScrollView: UIScrollView!
+    var backImageView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupBackScrollView()
 
         initialSetup()
 //        loadButton()
@@ -42,14 +47,33 @@ class GameMapTestViewController: UIViewController {
         loadButton()
     }
 
+    func setupBackScrollView() {
+
+        backImageView = UIImageView(image: #imageLiteral(resourceName: "sky_map-1"))
+        backImageView.frame.size = CGSize(width: UIScreen.main.bounds.height/3297 * 22041, height: UIScreen.main.bounds.height)
+        backScrollView = UIScrollView(frame: view.bounds)
+        backScrollView.backgroundColor = UIColor.black
+        backScrollView.contentSize = CGSize(width: backImageView.bounds.width, height: UIScreen.main.bounds.height)
+        backScrollView.autoresizingMask = [.flexibleWidth]
+        backScrollView.addSubview(backImageView)
+        view.addSubview(backScrollView)
+
+    }
+
     func initialSetup() {
 
         gameMapScrollView = GameMapScrollView(view: view)
         view.addSubview(gameMapScrollView!)
         gameMapScrollView.tapDelegate = self
+        gameMapScrollView.delegate = self
 
         popUprecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let percentageScroll = gameMapScrollView.contentOffset.x
+        backScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
     }
 
     func loadButton() {
