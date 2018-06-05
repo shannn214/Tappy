@@ -39,12 +39,8 @@ class GameMapScrollView: UIScrollView {
 
     func setupScrollView() {
 
-//        guard let url = Bundle.main.path(forResource: "mapppp-01", ofType: ".png") else { return }
-//
-//        let image = UIImage(contentsOfFile: url)
-
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
-        mapImageView.frame.size = CGSize(width: UIScreen.main.bounds.height/3297 * 22041, height: UIScreen.main.bounds.height)
+        mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth, height: Constants.screenHeight)
         self.backgroundColor = UIColor.clear
         self.contentSize = CGSize(width: mapImageView.bounds.width, height: UIScreen.main.bounds.height)
         self.autoresizingMask = [.flexibleWidth]

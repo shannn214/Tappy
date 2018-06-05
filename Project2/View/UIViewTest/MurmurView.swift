@@ -25,9 +25,9 @@ class MurmurView: UIView {
 
         UIView.animate(withDuration: 1.0, animations: {
             self.alpha = 1
-        }) { (_) in
+        }) { [weak self] (_) in
             UIView.animate(withDuration: 0.7, delay: 3, animations: {
-                self.alpha = 0
+                self?.alpha = 0
             }) { (_) in
                 completion()
             }
