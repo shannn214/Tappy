@@ -82,14 +82,14 @@ class GameMapScrollView: UIScrollView {
         // NOTE: Setup props position
         propsButtonSetup(index: 0, positionX: 50, positionY: 70)
         propsButtonSetup(index: 1, positionX: 32, positionY: 53)
-        propsButtonSetup(index: 2, positionX: 88, positionY: 20)
+        propsButtonSetup(index: 2, positionX: 86, positionY: 20)
         propsButtonSetup(index: 3, positionX: 62, positionY: 40)
-        propsButtonSetup(index: 4, positionX: 14.5, positionY: 4)
+        propsButtonSetup(index: 4, positionX: 20, positionY: 4)
         propsButtonSetup(index: 5, positionX: 82.5, positionY: 71)
-        propsButtonSetup(index: 6, positionX: 22, positionY: 30)
+        propsButtonSetup(index: 6, positionX: 8, positionY: 28)
         propsButtonSetup(index: 7, positionX: 2, positionY: 77)
         propsButtonSetup(index: 8, positionX: 72, positionY: 16)
-        propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
+        propsButtonSetup(index: 9, positionX: 98, positionY: 25)
 
     }
 

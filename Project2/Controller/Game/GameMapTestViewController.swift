@@ -30,7 +30,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         setupBackScrollView()
 
         initialSetup()
-//        loadButton()
 
 //        ghostTapGesture.cancelsTouchesInView = false
 //        self.imageView.isUserInteractionEnabled = true

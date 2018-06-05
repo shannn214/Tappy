@@ -110,14 +110,14 @@ extension CardViewController: CardListControllerDelegate {
     func changeTopView() {
 
         guard let cardY = cardTransition else { return }
-        if cardY <= changePoint {
+//        if cardY <= changePoint {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
             topViewHeightConstraint.constant = topView.frame.height - cardY
             topImageConstraint.constant = 105 - cardY
 
             self.gradientHeightConstraint.constant = topView.frame.height - cardY
-        }
+//        }
 
         if cardY <= alphaPoint {
             let percentage = cardY / alphaPoint
