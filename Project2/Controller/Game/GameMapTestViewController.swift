@@ -10,73 +10,41 @@ import UIKit
 
 class GameMapTestViewController: UIViewController {
 
-//    var scrollView: UIScrollView!
-//    var imageView: UIImageView!
-//    var explosionImage: UIImageView!
-//    var explosionImages: [UIImage] = []
-
     @IBOutlet var ghostTapGesture: UITapGestureRecognizer!
 
     var checkLevel = 0
-//    let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
-//    let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
-//    let propsButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
-
-//    let animation = CAKeyframeAnimation(keyPath: "position")
-//    var monster: UIImageView!
-//    var monsterImages: [UIImage] = []
 
     let maskLayer = CAShapeLayer()
-
-//    let tabarVC = AppDelegate.shared?.window?.rootViewController as? TabBarViewController
 
     //------------------------
     // NOTE: Should add "!" here?
     var gameMapScrollView: GameMapScrollView!
 
+    var popUprecordVC: PopUpRecordViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        createScrollViewAndMap()
-//        createCharacter()
-//        createPropsButton()
-//        createButton()
-//        setExplosionImage()
-
-        setupScrollView()
+        initialSetup()
 
         loadButton()
-
-        notificationField()
 
 //        ghostTapGesture.cancelsTouchesInView = false
 //        self.imageView.isUserInteractionEnabled = true
 
-        //------------
-
     }
 
-    func setupScrollView() {
+    func initialSetup() {
 
-//        gameMapScrollView = GameMapScrollView(view: view)
         gameMapScrollView = GameMapScrollView(view: view)
         view.addSubview(gameMapScrollView!)
+        gameMapScrollView.tapDelegate = self
+
+        popUprecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
     }
 
-    func notificationField() {
-
-        NotificationCenter.default.addObserver(self, selector: #selector(showCDButton(notification:)), name: .leavePropPopView, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(changeFrameForGuide(notification:)), name: .startGuideFlow, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(showMaskLayer(notification:)), name: .showMaskAction, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(showSecondGuide(notification:)), name: .showSecondGuideAction, object: nil)
-
-    }
-
-    @objc func showMaskLayer(notification: Notification) {
+    func showMaskLayer() {
 
         let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
@@ -92,17 +60,16 @@ class GameMapTestViewController: UIViewController {
         maskLayer.removeFromSuperlayer()
     }
 
-    @objc func showSecondGuide(notification: Notification) {
+    func showSecondGuide() {
 
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.popUpsecondGuide(parent: self)
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.popUpsecondGuide(parent: self)
 
     }
 
-    @objc func changeFrameForGuide(notification: Notification) {
+    func changeFrameForGuide() {
 
         UIView.animate(withDuration: 2, animations: {
             //animation
@@ -116,11 +83,14 @@ class GameMapTestViewController: UIViewController {
 
     func firstGuide() {
 
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.popUpfirstGuide(parent: self)
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.popUpfirstGuide(parent: self)
+
+        popUprecordVC.firstGuideTouchHandler = {
+            self.showMaskLayer()
+        }
 
     }
 
@@ -141,47 +111,21 @@ class GameMapTestViewController: UIViewController {
 
             for level in 0...LevelStatusManager.shared.level! - 1 {
                 gameMapScrollView.explosionImages = gameMapScrollView.createImageAnimation(total: 37, imageRefix: "Comp 1_000")
-//                explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
-
                 gameMapScrollView.CDButtonArray[level].isHidden = false
                 gameMapScrollView.explosionArray[level].isHidden = false
                 gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[level], images: gameMapScrollView.explosionImages)
-
-//                CDButtonArray[level].isHidden = false
-//                explosionArray[level].isHidden = false
-//                animate(imageView: explosionArray[level], images: explosionImages)
             }
 
         }
 
         if LevelStatusManager.shared.level! < 10 {
             let level = LevelStatusManager.shared.level!
-
             gameMapScrollView.propsButtonArray[level].isHidden = false
-//            propsButtonArray[level].isHidden = false
         }
 
     }
 
-    //5)
-    func createCharacter() {
-
-//        monster = UIImageView()
-////        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
-////        animate(imageView: monster, images: monsterImages)
-//        monster.image = #imageLiteral(resourceName: "right_pink")
-//        monster.frame = CGRect(x: 2 * imageView.bounds.width / 100, y: 77 * imageView.bounds.height/100, width: 75, height: 62)
-//
-//        self.imageView.addSubview(monster)
-//
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterTapped(tapGestureRecognizer:)))
-//        monster.isUserInteractionEnabled = true
-//        monster.addGestureRecognizer(tapGestureRecognizer)
-
-    }
-    //-----------
-
-    @objc func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+    func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
 
         if tapGestureRecognizer.state == .ended {
             let murmur = MurmurView()
@@ -194,63 +138,6 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    // 1) Start to move code
-    func createScrollViewAndMap() {
-
-//        guard let url = Bundle.main.path(forResource: "mapppp-01", ofType: ".png") else { return }
-//
-//        let image = UIImage(contentsOfFile: url)
-//
-//        imageView = UIImageView(image: image)
-//        imageView.frame.size.height = UIScreen.main.bounds.height
-//        imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
-//        scrollView = UIScrollView(frame: view.bounds)
-//        scrollView.backgroundColor = UIColor.black
-//        scrollView.contentSize = CGSize(width: imageView.bounds.width, height: UIScreen.main.bounds.height)
-//        scrollView.autoresizingMask = [.flexibleWidth]
-//        scrollView.addSubview(imageView)
-//        view.addSubview(scrollView)
-
-    }
-    //-----
-
-    //2)
-    func propsButtonSetup(index: Int, positionX: CGFloat, positionY: CGFloat) {
-
-//        propsButtonArray[index].frame = CGRect(origin: CGPoint(x: positionX * imageView.bounds.width / 100,
-//                                                               y: positionY * imageView.bounds.height/100),
-//                                               size: CGSize(width: 60, height: 60))
-
-    }
-
-    func createPropsButton() {
-
-//        for btnIndex in 0...9 {
-//
-//            propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-//            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
-//            self.imageView.addSubview(propsButtonArray[btnIndex])
-//            imageView.bringSubview(toFront: propsButtonArray[btnIndex])
-//            propsButtonArray[btnIndex].isHidden = true
-//            propsButtonArray[btnIndex].tag = btnIndex
-//            propsButtonArray[btnIndex].addTarget(self, action: #selector(showCDAndProp), for: .touchUpInside)
-//
-//        }
-//        // NOTE: Setup props position
-//        propsButtonSetup(index: 0, positionX: 50, positionY: 70)
-//        propsButtonSetup(index: 1, positionX: 32, positionY: 53)
-//        propsButtonSetup(index: 2, positionX: 88, positionY: 20)
-//        propsButtonSetup(index: 3, positionX: 62, positionY: 40)
-//        propsButtonSetup(index: 4, positionX: 14.5, positionY: 4)
-//        propsButtonSetup(index: 5, positionX: 82.5, positionY: 71)
-//        propsButtonSetup(index: 6, positionX: 22, positionY: 30)
-//        propsButtonSetup(index: 7, positionX: 2, positionY: 77)
-//        propsButtonSetup(index: 8, positionX: 72, positionY: 16)
-//        propsButtonSetup(index: 9, positionX: 12.5, positionY: 21.4)
-
-    }
-    //----------
-
     func propCase(index: Int) {
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![index]
@@ -259,7 +146,7 @@ class GameMapTestViewController: UIViewController {
         gameMapScrollView.propsButtonArray[index + 1].isHidden = false
     }
 
-    @objc func showCDAndProp(sender: UIButton!) {
+    func showCDAndProp(sender: UIButton!) {
 
         let sortedArray = DBProvider.shared.sortedArray
 
@@ -300,25 +187,7 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    //3)
-    func createButton() {
-
-//        for btnIndex in 0...9 {
-//
-//            CDButtonArray[btnIndex].setImage(#imageLiteral(resourceName: "dark_color_record"), for: .normal)
-//            self.imageView.addSubview(CDButtonArray[btnIndex])
-//            CDButtonArray[btnIndex].isHidden = true
-//            CDButtonArray[btnIndex].tag = btnIndex
-//            CDButtonArray[btnIndex].addTarget(self, action: #selector(showRecordTab), for: .touchUpInside)
-//            CDButtonArray[btnIndex].center = propsButtonArray[btnIndex].center
-//            CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
-//
-//        }
-
-    }
-    //---------
-
-    @objc func showRecordTab(sender: UIButton!) {
+    func showRecordTab(sender: UIButton!) {
 
         let btnSendTag: UIButton = sender
         switch btnSendTag.tag {
@@ -365,27 +234,6 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    //4)
-    func setExplosionImage() {
-
-//        for explosionIndex in 0...9 {
-//
-//            explosionImages = createImageAnimation(total: 37, imageRefix: "Comp 1_000")
-//
-//            self.imageView.addSubview(explosionArray[explosionIndex])
-//            explosionArray[explosionIndex].backgroundColor = UIColor.clear
-//            explosionArray[explosionIndex].isHidden = true
-//            explosionArray[explosionIndex].tag = explosionIndex
-//            animate(imageView: explosionArray[explosionIndex], images: explosionImages)
-//
-//            explosionArray[explosionIndex].center = CDButtonArray[explosionIndex].center
-//            explosionArray[explosionIndex].bounds.size = CGSize(width: 180, height: 180)
-//
-//        }
-
-    }
-    //---------
-
     func levelCase(index: Int) {
 
         gameMapScrollView.CDButtonArray[index].isHidden = false
@@ -394,7 +242,7 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    @objc func showCDButton(notification: Notification) {
+    func showCDButton() {
 
         self.checkLevel = LevelStatusManager.shared.level!
 
@@ -425,72 +273,61 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    // NOTE: Animation functions
-//    func movingAnimations(start: CGPoint, end: CGPoint) {
-//
-//        let start = start
-//        let end = end
-//
-//        animation.values = [NSValue(cgPoint: start), NSValue(cgPoint: end)]
-//        animation.keyTimes = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
-//        animation.duration = 2.0
-//        monster.layer.add(animation, forKey: "move")
-//
-//    }
-
-//    func createImageAnimation(total: Int, imageRefix: String) -> [UIImage] {
-//
-//        var imageArray: [UIImage] = []
-//
-//        for imageCount in 10..<total {
-//            let imageName = "\(imageRefix)\(imageCount).png"
-//            let image = UIImage(named: imageName)!
-//
-//            imageArray.append(image)
-//        }
-//
-//        return imageArray
-//
-//    }
-//
-//    func createImageAnimationForGhost(total: Int, imageRefix: String) -> [UIImage] {
-//
-//        var imageArray: [UIImage] = []
-//
-//        for imageCount in 0..<total {
-//            let imageName = "\(imageRefix)\(imageCount).png"
-//            let image = UIImage(named: imageName)!
-//
-//            imageArray.append(image)
-//        }
-//
-//        return imageArray
-//
-//    }
-//
-//    func animate(imageView: UIImageView, images: [UIImage]) {
-//
-//        imageView.animationImages = images
-//        imageView.animationDuration = 0.8
-//        imageView.animationRepeatCount = 0
-//        imageView.startAnimating()
-//
-//    }
-
     // NOTE: Pop Prop View
 
     func popUpPropView(image: String, hint: String) {
 
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.popProp(hint: hint, image: image)
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.popProp(hint: hint, image: image)
         UIView.animate(withDuration: 0.3) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
+            self.popUprecordVC.view.alpha = 1
+            self.popUprecordVC.didMove(toParentViewController: self)
+        }
+        popUprecordVC.propTouchHandler = {
+            self.showCDButton()
         }
 
+        popUprecordVC.firstPropTouchHandler = {
+            self.showSecondGuide()
+        }
+
+    }
+
+    func introPopUpView() {
+
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = self.view.frame
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.view.alpha = 0
+        popUprecordVC.popUpIntro()
+
+        UIView.animate(withDuration: 0.2) {
+            self.popUprecordVC.view.alpha = 1
+            self.popUprecordVC.didMove(toParentViewController: self)
+        }
+
+        popUprecordVC.startGuideFlowHandler = {
+            self.changeFrameForGuide()
+        }
+
+    }
+
+}
+
+extension GameMapTestViewController: GameMapScrollDelegate {
+
+    func monsterDidTap(_ controller: GameMapScrollView, tapGestureRecognizer: UITapGestureRecognizer) {
+        monsterTapped(tapGestureRecognizer: tapGestureRecognizer)
+    }
+
+    func propButtonDidTap(_ controller: GameMapScrollView, sender: UIButton!) {
+        showCDAndProp(sender: sender)
+    }
+
+    func CDButtonDidTap(_ controller: GameMapScrollView, sender: UIButton!) {
+        showRecordTab(sender: sender)
     }
 
 }

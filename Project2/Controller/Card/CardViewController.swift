@@ -30,7 +30,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     let pointOfInterest = UIView()
     let customView = UIView()
     let overlayView = UIView()
-    let popUpRecordVC = AppDelegate.shared?.window?.rootViewController as? PopUpRecordViewController
+    let popUpRecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,12 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
         coachMarksController.overlay.color = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(popUpGuideView(notification:)),
+            name: .showCardGuideMaskAction,
+            object: nil
+        )
 
     }
 
@@ -53,6 +58,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {

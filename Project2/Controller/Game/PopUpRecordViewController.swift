@@ -36,7 +36,13 @@ class PopUpRecordViewController: UIViewController {
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
-    weak var popUpDelegate: PopUpViewDelegate?
+//    weak var popUpDelegate: PopUpViewDelegate?
+
+    var propTouchHandler: (() -> Void)?
+    var startGuideFlowHandler: (() -> Void)?
+    var firstGuideTouchHandler: (() -> Void)?
+    var firstPropTouchHandler: (() -> Void)?
+//    var secondGuideTouchHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,25 +53,6 @@ class PopUpRecordViewController: UIViewController {
         secondGuideSetup()
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-
-    }
-
-    @IBAction func firstGuideAction(_ sender: Any) {
-
-        NotificationCenter.default.post(name: .showMaskAction, object: nil)
-
-        self.view.removeFromSuperview()
-    }
-
-    @IBAction func secondGuideAction(_ sender: Any) {
-
-        tabBarController?.selectedIndex = 1
-
-//        self.popUpDelegate?.showCardViewMask(self)
-
-        NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
-
-        self.view.removeFromSuperview()
 
     }
 
@@ -80,6 +67,8 @@ class PopUpRecordViewController: UIViewController {
         self.secondGuideView.alpha = 1
         self.secondGuideView.isHidden = true
         secondGuideView.frame.size = CGSize(width: 0, height: 0)
+        self.secondGuideViewWidth.constant = 0
+        self.secondGuideViewHeight.constant = 0
 
     }
 
@@ -90,6 +79,9 @@ class PopUpRecordViewController: UIViewController {
         self.firstGuideView.alpha = 1
         self.firstGuideView.isHidden = true
         firstGuideView.frame.size = CGSize(width: 0, height: 0)
+        self.firstGuideViewWidth.constant = 0
+        self.firstGuideViewHeight.constant = 0
+
     }
 
     func introViewSetup() {
@@ -138,25 +130,28 @@ class PopUpRecordViewController: UIViewController {
 
     func popUpsecondGuide(parent: UIViewController) {
 
+        self.secondGuideView.isHidden = false
         self.propView.isHidden = true
         self.introView.isHidden = true
         self.firstGuideView.isHidden = true
-        self.secondGuideView.isHidden = false
 
-        UIView.animate(withDuration: 0.3, animations: {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, animations: {
 
-            self.secondGuideView.alpha = 1
-            self.secondGuideViewWidth.constant = 0
-            self.secondGuideViewHeight.constant = 128
-            self.view.layoutIfNeeded()
-
-        }) { (_) in
-
-            UIView.animate(withDuration: 0.35, animations: {
-                self.secondGuideViewWidth.constant = 240
-                self.didMove(toParentViewController: parent)
+                self.secondGuideView.alpha = 1
+                self.secondGuideViewWidth.constant = 0
+                self.secondGuideViewHeight.constant = 128
                 self.view.layoutIfNeeded()
-            })
+
+            }) { (_) in
+
+                UIView.animate(withDuration: 0.35, animations: {
+                    self.secondGuideViewWidth.constant = 240
+                    self.didMove(toParentViewController: parent)
+                    self.view.layoutIfNeeded()
+                })
+
+            }
 
         }
 
@@ -185,22 +180,44 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
+    @IBAction func firstGuideAction(_ sender: Any) {
+
+        //        NotificationCenter.default.post(name: .showMaskAction, object: nil)
+        firstGuideTouchHandler?()
+
+        self.view.removeFromSuperview()
+    }
+
+    @IBAction func secondGuideAction(_ sender: Any) {
+
+        //        self.popUpDelegate?.showCardViewMask(self)
+
+        tabBarController?.selectedIndex = 1
+
+        NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
+
+        self.view.removeFromSuperview()
+
+//        secondGuideTouchHandler?()
+
+    }
+
     @IBAction func startButton(_ sender: Any) {
-        // Note: Notify game map to change frame to first record position
-        NotificationCenter.default.post(name: .startGuideFlow, object: nil)
+
+        startGuideFlowHandler?()
 
         self.view.removeFromSuperview()
     }
 
     @IBAction func leaveButton(_ sender: Any) {
 
-        NotificationCenter.default.post(name: .leavePropPopView, object: nil)
-
-        if LevelStatusManager.shared.level == 1 {
-            NotificationCenter.default.post(name: .showSecondGuideAction, object: nil)
-        }
+        propTouchHandler?()
 
         self.view.removeFromSuperview()
+
+        if LevelStatusManager.shared.level == 1 {
+            firstPropTouchHandler?()
+        }
 
     }
 

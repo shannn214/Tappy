@@ -110,8 +110,6 @@ class TabBarViewController: UITabBarController {
 
         setupTab()
 
-//        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
-
     }
 
     private func setupTab() {

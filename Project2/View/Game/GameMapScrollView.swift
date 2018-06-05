@@ -8,6 +8,16 @@
 
 import Foundation
 
+protocol GameMapScrollDelegate: class {
+
+    func propButtonDidTap(_ controller: GameMapScrollView, sender: UIButton!)
+
+    func CDButtonDidTap(_ controller: GameMapScrollView, sender: UIButton!)
+
+    func monsterDidTap(_ controller: GameMapScrollView, tapGestureRecognizer: UITapGestureRecognizer)
+
+}
+
 class GameMapScrollView: UIScrollView {
 
     init(view: UIView) {
@@ -16,6 +26,8 @@ class GameMapScrollView: UIScrollView {
 
         setupScrollView()
     }
+
+    weak var tapDelegate: GameMapScrollDelegate?
 
     var mapImageView: UIImageView!
     var monster: UIImageView!
@@ -59,12 +71,12 @@ class GameMapScrollView: UIScrollView {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
+            propsButtonArray[btnIndex].backgroundColor = UIColor.red
             mapImageView.addSubview(propsButtonArray[btnIndex])
             mapImageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true
             propsButtonArray[btnIndex].tag = btnIndex
-            propsButtonArray[btnIndex].addTarget(self, action: #selector(GameMapTestViewController.showCDAndProp(sender:)), for: .touchUpInside)
+            propsButtonArray[btnIndex].addTarget(self, action: #selector(propBtnDidTap(sender:)), for: .touchUpInside)
 
         }
         // NOTE: Setup props position
@@ -81,6 +93,10 @@ class GameMapScrollView: UIScrollView {
 
     }
 
+    @objc func propBtnDidTap(sender: UIButton!) {
+        self.tapDelegate?.propButtonDidTap(self, sender: sender)
+    }
+
     func createButton() {
 
         for btnIndex in 0...9 {
@@ -89,12 +105,16 @@ class GameMapScrollView: UIScrollView {
             mapImageView.addSubview(CDButtonArray[btnIndex])
             CDButtonArray[btnIndex].isHidden = true
             CDButtonArray[btnIndex].tag = btnIndex
-            CDButtonArray[btnIndex].addTarget(self, action: #selector(GameMapTestViewController.showRecordTab(sender:)), for: .touchUpInside)
+            CDButtonArray[btnIndex].addTarget(self, action: #selector(CDButtonDidTap(sender:)), for: .touchUpInside)
             CDButtonArray[btnIndex].center = propsButtonArray[btnIndex].center
             CDButtonArray[btnIndex].bounds.size = CGSize(width: 60, height: 60)
 
         }
 
+    }
+
+    @objc func CDButtonDidTap(sender: UIButton!) {
+        self.tapDelegate?.CDButtonDidTap(self, sender: sender)
     }
 
     func setExplosionImage() {
@@ -126,10 +146,14 @@ class GameMapScrollView: UIScrollView {
 
         mapImageView.addSubview(monster)
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameMapTestViewController.monsterTapped(tapGestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(monsterImageDidTap(tapGestureRecognizer:)))
         monster.isUserInteractionEnabled = true
         monster.addGestureRecognizer(tapGestureRecognizer)
 
+    }
+
+    @objc func monsterImageDidTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.tapDelegate?.monsterDidTap(self, tapGestureRecognizer: tapGestureRecognizer)
     }
 
     // Animation

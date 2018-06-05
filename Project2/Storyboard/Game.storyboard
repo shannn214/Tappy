@@ -43,9 +43,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icW-aa-NnC">
                                         <rect key="frame" x="171" y="40" width="32" height="32"/>
                                         <state key="normal" image="gamepad-5"/>
-                                        <connections>
-                                            <action selector="movingButton:" destination="5eu-RK-QSY" eventType="touchUpInside" id="DN5-Y4-xqs"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

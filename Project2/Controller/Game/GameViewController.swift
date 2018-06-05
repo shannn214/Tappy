@@ -95,11 +95,12 @@ class GameViewController: UIViewController {
         //false for test
 
         if firstLogin.value(forKey: "firstLogin") == nil {
+
             getInfoData()
             LevelStatusManager.shared.initialGame()
             firstLogin.set(true, forKey: "firstLogin")
+            gameMapViewController?.introPopUpView()
 
-            popUpView()
         } else {
             //TODO
         }
@@ -119,20 +120,6 @@ class GameViewController: UIViewController {
                                                     level: uriManager.uris[dataIndex].level)
         }
 
-    }
-
-    func popUpView() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        popUpRecordView.popUpIntro()
-
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
     }
 
 }

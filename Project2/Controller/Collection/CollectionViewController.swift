@@ -139,13 +139,13 @@ extension CollectionViewController: CollectionListControllerDelegate {
     func changeTopView() {
 
         guard let collectionY = collectionTransition else { return }
-        if collectionY <= changePoint {
+//        if collectionY <= changePoint {
             topViewHeightConstraint.constant = topViewHeight - collectionY
             topImageConstraint.constant = 65 - collectionY
             self.gradientHeightConstraint.constant = topViewHeight - collectionY
 
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
-        }
+//        }
         if collectionY <= alphaPoint {
             let percentage = collectionY / alphaPoint
             collectionCover.alpha = 1.0 - percentage
