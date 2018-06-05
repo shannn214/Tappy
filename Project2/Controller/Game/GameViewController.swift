@@ -9,12 +9,6 @@
 import Foundation
 import Instructions
 
-protocol GameViewControllerDelegate: class {
-
-    func gameMapDidTap(controller: GameViewController, position: CGFloat)
-
-}
-
 class GameViewController: UIViewController {
 
     @IBOutlet weak var progress: UIProgressView!
@@ -22,8 +16,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameMapContainer: UIView!
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-
-    weak var delegate: GameViewControllerDelegate?
 
     var distance = 0.0
     var checkLevel = 0

@@ -71,7 +71,7 @@ class GameMapScrollView: UIScrollView {
         for btnIndex in 0...9 {
 
             propsButtonArray[btnIndex].setImage(UIImage(), for: .normal)
-            propsButtonArray[btnIndex].backgroundColor = UIColor.red
+            propsButtonArray[btnIndex].backgroundColor = UIColor.clear
             mapImageView.addSubview(propsButtonArray[btnIndex])
             mapImageView.bringSubview(toFront: propsButtonArray[btnIndex])
             propsButtonArray[btnIndex].isHidden = true

@@ -16,8 +16,7 @@ class GameMapTestViewController: UIViewController {
 
     let maskLayer = CAShapeLayer()
 
-    //------------------------
-    // NOTE: Should add "!" here?
+    // NOTE: Should I add "!" here?
     var gameMapScrollView: GameMapScrollView!
 
     var popUprecordVC: PopUpRecordViewController!
@@ -26,12 +25,21 @@ class GameMapTestViewController: UIViewController {
         super.viewDidLoad()
 
         initialSetup()
-
-        loadButton()
+//        loadButton()
 
 //        ghostTapGesture.cancelsTouchesInView = false
 //        self.imageView.isUserInteractionEnabled = true
 
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        loadButton()
     }
 
     func initialSetup() {
@@ -42,67 +50,6 @@ class GameMapTestViewController: UIViewController {
 
         popUprecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
-    }
-
-    func showMaskLayer() {
-
-        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
-        path.append(maskPath.reversing())
-
-        maskLayer.path = path.cgPath
-        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
-        view.layer.addSublayer(maskLayer)
-
-    }
-
-    func removeMask() {
-        maskLayer.removeFromSuperlayer()
-    }
-
-    func showSecondGuide() {
-
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.popUpsecondGuide(parent: self)
-
-    }
-
-    func changeFrameForGuide() {
-
-        UIView.animate(withDuration: 2, animations: {
-            //animation
-            self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0)
-        }) { (_) in
-            //completion
-            self.firstGuide()
-        }
-
-    }
-
-    func firstGuide() {
-
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.popUpfirstGuide(parent: self)
-
-        popUprecordVC.firstGuideTouchHandler = {
-            self.showMaskLayer()
-        }
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    func gameMapDidTap(controller: GameViewController, position: CGFloat) {
-
-        gameMapScrollView.monster.frame = CGRect(x: position, y: 77,
-                                                  width: gameMapScrollView.monster.frame.size.width,
-                                                  height: gameMapScrollView.monster.frame.size.height)
     }
 
     func loadButton() {
@@ -125,6 +72,38 @@ class GameMapTestViewController: UIViewController {
 
     }
 
+    func changeFrameForGuide() {
+
+        UIView.animate(withDuration: 2, animations: {
+            self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0)
+        }) { (_) in
+            self.firstGuide()
+        }
+
+    }
+
+    func firstGuide() {
+
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.popUpfirstGuide(parent: self)
+
+        popUprecordVC.firstGuideTouchHandler = {
+            self.showMaskLayer()
+        }
+
+    }
+
+    func secondGuide() {
+
+        self.addChildViewController(popUprecordVC)
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.view.addSubview(popUprecordVC.view)
+        popUprecordVC.popUpsecondGuide(parent: self)
+
+    }
+
     func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
 
         if tapGestureRecognizer.state == .ended {
@@ -138,17 +117,23 @@ class GameMapTestViewController: UIViewController {
 
     }
 
+    // NOTE: Prop Button
     func propCase(index: Int) {
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![index]
         popUpPropView(image: info.cover, hint: "You found the record!")
         gameMapScrollView.propsButtonArray[index].isHidden = true
-        gameMapScrollView.propsButtonArray[index + 1].isHidden = false
+
+        if index + 1 < 10 {
+            gameMapScrollView.propsButtonArray[index + 1].isHidden = false
+        }
+
+        if index == 0 {
+            removeMask()
+        }
     }
 
     func showCDAndProp(sender: UIButton!) {
-
-        let sortedArray = DBProvider.shared.sortedArray
 
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
@@ -157,63 +142,43 @@ class GameMapTestViewController: UIViewController {
         }
 
         let btnSendTag: UIButton = sender
-        switch btnSendTag.tag {
-        case 0:
-            propCase(index: 0)
-            removeMask()
-        case 1:
-            propCase(index: 1)
-        case 2:
-            propCase(index: 2)
-        case 3:
-            propCase(index: 3)
-        case 4:
-            propCase(index: 4)
-        case 5:
-            propCase(index: 5)
-        case 6:
-            propCase(index: 6)
-        case 7:
-            propCase(index: 7)
-        case 8:
-            propCase(index: 8)
-        case 9:
-            gameMapScrollView.propsButtonArray[9].isHidden = true
-            let info = sortedArray![9]
-            popUpPropView(image: info.cover, hint: "You found the record!")
-        default:
-            return
-        }
+        propCase(index: btnSendTag.tag)
+
+    }
+
+    // NOTE: Record Button
+    func levelCase(index: Int) {
+
+        gameMapScrollView.CDButtonArray[index].isHidden = false
+        gameMapScrollView.explosionArray[index].isHidden = false
+        gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[index], images: gameMapScrollView.explosionImages)
+
+    }
+
+    func showCDButtonCase(level: Int) {
+
+        levelCase(index: level - 1)
+
+    }
+
+    func showCDButton() {
+
+        self.checkLevel = LevelStatusManager.shared.level!
+        showCDButtonCase(level: checkLevel)
+
+    }
+
+    // NOTE: Player View
+    func tapRecordCase(tag: Int) {
+
+        presentPlayerVC(level: tag)
 
     }
 
     func showRecordTab(sender: UIButton!) {
 
         let btnSendTag: UIButton = sender
-        switch btnSendTag.tag {
-        case 0:
-            presentPlayerVC(level: 0)
-        case 1:
-            presentPlayerVC(level: 1)
-        case 2:
-            presentPlayerVC(level: 2)
-        case 3:
-            presentPlayerVC(level: 3)
-        case 4:
-            presentPlayerVC(level: 4)
-        case 5:
-            presentPlayerVC(level: 5)
-        case 6:
-            presentPlayerVC(level: 6)
-        case 7:
-            presentPlayerVC(level: 7)
-        case 8:
-            presentPlayerVC(level: 8)
-        case 9:
-            presentPlayerVC(level: 9)
-        default:
-            break
-        }
+        tapRecordCase(tag: btnSendTag.tag)
 
     }
 
@@ -234,47 +199,25 @@ class GameMapTestViewController: UIViewController {
 
     }
 
-    func levelCase(index: Int) {
+    func showMaskLayer() {
 
-        gameMapScrollView.CDButtonArray[index].isHidden = false
-        gameMapScrollView.explosionArray[index].isHidden = false
-        gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[index], images: gameMapScrollView.explosionImages)
+        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
+        path.append(maskPath.reversing())
 
-    }
-
-    func showCDButton() {
-
-        self.checkLevel = LevelStatusManager.shared.level!
-
-        switch checkLevel {
-        case 1:
-            levelCase(index: 0)
-        case 2:
-            levelCase(index: 1)
-        case 3:
-            levelCase(index: 2)
-        case 4:
-            levelCase(index: 3)
-        case 5:
-            levelCase(index: 4)
-        case 6:
-            levelCase(index: 5)
-        case 7:
-            levelCase(index: 6)
-        case 8:
-            levelCase(index: 7)
-        case 9:
-            levelCase(index: 8)
-        case 10:
-            levelCase(index: 9)
-        default:
-            break
-        }
+        maskLayer.path = path.cgPath
+        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
+        view.layer.addSublayer(maskLayer)
 
     }
 
-    // NOTE: Pop Prop View
+    func removeMask() {
 
+        maskLayer.removeFromSuperlayer()
+
+    }
+
+    // NOTE: PopUp View
     func popUpPropView(image: String, hint: String) {
 
         self.addChildViewController(popUprecordVC)
@@ -290,7 +233,7 @@ class GameMapTestViewController: UIViewController {
         }
 
         popUprecordVC.firstPropTouchHandler = {
-            self.showSecondGuide()
+            self.secondGuide()
         }
 
     }
