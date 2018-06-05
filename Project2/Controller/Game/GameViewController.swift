@@ -9,12 +9,6 @@
 import Foundation
 import Instructions
 
-protocol GameViewControllerDelegate: class {
-
-    func gameMapDidTap(controller: GameViewController, position: CGFloat)
-
-}
-
 class GameViewController: UIViewController {
 
     @IBOutlet weak var progress: UIProgressView!
@@ -22,8 +16,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameMapContainer: UIView!
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-
-    weak var delegate: GameViewControllerDelegate?
 
     var distance = 0.0
     var checkLevel = 0
@@ -59,18 +51,18 @@ class GameViewController: UIViewController {
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
-            let point = view.window?.convert(tapPoint, to: gameMapViewController?.scrollView)
+            let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView)
             let dddd = point?.x
 
-            if Int(dddd!) < Int((self.gameMapViewController?.monster.center.x)!) {
-                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "left_pink")
+            if Int(dddd!) < Int((self.gameMapViewController?.gameMapScrollView.monster.center.x)!) {
+                self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "left_pink")
             } else {
-                self.gameMapViewController?.monster.image = #imageLiteral(resourceName: "right_pink")
+                self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "right_pink")
             }
 
             UIView.animate(withDuration: 0.4) {
-                self.gameMapViewController?.monster.frame = CGRect(x: (point?.x)!,
-                                                                   y: 77 * (self.gameMapViewController?.imageView.bounds.height)!/100,
+                self.gameMapViewController?.gameMapScrollView.monster.frame = CGRect(x: (point?.x)!,
+                                                                   y: 77 * (self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height)!/100,
                                                                    width: 75, height: 62)
             }
         default:
@@ -95,11 +87,12 @@ class GameViewController: UIViewController {
         //false for test
 
         if firstLogin.value(forKey: "firstLogin") == nil {
+
             getInfoData()
             LevelStatusManager.shared.initialGame()
             firstLogin.set(true, forKey: "firstLogin")
+            gameMapViewController?.introPopUpView()
 
-            popUpView()
         } else {
             //TODO
         }
@@ -119,20 +112,6 @@ class GameViewController: UIViewController {
                                                     level: uriManager.uris[dataIndex].level)
         }
 
-    }
-
-    func popUpView() {
-        guard let popUpRecordView = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-        popUpRecordView.popUpIntro()
-
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
-        }
     }
 
 }

@@ -12,37 +12,26 @@ class MurmurView: UIView {
 
     init() {
 
-        super.init(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        super.init(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
 
         isUserInteractionEnabled = false
-        
+
         self.backgroundColor = UIColor.yellow
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.07, execute: {
-//            self.createMurmur()
-        })
+        self.layer.cornerRadius = 15
 
     }
 
-    func createMurmur() {
+    func createMurmur(completion: @escaping () -> Void) {
 
-//        let dialog = UIView()
-//        dialog.frame.size = CGSize(width: 50, height: 30)
-//        dialog.center = self.center
-//        dialog.layer.cornerRadius = 15
-//        dialog.backgroundColor = UIColor(displayP3Red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
-//        dialog.alpha = 1
-//
-//        self.addSubview(dialog)
-
-//        UIView.animate(withDuration: 1, animations: {
-//            dialog.alpha = 1
-//        }) { (_) in
-//            UIView.animate(withDuration: 1, animations: {
-//                dialog.alpha = 0
-//            })
-//        }
-
+        UIView.animate(withDuration: 1.0, animations: {
+            self.alpha = 1
+        }) { (_) in
+            UIView.animate(withDuration: 0.7, delay: 3, animations: {
+                self.alpha = 0
+            }) { (_) in
+                completion()
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

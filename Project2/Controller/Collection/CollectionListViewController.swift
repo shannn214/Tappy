@@ -55,6 +55,7 @@ class CollectionListViewController: UIViewController {
         recordCollectionView.dataSource = self
         recordCollectionView.contentInset = UIEdgeInsets(top: 190, left: 0, bottom: 0, right: 0)
         recordCollectionView.contentOffset = CGPoint(x: 0, y: -190)
+        // NOTE: contentOffset didn't change anything?
 
     }
 

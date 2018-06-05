@@ -21,6 +21,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
 
+    let topViewHeight: CGFloat = 255
     var changePoint: CGFloat = 0
     var alphaPoint: CGFloat = 190
     var cardTransition: CGFloat?
@@ -30,7 +31,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     let pointOfInterest = UIView()
     let customView = UIView()
     let overlayView = UIView()
-    let popUpRecordVC = AppDelegate.shared?.window?.rootViewController as? PopUpRecordViewController
+    let popUpRecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,12 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
         coachMarksController.overlay.color = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(popUpGuideView(notification:)), name: .showCardGuideMaskAction, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(popUpGuideView(notification:)),
+            name: .showCardGuideMaskAction,
+            object: nil
+        )
 
     }
 
@@ -53,6 +59,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,14 +111,14 @@ extension CardViewController: CardListControllerDelegate {
     func changeTopView() {
 
         guard let cardY = cardTransition else { return }
-        if cardY <= changePoint {
+//        if cardY <= changePoint {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
-            topViewHeightConstraint.constant = topView.frame.height - cardY
+            topViewHeightConstraint.constant = topViewHeight - cardY
             topImageConstraint.constant = 105 - cardY
 
-            self.gradientHeightConstraint.constant = topView.frame.height - cardY
-        }
+            self.gradientHeightConstraint.constant = topViewHeight - cardY
+//        }
 
         if cardY <= alphaPoint {
             let percentage = cardY / alphaPoint
