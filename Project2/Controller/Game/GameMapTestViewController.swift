@@ -264,7 +264,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func introPopUpView() {
 
         self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = self.view.frame
+        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(popUprecordVC.view)
         popUprecordVC.view.alpha = 0
         popUprecordVC.popUpIntro()
