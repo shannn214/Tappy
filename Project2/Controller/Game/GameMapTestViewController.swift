@@ -130,8 +130,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
 
         if tapGestureRecognizer.state == .ended {
-            let murmur = MurmurView()
-            murmur.frame = CGRect(x: -10, y: -35, width: murmur.frame.width, height: murmur.frame.height)
+            let murmur = MurmurView(frame: CGRect(x: -10, y: -35, width: 120, height: 30))
+            murmur.frame = CGRect(x: 5, y: -35, width: murmur.frame.width, height: murmur.frame.height)
             gameMapScrollView.monster.addSubview(murmur)
             murmur.createMurmur {
                 murmur.removeFromSuperview()
