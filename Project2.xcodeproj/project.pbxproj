@@ -40,6 +40,12 @@
 		098E103020C563C600B9D7F2 /* testmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098E102F20C563C600B9D7F2 /* testmap.storyboard */; };
 		098E103220C563E600B9D7F2 /* testmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103120C563E600B9D7F2 /* testmapViewController.swift */; };
 		098E103420C6CA3B00B9D7F2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103320C6CA3B00B9D7F2 /* Constants.swift */; };
+		098E103C20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103A20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift */; };
+		098E103D20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 098E103B20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib */; };
+		098E104020C8093700B9D7F2 /* AppStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103F20C8093700B9D7F2 /* AppStoreViewController.swift */; };
+		098E104220C8096A00B9D7F2 /* AppStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098E104120C8096A00B9D7F2 /* AppStore.storyboard */; };
+		098E104420C80E4400B9D7F2 /* AppStoreDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098E104320C80E4400B9D7F2 /* AppStoreDetail.storyboard */; };
+		098E104620C80EC100B9D7F2 /* AppStoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104520C80EC100B9D7F2 /* AppStoreDetailViewController.swift */; };
 		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
 		09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2620AD2D6200BA5932 /* DBProvider.swift */; };
 		09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */; };
@@ -121,6 +127,12 @@
 		098E102F20C563C600B9D7F2 /* testmap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = testmap.storyboard; sourceTree = "<group>"; };
 		098E103120C563E600B9D7F2 /* testmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testmapViewController.swift; sourceTree = "<group>"; };
 		098E103320C6CA3B00B9D7F2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		098E103A20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		098E103B20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppStoreCollectionViewCell.xib; sourceTree = "<group>"; };
+		098E103F20C8093700B9D7F2 /* AppStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreViewController.swift; sourceTree = "<group>"; };
+		098E104120C8096A00B9D7F2 /* AppStore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppStore.storyboard; sourceTree = "<group>"; };
+		098E104320C80E4400B9D7F2 /* AppStoreDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppStoreDetail.storyboard; sourceTree = "<group>"; };
+		098E104520C80EC100B9D7F2 /* AppStoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreDetailViewController.swift; sourceTree = "<group>"; };
 		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
 		09A62B2620AD2D6200BA5932 /* DBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
@@ -248,13 +260,13 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				098E103520C8083000B9D7F2 /* FeatureTest */,
 				098E102C20C517B500B9D7F2 /* Game */,
 				09D9D55F20C433C100A188CE /* UIViewTest */,
 				0951973A20B1B9A0006E468E /* Player */,
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
-				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +274,7 @@
 		090B694E209F046D0095B416 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				098E103E20C8090800B9D7F2 /* FeatureTest */,
 				09A62B4320B15FB700BA5932 /* Navigate */,
 				090B6957209F3B020095B416 /* Login */,
 				090B697D20A18E850095B416 /* Player */,
@@ -288,6 +301,8 @@
 				09A6855D20B9E43900BE0EA5 /* Intro.storyboard */,
 				09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */,
 				098E102F20C563C600B9D7F2 /* testmap.storyboard */,
+				098E104120C8096A00B9D7F2 /* AppStore.storyboard */,
+				098E104320C80E4400B9D7F2 /* AppStoreDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -411,6 +426,25 @@
 				098E103120C563E600B9D7F2 /* testmapViewController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		098E103520C8083000B9D7F2 /* FeatureTest */ = {
+			isa = PBXGroup;
+			children = (
+				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
+				098E103A20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift */,
+				098E103B20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib */,
+			);
+			path = FeatureTest;
+			sourceTree = "<group>";
+		};
+		098E103E20C8090800B9D7F2 /* FeatureTest */ = {
+			isa = PBXGroup;
+			children = (
+				098E103F20C8093700B9D7F2 /* AppStoreViewController.swift */,
+				098E104520C80EC100B9D7F2 /* AppStoreDetailViewController.swift */,
+			);
+			path = FeatureTest;
 			sourceTree = "<group>";
 		};
 		09A62B2220AAAD9800BA5932 /* Game */ = {
@@ -584,6 +618,7 @@
 				090B696E209F3FF90095B416 /* Login.storyboard in Resources */,
 				090B691F209F03290095B416 /* LaunchScreen.storyboard in Resources */,
 				090B691C209F03290095B416 /* Assets.xcassets in Resources */,
+				098E104220C8096A00B9D7F2 /* AppStore.storyboard in Resources */,
 				09A6856A20BCF2AA00BE0EA5 /* MapFinal.png in Resources */,
 				090B6970209F40040095B416 /* Game.storyboard in Resources */,
 				090B6974209F402C0095B416 /* Card.storyboard in Resources */,
@@ -600,6 +635,8 @@
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */,
+				098E104420C80E4400B9D7F2 /* AppStoreDetail.storyboard in Resources */,
+				098E103D20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib in Resources */,
 				098E103020C563C600B9D7F2 /* testmap.storyboard in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
 				09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */,
@@ -696,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
+				098E104620C80EC100B9D7F2 /* AppStoreDetailViewController.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
 				09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */,
@@ -707,6 +745,8 @@
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
+				098E103C20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift in Sources */,
+				098E104020C8093700B9D7F2 /* AppStoreViewController.swift in Sources */,
 				09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,

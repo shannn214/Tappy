@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="do3-q6-98N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--App Store Detail View Controller-->
+        <scene sceneID="Hsc-h3-BP8">
+            <objects>
+                <viewController storyboardIdentifier="AppStoreDetailViewController" id="do3-q6-98N" customClass="AppStoreDetailViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BxL-A8-naJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLU-MX-1zZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLM-ke-0un">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                <color key="backgroundColor" red="0.92316670820000002" green="0.72453672140000003" blue="0.1001995468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="8Wn-Fn-9Lf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.088099875470000005" green="0.096848503360000004" blue="0.51892430280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gLM-ke-0un" firstAttribute="leading" secondItem="SOM-bW-SYk" secondAttribute="leading" id="DP6-Zu-PWi"/>
+                            <constraint firstItem="gLM-ke-0un" firstAttribute="top" secondItem="BxL-A8-naJ" secondAttribute="top" id="HGA-71-QKe"/>
+                            <constraint firstItem="QLU-MX-1zZ" firstAttribute="top" secondItem="BxL-A8-naJ" secondAttribute="top" id="JC0-bH-8Px"/>
+                            <constraint firstItem="SOM-bW-SYk" firstAttribute="trailing" secondItem="gLM-ke-0un" secondAttribute="trailing" id="MRa-ee-hVL"/>
+                            <constraint firstItem="QLU-MX-1zZ" firstAttribute="leading" secondItem="SOM-bW-SYk" secondAttribute="leading" id="SFp-cQ-0sM"/>
+                            <constraint firstItem="SOM-bW-SYk" firstAttribute="bottom" secondItem="QLU-MX-1zZ" secondAttribute="bottom" id="fsa-KA-V6o"/>
+                            <constraint firstItem="SOM-bW-SYk" firstAttribute="trailing" secondItem="QLU-MX-1zZ" secondAttribute="trailing" id="t9D-la-bcQ"/>
+                            <constraint firstItem="gLM-ke-0un" firstAttribute="centerX" secondItem="BxL-A8-naJ" secondAttribute="centerX" id="ykX-FF-xy8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SOM-bW-SYk"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="QLU-MX-1zZ" id="Gfg-i0-HIL"/>
+                        <outlet property="topView" destination="gLM-ke-0un" id="eHc-Bf-H0K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pN9-gy-3Ue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-50.399999999999999" y="113.79310344827587"/>
+        </scene>
+    </scenes>
+</document>

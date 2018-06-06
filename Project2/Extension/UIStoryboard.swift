@@ -50,4 +50,8 @@ extension UIStoryboard {
         return UIStoryboard(name: "SampleMode", bundle: nil)
     }
 
+    static func appDetailStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "AppStoreDetail", bundle: nil)
+    }
+
 }

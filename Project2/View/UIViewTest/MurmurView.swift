@@ -14,7 +14,7 @@ class MurmurView: UIView {
     let murmurTextArray = ["Booo", "YaHaHa", "あぇ", ">_<", "Blalaala", "uuuu", "だいすき"]
 
     let randomTextIndex = Int(arc4random_uniform(7))
-    
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)
@@ -59,11 +59,11 @@ class MurmurView: UIView {
 }
 
 extension String {
-    
+
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedStringKey.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
-    
+
 }
