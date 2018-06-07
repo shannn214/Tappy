@@ -25,8 +25,6 @@ class AppStoreDetailViewController: UIViewController {
 
     func initialSetup() {
 
-//        self.view.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.2)
-
         self.view.bounds.size = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.2)
 
         self.view.layer.cornerRadius = 20
@@ -39,6 +37,8 @@ class AppStoreDetailViewController: UIViewController {
     }
 
     @objc func tapCellBeforeLose(sender: UILongPressGestureRecognizer) {
+
+        let touchPoint = sender.location(in: self.view.window)
 
         if sender.state == .began {
 

@@ -19,6 +19,8 @@ class AppStoreViewController: UIViewController {
         UIStoryboard(name: "AppStoreDetail", bundle: nil).instantiateViewController(withIdentifier: String(describing: AppStoreDetailViewController.self))
     ]
 
+    var cellIndex: IndexPath?
+
     var selectedIndex: IndexPath?
 
     var selectedPoint: CGPoint?
@@ -104,8 +106,60 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
         cell?.clipsToBounds = true
 
+        cellIndex = indexPath
+
+        //----gesture test------
+//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapCellBeforeLose(sender:)))
+//        longPressGesture.minimumPressDuration = 0.1
+//        cell?.addGestureRecognizer(longPressGesture)
+        //----------
+
         return cell!
     }
+    //------
+//    @objc func tapCellBeforeLose(sender: UILongPressGestureRecognizer) {
+//
+//        if sender.state == .began {
+//
+//            handleLongPressBegan()
+//
+//        } else if sender.state == .cancelled || sender.state == .ended {
+//
+//            handleLongPressEnded()
+//
+//        }
+//
+//    }
+//
+//    func handleLongPressBegan() {
+//
+//        UIView.animate(withDuration: 0.5,
+//                       delay: 0,
+//                       usingSpringWithDamping: 0.9,
+//                       initialSpringVelocity: 0.1,
+//                       options: .beginFromCurrentState,
+//                       animations: {
+////                        self.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+//                        guard let appStoreDetailVC = self.controllers[(self.selectedIndex?.row)!] as? AppStoreDetailViewController else { return }
+//
+//                        appStoreDetailVC.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+//
+//        }, completion: nil)
+//
+//    }
+//
+//    func handleLongPressEnded() {
+//
+//        UIView.animate(withDuration: 0.3,
+//                       delay: 0,
+//                       options: .beginFromCurrentState,
+//                       animations: {
+//                        self.view.transform = CGAffineTransform.identity
+//        }, completion: nil)
+//
+//    }
+
+    //------
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -132,6 +186,7 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
             appStoreDetailVC.view.frame = self.view.frame
             appStoreDetailVC.changeToFullScreen()
         }
+
     }
 
 }
