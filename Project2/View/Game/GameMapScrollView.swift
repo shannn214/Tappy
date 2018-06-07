@@ -42,7 +42,7 @@ class GameMapScrollView: UIScrollView {
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
         mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth, height: Constants.screenHeight)
         self.backgroundColor = UIColor.clear
-        self.contentSize = CGSize(width: mapImageView.bounds.width, height: UIScreen.main.bounds.height)
+        self.contentSize = CGSize(width: mapImageView.bounds.width, height: Constants.screenHeight)
         self.autoresizingMask = [.flexibleWidth]
         self.addSubview(mapImageView)
         mapImageView.isUserInteractionEnabled = true
@@ -178,7 +178,9 @@ class GameMapScrollView: UIScrollView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+
+        setupScrollView()
     }
 
 }

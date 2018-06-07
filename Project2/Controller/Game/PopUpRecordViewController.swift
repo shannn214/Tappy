@@ -36,13 +36,10 @@ class PopUpRecordViewController: UIViewController {
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
-//    weak var popUpDelegate: PopUpViewDelegate?
-
     var propTouchHandler: (() -> Void)?
     var startGuideFlowHandler: (() -> Void)?
     var firstGuideTouchHandler: (() -> Void)?
     var firstPropTouchHandler: (() -> Void)?
-//    var secondGuideTouchHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +49,7 @@ class PopUpRecordViewController: UIViewController {
         firstGuideViewSetup()
         secondGuideSetup()
 
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        self.view.backgroundColor = AppColor.popUpBGColor
 
     }
 

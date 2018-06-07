@@ -14,23 +14,23 @@ class MurmurView: UIView {
     let murmurTextArray = ["Booo", "YaHaHa", "あぇ", ">_<", "Blalaala", "uuuu", "だいすき"]
 
     let randomTextIndex = Int(arc4random_uniform(7))
-    
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)
+
+        addMurmur()
+    }
+
+    func addMurmur() {
 
         isUserInteractionEnabled = false
 
         self.backgroundColor = UIColor(displayP3Red: 219/255, green: 165/255, blue: 63/255, alpha: 1)
         self.layer.cornerRadius = 15
 
-        self.addMurmur()
-    }
-
-    func addMurmur() {
-
         let uuuuu = murmurTextArray[randomTextIndex]
-        let width = uuuuu.widthOfString(usingFont: UIFont(name: "CircularStd-Medium", size: 14)!)
+        let width = uuuuu.widthOfString(usingFont: UIFont(name: Constants.font, size: 14)!)
         murmurLabel.text = uuuuu
         murmurLabel.numberOfLines = 0
         murmurLabel.adjustsFontSizeToFitWidth = true
@@ -54,16 +54,18 @@ class MurmurView: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+
+        addMurmur()
     }
 }
 
 extension String {
-    
+
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedStringKey.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
-    
+
 }
