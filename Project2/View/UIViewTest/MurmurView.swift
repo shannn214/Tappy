@@ -29,11 +29,11 @@ class MurmurView: UIView {
 
     func addMurmur() {
 
-//        let labelSize: CGSize =
-
         let uuuuu = murmurTextArray[randomTextIndex]
         let width = uuuuu.widthOfString(usingFont: UIFont(name: "CircularStd-Medium", size: 14)!)
         murmurLabel.text = uuuuu
+        murmurLabel.numberOfLines = 0
+        murmurLabel.adjustsFontSizeToFitWidth = true
         murmurLabel.frame = CGRect(x: 10, y: 0, width: width + 4, height: self.frame.height)
         self.addSubview(murmurLabel)
         self.frame = CGRect(x: 0, y: 0, width: width + 20, height: self.frame.height)
