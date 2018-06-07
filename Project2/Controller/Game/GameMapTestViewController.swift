@@ -14,7 +14,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     var checkLevel = 0
 
-    let maskLayer = CAShapeLayer()
+    var maskLayer: MaskLayer!
 
     // NOTE: Should I add "!" here?
     var gameMapScrollView: GameMapScrollView!
@@ -29,8 +29,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupBackScrollView()
 
         initialSetup()
 
@@ -47,19 +45,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
 
         loadButton()
-    }
-
-    func setupBackScrollView() {
-
-//        backImageView = UIImageView(image: #imageLiteral(resourceName: "sky_map-1"))
-//        backImageView.frame.size = CGSize(width: UIScreen.main.bounds.height/3297 * 22041, height: UIScreen.main.bounds.height)
-//        backScrollView = UIScrollView(frame: view.bounds)
-//        backScrollView.backgroundColor = UIColor.black
-//        backScrollView.contentSize = CGSize(width: backImageView.bounds.width, height: UIScreen.main.bounds.height)
-//        backScrollView.autoresizingMask = [.flexibleWidth]
-//        backScrollView.addSubview(backImageView)
-//        view.addSubview(backScrollView)
-
     }
 
     func initialSetup() {
@@ -227,12 +212,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     func showMaskLayer() {
 
-        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
-        path.append(maskPath.reversing())
-
-        maskLayer.path = path.cgPath
-        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
+        maskLayer = MaskLayer()
+        maskLayer.createMask(rect: Constants.mapMaskBezRect, roundedRect: Constants.mapMaskRoundedRect, cornerRadius: Constants.maskCornerRadius)
         view.layer.addSublayer(maskLayer)
 
     }

@@ -34,6 +34,28 @@ struct Constants {
 
     static let monsterTopConstraint: CGFloat = 105
 
+    static let mapMaskBezRect = CGRect(x: 0,
+                                       y: 0,
+                                       width: UIScreen.main.bounds.width,
+                                       height: UIScreen.main.bounds.height)
+
+    static let mapMaskRoundedRect = CGRect(x: 15 * UIScreen.main.bounds.width / 100,
+                                           y: 68 * UIScreen.main.bounds.height / 100,
+                                           width: 300,
+                                           height: 150)
+
+    static let maskCornerRadius: CGFloat = 20
+
+    static let cardMaskBezRect = CGRect(x: 0,
+                                        y: 0,
+                                        width: UIScreen.main.bounds.width,
+                                        height: UIScreen.main.bounds.height)
+
+    static let cardMaskRoundedRect = CGRect(x: 10,
+                                            y: 260,
+                                            width: UIScreen.main.bounds.width * 0.45,
+                                            height: UIScreen.main.bounds.width * 0.45)
+
 }
 
 struct AppColor {

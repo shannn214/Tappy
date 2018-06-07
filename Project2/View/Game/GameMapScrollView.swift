@@ -21,8 +21,13 @@ protocol GameMapScrollDelegate: class {
 class GameMapScrollView: UIScrollView {
 
     init(view: UIView) {
-
         super.init(frame: view.bounds)
+
+        setupScrollView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
 
         setupScrollView()
     }
@@ -40,9 +45,11 @@ class GameMapScrollView: UIScrollView {
     func setupScrollView() {
 
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
-        mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth, height: Constants.screenHeight)
+        mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth,
+                                         height: Constants.screenHeight)
         self.backgroundColor = UIColor.clear
-        self.contentSize = CGSize(width: mapImageView.bounds.width, height: Constants.screenHeight)
+        self.contentSize = CGSize(width: mapImageView.bounds.width,
+                                  height: Constants.screenHeight)
         self.autoresizingMask = [.flexibleWidth]
         self.addSubview(mapImageView)
         mapImageView.isUserInteractionEnabled = true
@@ -110,7 +117,9 @@ class GameMapScrollView: UIScrollView {
     }
 
     @objc func CDButtonDidTap(sender: UIButton!) {
+
         self.tapDelegate?.CDButtonDidTap(self, sender: sender)
+
     }
 
     func setExplosionImage() {
@@ -135,10 +144,9 @@ class GameMapScrollView: UIScrollView {
     func createCharacter() {
 
         monster = UIImageView()
-//        monsterImages = createImageAnimationForGhost(total: 2, imageRefix: "peek_ghost")
-//        animate(imageView: monster, images: monsterImages)
         monster.image = #imageLiteral(resourceName: "right_pink")
-        monster.frame = CGRect(x: 2 * mapImageView.bounds.width / 100, y: 77 * mapImageView.bounds.height/100, width: 75, height: 62)
+        monster.frame = CGRect(x: 2 * mapImageView.bounds.width / 100,
+                               y: 77 * mapImageView.bounds.height/100, width: 75, height: 62)
 
         mapImageView.addSubview(monster)
 
@@ -149,7 +157,9 @@ class GameMapScrollView: UIScrollView {
     }
 
     @objc func monsterImageDidTap(tapGestureRecognizer: UITapGestureRecognizer) {
+
         self.tapDelegate?.monsterDidTap(self, tapGestureRecognizer: tapGestureRecognizer)
+
     }
 
     // Animation
@@ -175,12 +185,6 @@ class GameMapScrollView: UIScrollView {
         imageView.animationRepeatCount = 0
         imageView.startAnimating()
 
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        setupScrollView()
     }
 
 }
