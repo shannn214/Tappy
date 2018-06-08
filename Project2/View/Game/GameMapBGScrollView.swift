@@ -31,7 +31,7 @@ class GameMapBGScrollView: UIScrollView {
         backImageView.frame.size = CGSize(width: Constants.mapSizeWidth,
                                           height: Constants.screenHeight)
 
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.black
 
         self.contentSize = CGSize(width: backImageView.bounds.width,
                                   height: Constants.screenHeight)

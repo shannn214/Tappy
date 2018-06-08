@@ -11,7 +11,8 @@ import Foundation
 class MurmurView: UIView {
 
     let murmurLabel = UILabel()
-    let murmurTextArray = ["Booo", "YaHaHa", "あぇ", ">_<", "Blalaala", "uuuu", "だいすき"]
+    
+    let murmurTextArray = ["BoooBooooo", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
 
     let randomTextIndex = Int(arc4random_uniform(7))
 
@@ -32,6 +33,7 @@ class MurmurView: UIView {
         let uuuuu = murmurTextArray[randomTextIndex]
         let width = uuuuu.widthOfString(usingFont: UIFont(name: Constants.font, size: 14)!)
         murmurLabel.text = uuuuu
+        murmurLabel.font = UIFont(name: Constants.font, size: 14)
         murmurLabel.numberOfLines = 0
         murmurLabel.adjustsFontSizeToFitWidth = true
         murmurLabel.frame = CGRect(x: 10, y: 0, width: width + 4, height: self.frame.height)

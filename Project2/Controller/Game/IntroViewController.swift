@@ -29,6 +29,8 @@ class IntroViewController: UIViewController {
     @IBOutlet weak var viewThreeButton: UIButton!
     @IBOutlet weak var viewFourButton: UIButton!
     @IBOutlet weak var viewFiveButton: UIButton!
+    
+    var touchHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +83,7 @@ class IntroViewController: UIViewController {
     @IBAction func actionOne(_ sender: Any) {
         viewOne.isHidden = true
         viewTwo.isHidden = false
+//        touchHandler()
     }
     @IBAction func actionTwo(_ sender: Any) {
         viewTwo.isHidden = true

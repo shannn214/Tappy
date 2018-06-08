@@ -16,7 +16,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     var maskLayer: MaskLayer!
 
-    // NOTE: Should I add "!" here?
     var gameMapScrollView: GameMapScrollView!
 
     var gameMapBGScrollView: GameMapBGScrollView!
@@ -31,10 +30,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         initialSetup()
-
-//        ghostTapGesture.cancelsTouchesInView = false
-//        self.imageView.isUserInteractionEnabled = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -213,7 +208,9 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func showMaskLayer() {
 
         maskLayer = MaskLayer()
-        maskLayer.createMask(rect: Constants.mapMaskBezRect, roundedRect: Constants.mapMaskRoundedRect, cornerRadius: Constants.maskCornerRadius)
+        maskLayer.createMask(rect: Constants.mapMaskBezRect,
+                             roundedRect: Constants.mapMaskRoundedRect,
+                             cornerRadius: Constants.maskCornerRadius)
         view.layer.addSublayer(maskLayer)
 
     }

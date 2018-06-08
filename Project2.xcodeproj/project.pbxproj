@@ -43,6 +43,7 @@
 		098E104820C917E300B9D7F2 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104720C917E300B9D7F2 /* Functions.swift */; };
 		098E104A20C91F8900B9D7F2 /* GameMapBGScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */; };
 		098E104C20C9256C00B9D7F2 /* MaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104B20C9256C00B9D7F2 /* MaskLayer.swift */; };
+		098E104E20C9646C00B9D7F2 /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */; };
 		09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */; };
 		09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2620AD2D6200BA5932 /* DBProvider.swift */; };
 		09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */; };
@@ -127,6 +128,7 @@
 		098E104720C917E300B9D7F2 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapBGScrollView.swift; sourceTree = "<group>"; };
 		098E104B20C9256C00B9D7F2 /* MaskLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskLayer.swift; sourceTree = "<group>"; };
+		098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		09A62B2320AAADAE00BA5932 /* LevelStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStatusManager.swift; sourceTree = "<group>"; };
 		09A62B2620AD2D6200BA5932 /* DBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
 				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
+				098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				098E104820C917E300B9D7F2 /* Functions.swift in Sources */,
+				098E104E20C9646C00B9D7F2 /* OpeningViewController.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
