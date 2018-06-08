@@ -11,7 +11,7 @@ import Foundation
 class MurmurView: UIView {
 
     let murmurLabel = UILabel()
-    
+
     let murmurTextArray = ["BoooBooooo", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
 
     let randomTextIndex = Int(arc4random_uniform(7))

@@ -29,7 +29,7 @@ class IntroViewController: UIViewController {
     @IBOutlet weak var viewThreeButton: UIButton!
     @IBOutlet weak var viewFourButton: UIButton!
     @IBOutlet weak var viewFiveButton: UIButton!
-    
+
     var touchHandler: (() -> Void)?
 
     override func viewDidLoad() {
