@@ -22,9 +22,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
 
-    let topViewHeight: CGFloat = 255
-    var changePoint: CGFloat = 0
-    var alphaPoint: CGFloat = 190
     var recordTransition: CGFloat?
     var collectionTransition: CGFloat?
     var rotateFlag: Bool?
@@ -94,14 +91,8 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
 
-        layer.colors = [
-            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0).cgColor,
-            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        ]
-        layer.locations = [0.0, 0.35]
-        layer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.frame = UIScreen.main.bounds
+        setupGradient(layer: layer)
+
         self.gradientView.layer.addSublayer(layer)
 
         showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
@@ -140,14 +131,14 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         guard let collectionY = collectionTransition else { return }
 //        if collectionY <= changePoint {
-            topViewHeightConstraint.constant = topViewHeight - collectionY
-            topImageConstraint.constant = 65 - collectionY
-            self.gradientHeightConstraint.constant = topViewHeight - collectionY
+            topViewHeightConstraint.constant = Constants.topViewHeight - collectionY
+            topImageConstraint.constant = Constants.navigationBarHeight - collectionY
+            self.gradientHeightConstraint.constant = Constants.topViewHeight - collectionY
 
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 //        }
-        if collectionY <= alphaPoint {
-            let percentage = collectionY / alphaPoint
+        if collectionY <= Constants.topViewAlphaPoint {
+            let percentage = collectionY / Constants.topViewAlphaPoint
             collectionCover.alpha = 1.0 - percentage
         }
     }

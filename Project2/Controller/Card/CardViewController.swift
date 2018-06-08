@@ -21,9 +21,6 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
 
-    let topViewHeight: CGFloat = 255
-    var changePoint: CGFloat = 0
-    var alphaPoint: CGFloat = 190
     var cardTransition: CGFloat?
     let layer = CAGradientLayer()
 
@@ -37,8 +34,6 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         setup()
-
-        coachMarksController.overlay.color = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
 
         NotificationCenter.default.addObserver(
             self,
@@ -68,18 +63,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 
     func setup() {
 
-        layer.colors = [
-            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0).cgColor,
-            UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        ]
-
-        layer.locations = [0.0, 0.3]
-
-        layer.startPoint = CGPoint(x: 0.5, y: 0.0)
-
-        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-
-        layer.frame = UIScreen.main.bounds
+        setupGradient(layer: layer)
 
         self.gradientView.layer.addSublayer(layer)
 
@@ -114,14 +98,14 @@ extension CardViewController: CardListControllerDelegate {
 //        if cardY <= changePoint {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
-            topViewHeightConstraint.constant = topViewHeight - cardY
-            topImageConstraint.constant = 105 - cardY
+            topViewHeightConstraint.constant = Constants.topViewHeight - cardY
+            topImageConstraint.constant = Constants.monsterTopConstraint - cardY
 
-            self.gradientHeightConstraint.constant = topViewHeight - cardY
+            self.gradientHeightConstraint.constant = Constants.topViewHeight - cardY
 //        }
 
-        if cardY <= alphaPoint {
-            let percentage = cardY / alphaPoint
+        if cardY <= Constants.topViewAlphaPoint {
+            let percentage = cardY / Constants.topViewAlphaPoint
             topViewImage.alpha = 1.0 - percentage
         }
 

@@ -29,6 +29,8 @@ class IntroViewController: UIViewController {
     @IBOutlet weak var viewThreeButton: UIButton!
     @IBOutlet weak var viewFourButton: UIButton!
     @IBOutlet weak var viewFiveButton: UIButton!
+    
+    var touchHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +52,10 @@ class IntroViewController: UIViewController {
         viewFour.isHidden = true
         viewFive.isHidden = true
 
-        viewTwoTextView.text = "Don't be so cold. \n Can you do me a favor?"
-        viewThreeTextView.text = "Well... \n I bought a new headphone yesturday. \n But I realize that... \n I don't have music."
-        viewFourTextView.text = "So... Could you collect some record for me?"
-        viewFiveTextView.text = "No >< \n If you help me, you can get... uh... \n A Toy of ME! \n YEE-HEEEE!"
+        viewTwoTextView.text = Constants.openingTwo
+        viewThreeTextView.text = Constants.openingThree
+        viewFourTextView.text = Constants.openingFour
+        viewFiveTextView.text = Constants.openingFive
 
         viewOne.layer.cornerRadius = 20
         viewTwo.layer.cornerRadius = 20
@@ -81,6 +83,7 @@ class IntroViewController: UIViewController {
     @IBAction func actionOne(_ sender: Any) {
         viewOne.isHidden = true
         viewTwo.isHidden = false
+//        touchHandler()
     }
     @IBAction func actionTwo(_ sender: Any) {
         viewTwo.isHidden = true

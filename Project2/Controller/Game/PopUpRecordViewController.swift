@@ -36,13 +36,10 @@ class PopUpRecordViewController: UIViewController {
 
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
-//    weak var popUpDelegate: PopUpViewDelegate?
-
     var propTouchHandler: (() -> Void)?
     var startGuideFlowHandler: (() -> Void)?
     var firstGuideTouchHandler: (() -> Void)?
     var firstPropTouchHandler: (() -> Void)?
-//    var secondGuideTouchHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +49,7 @@ class PopUpRecordViewController: UIViewController {
         firstGuideViewSetup()
         secondGuideSetup()
 
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        self.view.backgroundColor = AppColor.popUpBGColor
 
     }
 
@@ -87,7 +84,7 @@ class PopUpRecordViewController: UIViewController {
     func introViewSetup() {
 
         self.introView.layer.cornerRadius = 20
-        self.introTextView.text = "Yeah!!! \n I know you are a good man. \n I'll guide you to find the first record. \n \n GOGOGO!"
+        self.introTextView.text = Constants.introText
         startGameButton.layer.cornerRadius = 15
 
     }
@@ -124,8 +121,6 @@ class PopUpRecordViewController: UIViewController {
 
         }
 
-        self.view.layoutIfNeeded()
-
     }
 
     func popUpsecondGuide(parent: UIViewController) {
@@ -155,8 +150,6 @@ class PopUpRecordViewController: UIViewController {
 
         }
 
-        self.view.layoutIfNeeded()
-
     }
 
     func popUpIntro() {
@@ -182,7 +175,6 @@ class PopUpRecordViewController: UIViewController {
 
     @IBAction func firstGuideAction(_ sender: Any) {
 
-        //        NotificationCenter.default.post(name: .showMaskAction, object: nil)
         firstGuideTouchHandler?()
 
         self.view.removeFromSuperview()
@@ -190,15 +182,11 @@ class PopUpRecordViewController: UIViewController {
 
     @IBAction func secondGuideAction(_ sender: Any) {
 
-        //        self.popUpDelegate?.showCardViewMask(self)
-
         tabBarController?.selectedIndex = 1
 
         NotificationCenter.default.post(name: .showCardGuideMaskAction, object: nil)
 
         self.view.removeFromSuperview()
-
-//        secondGuideTouchHandler?()
 
     }
 

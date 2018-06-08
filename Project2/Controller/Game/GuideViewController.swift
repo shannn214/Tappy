@@ -16,7 +16,7 @@ class GuideViewController: UIViewController {
     @IBOutlet weak var cardGuideViewWidth: NSLayoutConstraint!
     @IBOutlet weak var cardGuideViewTopConstraint: NSLayoutConstraint!
 
-    let maskLayer = CAShapeLayer()
+    var maskLayer: MaskLayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,13 +66,9 @@ class GuideViewController: UIViewController {
 
     func createMaskLayer() {
 
-        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 10, y: 260, width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45), cornerRadius: 20)
-        path.append(maskPath.reversing())
+        maskLayer = MaskLayer()
+        maskLayer.createMask(rect: Constants.cardMaskBezRect, roundedRect: Constants.cardMaskRoundedRect, cornerRadius: Constants.maskCornerRadius)
 
-        maskLayer.path = path.cgPath
-        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
-//        maskLayer.opacity = 0.7
         view.layer.addSublayer(maskLayer)
 
     }

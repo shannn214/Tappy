@@ -14,26 +14,22 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     var checkLevel = 0
 
-    let maskLayer = CAShapeLayer()
+    var maskLayer: MaskLayer!
 
-    // NOTE: Should I add "!" here?
     var gameMapScrollView: GameMapScrollView!
 
-    var popUprecordVC: PopUpRecordViewController!
+    var gameMapBGScrollView: GameMapBGScrollView!
+
+    var popUpRecordVC: PopUpRecordViewController!
 
     var backScrollView: UIScrollView!
+
     var backImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupBackScrollView()
-
         initialSetup()
-
-//        ghostTapGesture.cancelsTouchesInView = false
-//        self.imageView.isUserInteractionEnabled = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,33 +42,22 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         loadButton()
     }
 
-    func setupBackScrollView() {
-
-        backImageView = UIImageView(image: #imageLiteral(resourceName: "sky_map-1"))
-        backImageView.frame.size = CGSize(width: UIScreen.main.bounds.height/3297 * 22041, height: UIScreen.main.bounds.height)
-        backScrollView = UIScrollView(frame: view.bounds)
-        backScrollView.backgroundColor = UIColor.black
-        backScrollView.contentSize = CGSize(width: backImageView.bounds.width, height: UIScreen.main.bounds.height)
-        backScrollView.autoresizingMask = [.flexibleWidth]
-        backScrollView.addSubview(backImageView)
-        view.addSubview(backScrollView)
-
-    }
-
     func initialSetup() {
 
+        gameMapBGScrollView = GameMapBGScrollView(view: view)
         gameMapScrollView = GameMapScrollView(view: view)
+        view.addSubview(gameMapBGScrollView!)
         view.addSubview(gameMapScrollView!)
         gameMapScrollView.tapDelegate = self
         gameMapScrollView.delegate = self
 
-        popUprecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
+        popUpRecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let percentageScroll = gameMapScrollView.contentOffset.x
-        backScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
+        gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
     }
 
     func loadButton() {
@@ -107,12 +92,11 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     func firstGuide() {
 
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.popUpfirstGuide(parent: self)
+        addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
 
-        popUprecordVC.firstGuideTouchHandler = {
+        popUpRecordVC.popUpfirstGuide(parent: self)
+
+        popUpRecordVC.firstGuideTouchHandler = {
             self.showMaskLayer()
         }
 
@@ -120,18 +104,17 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     func secondGuide() {
 
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.popUpsecondGuide(parent: self)
+        addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
+
+        popUpRecordVC.popUpsecondGuide(parent: self)
 
     }
 
     func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
 
         if tapGestureRecognizer.state == .ended {
-            let murmur = MurmurView()
-            murmur.frame = CGRect(x: -10, y: -35, width: murmur.frame.width, height: murmur.frame.height)
+            let murmur = MurmurView(frame: CGRect(x: -10, y: -35, width: 120, height: 30))
+            murmur.frame = CGRect(x: 5, y: -35, width: murmur.frame.width, height: murmur.frame.height)
             gameMapScrollView.monster.addSubview(murmur)
             murmur.createMurmur {
                 murmur.removeFromSuperview()
@@ -224,12 +207,10 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     func showMaskLayer() {
 
-        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 15 * UIScreen.main.bounds.width / 100, y: 68 * UIScreen.main.bounds.height / 100, width: 300, height: 150), cornerRadius: 20)
-        path.append(maskPath.reversing())
-
-        maskLayer.path = path.cgPath
-        maskLayer.fillColor = UIColor(displayP3Red: 24/255, green: 24/255, blue: 24/255, alpha: 0.7).cgColor
+        maskLayer = MaskLayer()
+        maskLayer.createMask(rect: Constants.mapMaskBezRect,
+                             roundedRect: Constants.mapMaskRoundedRect,
+                             cornerRadius: Constants.maskCornerRadius)
         view.layer.addSublayer(maskLayer)
 
     }
@@ -243,19 +224,17 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     // NOTE: PopUp View
     func popUpPropView(image: String, hint: String) {
 
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.popProp(hint: hint, image: image)
-        UIView.animate(withDuration: 0.3) {
-            self.popUprecordVC.view.alpha = 1
-            self.popUprecordVC.didMove(toParentViewController: self)
-        }
-        popUprecordVC.propTouchHandler = {
+        addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
+
+        popUpRecordVC.popProp(hint: hint, image: image)
+
+        popUpViewAnimation(popUpRecordVC: popUpRecordVC)
+
+        popUpRecordVC.propTouchHandler = {
             self.showCDButton()
         }
 
-        popUprecordVC.firstPropTouchHandler = {
+        popUpRecordVC.firstPropTouchHandler = {
             self.secondGuide()
         }
 
@@ -263,18 +242,14 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     func introPopUpView() {
 
-        self.addChildViewController(popUprecordVC)
-        popUprecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        self.view.addSubview(popUprecordVC.view)
-        popUprecordVC.view.alpha = 0
-        popUprecordVC.popUpIntro()
+        addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
 
-        UIView.animate(withDuration: 0.2) {
-            self.popUprecordVC.view.alpha = 1
-            self.popUprecordVC.didMove(toParentViewController: self)
-        }
+        popUpRecordVC.view.alpha = 0
+        popUpRecordVC.popUpIntro()
 
-        popUprecordVC.startGuideFlowHandler = {
+        popUpViewAnimation(popUpRecordVC: popUpRecordVC)
+
+        popUpRecordVC.startGuideFlowHandler = {
             self.changeFrameForGuide()
         }
 
