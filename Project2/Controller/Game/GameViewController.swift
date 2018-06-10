@@ -33,13 +33,19 @@ class GameViewController: UIViewController {
         initialSetting()
 
         LevelStatusManager.shared.showNewLevel()
-        DBProvider.shared.getSortedArray()
+//        DBProvider.shared.getSortedArray()
 
         tapGesture.cancelsTouchesInView = false
 
         progress.isHidden = true
         movingBtn.isHidden = true
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DBProvider.shared.getSortedArray()
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
