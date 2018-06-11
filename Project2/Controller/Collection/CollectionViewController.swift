@@ -84,7 +84,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
-    func setup() {
+    private func setup() {
 
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
 

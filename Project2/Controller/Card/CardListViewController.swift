@@ -72,7 +72,7 @@ class CardListViewController: UIViewController {
 
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
 
         let nib = UINib(nibName: String(describing: CardCollectionViewCell.self), bundle: nil)
         listCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: CardCollectionViewCell.self))
@@ -83,7 +83,7 @@ class CardListViewController: UIViewController {
 
     }
 
-    func setupCollectionLayout() {
+    private func setupCollectionLayout() {
 
         if let setLayout = listCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2
@@ -239,6 +239,7 @@ extension CardListViewController: CardDetailDelegate {
             selectedVC.changeConstraintToCellSize()
 
         }) { [weak self] _ in
+
             selectedVC.view.removeFromSuperview()
             selectedCell.addSubview(selectedVC.view)
             selectedVC.view.frame = selectedCell.contentView.frame
@@ -246,6 +247,7 @@ extension CardListViewController: CardDetailDelegate {
             self?.listCollectionView.isUserInteractionEnabled = true
             self?.cardFlag = false
             self?.listCollectionView.reloadData()
+
         }
 
     }

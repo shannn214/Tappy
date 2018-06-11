@@ -47,7 +47,7 @@ class CollectionListViewController: UIViewController {
 
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
 
         let nib = UINib(nibName: String(describing: RecordCollectionViewCell.self), bundle: nil)
         recordCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: RecordCollectionViewCell.self))
@@ -59,14 +59,14 @@ class CollectionListViewController: UIViewController {
 
     }
 
-    func setupTrackCell() {
+    private func setupTrackCell() {
 
         let nib = UINib(nibName: String(describing: TrackCollectionViewCell.self), bundle: nil)
         recordCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: TrackCollectionViewCell.self))
 
     }
 
-    func setCollectionLayout() {
+    private func setCollectionLayout() {
 
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2

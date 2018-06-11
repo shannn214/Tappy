@@ -86,7 +86,7 @@ class GameViewController: UIViewController {
 
     }
 
-    func initialSetting() {
+    private func initialSetting() {
 
         if firstLogin.value(forKey: "firstLogin") == nil {
 
@@ -101,7 +101,7 @@ class GameViewController: UIViewController {
 
     }
 
-    func getInfoData() {
+    private func getInfoData() {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 

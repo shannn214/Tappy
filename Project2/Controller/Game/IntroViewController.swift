@@ -44,7 +44,7 @@ class IntroViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func allViewSetup() {
+    private func allViewSetup() {
 
         popUpView.isHidden = true
         viewTwo.isHidden = true
@@ -71,7 +71,7 @@ class IntroViewController: UIViewController {
 
     }
 
-    func popViewSetUp() {
+    private func popViewSetUp() {
 
         view.backgroundColor = UIColor.black
         popUpView.layer.cornerRadius = 20

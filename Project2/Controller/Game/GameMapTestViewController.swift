@@ -42,7 +42,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         loadButton()
     }
 
-    func initialSetup() {
+    private func initialSetup() {
 
         gameMapBGScrollView = GameMapBGScrollView(view: view)
         gameMapScrollView = GameMapScrollView(view: view)
@@ -60,7 +60,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
     }
 
-    func loadButton() {
+    private func loadButton() {
 
         if LevelStatusManager.shared.level! > 0 {
 
@@ -124,7 +124,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // NOTE: Prop Button
-    func propCase(index: Int) {
+    private func propCase(index: Int) {
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![index]
         popUpPropView(image: info.cover, hint: Constants.hint)
@@ -139,7 +139,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func showCDAndProp(sender: UIButton!) {
+    private func showCDAndProp(sender: UIButton!) {
 
         self.checkLevel = LevelStatusManager.shared.level! + 1
 
@@ -153,7 +153,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // NOTE: Record Button
-    func levelCase(index: Int) {
+    private func levelCase(index: Int) {
 
         gameMapScrollView.CDButtonArray[index].isHidden = false
         gameMapScrollView.explosionArray[index].isHidden = false
@@ -161,13 +161,13 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
-    func showCDButtonCase(level: Int) {
+    private func showCDButtonCase(level: Int) {
 
         levelCase(index: level - 1)
 
     }
 
-    func showCDButton() {
+    private func showCDButton() {
 
         self.checkLevel = LevelStatusManager.shared.level!
         showCDButtonCase(level: checkLevel)
@@ -245,6 +245,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
 
         popUpRecordVC.view.alpha = 0
+
         popUpRecordVC.popUpIntro()
 
         popUpViewAnimation(popUpRecordVC: popUpRecordVC)
