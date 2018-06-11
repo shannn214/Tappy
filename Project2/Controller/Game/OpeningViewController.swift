@@ -14,12 +14,14 @@ class OpeningViewController: UIViewController {
     @IBOutlet weak var openingTextView: UITextView!
     @IBOutlet weak var openingButton: UIButton!
 
-    var firstTouchHandler: (() -> Void)?
 //    var secondTouchHandler: (() -> Void)?
 //    var thirdTouchHandler: (() -> Void)?
 //    var forthTouchHandler: (() -> Void)?
 
-//    let touchArray: [() -> Void] = [(() -> Void), (() -> Void)]
+//    var touchArray = [() -> Void]()
+    var handlerArray: [() -> Void] = [ {}, {}, {}, {}]
+    
+    var textIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,29 +31,43 @@ class OpeningViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func setup() {
+    private func setup() {
 
         openingView.layer.cornerRadius = 20
 
         openingButton.layer.cornerRadius = 15
+        
+    }
+
+    func textOne() {
+
+        openingTextView.text = Constants.openingOne
+        
+        textIndex += 1
 
     }
 
     func textTwo() {
 
         openingTextView.text = Constants.openingTwo
+        
+        textIndex += 1
 
     }
 
     func textThree() {
 
         openingTextView.text = Constants.openingThree
+        
+        textIndex += 1
 
     }
 
     func textFour() {
 
         openingTextView.text = Constants.openingFour
+        
+        textIndex += 1
 
     }
 
@@ -63,6 +79,19 @@ class OpeningViewController: UIViewController {
 
     @IBAction func openingAction(_ sender: Any) {
 
+        switch textIndex {
+        case 0:
+            textTwo()
+        case 1:
+            textThree()
+        case 2:
+            textFour()
+        case 3:
+            textFive()
+        default:
+            break
+        }
+        
     }
 
 }

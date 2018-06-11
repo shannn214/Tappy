@@ -10,6 +10,8 @@ import Foundation
 
 struct Constants {
 
+    static let openingOne = "Hi, I'm Tappy."
+
     static let openingTwo = "Don't be so cold. \n Can you do me a favor?"
 
     static let openingThree = "Well... \n I bought a new headphone yesturday. \n But I realize that... \n I don't have music."
@@ -31,6 +33,8 @@ struct Constants {
     static let ok = "OK"
 
     static let cancel = "Cancel"
+
+    static let firstLogin = "firstLogin"
 
     static let mapSizeWidth = UIScreen.main.bounds.height/3297 * 22041
 

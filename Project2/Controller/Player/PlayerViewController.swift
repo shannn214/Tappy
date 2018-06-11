@@ -8,7 +8,7 @@
 
 import Foundation
 import SDWebImage
-import AVFoundation
+//import AVFoundation
 
 class PlayerViewController: UIViewController {
 

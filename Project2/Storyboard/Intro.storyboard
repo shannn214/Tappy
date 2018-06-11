@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="adP-mr-aXD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yc7-40-5tJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -61,47 +61,6 @@
                                     <constraint firstAttribute="bottom" secondItem="hW3-9T-3xt" secondAttribute="bottom" constant="15" id="K66-aa-Eee"/>
                                     <constraint firstAttribute="width" constant="240" id="jSB-nE-DnY"/>
                                     <constraint firstAttribute="height" constant="240" id="ntn-3P-v9b"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="999-AX-111">
-                                <rect key="frame" x="67" y="220" width="240" height="240"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27S-tv-8S7">
-                                        <rect key="frame" x="30" y="195" width="180" height="30"/>
-                                        <color key="backgroundColor" red="0.085428109579999995" green="0.084800842069999993" blue="0.41647472610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="hg0-Yd-kNL"/>
-                                            <constraint firstAttribute="width" constant="180" id="iya-aG-iyB"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
-                                        <state key="normal" title="I don't care.">
-                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionOne:" destination="adP-mr-aXD" eventType="touchUpInside" id="VwQ-MM-GOU"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hi, I'm Tappy." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWu-ON-85R">
-                                        <rect key="frame" x="20" y="80" width="200" height="50"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="mjI-ax-csM"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.86023095120000004" green="0.64609604030000001" blue="0.24571270279999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="27S-tv-8S7" secondAttribute="bottom" constant="15" id="5vq-M6-xJy"/>
-                                    <constraint firstItem="27S-tv-8S7" firstAttribute="centerX" secondItem="999-AX-111" secondAttribute="centerX" id="81P-cl-f2A"/>
-                                    <constraint firstAttribute="width" constant="240" id="DI8-r2-PQt"/>
-                                    <constraint firstItem="MWu-ON-85R" firstAttribute="top" secondItem="999-AX-111" secondAttribute="top" constant="80" id="KYf-Ud-PDR"/>
-                                    <constraint firstAttribute="height" constant="240" id="fWr-h0-hdr"/>
-                                    <constraint firstItem="MWu-ON-85R" firstAttribute="leading" secondItem="999-AX-111" secondAttribute="leading" constant="20" id="q9G-0K-1pk"/>
-                                    <constraint firstItem="MWu-ON-85R" firstAttribute="centerX" secondItem="999-AX-111" secondAttribute="centerX" id="zDQ-aw-Ntg"/>
-                                    <constraint firstAttribute="trailing" secondItem="MWu-ON-85R" secondAttribute="trailing" constant="20" id="zLy-MA-4TP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ic-1t-fi3">
@@ -268,6 +227,47 @@
                                     <constraint firstAttribute="bottom" secondItem="5vT-Ty-cTR" secondAttribute="bottom" constant="15" id="f9M-ya-GbR"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="999-AX-111">
+                                <rect key="frame" x="67" y="220" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27S-tv-8S7">
+                                        <rect key="frame" x="30" y="195" width="180" height="30"/>
+                                        <color key="backgroundColor" red="0.085428109579999995" green="0.084800842069999993" blue="0.41647472610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hg0-Yd-kNL"/>
+                                            <constraint firstAttribute="width" constant="180" id="iya-aG-iyB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
+                                        <state key="normal" title="I don't care.">
+                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionOne:" destination="adP-mr-aXD" eventType="touchUpInside" id="VwQ-MM-GOU"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hi, I'm Tappy." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWu-ON-85R">
+                                        <rect key="frame" x="20" y="80" width="200" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mjI-ax-csM"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.86023095120000004" green="0.64609604030000001" blue="0.24571270279999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="27S-tv-8S7" secondAttribute="bottom" constant="15" id="5vq-M6-xJy"/>
+                                    <constraint firstItem="27S-tv-8S7" firstAttribute="centerX" secondItem="999-AX-111" secondAttribute="centerX" id="81P-cl-f2A"/>
+                                    <constraint firstAttribute="width" constant="240" id="DI8-r2-PQt"/>
+                                    <constraint firstItem="MWu-ON-85R" firstAttribute="top" secondItem="999-AX-111" secondAttribute="top" constant="80" id="KYf-Ud-PDR"/>
+                                    <constraint firstAttribute="height" constant="240" id="fWr-h0-hdr"/>
+                                    <constraint firstItem="MWu-ON-85R" firstAttribute="leading" secondItem="999-AX-111" secondAttribute="leading" constant="20" id="q9G-0K-1pk"/>
+                                    <constraint firstItem="MWu-ON-85R" firstAttribute="centerX" secondItem="999-AX-111" secondAttribute="centerX" id="zDQ-aw-Ntg"/>
+                                    <constraint firstAttribute="trailing" secondItem="MWu-ON-85R" secondAttribute="trailing" constant="20" id="zLy-MA-4TP"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_pink" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-SW-py9">
                                 <rect key="frame" x="152" y="160" width="70" height="60"/>
                                 <constraints>
@@ -382,6 +382,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQ2-Uo-2iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="508" y="175"/>
+        </scene>
+        <!--Opening View Controller-->
+        <scene sceneID="1dS-yq-TNZ">
+            <objects>
+                <viewController id="Yc7-40-5tJ" customClass="OpeningViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zHY-Ti-Whd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-b8-XFp">
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMb-s0-h17">
+                                        <rect key="frame" x="30" y="195" width="180" height="30"/>
+                                        <color key="backgroundColor" red="0.085428109579999995" green="0.084800842069999993" blue="0.41647472610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Qk1-la-e0U"/>
+                                            <constraint firstAttribute="height" constant="30" id="kan-Hu-xIb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
+                                        <state key="normal" title="I don't care.">
+                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openingAction:" destination="Yc7-40-5tJ" eventType="touchUpInside" id="d9t-QJ-KfT"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hi, I'm Tappy." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx1-eg-tDH">
+                                        <rect key="frame" x="20" y="80" width="200" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sf7-c9-Ej1"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.86023095120000004" green="0.64609604030000001" blue="0.24571270279999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yx1-eg-tDH" firstAttribute="leading" secondItem="Z0V-b8-XFp" secondAttribute="leading" constant="20" id="BWQ-6E-zkc"/>
+                                    <constraint firstAttribute="height" constant="240" id="HgO-rN-PXe"/>
+                                    <constraint firstAttribute="bottom" secondItem="pMb-s0-h17" secondAttribute="bottom" constant="15" id="ZqY-1m-wZm"/>
+                                    <constraint firstItem="pMb-s0-h17" firstAttribute="centerX" secondItem="Z0V-b8-XFp" secondAttribute="centerX" id="cd0-x0-zI0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yx1-eg-tDH" secondAttribute="trailing" constant="20" id="tvP-EP-gba"/>
+                                    <constraint firstItem="Yx1-eg-tDH" firstAttribute="top" secondItem="Z0V-b8-XFp" secondAttribute="top" constant="80" id="uUq-KO-cSV"/>
+                                    <constraint firstItem="Yx1-eg-tDH" firstAttribute="centerX" secondItem="Z0V-b8-XFp" secondAttribute="centerX" id="yil-IC-IAo"/>
+                                    <constraint firstAttribute="width" constant="240" id="zGb-sP-NRe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Z0V-b8-XFp" firstAttribute="centerY" secondItem="zHY-Ti-Whd" secondAttribute="centerY" id="aCh-qJ-XII"/>
+                            <constraint firstItem="Z0V-b8-XFp" firstAttribute="centerX" secondItem="zHY-Ti-Whd" secondAttribute="centerX" id="i8e-k7-nPx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g9U-Fm-5hE"/>
+                    </view>
+                    <connections>
+                        <outlet property="openingButton" destination="pMb-s0-h17" id="vJU-Ft-Zmb"/>
+                        <outlet property="openingTextView" destination="Yx1-eg-tDH" id="kzX-ej-oD1"/>
+                        <outlet property="openingView" destination="Z0V-b8-XFp" id="pfb-4i-WD2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jkg-cn-Wmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="175"/>
         </scene>
     </scenes>
     <resources>

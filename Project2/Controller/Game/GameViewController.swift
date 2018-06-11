@@ -88,11 +88,11 @@ class GameViewController: UIViewController {
 
     private func initialSetting() {
 
-        if firstLogin.value(forKey: "firstLogin") == nil {
+        if firstLogin.value(forKey: Constants.firstLogin) == nil {
 
             getInfoData()
             LevelStatusManager.shared.initialGame()
-            firstLogin.set(true, forKey: "firstLogin")
+            firstLogin.set(true, forKey: Constants.firstLogin)
             gameMapViewController?.introPopUpView()
 
         } else {
