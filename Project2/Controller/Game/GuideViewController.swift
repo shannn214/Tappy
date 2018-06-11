@@ -50,12 +50,12 @@ class GuideViewController: UIViewController {
             self.cardGuideViewHeight.constant = 128
             self.view.layoutIfNeeded()
 
-        }) { (_) in
+        }) { [weak self] (_) in
 
             UIView.animate(withDuration: 0.35, animations: {
-                self.cardGuideViewWidth.constant = 240
-                self.didMove(toParentViewController: self)
-                self.view.layoutIfNeeded()
+                self?.cardGuideViewWidth.constant = 240
+                self?.didMove(toParentViewController: self)
+                self?.view.layoutIfNeeded()
             })
 
         }

@@ -15,12 +15,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var gradientView: UIView!
-    
+
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var showPlayerButton: UIButton!
 
     var recordTransition: CGFloat?
@@ -95,7 +95,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 //        showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
 //        showPlayerButton.isHidden = false
 //        showPlayerButton.backgroundColor = UIColor.black
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showPlayerView(tapGestureRecognizer:)))
         collectionCover.isUserInteractionEnabled = true
         collectionCover.addGestureRecognizer(tapGestureRecognizer)
@@ -106,8 +106,8 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     @objc func showPlayerView(tapGestureRecognizer: UITapGestureRecognizer) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
-        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String,
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController,
+              let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL,
               let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
@@ -137,7 +137,6 @@ extension CollectionViewController: CollectionListControllerDelegate {
             topViewHeightConstraint.constant = Constants.topViewHeight - collectionY
             topImageConstraint.constant = Constants.navigationBarHeight - collectionY
             self.gradientHeightConstraint.constant = Constants.topViewHeight - collectionY
-
 
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 //        }

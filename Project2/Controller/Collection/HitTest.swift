@@ -11,7 +11,7 @@ import Foundation
 class HitTestView: UIView {
 
     @IBOutlet weak var showPlayerButton: UIButton!
-    
+
 //    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 //        
 //        let btn_point = showPlayerButton.convert(point, from: self)
@@ -21,7 +21,7 @@ class HitTestView: UIView {
 //        }
 //        return showPlayerButton
 //    }
-    
+
 //    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 //
 ////        let hitView: UIView? = super.hitTest(point, with: event)
@@ -57,7 +57,5 @@ class HitTestView: UIView {
 //        return nil
 //
 //    }
-    
-    
 
 }

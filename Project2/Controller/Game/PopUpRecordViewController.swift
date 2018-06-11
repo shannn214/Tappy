@@ -111,12 +111,12 @@ class PopUpRecordViewController: UIViewController {
             self.firstGuideViewHeight.constant = 128
             self.view.layoutIfNeeded()
 
-        }) { (_) in
+        }) { [weak self] (_) in
 
             UIView.animate(withDuration: 0.35, animations: {
-                self.firstGuideViewWidth.constant = 240
-                self.didMove(toParentViewController: parent)
-                self.view.layoutIfNeeded()
+                self?.firstGuideViewWidth.constant = 240
+                self?.didMove(toParentViewController: parent)
+                self?.view.layoutIfNeeded()
             })
 
         }
@@ -138,12 +138,12 @@ class PopUpRecordViewController: UIViewController {
                 self.secondGuideViewHeight.constant = 128
                 self.view.layoutIfNeeded()
 
-            }) { (_) in
+            }) { [weak self] (_) in
 
                 UIView.animate(withDuration: 0.35, animations: {
-                    self.secondGuideViewWidth.constant = 240
-                    self.didMove(toParentViewController: parent)
-                    self.view.layoutIfNeeded()
+                    self?.secondGuideViewWidth.constant = 240
+                    self?.didMove(toParentViewController: parent)
+                    self?.view.layoutIfNeeded()
                 })
 
             }

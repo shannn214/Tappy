@@ -22,6 +22,16 @@ struct Constants {
 
     static let font = "CircularStd-Medium"
 
+    static let hint = "You found the record!"
+
+    static let loginAlertTitle = "Notice!"
+
+    static let loginAlterMessage = "Anonymous login will only provide game map browser mode. To access more playing mode, please login with Spotify to experience complete music colloction game."
+
+    static let ok = "OK"
+
+    static let cancel = "Cancel"
+
     static let mapSizeWidth = UIScreen.main.bounds.height/3297 * 22041
 
     static let screenHeight = UIScreen.main.bounds.height

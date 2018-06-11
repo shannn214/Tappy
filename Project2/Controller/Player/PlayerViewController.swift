@@ -70,20 +70,23 @@ class PlayerViewController: UIViewController {
         let touchPoint = sender.location(in: self.view.window)
         let touchTrans = sender.translation(in: self.view.window)
 
-        if sender.state == UIGestureRecognizerState.began {
-//            initialTouchPoint = touchPoint
-        } else if sender.state == UIGestureRecognizerState.changed {
+        if sender.state == UIGestureRecognizerState.changed {
             if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
-                self.view.frame = CGRect(x: 0, y: touchTrans.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                self.view.frame = CGRect(x: 0,
+                                         y: touchTrans.y,
+                                         width: self.view.frame.size.width,
+                                         height: self.view.frame.size.height)
             }
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
             if touchPoint.y - initialPoint.y > 300 {
                 self.dismiss(animated: true) {
-//                    guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
                 }
             } else {
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                    self.view.frame = CGRect(x: 0,
+                                             y: 0,
+                                             width: self.view.frame.size.width,
+                                             height: self.view.frame.size.height)
                 })
             }
         }

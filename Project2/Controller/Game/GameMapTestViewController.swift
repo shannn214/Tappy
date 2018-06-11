@@ -84,8 +84,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         UIView.animate(withDuration: 2, animations: {
             self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0)
-        }) { (_) in
-            self.firstGuide()
+        }) { [weak self] (_) in
+            self?.firstGuide()
         }
 
     }
@@ -127,7 +127,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func propCase(index: Int) {
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![index]
-        popUpPropView(image: info.cover, hint: "You found the record!")
+        popUpPropView(image: info.cover, hint: Constants.hint)
         gameMapScrollView.propsButtonArray[index].isHidden = true
 
         if index + 1 < 10 {

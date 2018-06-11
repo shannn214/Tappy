@@ -90,31 +90,33 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let recordCell = recordCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
-            for: indexPath) as? RecordCollectionViewCell
+        guard let recordCell = recordCollectionView.dequeueReusableCell(
+                                    withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
+                                    for: indexPath) as? RecordCollectionViewCell
+        else { return UICollectionViewCell() }
 
         setCollectionLayout()
 
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![indexPath.row]
-        recordCell?.artist.text = info.artist
-        recordCell?.trackName.text = info.trackName
-        recordCell?.cover.sd_setImage(with: URL(string: info.cover))
-        recordCell?.cover.isHidden = true
-        recordCell?.artist.isHidden = true
-        recordCell?.trackName.isHidden = true
-
-        recordCell?.isUserInteractionEnabled = false
+        recordCell.artist.text = info.artist
+        recordCell.trackName.text = info.trackName
+        recordCell.cover.sd_setImage(with: URL(string: info.cover))
+        recordCell.cover.isHidden = true
+        recordCell.artist.isHidden = true
+        recordCell.trackName.isHidden = true
+        recordCell.isUserInteractionEnabled = false
 
         if indexPath.row < LevelStatusManager.shared.level! {
-            recordCell?.cover.isHidden = false
-            recordCell?.artist.isHidden = false
-            recordCell?.trackName.isHidden = false
-            recordCell?.isUserInteractionEnabled = true
+
+            recordCell.cover.isHidden = false
+            recordCell.artist.isHidden = false
+            recordCell.trackName.isHidden = false
+            recordCell.isUserInteractionEnabled = true
+
         }
 
-        return recordCell!
+        return recordCell
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -132,11 +134,13 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         SpotifyManager.shared.playMusic(track: info.trackUri)
 
         present(playerVC, animated: true) {
+
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
             playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
             playerVC.playerPanelView.artist.text = info.artist
             playerVC.playerPanelView.trackName.text = info.trackName
             self.delegate?.playerViewDidDismiss(url: info.cover)
+
         }
 
     }
