@@ -19,7 +19,7 @@ class OpeningViewController: UIViewController {
 //    var thirdTouchHandler: (() -> Void)?
 //    var forthTouchHandler: (() -> Void)?
 
-    let touchArray = [(() -> Void).self, (() -> Void).self]
+//    let touchArray: [() -> Void] = [(() -> Void), (() -> Void)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
