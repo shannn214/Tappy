@@ -37,8 +37,6 @@
 		0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0951973D20B2CDF0006E468E /* CardDetail.storyboard */; };
 		0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973F20B2CE2D006E468E /* CardDetailViewController.swift */; };
 		098E102E20C517E600B9D7F2 /* GameMapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */; };
-		098E103020C563C600B9D7F2 /* testmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098E102F20C563C600B9D7F2 /* testmap.storyboard */; };
-		098E103220C563E600B9D7F2 /* testmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103120C563E600B9D7F2 /* testmapViewController.swift */; };
 		098E103420C6CA3B00B9D7F2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103320C6CA3B00B9D7F2 /* Constants.swift */; };
 		098E104820C917E300B9D7F2 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104720C917E300B9D7F2 /* Functions.swift */; };
 		098E104A20C91F8900B9D7F2 /* GameMapBGScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */; };
@@ -122,8 +120,6 @@
 		0951973D20B2CDF0006E468E /* CardDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardDetail.storyboard; sourceTree = "<group>"; };
 		0951973F20B2CE2D006E468E /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapScrollView.swift; sourceTree = "<group>"; };
-		098E102F20C563C600B9D7F2 /* testmap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = testmap.storyboard; sourceTree = "<group>"; };
-		098E103120C563E600B9D7F2 /* testmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testmapViewController.swift; sourceTree = "<group>"; };
 		098E103320C6CA3B00B9D7F2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		098E104720C917E300B9D7F2 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapBGScrollView.swift; sourceTree = "<group>"; };
@@ -295,7 +291,6 @@
 				0951973D20B2CDF0006E468E /* CardDetail.storyboard */,
 				09A6855D20B9E43900BE0EA5 /* Intro.storyboard */,
 				09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */,
-				098E102F20C563C600B9D7F2 /* testmap.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -419,7 +414,6 @@
 			children = (
 				098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */,
 				098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */,
-				098E103120C563E600B9D7F2 /* testmapViewController.swift */,
 				098E104B20C9256C00B9D7F2 /* MaskLayer.swift */,
 			);
 			path = Game;
@@ -612,7 +606,6 @@
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
 				090B691A209F03270095B416 /* Main.storyboard in Resources */,
 				09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */,
-				098E103020C563C600B9D7F2 /* testmap.storyboard in Resources */,
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
 				09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */,
 				09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */,
@@ -738,7 +731,6 @@
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */,
 				098E104C20C9256C00B9D7F2 /* MaskLayer.swift in Sources */,
-				098E103220C563E600B9D7F2 /* testmapViewController.swift in Sources */,
 				090B696A209F3FC00095B416 /* CollectionViewController.swift in Sources */,
 				09A6855420B5BB3400BE0EA5 /* PopView.swift in Sources */,
 				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,

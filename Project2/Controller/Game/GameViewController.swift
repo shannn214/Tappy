@@ -11,8 +11,6 @@ import Instructions
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var progress: UIProgressView!
-    @IBOutlet weak var movingBtn: UIButton!
     @IBOutlet weak var gameMapContainer: UIView!
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
@@ -33,13 +31,16 @@ class GameViewController: UIViewController {
         initialSetting()
 
         LevelStatusManager.shared.showNewLevel()
-        DBProvider.shared.getSortedArray()
+//        DBProvider.shared.getSortedArray()
 
         tapGesture.cancelsTouchesInView = false
 
-        progress.isHidden = true
-        movingBtn.isHidden = true
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        DBProvider.shared.getSortedArray()
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -48,22 +49,28 @@ class GameViewController: UIViewController {
 
         switch sender.state {
         case .ended:
+
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
-            let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView)
-            let dddd = point?.x
 
-            if Int(dddd!) < Int((self.gameMapViewController?.gameMapScrollView.monster.center.x)!) {
+            guard let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView) else { return }
+
+            guard let mapHeight = self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height else { return }
+
+            let dddd = point.x
+
+            if Int(dddd) < Int((self.gameMapViewController?.gameMapScrollView.monster.center.x)!) {
                 self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "left_pink")
             } else {
                 self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "right_pink")
             }
 
             UIView.animate(withDuration: 0.4) {
-                self.gameMapViewController?.gameMapScrollView.monster.frame = CGRect(x: (point?.x)!,
-                                                                   y: 77 * (self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height)!/100,
-                                                                   width: 75, height: 62)
+                self.gameMapViewController!.gameMapScrollView.monster.frame = CGRect(x: point.x,
+                                                                                     y: 77 * mapHeight / 100,
+                                                                                     width: 75,
+                                                                                     height: 62)
             }
         default:
             print("Nope")
@@ -74,35 +81,27 @@ class GameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let gameMapVC = segue.destination as? GameMapTestViewController {
-//            self.delegate = gameMapVC
             self.gameMapViewController = gameMapVC
         }
 
     }
 
-    func initialSetting() {
+    private func initialSetting() {
 
-        progress.progress = 0
-        movingBtn.isHidden = false
-        //false for test
-
-        if firstLogin.value(forKey: "firstLogin") == nil {
+        if firstLogin.value(forKey: Constants.firstLogin) == nil {
 
             getInfoData()
             LevelStatusManager.shared.initialGame()
-            firstLogin.set(true, forKey: "firstLogin")
+            firstLogin.set(true, forKey: Constants.firstLogin)
             gameMapViewController?.introPopUpView()
 
         } else {
             //TODO
         }
 
-        //For test
-//        popUpView()
-
     }
 
-    func getInfoData() {
+    private func getInfoData() {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 

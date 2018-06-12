@@ -42,7 +42,7 @@ class GameMapScrollView: UIScrollView {
     let CDButtonArray = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     let explosionArray = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
-    func setupScrollView() {
+    private func setupScrollView() {
 
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
         mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth,

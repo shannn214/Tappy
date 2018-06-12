@@ -10,6 +10,8 @@ import Foundation
 
 struct Constants {
 
+    static let openingOne = "Hi, I'm Tappy."
+
     static let openingTwo = "Don't be so cold. \n Can you do me a favor?"
 
     static let openingThree = "Well... \n I bought a new headphone yesturday. \n But I realize that... \n I don't have music."
@@ -21,6 +23,18 @@ struct Constants {
     static let introText = "Yeah!!! \n I know you are a good man. \n I'll guide you to find the first record. \n \n GOGOGO!"
 
     static let font = "CircularStd-Medium"
+
+    static let hint = "You found the record!"
+
+    static let loginAlertTitle = "Notice!"
+
+    static let loginAlterMessage = "Anonymous login will only provide game map browser mode. To access more playing mode, please login with Spotify to experience complete music colloction game."
+
+    static let ok = "OK"
+
+    static let cancel = "Cancel"
+
+    static let firstLogin = "firstLogin"
 
     static let mapSizeWidth = UIScreen.main.bounds.height/3297 * 22041
 

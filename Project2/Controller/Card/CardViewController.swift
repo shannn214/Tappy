@@ -61,7 +61,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillDisappear(animated)
     }
 
-    func setup() {
+    private func setup() {
 
         setupGradient(layer: layer)
 

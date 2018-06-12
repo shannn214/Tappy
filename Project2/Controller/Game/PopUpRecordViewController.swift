@@ -57,7 +57,7 @@ class PopUpRecordViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func secondGuideSetup() {
+    private func secondGuideSetup() {
 
         secondGuideViewButton.layer.cornerRadius = 15
         self.secondGuideView.layer.cornerRadius = 20
@@ -69,7 +69,7 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func firstGuideViewSetup() {
+    private func firstGuideViewSetup() {
 
         firstGuideButton.layer.cornerRadius = 15
         self.firstGuideView.layer.cornerRadius = 20
@@ -81,7 +81,7 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func introViewSetup() {
+    private func introViewSetup() {
 
         self.introView.layer.cornerRadius = 20
         self.introTextView.text = Constants.introText
@@ -89,7 +89,7 @@ class PopUpRecordViewController: UIViewController {
 
     }
 
-    func propViewSetup() {
+    private func propViewSetup() {
 
         self.propView.layer.cornerRadius = 20
         getPropButton.layer.cornerRadius = 15
@@ -111,12 +111,12 @@ class PopUpRecordViewController: UIViewController {
             self.firstGuideViewHeight.constant = 128
             self.view.layoutIfNeeded()
 
-        }) { (_) in
+        }) { [weak self] (_) in
 
             UIView.animate(withDuration: 0.35, animations: {
-                self.firstGuideViewWidth.constant = 240
-                self.didMove(toParentViewController: parent)
-                self.view.layoutIfNeeded()
+                self?.firstGuideViewWidth.constant = 240
+                self?.didMove(toParentViewController: parent)
+                self?.view.layoutIfNeeded()
             })
 
         }
@@ -138,12 +138,12 @@ class PopUpRecordViewController: UIViewController {
                 self.secondGuideViewHeight.constant = 128
                 self.view.layoutIfNeeded()
 
-            }) { (_) in
+            }) { [weak self] (_) in
 
                 UIView.animate(withDuration: 0.35, animations: {
-                    self.secondGuideViewWidth.constant = 240
-                    self.didMove(toParentViewController: parent)
-                    self.view.layoutIfNeeded()
+                    self?.secondGuideViewWidth.constant = 240
+                    self?.didMove(toParentViewController: parent)
+                    self?.view.layoutIfNeeded()
                 })
 
             }

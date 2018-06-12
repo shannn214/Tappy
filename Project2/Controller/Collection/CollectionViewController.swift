@@ -15,12 +15,13 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var secondCollectionText: UILabel!
     @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var gradientView: UIView!
-    @IBOutlet weak var showPlayerButton: UIButton!
 
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var showPlayerButton: UIButton!
 
     var recordTransition: CGFloat?
     var collectionTransition: CGFloat?
@@ -32,10 +33,16 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     let shapeLayer = CAShapeLayer()
 
+    var hitTestView: UIView!
+
+    var showPlayer: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
+
+        addHitTestView()
 
         NotificationCenter.default.addObserver(
             self,
@@ -47,9 +54,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         self.view.isUserInteractionEnabled = true
         self.view.isMultipleTouchEnabled = true
         self.recordsContainerView.isUserInteractionEnabled = true
-
-//        let btn_1_Point = showPlayerButton.convert(CGPoint(x: 0, y: 0), from: self.recordsContainerView)
-//        recordsContainerView.hitTest(btn_1_Point, with: )
 
     }
 
@@ -68,26 +72,19 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch: AnyObject in touches {
-            guard let ttttouch: UITouch = touch as? UITouch else { return }
-            if ttttouch.tapCount == 1 {
-                let point = showPlayerButton.convert(CGPoint(x: 0, y: 0), from: self.view)
-                topView.hitTest(point, with: event)
-            }
-        }
-        super.touchesBegan(touches, with: event)
+    func addHitTestView() {
+
+//        showPlayer = UIButton()
+//        showPlayer.setImage(UIImage(), for: .normal)
+//        showPlayer.backgroundColor = UIColor.blue
+//        view.addSubview(showPlayer)
+//        showPlayer.frame = CGRect(x: UIScreen.main.bounds.width * 0.4, y: Constants.screenHeight * 0.1, width: 100, height: 100)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showPlayerView(tapGestureRecognizer:)))
+//        showPlayer.addGestureRecognizer(tapGesture)
+
     }
 
-//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-//        let btn_1_Point = button_1.convertPoint(point, fromView: self)
-//        guard button_1.pointInside(btn_1_Point, withEvent: event) else {
-//            return super.hitTest(point, withEvent: event)
-//        }
-//        return button_1
-//    }
-
-    func setup() {
+    private func setup() {
 
         collectionCover.layer.cornerRadius = collectionCover.bounds.size.width * 0.5
 
@@ -95,16 +92,22 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
         self.gradientView.layer.addSublayer(layer)
 
-        showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
-        showPlayerButton.isHidden = false
+//        showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
+//        showPlayerButton.isHidden = false
+//        showPlayerButton.backgroundColor = UIColor.black
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showPlayerView(tapGestureRecognizer:)))
+        collectionCover.isUserInteractionEnabled = true
+        collectionCover.addGestureRecognizer(tapGestureRecognizer)
+
         rotateFlag = false
 
     }
 
-    @objc func showPlayerView() {
+    @objc func showPlayerView(tapGestureRecognizer: UITapGestureRecognizer) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
-        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String,
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController,
+              let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL,
               let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
@@ -174,12 +177,12 @@ extension CollectionViewController: CollectionListControllerDelegate {
             rotate(image: collectionCover)
             collectionCover.sd_setImage(with: URL(string: url), completed: nil)
             rotateFlag = true
-            showPlayerButton.isHidden = false
+//            showPlayerButton.isHidden = false
         } else if SpotifyManager.shared.isPlaying == false {
             collectionCover.image = #imageLiteral(resourceName: "black_record")
             removeAnimation(image: collectionCover)
             rotateFlag = false
-            showPlayerButton.isHidden = true
+//            showPlayerButton.isHidden = true
         }
 
     }

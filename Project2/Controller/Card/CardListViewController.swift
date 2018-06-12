@@ -72,7 +72,7 @@ class CardListViewController: UIViewController {
 
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
 
         let nib = UINib(nibName: String(describing: CardCollectionViewCell.self), bundle: nil)
         listCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: CardCollectionViewCell.self))
@@ -83,7 +83,7 @@ class CardListViewController: UIViewController {
 
     }
 
-    func setupCollectionLayout() {
+    private func setupCollectionLayout() {
 
         if let setLayout = listCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = UIScreen.main.bounds.width/2
@@ -106,27 +106,28 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cardCell = listCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CardCollectionViewCell.self),
-            for: indexPath) as? CardCollectionViewCell
+        guard let cardCell = listCollectionView.dequeueReusableCell(
+                                    withReuseIdentifier: String(describing: CardCollectionViewCell.self),
+                                    for: indexPath) as? CardCollectionViewCell
+        else { return UICollectionViewCell() }
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
-        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell! }
+        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell }
 
         self.addChildViewController(cardDetailVC)
 
-        cardCell?.cardCellView.addSubview((cardDetailVC.view)!)
+        cardCell.cardCellView.addSubview((cardDetailVC.view)!)
 
-        cardDetailVC.view.frame = (cardCell?.contentView.bounds)!
+        cardDetailVC.view.frame = cardCell.contentView.bounds
 
         cardDetailVC.didMove(toParentViewController: self)
 
         cardDetailVC.cardView.isHidden = true
 
-        cardCell?.clipsToBounds = true
+        cardCell.clipsToBounds = true
 
-        cardCell?.isUserInteractionEnabled = false
+        cardCell.isUserInteractionEnabled = false
 
         cardDetailVC.cardImage.image = UIImage(named: uriManager.uris[indexPath.row].image)
 
@@ -138,11 +139,11 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
             cardDetailVC.shadowView.isHidden = true
 
-            cardCell?.isUserInteractionEnabled = true
+            cardCell.isUserInteractionEnabled = true
 
         }
 
-        return cardCell!
+        return cardCell
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -187,7 +188,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
             self.cardFlag = true
 
         }) { (_) in
+
             cardDetailVC.startToMoveContent()
+
         }
 
     }
@@ -228,21 +231,23 @@ extension CardListViewController: CardDetailDelegate {
 
         let point = listCollectionView.convert(selectedCell.frame.origin, to: view)
 
-        let itemSize = UIScreen.main.bounds.width/2
+        let itemSize = UIScreen.main.bounds.width / 2
 
         UIView.animate(withDuration: 0.35, animations: {
 
             selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
             selectedVC.changeConstraintToCellSize()
 
-        }) { _ in
+        }) { [weak self] _ in
+
             selectedVC.view.removeFromSuperview()
             selectedCell.addSubview(selectedVC.view)
             selectedVC.view.frame = selectedCell.contentView.frame
             selectedVC.backgroundView.alpha = 1
-            self.listCollectionView.isUserInteractionEnabled = true
-            self.cardFlag = false
-            self.listCollectionView.reloadData()
+            self?.listCollectionView.isUserInteractionEnabled = true
+            self?.cardFlag = false
+            self?.listCollectionView.reloadData()
+
         }
 
     }

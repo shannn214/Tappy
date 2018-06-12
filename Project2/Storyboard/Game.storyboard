@@ -29,40 +29,13 @@
                                     <segue destination="G8z-2a-wY8" kind="embed" id="78b-8w-7K7"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcq-9T-dl0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
-                                <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TYt-lb-CH1">
-                                        <rect key="frame" x="72.5" y="35" width="230" height="2"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="nHE-Bn-cUJ"/>
-                                        </constraints>
-                                        <color key="progressTintColor" red="1" green="0.22433632647272184" blue="0.58990203859624302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="trackTintColor" red="0.088099875469506719" green="0.096848503356070231" blue="0.5189243027888446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icW-aa-NnC">
-                                        <rect key="frame" x="171" y="40" width="32" height="32"/>
-                                        <state key="normal" image="gamepad-5"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="X14-e3-rFl"/>
-                                    <constraint firstItem="TYt-lb-CH1" firstAttribute="top" secondItem="zcq-9T-dl0" secondAttribute="top" constant="35" id="Xwo-VQ-urM"/>
-                                    <constraint firstItem="icW-aa-NnC" firstAttribute="top" secondItem="TYt-lb-CH1" secondAttribute="bottom" constant="3" id="ZCM-fF-x0w"/>
-                                    <constraint firstItem="TYt-lb-CH1" firstAttribute="centerX" secondItem="zcq-9T-dl0" secondAttribute="centerX" id="kfm-9B-NLq"/>
-                                    <constraint firstItem="icW-aa-NnC" firstAttribute="centerX" secondItem="zcq-9T-dl0" secondAttribute="centerX" id="tiX-8f-FVR"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="zcq-9T-dl0" secondAttribute="trailing" id="1oC-dy-dAo"/>
                             <constraint firstItem="scL-Yl-4xS" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="H0Y-H0-0PG"/>
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="trailing" secondItem="scL-Yl-4xS" secondAttribute="trailing" id="Od5-bh-wDN"/>
                             <constraint firstItem="scL-Yl-4xS" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="STl-Ki-VqJ"/>
-                            <constraint firstItem="zcq-9T-dl0" firstAttribute="leading" secondItem="Z3y-E3-1yK" secondAttribute="leading" id="YCq-Dm-vEg"/>
-                            <constraint firstItem="zcq-9T-dl0" firstAttribute="top" secondItem="rsW-zs-1UD" secondAttribute="top" id="v9z-5h-iZq"/>
                             <constraint firstItem="Z3y-E3-1yK" firstAttribute="bottom" secondItem="scL-Yl-4xS" secondAttribute="bottom" constant="50" id="wGS-C1-shJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3y-E3-1yK"/>
@@ -72,8 +45,6 @@
                     </view>
                     <connections>
                         <outlet property="gameMapContainer" destination="scL-Yl-4xS" id="2vK-Mr-etA"/>
-                        <outlet property="movingBtn" destination="icW-aa-NnC" id="YdR-Hu-1vt"/>
-                        <outlet property="progress" destination="TYt-lb-CH1" id="6v8-xa-9Wp"/>
                         <outlet property="tapGesture" destination="RqJ-7a-gGi" id="t8W-hW-aDY"/>
                     </connections>
                 </viewController>
@@ -306,7 +277,4 @@
             <point key="canvasLocation" x="953" y="-474"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="gamepad-5" width="32" height="32"/>
-    </resources>
 </document>

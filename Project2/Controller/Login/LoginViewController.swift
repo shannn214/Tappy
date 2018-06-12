@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     }
 
     private func setupLoginButton() {
+
         loginSpotifyBtn.layer.cornerRadius = 20.0
         loginSpotifyBtn.tintColor = UIColor.gray
         loginSpotifyBtn.setTitleColor(UIColor.gray, for: .highlighted)
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
         anonymousBtn.setTitleColor(UIColor.gray, for: .highlighted)
         anonymousBtn.setTitle("Anonymous Login", for: .normal)
         anonymousBtn.layer.backgroundColor = UIColor.darkGray.cgColor
+
     }
 
     @IBAction func loginButton(_ sender: Any) {
@@ -41,18 +43,27 @@ class LoginViewController: UIViewController {
     }
 
     func alert() {
-        let alertWindow = UIAlertController(title: "Notice!", message: "Anonymous login will only provide game map browser mode. To access more playing mode, please login with Spotify to experience complete music colloction game.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
-            DispatchQueue.main.async {
-                //            AppDelegate.shared?.switchToMainStoryBoard()
-                let delegate = UIApplication.shared.delegate as? AppDelegate
-                delegate?.window?.rootViewController = UIStoryboard.sampleStoryboard().instantiateInitialViewController()
-            }
+
+        let alertWindow = UIAlertController(title: Constants.loginAlertTitle,
+                                            message: Constants.loginAlterMessage,
+                                            preferredStyle: .alert)
+
+        let OKAction = UIAlertAction(title: Constants.ok,
+                                     style: .default) { (_: UIAlertAction) in
+                        DispatchQueue.main.async {
+                            let delegate = UIApplication.shared.delegate as? AppDelegate
+                            delegate?.window?.rootViewController = UIStoryboard.sampleStoryboard().instantiateInitialViewController()
+                        }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let cancelAction = UIAlertAction(title: Constants.cancel,
+                                         style: .cancel,
+                                         handler: nil)
+
         alertWindow.addAction(OKAction)
         alertWindow.addAction(cancelAction)
         self.present(alertWindow, animated: true)
+
     }
 
 }
