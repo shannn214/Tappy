@@ -25,7 +25,7 @@ class CollectionListViewController: UIViewController {
 
     let designSetting = DesignSetting()
 
-    let sortedArray = DBProvider.shared.sortedArray
+//    let ahhsortedArray = DBProvider.shared.sortedArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,16 +130,29 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
-        let info = sortedArray![indexPath.row]
-        SpotifyManager.shared.playMusic(track: info.trackUri)
+        let sortedArray = DBProvider.shared.sortedArray
+        if let info = sortedArray?[indexPath.row] {
 
-        present(playerVC, animated: true) {
+            SpotifyManager.shared.playMusic(track: info.trackUri)
 
-            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
-            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
-            playerVC.playerPanelView.artist.text = info.artist
-            playerVC.playerPanelView.trackName.text = info.trackName
-            self.delegate?.playerViewDidDismiss(url: info.cover)
+            present(playerVC, animated: true) {
+
+                playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+                playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+                playerVC.playerPanelView.artist.text = info.artist
+                playerVC.playerPanelView.trackName.text = info.trackName
+                self.delegate?.playerViewDidDismiss(url: info.cover)
+
+            }
+
+        } else {
+
+            present(playerVC, animated: true) {
+
+                playerVC.playerPanelView.artist.text = "eee"
+                playerVC.playerPanelView.trackName.text = "eee"
+
+            }
 
         }
 

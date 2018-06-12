@@ -20,7 +20,7 @@ class OpeningViewController: UIViewController {
 
 //    var touchArray = [() -> Void]()
     var handlerArray: [() -> Void] = [ {}, {}, {}, {}]
-    
+
     var textIndex = 0
 
     override func viewDidLoad() {
@@ -36,13 +36,13 @@ class OpeningViewController: UIViewController {
         openingView.layer.cornerRadius = 20
 
         openingButton.layer.cornerRadius = 15
-        
+
     }
 
     func textOne() {
 
         openingTextView.text = Constants.openingOne
-        
+
         textIndex += 1
 
     }
@@ -50,7 +50,7 @@ class OpeningViewController: UIViewController {
     func textTwo() {
 
         openingTextView.text = Constants.openingTwo
-        
+
         textIndex += 1
 
     }
@@ -58,7 +58,7 @@ class OpeningViewController: UIViewController {
     func textThree() {
 
         openingTextView.text = Constants.openingThree
-        
+
         textIndex += 1
 
     }
@@ -66,7 +66,7 @@ class OpeningViewController: UIViewController {
     func textFour() {
 
         openingTextView.text = Constants.openingFour
-        
+
         textIndex += 1
 
     }
@@ -91,7 +91,7 @@ class OpeningViewController: UIViewController {
         default:
             break
         }
-        
+
     }
 
 }

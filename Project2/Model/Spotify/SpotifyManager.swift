@@ -95,7 +95,12 @@ class SpotifyManager: UIViewController {
             track,
             startingWith: 0,
             startingWithPosition: 0,
-            callback: { (_) in
+            callback: { (error) in
+
+                if let err = error {
+                    print("Failed")
+                }
+
         })
 
     }
