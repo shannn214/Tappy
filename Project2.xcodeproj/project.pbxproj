@@ -73,6 +73,8 @@
 		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
 		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
 		09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6857320BF024A00BE0EA5 /* HitTest.swift */; };
+		09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3043E20D0C3AC007645D5 /* Project2Tests.swift */; };
+		09B3044720D10F2A007645D5 /* TestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B3044620D10F2A007645D5 /* TestJson.json */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
 		09C6CF3420A5655F00A6C567 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */; };
 		09C6CF3520A5655F00A6C567 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */; };
@@ -85,6 +87,16 @@
 		09D9D56120C433E600A188CE /* MurmurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D56020C433E600A188CE /* MurmurView.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		09B3044120D0C3AC007645D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 090B6909209F03260095B416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 090B6910209F03260095B416;
+			remoteInfo = Project2;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		090B6911209F03260095B416 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +168,10 @@
 		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
 		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
 		09A6857320BF024A00BE0EA5 /* HitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTest.swift; sourceTree = "<group>"; };
+		09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09B3043E20D0C3AC007645D5 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
+		09B3044020D0C3AC007645D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09B3044620D10F2A007645D5 /* TestJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJson.json; sourceTree = "<group>"; };
 		09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAuthentication.framework; path = "../../Downloads/ios-sdk-master/SpotifyAuthentication.framework"; sourceTree = "<group>"; };
 		09C6CF3120A5655F00A6C567 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyMetadata.framework; path = "../../Downloads/ios-sdk-master/SpotifyMetadata.framework"; sourceTree = "<group>"; };
 		09C6CF3220A5655F00A6C567 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyAudioPlayback.framework; path = "../../Downloads/ios-sdk-master/SpotifyAudioPlayback.framework"; sourceTree = "<group>"; };
@@ -184,6 +200,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09B3043920D0C3AC007645D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -191,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				090B6913209F03260095B416 /* Project2 */,
+				09B3043D20D0C3AC007645D5 /* Project2Tests */,
 				090B6912209F03260095B416 /* Products */,
 				090B6942209F03D10095B416 /* Frameworks */,
 				E40AB426BB8F9BBC538BF7EA /* Pods */,
@@ -201,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				090B6911209F03260095B416 /* Project2.app */,
+				09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -485,6 +510,15 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		09B3043D20D0C3AC007645D5 /* Project2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				09B3043E20D0C3AC007645D5 /* Project2Tests.swift */,
+				09B3044020D0C3AC007645D5 /* Info.plist */,
+			);
+			path = Project2Tests;
+			sourceTree = "<group>";
+		};
 		09C6CF3820A82D2800A6C567 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +532,7 @@
 		09C6CF3F20A9701900A6C567 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				09B3044620D10F2A007645D5 /* TestJson.json */,
 				09C6CF4020A9737B00A6C567 /* TracksInfo.json */,
 				09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */,
 				09C6CF3D20A9466600A6C567 /* Track.swift */,
@@ -547,6 +582,24 @@
 			productReference = 090B6911209F03260095B416 /* Project2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		09B3043B20D0C3AC007645D5 /* Project2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09B3044320D0C3AC007645D5 /* Build configuration list for PBXNativeTarget "Project2Tests" */;
+			buildPhases = (
+				09B3043820D0C3AC007645D5 /* Sources */,
+				09B3043920D0C3AC007645D5 /* Frameworks */,
+				09B3043A20D0C3AC007645D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09B3044220D0C3AC007645D5 /* PBXTargetDependency */,
+			);
+			name = Project2Tests;
+			productName = Project2Tests;
+			productReference = 09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -560,6 +613,10 @@
 					090B6910209F03260095B416 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
+					};
+					09B3043B20D0C3AC007645D5 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 090B6910209F03260095B416;
 					};
 				};
 			};
@@ -577,6 +634,7 @@
 			projectRoot = "";
 			targets = (
 				090B6910209F03260095B416 /* Project2 */,
+				09B3043B20D0C3AC007645D5 /* Project2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -609,9 +667,17 @@
 				090B6976209F403C0095B416 /* Setting.storyboard in Resources */,
 				09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */,
 				09A62B2D20AD392800BA5932 /* RecordCollectionViewCell.xib in Resources */,
+				09B3044720D10F2A007645D5 /* TestJson.json in Resources */,
 				09A62B3220ADCA7900BA5932 /* small_pixel-7.ttf in Resources */,
 				09A62B3420ADCF8300BA5932 /* pixelmix.ttf in Resources */,
 				09A6856C20BCFCFB00BE0EA5 /* harden.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09B3043A20D0C3AC007645D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,7 +815,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09B3043820D0C3AC007645D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09B3044220D0C3AC007645D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 090B6910209F03260095B416 /* Project2 */;
+			targetProxy = 09B3044120D0C3AC007645D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		090B6918209F03270095B416 /* Main.storyboard */ = {
@@ -946,6 +1028,46 @@
 			};
 			name = Release;
 		};
+		09B3044420D0C3AC007645D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARXY2PA7PZ;
+				INFOPLIST_FILE = Project2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Project2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project2.app/Project2";
+			};
+			name = Debug;
+		};
+		09B3044520D0C3AC007645D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARXY2PA7PZ;
+				INFOPLIST_FILE = Project2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Shannn.Project2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project2.app/Project2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -963,6 +1085,15 @@
 			buildConfigurations = (
 				090B693A209F03290095B416 /* Debug */,
 				090B693B209F03290095B416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09B3044320D0C3AC007645D5 /* Build configuration list for PBXNativeTarget "Project2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09B3044420D0C3AC007645D5 /* Debug */,
+				09B3044520D0C3AC007645D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

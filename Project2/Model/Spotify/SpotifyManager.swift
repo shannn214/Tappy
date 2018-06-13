@@ -74,7 +74,7 @@ class SpotifyManager: UIViewController {
             let firstTimesession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj!) as? SPTSession
             self.session = firstTimesession
             initializePlayer(authSession: session!)
-            print(self.auth.session.accessToken)
+//            print(self.auth.session.accessToken)
         }
 
     }
@@ -91,16 +91,10 @@ class SpotifyManager: UIViewController {
 
     func playMusic(track: String) {
 
-        self.player?.playSpotifyURI(
-            track,
-            startingWith: 0,
-            startingWithPosition: 0,
-            callback: { (error) in
-
-                if let err = error {
-                    print("Failed")
-                }
-
+        self.player?.playSpotifyURI(track,
+                                    startingWith: 0,
+                                    startingWithPosition: 0,
+                                    callback: { (_) in
         })
 
     }

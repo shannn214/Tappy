@@ -172,7 +172,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
     @objc func trackIsStreaming(notification: Notification) {
 
-        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL as? String else { return }
+        guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL else { return }
         if SpotifyManager.shared.isPlaying == true {
             rotate(image: collectionCover)
             collectionCover.sd_setImage(with: URL(string: url), completed: nil)

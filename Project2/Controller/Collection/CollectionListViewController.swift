@@ -69,7 +69,7 @@ class CollectionListViewController: UIViewController {
     private func setCollectionLayout() {
 
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemSize = UIScreen.main.bounds.width/2
+            let itemSize = UIScreen.main.bounds.width / 2
             setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             setLayout.itemSize = CGSize(width: itemSize, height: 210)
             setLayout.minimumLineSpacing = 1
