@@ -62,9 +62,11 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     private func loadButton() {
 
-        if LevelStatusManager.shared.level! > 0 {
+        guard let levelStatus = LevelStatusManager.shared.level else { return }
 
-            for level in 0...LevelStatusManager.shared.level! - 1 {
+        if levelStatus > 0 {
+
+            for level in 0...levelStatus - 1 {
                 gameMapScrollView.explosionImages = gameMapScrollView.createImageAnimation(total: 37, imageRefix: "Comp 1_000")
                 gameMapScrollView.CDButtonArray[level].isHidden = false
                 gameMapScrollView.explosionArray[level].isHidden = false
@@ -73,9 +75,11 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         }
 
-        if LevelStatusManager.shared.level! < 10 {
-            let level = LevelStatusManager.shared.level!
+        if levelStatus < 10 {
+
+            let level = levelStatus
             gameMapScrollView.propsButtonArray[level].isHidden = false
+
         }
 
     }
@@ -83,9 +87,13 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func changeFrameForGuide() {
 
         UIView.animate(withDuration: 2, animations: {
+
             self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0)
+
         }) { [weak self] (_) in
+
             self?.firstGuide()
+
         }
 
     }
@@ -113,21 +121,33 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func monsterTapped(tapGestureRecognizer: UITapGestureRecognizer) {
 
         if tapGestureRecognizer.state == .ended {
-            let murmur = MurmurView(frame: CGRect(x: -10, y: -35, width: 120, height: 30))
-            murmur.frame = CGRect(x: 5, y: -35, width: murmur.frame.width, height: murmur.frame.height)
+
+            let murmur = MurmurView(frame: CGRect(x: -10, y: -35,
+                                                  width: 120, height: 30))
+
+            murmur.frame = CGRect(x: 5, y: -35,
+                                  width: murmur.frame.width,
+                                  height: murmur.frame.height)
+
             gameMapScrollView.monster.addSubview(murmur)
+
             murmur.createMurmur {
                 murmur.removeFromSuperview()
             }
+
         }
 
     }
 
     // NOTE: Prop Button
     private func propCase(index: Int) {
-        let sortedArray = DBProvider.shared.sortedArray
-        let info = sortedArray![index]
+
+        guard let sortedArray = DBProvider.shared.sortedArray else { return }
+
+        let info = sortedArray[index]
+
         popUpPropView(image: info.cover, hint: Constants.hint)
+
         gameMapScrollView.propsButtonArray[index].isHidden = true
 
         if index + 1 < 10 {
@@ -141,7 +161,9 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     private func showCDAndProp(sender: UIButton!) {
 
-        self.checkLevel = LevelStatusManager.shared.level! + 1
+        guard let levelStatus = LevelStatusManager.shared.level else { return }
+
+        self.checkLevel = levelStatus + 1
 
         if self.checkLevel < 11 {
             LevelStatusManager.shared.updateLevel(newLevel: self.checkLevel)
@@ -169,7 +191,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     private func showCDButton() {
 
-        self.checkLevel = LevelStatusManager.shared.level!
+        guard let levelStatus = LevelStatusManager.shared.level else { return }
+        self.checkLevel = levelStatus
         showCDButtonCase(level: checkLevel)
 
     }
@@ -193,7 +216,9 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         guard let sortedArray = DBProvider.shared.sortedArray else { return }
 
         guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+
         let info = sortedArray[level]
+
         SpotifyManager.shared.playMusic(track: info.trackUri)
 
         present(playerVC, animated: true) {

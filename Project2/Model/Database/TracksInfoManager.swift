@@ -39,15 +39,19 @@ struct SpotifyUrisManager: Codable {
 
     var uris: [SpotifyUris]
 
+    init() {
+        self.uris = []
+    }
+
     enum CodingKeys: String, CodingKey {
 
         case uris = "datas"
 
     }
 
-    static func createManagerFromFile() -> SpotifyUrisManager {
+    static func createManagerFromFile(fileName: String = UriConstant.fileName.rawValue, fileType: String = UriConstant.fileType.rawValue) -> SpotifyUrisManager {
 
-        let filePath = Bundle.main.path(forResource: UriConstant.fileName.rawValue, ofType: UriConstant.fileType.rawValue)
+        let filePath = Bundle.main.path(forResource: fileName, ofType: fileType)
 
         let filePathURL = URL(fileURLWithPath: filePath!)
 
@@ -63,9 +67,12 @@ struct SpotifyUrisManager: Codable {
 
         } catch {
 
-            fatalError()
+//            fatalError()
+            print("Wrong file")
 
         }
+
+        return SpotifyUrisManager()
 
     }
 }

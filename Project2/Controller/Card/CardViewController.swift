@@ -22,12 +22,9 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
 
     var cardTransition: CGFloat?
+
     let layer = CAGradientLayer()
 
-    let coachMarksController = CoachMarksController()
-    let pointOfInterest = UIView()
-    let customView = UIView()
-    let overlayView = UIView()
     let popUpRecordVC = UIStoryboard.gameStoryboard().instantiateViewController(withIdentifier: "popUpRecord") as? PopUpRecordViewController
 
     override func viewDidLoad() {
