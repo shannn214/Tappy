@@ -99,7 +99,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         popUpRecordVC.firstGuideTouchHandler = {
             self.showMaskLayer()
         }
-        
+
     }
 
     func secondGuide() {

@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        FirebaseApp.configure()
 
+        application.isStatusBarHidden = true
+
         Fabric.with([Crashlytics.self])
 
         SpotifyManager.shared.setup()
