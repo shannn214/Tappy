@@ -14,17 +14,18 @@ class OpeningViewController: UIViewController {
     @IBOutlet weak var openingTextView: UITextView!
     @IBOutlet weak var openingButton: UIButton!
 
-//    var secondTouchHandler: (() -> Void)?
-//    var thirdTouchHandler: (() -> Void)?
-//    var forthTouchHandler: (() -> Void)?
-
-//    var touchArray = [() -> Void]()
     var handlerArray: [() -> Void] = [ {}, {}, {}, {}]
 
-    var textIndex = 0
+    var contentArray: [String] = [SHConstants.openingOne, SHConstants.openingTwo, SHConstants.openingThree, SHConstants.openingFour, SHConstants.openingFive]
+
+    var buttonLabelArray: [String] = [SHConstants.openingOneBtn, SHConstants.openingTwoBtn, SHConstants.openingThreeBtn, SHConstants.openingFourBtn, SHConstants.openingFiveBtn]
+
+    var currentIndex = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,59 +38,34 @@ class OpeningViewController: UIViewController {
 
         openingButton.layer.cornerRadius = 15
 
-    }
+        openingTextView.text = contentArray[0]
 
-    func textOne() {
-
-        openingTextView.text = Constants.openingOne
-
-        textIndex += 1
+        openingButton.setTitle(buttonLabelArray[0], for: .normal)
 
     }
 
-    func textTwo() {
+    func changeStoryContent(index: Int) {
 
-        openingTextView.text = Constants.openingTwo
+            openingTextView.text = contentArray[index]
 
-        textIndex += 1
+            openingButton.setTitle(buttonLabelArray[index], for: .normal)
 
-    }
-
-    func textThree() {
-
-        openingTextView.text = Constants.openingThree
-
-        textIndex += 1
-
-    }
-
-    func textFour() {
-
-        openingTextView.text = Constants.openingFour
-
-        textIndex += 1
-
-    }
-
-    func textFive() {
-
-        openingTextView.text = Constants.openingFive
+            currentIndex += 1
 
     }
 
     @IBAction func openingAction(_ sender: Any) {
 
-        switch textIndex {
-        case 0:
-            textTwo()
-        case 1:
-            textThree()
-        case 2:
-            textFour()
-        case 3:
-            textFive()
-        default:
-            break
+        if currentIndex < 5 {
+
+            changeStoryContent(index: currentIndex)
+
+        } else {
+
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+
+            delegate?.window?.rootViewController = UIStoryboard.mainStoryboard().instantiateInitialViewController()
+
         }
 
     }

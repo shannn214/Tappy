@@ -28,13 +28,13 @@ class GameMapBGScrollView: UIScrollView {
 
         backImageView = UIImageView(image: #imageLiteral(resourceName: "sky_map-1"))
 
-        backImageView.frame.size = CGSize(width: Constants.mapSizeWidth,
-                                          height: Constants.screenHeight)
+        backImageView.frame.size = CGSize(width: SHConstants.mapSizeWidth,
+                                          height: SHConstants.screenHeight)
 
         self.backgroundColor = UIColor.black
 
         self.contentSize = CGSize(width: backImageView.bounds.width,
-                                  height: Constants.screenHeight)
+                                  height: SHConstants.screenHeight)
 
         self.autoresizingMask = [.flexibleWidth]
 

@@ -52,10 +52,10 @@ class IntroViewController: UIViewController {
         viewFour.isHidden = true
         viewFive.isHidden = true
 
-        viewTwoTextView.text = Constants.openingTwo
-        viewThreeTextView.text = Constants.openingThree
-        viewFourTextView.text = Constants.openingFour
-        viewFiveTextView.text = Constants.openingFive
+        viewTwoTextView.text = SHConstants.openingTwo
+        viewThreeTextView.text = SHConstants.openingThree
+        viewFourTextView.text = SHConstants.openingFour
+        viewFiveTextView.text = SHConstants.openingFive
 
         viewOne.layer.cornerRadius = 20
         viewTwo.layer.cornerRadius = 20

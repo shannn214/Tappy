@@ -30,6 +30,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         initialSetup()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -146,7 +147,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         let info = sortedArray[index]
 
-        popUpPropView(image: info.cover, hint: Constants.hint)
+        popUpPropView(image: info.cover, hint: SHConstants.hint)
 
         gameMapScrollView.propsButtonArray[index].isHidden = true
 
@@ -233,9 +234,9 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func showMaskLayer() {
 
         maskLayer = MaskLayer()
-        maskLayer.createMask(rect: Constants.mapMaskBezRect,
-                             roundedRect: Constants.mapMaskRoundedRect,
-                             cornerRadius: Constants.maskCornerRadius)
+        maskLayer.createMask(rect: SHConstants.mapMaskBezRect,
+                             roundedRect: SHConstants.mapMaskRoundedRect,
+                             cornerRadius: SHConstants.maskCornerRadius)
         view.layer.addSublayer(maskLayer)
 
     }
@@ -268,8 +269,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func introPopUpView() {
 
         addPopUpRecordVC(popUpRecordVC: popUpRecordVC)
-
-        popUpRecordVC.view.alpha = 0
 
         popUpRecordVC.popUpIntro()
 

@@ -45,11 +45,11 @@ class GameMapScrollView: UIScrollView {
     private func setupScrollView() {
 
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
-        mapImageView.frame.size = CGSize(width: Constants.mapSizeWidth,
-                                         height: Constants.screenHeight)
+        mapImageView.frame.size = CGSize(width: SHConstants.mapSizeWidth,
+                                         height: SHConstants.screenHeight)
         self.backgroundColor = UIColor.clear
         self.contentSize = CGSize(width: mapImageView.bounds.width,
-                                  height: Constants.screenHeight)
+                                  height: SHConstants.screenHeight)
         self.autoresizingMask = [.flexibleWidth]
         self.addSubview(mapImageView)
         mapImageView.isUserInteractionEnabled = true

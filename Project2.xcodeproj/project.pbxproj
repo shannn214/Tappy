@@ -37,7 +37,7 @@
 		0951973E20B2CDF0006E468E /* CardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0951973D20B2CDF0006E468E /* CardDetail.storyboard */; };
 		0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973F20B2CE2D006E468E /* CardDetailViewController.swift */; };
 		098E102E20C517E600B9D7F2 /* GameMapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */; };
-		098E103420C6CA3B00B9D7F2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103320C6CA3B00B9D7F2 /* Constants.swift */; };
+		098E103420C6CA3B00B9D7F2 /* SHConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E103320C6CA3B00B9D7F2 /* SHConstants.swift */; };
 		098E104820C917E300B9D7F2 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104720C917E300B9D7F2 /* Functions.swift */; };
 		098E104A20C91F8900B9D7F2 /* GameMapBGScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */; };
 		098E104C20C9256C00B9D7F2 /* MaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E104B20C9256C00B9D7F2 /* MaskLayer.swift */; };
@@ -140,7 +140,7 @@
 		0951973D20B2CDF0006E468E /* CardDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardDetail.storyboard; sourceTree = "<group>"; };
 		0951973F20B2CE2D006E468E /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		098E102D20C517E600B9D7F2 /* GameMapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapScrollView.swift; sourceTree = "<group>"; };
-		098E103320C6CA3B00B9D7F2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		098E103320C6CA3B00B9D7F2 /* SHConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHConstants.swift; sourceTree = "<group>"; };
 		098E104720C917E300B9D7F2 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		098E104920C91F8900B9D7F2 /* GameMapBGScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapBGScrollView.swift; sourceTree = "<group>"; };
 		098E104B20C9256C00B9D7F2 /* MaskLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskLayer.swift; sourceTree = "<group>"; };
@@ -370,10 +370,10 @@
 				090B6977209F47D10095B416 /* GameViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
-				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
 				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
 				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
+				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
 				098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */,
 			);
 			path = Game;
@@ -383,7 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				090B6963209F3C530095B416 /* UIStoryboard.swift */,
-				098E103320C6CA3B00B9D7F2 /* Constants.swift */,
+				098E103320C6CA3B00B9D7F2 /* SHConstants.swift */,
 				098E104720C917E300B9D7F2 /* Functions.swift */,
 			);
 			path = Extension;
@@ -833,7 +833,7 @@
 				09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */,
 				09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */,
 				090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */,
-				098E103420C6CA3B00B9D7F2 /* Constants.swift in Sources */,
+				098E103420C6CA3B00B9D7F2 /* SHConstants.swift in Sources */,
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,

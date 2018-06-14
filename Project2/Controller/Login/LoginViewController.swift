@@ -44,11 +44,11 @@ class LoginViewController: UIViewController {
 
     func alert() {
 
-        let alertWindow = UIAlertController(title: Constants.loginAlertTitle,
-                                            message: Constants.loginAlterMessage,
+        let alertWindow = UIAlertController(title: SHConstants.loginAlertTitle,
+                                            message: SHConstants.loginAlterMessage,
                                             preferredStyle: .alert)
 
-        let OKAction = UIAlertAction(title: Constants.ok,
+        let OKAction = UIAlertAction(title: SHConstants.ok,
                                      style: .default) { (_: UIAlertAction) in
                         DispatchQueue.main.async {
                             let delegate = UIApplication.shared.delegate as? AppDelegate
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
                         }
         }
 
-        let cancelAction = UIAlertAction(title: Constants.cancel,
+        let cancelAction = UIAlertAction(title: SHConstants.cancel,
                                          style: .cancel,
                                          handler: nil)
 

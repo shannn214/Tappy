@@ -67,7 +67,7 @@ class GuideViewController: UIViewController {
     func createMaskLayer() {
 
         maskLayer = MaskLayer()
-        maskLayer.createMask(rect: Constants.cardMaskBezRect, roundedRect: Constants.cardMaskRoundedRect, cornerRadius: Constants.maskCornerRadius)
+        maskLayer.createMask(rect: SHConstants.cardMaskBezRect, roundedRect: SHConstants.cardMaskRoundedRect, cornerRadius: SHConstants.maskCornerRadius)
 
         view.layer.addSublayer(maskLayer)
 

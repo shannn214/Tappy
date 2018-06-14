@@ -31,9 +31,9 @@ class MurmurView: UIView {
         self.layer.cornerRadius = 15
 
         let uuuuu = murmurTextArray[randomTextIndex]
-        let width = uuuuu.widthOfString(usingFont: UIFont(name: Constants.font, size: 14)!)
+        let width = uuuuu.widthOfString(usingFont: UIFont(name: SHConstants.font, size: 14)!)
         murmurLabel.text = uuuuu
-        murmurLabel.font = UIFont(name: Constants.font, size: 14)
+        murmurLabel.font = UIFont(name: SHConstants.font, size: 14)
         murmurLabel.numberOfLines = 0
         murmurLabel.adjustsFontSizeToFitWidth = true
         murmurLabel.frame = CGRect(x: 10, y: 0, width: width + 4, height: self.frame.height)
