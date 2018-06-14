@@ -95,14 +95,14 @@ extension CardViewController: CardListControllerDelegate {
 //        if cardY <= changePoint {
 //            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
-            topViewHeightConstraint.constant = Constants.topViewHeight - cardY
-            topImageConstraint.constant = Constants.monsterTopConstraint - cardY
+            topViewHeightConstraint.constant = SHConstants.topViewHeight - cardY
+            topImageConstraint.constant = SHConstants.monsterTopConstraint - cardY
 
-            self.gradientHeightConstraint.constant = Constants.topViewHeight - cardY
+            self.gradientHeightConstraint.constant = SHConstants.topViewHeight - cardY
 //        }
 
-        if cardY <= Constants.topViewAlphaPoint {
-            let percentage = cardY / Constants.topViewAlphaPoint
+        if cardY <= SHConstants.topViewAlphaPoint {
+            let percentage = cardY / SHConstants.topViewAlphaPoint
             topViewImage.alpha = 1.0 - percentage
         }
 

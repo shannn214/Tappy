@@ -134,14 +134,14 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         guard let collectionY = collectionTransition else { return }
 //        if collectionY <= changePoint {
-            topViewHeightConstraint.constant = Constants.topViewHeight - collectionY
-            topImageConstraint.constant = Constants.navigationBarHeight - collectionY
-            self.gradientHeightConstraint.constant = Constants.topViewHeight - collectionY
+            topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
+            topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY
+            self.gradientHeightConstraint.constant = SHConstants.topViewHeight - collectionY
 
 //            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
 //        }
-        if collectionY <= Constants.topViewAlphaPoint {
-            let percentage = collectionY / Constants.topViewAlphaPoint
+        if collectionY <= SHConstants.topViewAlphaPoint {
+            let percentage = collectionY / SHConstants.topViewAlphaPoint
             collectionCover.alpha = 1.0 - percentage
         }
     }

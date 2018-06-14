@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Constants {
+struct SHConstants {
 
     static let openingOne = "Hi, I'm Tappy."
 
@@ -21,6 +21,16 @@ struct Constants {
     static let openingFive = "No >< \n If you help me, you can get... uh... \n A Toy of ME! \n YEE-HEEEE!"
 
     static let introText = "Yeah!!! \n I know you are a good man. \n I'll guide you to find the first record. \n \n GOGOGO!"
+
+    static let openingOneBtn = "I don't care."
+
+    static let openingTwoBtn = "What?"
+
+    static let openingThreeBtn = "What the...?"
+
+    static let openingFourBtn = "I should delete this App."
+
+    static let openingFiveBtn = "Delete this App."
 
     static let font = "CircularStd-Medium"
 
@@ -69,6 +79,11 @@ struct Constants {
                                             y: 260,
                                             width: UIScreen.main.bounds.width * 0.45,
                                             height: UIScreen.main.bounds.width * 0.45)
+
+    static let cardMaskRRForX = CGRect(x: 10,
+                                       y: 280,
+                                       width: UIScreen.main.bounds.width * 0.45,
+                                       height: UIScreen.main.bounds.width * 0.45)
 
 }
 

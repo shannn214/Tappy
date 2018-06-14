@@ -28,9 +28,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initialSetting()
-
-        LevelStatusManager.shared.showNewLevel()
+//        initialSetting()
+//
+//        LevelStatusManager.shared.showNewLevel()
 //        DBProvider.shared.getSortedArray()
 
         tapGesture.cancelsTouchesInView = false
@@ -40,6 +40,15 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+//        DBProvider.shared.getSortedArray()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        initialSetting()
+
+        LevelStatusManager.shared.showNewLevel()
         DBProvider.shared.getSortedArray()
     }
 
@@ -88,11 +97,11 @@ class GameViewController: UIViewController {
 
     private func initialSetting() {
 
-        if firstLogin.value(forKey: Constants.firstLogin) == nil {
+        if firstLogin.value(forKey: SHConstants.firstLogin) == nil {
 
             getInfoData()
             LevelStatusManager.shared.initialGame()
-            firstLogin.set(true, forKey: Constants.firstLogin)
+            firstLogin.set(true, forKey: SHConstants.firstLogin)
             gameMapViewController?.introPopUpView()
 
         } else {

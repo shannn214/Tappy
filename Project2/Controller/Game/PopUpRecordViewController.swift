@@ -84,7 +84,7 @@ class PopUpRecordViewController: UIViewController {
     private func introViewSetup() {
 
         self.introView.layer.cornerRadius = 20
-        self.introTextView.text = Constants.introText
+        self.introTextView.text = SHConstants.introText
         startGameButton.layer.cornerRadius = 15
 
     }
@@ -154,6 +154,7 @@ class PopUpRecordViewController: UIViewController {
 
     func popUpIntro() {
 
+        self.view.alpha = 0
         self.propView.isHidden = true
         self.introView.isHidden = false
         self.firstGuideView.isHidden = true
