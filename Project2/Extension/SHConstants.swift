@@ -80,6 +80,11 @@ struct SHConstants {
                                             width: UIScreen.main.bounds.width * 0.45,
                                             height: UIScreen.main.bounds.width * 0.45)
 
+    static let cardMaskRRForX = CGRect(x: 10,
+                                       y: 280,
+                                       width: UIScreen.main.bounds.width * 0.45,
+                                       height: UIScreen.main.bounds.width * 0.45)
+
 }
 
 struct AppColor {

@@ -234,9 +234,11 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func showMaskLayer() {
 
         maskLayer = MaskLayer()
+
         maskLayer.createMask(rect: SHConstants.mapMaskBezRect,
                              roundedRect: SHConstants.mapMaskRoundedRect,
                              cornerRadius: SHConstants.maskCornerRadius)
+
         view.layer.addSublayer(maskLayer)
 
     }
