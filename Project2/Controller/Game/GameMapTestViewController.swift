@@ -56,11 +56,6 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let percentageScroll = gameMapScrollView.contentOffset.x
-        gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
-    }
-
     private func loadButton() {
 
         guard let levelStatus = LevelStatusManager.shared.level else { return }
@@ -71,7 +66,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
                 gameMapScrollView.explosionImages = gameMapScrollView.createImageAnimation(total: 37, imageRefix: "Comp 1_000")
                 gameMapScrollView.CDButtonArray[level].isHidden = false
                 gameMapScrollView.explosionArray[level].isHidden = false
-                gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[level], images: gameMapScrollView.explosionImages)
+                gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[level],
+                                          images: gameMapScrollView.explosionImages)
             }
 
         }
@@ -85,6 +81,13 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let percentageScroll = gameMapScrollView.contentOffset.x
+        gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
+    
+    }
+    
     func changeFrameForGuide() {
 
         UIView.animate(withDuration: 2, animations: {
@@ -105,8 +108,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         popUpRecordVC.popUpfirstGuide(parent: self)
 
-        popUpRecordVC.firstGuideTouchHandler = {
-            self.showMaskLayer()
+        popUpRecordVC.firstGuideTouchHandler = { [weak self] in
+            self?.showMaskLayer()
         }
 
     }
@@ -180,7 +183,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         gameMapScrollView.CDButtonArray[index].isHidden = false
         gameMapScrollView.explosionArray[index].isHidden = false
-        gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[index], images: gameMapScrollView.explosionImages)
+        gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[index],
+                                  images: gameMapScrollView.explosionImages)
 
     }
 
@@ -258,12 +262,12 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         popUpViewAnimation(popUpRecordVC: popUpRecordVC)
 
-        popUpRecordVC.propTouchHandler = {
-            self.showCDButton()
+        popUpRecordVC.propTouchHandler = { [weak self] in
+            self?.showCDButton()
         }
 
-        popUpRecordVC.firstPropTouchHandler = {
-            self.secondGuide()
+        popUpRecordVC.firstPropTouchHandler = { [weak self] in
+            self?.secondGuide()
         }
 
     }
@@ -276,8 +280,8 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         popUpViewAnimation(popUpRecordVC: popUpRecordVC)
 
-        popUpRecordVC.startGuideFlowHandler = {
-            self.changeFrameForGuide()
+        popUpRecordVC.startGuideFlowHandler = { [weak self] in
+            self?.changeFrameForGuide()
         }
 
     }

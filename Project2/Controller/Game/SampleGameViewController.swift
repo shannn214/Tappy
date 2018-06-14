@@ -30,13 +30,11 @@ class SampleGameViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func logoutAction(_ sender: Any) {
 
         DispatchQueue.main.async {
-            //            AppDelegate.shared?.switchToMainStoryBoard()
             let delegate = UIApplication.shared.delegate as? AppDelegate
             delegate?.window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
         }
@@ -59,22 +57,24 @@ class SampleGameViewController: UIViewController {
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
-            let point = view.window?.convert(tapPoint, to: self.scrollView)
-            let dddd = point?.x
+            
+            guard let point = view.window?.convert(tapPoint, to: self.scrollView) else { return }
+            
+            let tapPoint = point.x
 
-            if Int(dddd!) < Int(self.monster.center.x) {
+            if Int(tapPoint) < Int(self.monster.center.x) {
                 self.monster.image = #imageLiteral(resourceName: "left_pink")
             } else {
                 self.monster.image = #imageLiteral(resourceName: "right_pink")
             }
 
             UIView.animate(withDuration: 0.4) {
-                self.monster.frame = CGRect(x: (point?.x)!,
+                self.monster.frame = CGRect(x: point.x,
                                             y: 77 * self.imageView.bounds.height/100,
                                             width: 75, height: 62)
             }
         default:
-            print("Nope")
+            break
         }
 
     }

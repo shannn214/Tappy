@@ -25,15 +25,12 @@ class CollectionListViewController: UIViewController {
 
     let designSetting = DesignSetting()
 
-//    let ahhsortedArray = DBProvider.shared.sortedArray
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
 
         setCollectionLayout()
-//        setupTrackCell()
 
         designSetting.designSetting(view: recordCollectionView)
 
@@ -94,6 +91,8 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
                                     withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
                                     for: indexPath) as? RecordCollectionViewCell
         else { return UICollectionViewCell() }
+        
+        guard let levelStatus = LevelStatusManager.shared.level else { return UICollectionViewCell() }
 
         setCollectionLayout()
 
@@ -107,7 +106,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         recordCell.trackName.isHidden = true
         recordCell.isUserInteractionEnabled = false
 
-        if indexPath.row < LevelStatusManager.shared.level! {
+        if indexPath.row < levelStatus {
 
             recordCell.cover.isHidden = false
             recordCell.artist.isHidden = false

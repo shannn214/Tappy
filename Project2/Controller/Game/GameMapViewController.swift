@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Old Game Map Version
 class GameMapViewController: UIView {
 
     let firstAreaArray = [CAShapeLayer(), CAShapeLayer(), CAShapeLayer(), CAShapeLayer()]
