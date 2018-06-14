@@ -154,8 +154,17 @@ class CardDetailViewController: UIViewController {
 
         UIView.animate(withDuration: 0.4) {
 
-            self.cardContentView.alpha = 1
-            self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+            if UIScreen.main.bounds.height > 740 {
+
+                self.cardContentView.alpha = 1
+                self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 1.1
+
+            } else {
+
+                self.cardContentView.alpha = 1
+                self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+
+            }
 
             self.view.layoutIfNeeded()
 
