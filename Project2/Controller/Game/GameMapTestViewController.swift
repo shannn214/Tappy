@@ -82,12 +82,12 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+
         let percentageScroll = gameMapScrollView.contentOffset.x
         gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
-    
+
     }
-    
+
     func changeFrameForGuide() {
 
         UIView.animate(withDuration: 2, animations: {
@@ -224,14 +224,16 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         let info = sortedArray[level]
 
-        SpotifyManager.shared.playMusic(track: info.trackUri)
+        SpotifyManager.shared.playMusic(track: info.trackUri, completion: {
 
-        present(playerVC, animated: true) {
-            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
-            playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
-            playerVC.playerPanelView.artist.text = info.artist
-            playerVC.playerPanelView.trackName.text = info.trackName
-        }
+            self.present(playerVC, animated: true) {
+                playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+                playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+                playerVC.playerPanelView.artist.text = info.artist
+                playerVC.playerPanelView.trackName.text = info.trackName
+            }
+
+        })
 
     }
 

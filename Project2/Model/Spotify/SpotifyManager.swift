@@ -48,6 +48,28 @@ class SpotifyManager: UIViewController {
 
     }
 
+    func getUserInfo() {
+
+//        SPTProduct.premium
+
+        SPTUser.requestCurrentUser(withAccessToken: self.auth.session.accessToken) { (error, data) in
+
+            guard data != nil ,
+                let userStatus = data as? SPTUser
+            else { return }
+
+            let status = userStatus.product
+
+            print(status.rawValue)
+
+            guard error != nil else { return }
+
+            print("errrrrrrrror")
+
+        }
+
+    }
+
     func startAuthenticationFlow() {
 
         if self.auth.session != nil && self.auth.session.isValid() {
@@ -89,12 +111,17 @@ class SpotifyManager: UIViewController {
 
     }
 
-    func playMusic(track: String) {
+    func playMusic(track: String, completion: @escaping () -> Void) {
 
         self.player?.playSpotifyURI(track,
                                     startingWith: 0,
                                     startingWithPosition: 0,
-                                    callback: { (_) in
+                                    callback: { (error) in
+
+                                        guard error == nil else { return }
+
+                                        completion()
+
         })
 
     }
@@ -127,10 +154,12 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChange metadata: SPTPlaybackMetadata!) {
+
         NotificationCenter.default.post(
             name: .trackPlayinyStatus,
             object: nil
         )
+
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {
@@ -150,6 +179,10 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
         )
 
         self.position = position
+
+    }
+
+    func audioStreamingDidDisconnect(_ audioStreaming: SPTAudioStreamingController!) {
 
     }
 

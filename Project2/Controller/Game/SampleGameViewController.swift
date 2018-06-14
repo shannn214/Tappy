@@ -57,9 +57,9 @@ class SampleGameViewController: UIViewController {
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
-            
+
             guard let point = view.window?.convert(tapPoint, to: self.scrollView) else { return }
-            
+
             let tapPoint = point.x
 
             if Int(tapPoint) < Int(self.monster.center.x) {

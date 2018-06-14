@@ -42,9 +42,9 @@ class GameViewController: UIViewController {
         initialSetting()
 
         LevelStatusManager.shared.showNewLevel()
-        
+
         DBProvider.shared.getSortedArray()
-        
+
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -61,7 +61,7 @@ class GameViewController: UIViewController {
             guard let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView) else { return }
 
             guard let mapHeight = self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height else { return }
-            
+
             guard let monsterCenter = self.gameMapViewController?.gameMapScrollView.monster.center.x else { return }
 
             let tapPoint = point.x
@@ -112,11 +112,11 @@ class GameViewController: UIViewController {
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
         for dataIndex in 0...uriManager.uris.count - 1 {
-            
+
             SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
                                                     albumUri: uriManager.uris[dataIndex].albumUri,
                                                     level: uriManager.uris[dataIndex].level)
-        
+
         }
 
     }
