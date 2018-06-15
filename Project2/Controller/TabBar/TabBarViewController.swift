@@ -110,6 +110,49 @@ class TabBarViewController: UITabBarController {
 
         setupTab()
 
+        addPlayerTest()
+    }
+
+    func addPlayerTest() {
+
+        let containerView = UIView()
+
+        containerView.backgroundColor = UIColor.blue
+
+        view.addSubview(containerView)
+
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
+        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+
+        containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+
+        containerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+
+//        containerView.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
+        containerView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+
+        view.bringSubview(toFront: containerView)
+
+        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+
+//        self.addChildViewController(playerVC)
+
+        containerView.addSubview(playerVC.view)
+
+        containerView.clipsToBounds = true
+
+        containerView.addSubview(playerVC.view)
+
+//        self.view.addSubview(playerVC.view)
+
+        playerVC.view.frame = containerView.bounds
+
+//        playerVC.view.bounds = CGRect(x: 0, y: -400, width: UIScreen.main.bounds.width, height: 50)
+
+//        playerVC.didMove(toParentViewController: self)
+
     }
 
     private func setupTab() {
