@@ -15,12 +15,10 @@ class GameViewController: UIViewController {
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
 
-//    var distance = 0.0
-//    var checkLevel = 0
-//    let CDButtonArray = [UIButton(), UIButton()]
     let firstLogin = UserDefaults.standard
 
     var scrollView: UIScrollView!
+
     var imageView: UIImageView!
 
     var gameMapViewController: GameMapTestViewController?
@@ -58,11 +56,10 @@ class GameViewController: UIViewController {
             pop.center = sender.location(in: view)
             view.addSubview(pop)
 
-            guard let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView) else { return }
-
-            guard let mapHeight = self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height else { return }
-
-            guard let monsterCenter = self.gameMapViewController?.gameMapScrollView.monster.center.x else { return }
+            guard let point = view.window?.convert(tapPoint, to: gameMapViewController?.gameMapScrollView),
+                  let mapHeight = self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height,
+                  let monsterCenter = self.gameMapViewController?.gameMapScrollView.monster.center.x
+            else { return }
 
             let tapPoint = point.x
 
@@ -78,6 +75,7 @@ class GameViewController: UIViewController {
                                                                                      width: 75,
                                                                                      height: 62)
             }
+
         default:
             break
         }
@@ -87,7 +85,9 @@ class GameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let gameMapVC = segue.destination as? GameMapTestViewController {
+
             self.gameMapViewController = gameMapVC
+
         }
 
     }
@@ -97,12 +97,15 @@ class GameViewController: UIViewController {
         if firstLogin.value(forKey: SHConstants.firstLogin) == nil {
 
             getInfoData()
+
             LevelStatusManager.shared.initialGame()
+
             firstLogin.set(true, forKey: SHConstants.firstLogin)
+
             gameMapViewController?.introPopUpView()
 
         } else {
-            //TODO
+
         }
 
     }

@@ -16,7 +16,7 @@ protocol CardListControllerDelegate: class {
 
 class CardListViewController: UIViewController {
 
-    @IBOutlet weak var listCollectionView: LukeCollectionView!
+    @IBOutlet weak var listCollectionView: UICollectionView!
 
     var propImages: [UIImage] = []
 
@@ -38,8 +38,6 @@ class CardListViewController: UIViewController {
     let designSetting = DesignSetting()
 
     var cardDetailVC: CardDetailViewController?
-
-//    var selectedCell: CardCollectionViewCell?
 
     var selectedIndex: IndexPath?
 
@@ -180,18 +178,15 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.delegate = self
 
-        UIView.animate(withDuration: 0.35, animations: {
-
-            cardDetailVC.view.frame = self.view.frame
-            cardDetailVC.changeContraintToFullScreen()
-            collectionView.isUserInteractionEnabled = false
-            self.cardFlag = true
-
-        }) { (_) in
-
-            cardDetailVC.startToMoveContent()
-
-        }
+        UIView.animate(withDuration: 0.35,
+                       animations: {
+                            cardDetailVC.view.frame = self.view.frame
+                            cardDetailVC.changeContraintToFullScreen()
+                            collectionView.isUserInteractionEnabled = false
+                            self.cardFlag = true},
+                       completion: { _ in
+                            cardDetailVC.startToMoveContent()
+        })
 
     }
 
@@ -233,22 +228,23 @@ extension CardListViewController: CardDetailDelegate {
 
         let itemSize = UIScreen.main.bounds.width / 2
 
-        UIView.animate(withDuration: 0.35, animations: {
+        UIView.animate(withDuration: 0.35,
+                       animations: {
 
-            selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
-            selectedVC.changeConstraintToCellSize()
+                            selectedVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize, height: itemSize))
+                            selectedVC.changeConstraintToCellSize() },
 
-        }) { [weak self] _ in
+                       completion: { [weak self] _ in
 
-            selectedVC.view.removeFromSuperview()
-            selectedCell.addSubview(selectedVC.view)
-            selectedVC.view.frame = selectedCell.contentView.frame
-            selectedVC.backgroundView.alpha = 1
-            self?.listCollectionView.isUserInteractionEnabled = true
-            self?.cardFlag = false
-            self?.listCollectionView.reloadData()
+                            selectedVC.view.removeFromSuperview()
+                            selectedCell.addSubview(selectedVC.view)
+                            selectedVC.view.frame = selectedCell.contentView.frame
+                            selectedVC.backgroundView.alpha = 1
+                            self?.listCollectionView.isUserInteractionEnabled = true
+                            self?.cardFlag = false
+                            self?.listCollectionView.reloadData()
 
-        }
+        })
 
     }
 

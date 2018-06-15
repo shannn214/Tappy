@@ -63,11 +63,13 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         if levelStatus > 0 {
 
             for level in 0...levelStatus - 1 {
+
                 gameMapScrollView.explosionImages = gameMapScrollView.createImageAnimation(total: 37, imageRefix: "Comp 1_000")
                 gameMapScrollView.CDButtonArray[level].isHidden = false
                 gameMapScrollView.explosionArray[level].isHidden = false
                 gameMapScrollView.animate(imageView: gameMapScrollView.explosionArray[level],
                                           images: gameMapScrollView.explosionImages)
+
             }
 
         }
@@ -84,21 +86,23 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let percentageScroll = gameMapScrollView.contentOffset.x
+
         gameMapBGScrollView.contentOffset = CGPoint(x: percentageScroll * 0.7, y: 0)
 
     }
 
     func changeFrameForGuide() {
 
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 2,
+                       animations: {
 
-            self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0)
+                            self.gameMapScrollView.contentOffset = CGPoint(x: 45 * self.gameMapScrollView.mapImageView.frame.width / 100, y: 0) },
 
-        }) { [weak self] (_) in
+                       completion: {[weak self] (_) in
 
-            self?.firstGuide()
+                            self?.firstGuide()
 
-        }
+        })
 
     }
 
@@ -212,6 +216,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
     func showRecordTab(sender: UIButton!) {
 
         let btnSendTag: UIButton = sender
+
         tapRecordCase(tag: btnSendTag.tag)
 
     }
@@ -224,9 +229,9 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         let info = sortedArray[level]
 
-        SpotifyManager.shared.playMusic(track: info.trackUri, completion: {
+        SpotifyManager.shared.playMusic(track: info.trackUri, completion: { [weak self] in
 
-            self.present(playerVC, animated: true) {
+            self?.present(playerVC, animated: true) {
                 playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
                 playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
                 playerVC.playerPanelView.artist.text = info.artist

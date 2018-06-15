@@ -44,15 +44,21 @@ class MurmurView: UIView {
 
     func createMurmur(completion: @escaping () -> Void) {
 
-        UIView.animate(withDuration: 1.0, animations: {
-            self.alpha = 1
-        }) { [weak self] (_) in
-            UIView.animate(withDuration: 0.7, delay: 3, animations: {
-                self?.alpha = 0
-            }) { (_) in
-                completion()
-            }
-        }
+        UIView.animate(withDuration: 1.0,
+                       animations: {
+                            self.alpha = 1 },
+                       completion: { [weak self] (_) in
+
+                            UIView.animate(withDuration: 0.7,
+                                           delay: 3,
+                                           animations: {
+                                                self?.alpha = 0 },
+                                           completion: { (_) in
+                                                completion()
+                            })
+
+        })
+
     }
 
     required init?(coder aDecoder: NSCoder) {

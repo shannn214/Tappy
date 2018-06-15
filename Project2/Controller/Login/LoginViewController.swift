@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupLoginButton()
+
     }
 
     private func setupLoginButton() {
@@ -48,7 +49,7 @@ class LoginViewController: UIViewController {
                                             message: SHConstants.loginAlterMessage,
                                             preferredStyle: .alert)
 
-        let OKAction = UIAlertAction(title: SHConstants.ok,
+        let OKAction = UIAlertAction(title: SHConstants.okBtn,
                                      style: .default) { (_: UIAlertAction) in
                         DispatchQueue.main.async {
                             let delegate = UIApplication.shared.delegate as? AppDelegate
@@ -56,7 +57,7 @@ class LoginViewController: UIViewController {
                         }
         }
 
-        let cancelAction = UIAlertAction(title: SHConstants.cancel,
+        let cancelAction = UIAlertAction(title: SHConstants.cancelBtn,
                                          style: .cancel,
                                          handler: nil)
 

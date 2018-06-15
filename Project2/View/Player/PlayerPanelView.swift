@@ -26,16 +26,16 @@ class PlayerPanelView: UIView {
 
         setupButton()
 
-        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+        setupSlider()
+
+    }
+
+    func setupSlider() {
 
         slider.setThumbImage(#imageLiteral(resourceName: "dott"), for: .normal)
-
-//        slider.setThumbImage(UIImage(), for: .normal)
         slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpInside)
         slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpOutside)
         slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchCancel)
-
-        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
 
     }
 
@@ -71,16 +71,17 @@ class PlayerPanelView: UIView {
         let seekingCM: CMTime = CMTimeMakeWithSeconds((SpotifyManager.shared.player?.metadata.currentTrack?.duration)!, 10000)
         let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
         let newDuration = CMTimeGetSeconds(seekingCM)
-//        let seekTime = CMTimeMake(Int64(duration), 1)
         SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
-
-        let value = slider.value
 
     }
 
     private func setupButton() {
 
         playButton.isSelected = true
+
+        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
 
     }
 

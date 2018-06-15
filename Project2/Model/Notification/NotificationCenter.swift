@@ -9,14 +9,10 @@
 import Foundation
 
 extension Notification.Name {
-//    static let pressLogin = Notification.Name("pressLogin")
+
     static let loginSuccessfull = Notification.Name("loginSuccessfull")
 
     static let startPlayingTrack = Notification.Name("startPlayingTrack")
-
-    static let pressMovingButton = Notification.Name("pressMovingButton")
-
-    static let leavePropPopView = Notification.Name("leavePropPopView")
 
     static let trackPlayinyStatus = Notification.Name("trackPlayinyStatus")
 
@@ -24,9 +20,6 @@ extension Notification.Name {
 
     static let firstGuideAction = Notification.Name("firstGuideAction")
 
-    static let showMaskAction = Notification.Name("showMaskAction")
-
-    static let showSecondGuideAction = Notification.Name("showSecondGuideAction")
-
     static let showCardGuideMaskAction = Notification.Name("showCardGuideMaskAction")
+
 }

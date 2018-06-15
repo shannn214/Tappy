@@ -40,7 +40,9 @@ struct SpotifyUrisManager: Codable {
     var uris: [SpotifyUris]
 
     init() {
+
         self.uris = []
+
     }
 
     enum CodingKeys: String, CodingKey {
@@ -49,7 +51,8 @@ struct SpotifyUrisManager: Codable {
 
     }
 
-    static func createManagerFromFile(fileName: String = UriConstant.fileName.rawValue, fileType: String = UriConstant.fileType.rawValue) -> SpotifyUrisManager {
+    static func createManagerFromFile(fileName: String = UriConstant.fileName.rawValue,
+                                      fileType: String = UriConstant.fileType.rawValue) -> SpotifyUrisManager {
 
         let filePath = Bundle.main.path(forResource: fileName, ofType: fileType)
 

@@ -44,7 +44,9 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let cardListViewController = segue.destination as? CardListViewController {
+
             cardListViewController.delegate = self
+
         }
 
     }
@@ -85,25 +87,29 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
 extension CardViewController: CardListControllerDelegate {
 
     func cardViewDisScroll(_ controller: CardListViewController, translation: CGFloat) {
+
         self.cardTransition = translation
+
         changeTopView()
+
     }
 
     func changeTopView() {
 
         guard let cardY = cardTransition else { return }
-//        if cardY <= changePoint {
-//            topView.frame = CGRect(x: 0, y: (0 - cardY), width: topView.frame.width, height: topView.frame.height)
 
-            topViewHeightConstraint.constant = SHConstants.topViewHeight - cardY
-            topImageConstraint.constant = SHConstants.monsterTopConstraint - cardY
+        topViewHeightConstraint.constant = SHConstants.topViewHeight - cardY
 
-            self.gradientHeightConstraint.constant = SHConstants.topViewHeight - cardY
-//        }
+        topImageConstraint.constant = SHConstants.monsterTopConstraint - cardY
+
+        self.gradientHeightConstraint.constant = SHConstants.topViewHeight - cardY
 
         if cardY <= SHConstants.topViewAlphaPoint {
+
             let percentage = cardY / SHConstants.topViewAlphaPoint
+
             topViewImage.alpha = 1.0 - percentage
+
         }
 
     }
