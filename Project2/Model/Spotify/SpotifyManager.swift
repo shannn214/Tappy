@@ -24,6 +24,8 @@ class SpotifyManager: UIViewController {
     var recordInfo: TrackInfo?
     var position: TimeInterval?
     var isPlaying: Bool?
+    var userStatus: SPTProduct?
+    let premiumUser = SPTProduct.premium
 
     func setup() {
 
@@ -48,23 +50,19 @@ class SpotifyManager: UIViewController {
 
     }
 
-    func getUserInfo() {
+    func getUserInfo(comletion: @escaping () -> Void) {
 
-//        SPTProduct.premium
-
-        SPTUser.requestCurrentUser(withAccessToken: self.auth.session.accessToken) { (error, data) in
+        SPTUser.requestCurrentUser(withAccessToken: self.auth.session.accessToken) { (_, data) in
 
             guard data != nil ,
-                let userStatus = data as? SPTUser
+                  let user = data as? SPTUser
             else { return }
 
-            let status = userStatus.product
+            let status = user.product
 
-            print(status.rawValue)
+            self.userStatus = status
 
-            guard error != nil else { return }
-
-            print("errrrrrrrror")
+            comletion()
 
         }
 
@@ -73,9 +71,12 @@ class SpotifyManager: UIViewController {
     func startAuthenticationFlow() {
 
         if self.auth.session != nil && self.auth.session.isValid() {
+
                 self.player?.login(withAccessToken: self.auth.session.accessToken)
                 delegate?.window?.rootViewController? = UIStoryboard.mainStoryboard().instantiateInitialViewController()!
+
         } else {
+
             let authURL: URL? = self.auth.spotifyWebAuthenticationURL()
             self.authViewController = SFSafariViewController.init(url: authURL!)
             delegate?.window?.rootViewController?.present(
@@ -83,6 +84,7 @@ class SpotifyManager: UIViewController {
                 animated: true,
                 completion: nil
             )
+
         }
 
     }
@@ -92,11 +94,13 @@ class SpotifyManager: UIViewController {
         let userDefaults = UserDefaults.standard
 
         if let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+
             let sessionDataObj = sessionObj as? Data
             let firstTimesession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj!) as? SPTSession
             self.session = firstTimesession
             initializePlayer(authSession: session!)
 //            print(self.auth.session.accessToken)
+
         }
 
     }

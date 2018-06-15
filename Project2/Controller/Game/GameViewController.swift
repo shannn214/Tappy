@@ -15,9 +15,9 @@ class GameViewController: UIViewController {
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
 
-    var distance = 0.0
-    var checkLevel = 0
-    let CDButtonArray = [UIButton(), UIButton()]
+//    var distance = 0.0
+//    var checkLevel = 0
+//    let CDButtonArray = [UIButton(), UIButton()]
     let firstLogin = UserDefaults.standard
 
     var scrollView: UIScrollView!

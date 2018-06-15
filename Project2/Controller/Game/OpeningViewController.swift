@@ -16,11 +16,11 @@ class OpeningViewController: UIViewController {
 
     var handlerArray: [() -> Void] = [ {}, {}, {}, {}]
 
-    var contentArray: [String] = [SHConstants.openingOne, SHConstants.openingTwo, SHConstants.openingThree, SHConstants.openingFour, SHConstants.openingFive]
+    var contentArray: [String] = [SHConstants.openingNotice, SHConstants.openingOne, SHConstants.openingTwo, SHConstants.openingThree, SHConstants.openingFour, SHConstants.openingFive]
 
-    var buttonLabelArray: [String] = [SHConstants.openingOneBtn, SHConstants.openingTwoBtn, SHConstants.openingThreeBtn, SHConstants.openingFourBtn, SHConstants.openingFiveBtn]
+    var buttonLabelArray: [String] = [SHConstants.openingNoticeBtn, SHConstants.openingOneBtn, SHConstants.openingTwoBtn, SHConstants.openingThreeBtn, SHConstants.openingFourBtn, SHConstants.openingFiveBtn]
 
-    var currentIndex = 1
+    var currentIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +38,27 @@ class OpeningViewController: UIViewController {
 
         openingButton.layer.cornerRadius = 15
 
-        openingTextView.text = contentArray[0]
+        SpotifyManager.shared.getUserInfo {
 
-        openingButton.setTitle(buttonLabelArray[0], for: .normal)
+            if SpotifyManager.shared.userStatus == SpotifyManager.shared.premiumUser {
+
+                self.openingTextView.text = self.contentArray[1]
+
+                self.openingButton.setTitle(self.buttonLabelArray[1], for: .normal)
+
+                self.currentIndex = 2
+
+            } else {
+
+                self.openingTextView.text = self.contentArray[0]
+
+                self.openingButton.setTitle(self.buttonLabelArray[0], for: .normal)
+
+                self.currentIndex = 1
+
+            }
+
+        }
 
     }
 
@@ -56,7 +74,7 @@ class OpeningViewController: UIViewController {
 
     @IBAction func openingAction(_ sender: Any) {
 
-        if currentIndex < 5 {
+        if currentIndex < 6 {
 
             changeStoryContent(index: currentIndex)
 

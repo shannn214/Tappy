@@ -55,8 +55,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         self.view.isMultipleTouchEnabled = true
         self.recordsContainerView.isUserInteractionEnabled = true
 
-        SpotifyManager.shared.getUserInfo()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {

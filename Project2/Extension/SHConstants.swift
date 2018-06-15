@@ -10,17 +10,21 @@ import Foundation
 
 struct SHConstants {
 
-    static let openingOne = "Hi, I'm Tappy."
+    static let openingNotice = "Notice! \n Only Premium user can stream audio on mobile device. But don't worry. You still can play the game without streaming audio service."
 
-    static let openingTwo = "Don't be so cold. \n Can you do me a favor?"
+    static let openingOne = "\n \n \n Hi, I'm Tappy."
 
-    static let openingThree = "Well... \n I bought a new headphone yesturday. \n But I realize that... \n I don't have music."
+    static let openingTwo = "\n \n Don't be so cold. \n Can you do me a favor?"
 
-    static let openingFour = "So... Could you collect some record for me?"
+    static let openingThree = "\n Well... \n I bought a new headphone yesturday. \n But I realize that... \n I don't have music."
 
-    static let openingFive = "No >< \n If you help me, you can get... uh... \n A Toy of ME! \n YEE-HEEEE!"
+    static let openingFour = "\n \n \n So... Could you collect some record for me?"
+
+    static let openingFive = "\n No >< \n If you help me, you can get... uh... \n A Toy of ME! \n YEE-HEEEE!"
 
     static let introText = "Yeah!!! \n I know you are a good man. \n I'll guide you to find the first record. \n \n GOGOGO!"
+
+    static let openingNoticeBtn = "Start"
 
     static let openingOneBtn = "I don't care."
 
