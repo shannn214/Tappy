@@ -110,6 +110,24 @@ class TabBarViewController: UITabBarController {
 
         setupTab()
 
+//        let containerView = UIView()
+//
+//        containerView.backgroundColor = UIColor.blue
+//
+//        view.addSubview(containerView)
+//
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//
+//        containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//
+//        containerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+//
+//        containerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        view.bringSubview(toFront: containerView)
+
     }
 
     private func setupTab() {
