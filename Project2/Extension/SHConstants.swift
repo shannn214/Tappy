@@ -44,9 +44,9 @@ struct SHConstants {
 
     static let loginAlterMessage = "Anonymous login will only provide game map browser mode. To access more playing mode, please login with Spotify to experience complete music colloction game."
 
-    static let ok = "OK"
+    static let okBtn = "OK"
 
-    static let cancel = "Cancel"
+    static let cancelBtn = "Cancel"
 
     static let firstLogin = "firstLogin"
 

@@ -82,11 +82,13 @@ class CardDetailViewController: UIViewController {
 
         switch sender.state {
         case .ended:
+
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
+
         default:
-            print("Nope")
+            break
         }
 
     }
@@ -94,37 +96,41 @@ class CardDetailViewController: UIViewController {
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
 
         let touchPoint = sender.location(in: self.view.window)
+
         let touchTrans = sender.translation(in: self.view.window)
 
         if sender.state == UIGestureRecognizerState.began {
 //            initialTouchPoint = touchPoint
         } else if sender.state == UIGestureRecognizerState.changed {
+
             if touchPoint.y - initialPoint.y > 0 {
+
                 self.view.frame = CGRect(x: touchTrans.x,
                                          y: touchTrans.y,
                                          width: self.view.frame.size.width,
                                          height: self.view.frame.size.height
                 )
 
-//                backgroundView.alpha = 1 - touchTrans.y / 100
+                UIView.animate(withDuration: 0.35) { [weak self] in
 
-                UIView.animate(withDuration: 0.35) {
-                    self.backgroundView.alpha = 0
-                    //------
-                    self.cardContentView.alpha = 0
-                    self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
-                    self.view.layoutIfNeeded()
-                    //------
+                    self?.backgroundView.alpha = 0
+
+                    self?.cardContentView.alpha = 0
+                    self?.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+                    self?.view.layoutIfNeeded()
+
                 }
 
                 if touchTrans.y < 16 {
                     backgroundView.layer.cornerRadius = touchTrans.y
                 }
+
                 backgroundView.clipsToBounds = true
 
             }
+
         } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-//            if touchPoint.y - initialPoint.y > 300 {
+
             if touchTrans.y > 150 {
                 // Back to cell view
                 self.delegate?.cardDetailDidTransition(controller: self)
@@ -132,16 +138,18 @@ class CardDetailViewController: UIViewController {
             } else {
                 // Back to full screen
                 UIView.animate(withDuration: 0.3,
-                               animations: { self.view.frame = CGRect(x: 0, y: 0,
-                                                                      width: self.view.frame.size.width,
-                                                                      height: self.view.frame.size.height
-                                                                     )
-                                             self.backgroundView.alpha = 1
-                                             self.backgroundView.layer.cornerRadius = 0
+                               animations: { [weak self] in
 
-                                             //------
-                                             self.cardContentView.alpha = 1
-                                             self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+                                             self?.view.frame = CGRect(x: 0, y: 0,
+                                                                       width: (self?.view.frame.size.width)!,
+                                                                       height: (self?.view.frame.size.height)!
+                                                                      )
+
+                                             self?.backgroundView.alpha = 1
+                                             self?.backgroundView.layer.cornerRadius = 0
+
+                                             self?.cardContentView.alpha = 1
+                                             self?.cardContentTopConstraint.constant = UIScreen.main.bounds.width
 
                 })
             }
@@ -152,21 +160,21 @@ class CardDetailViewController: UIViewController {
 
     func startToMoveContent() {
 
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.4) { [weak self] in
 
             if UIScreen.main.bounds.height > 740 {
 
-                self.cardContentView.alpha = 1
-                self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 1.1
+                self?.cardContentView.alpha = 1
+                self?.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 1.1
 
             } else {
 
-                self.cardContentView.alpha = 1
-                self.cardContentTopConstraint.constant = UIScreen.main.bounds.width
+                self?.cardContentView.alpha = 1
+                self?.cardContentTopConstraint.constant = UIScreen.main.bounds.width
 
             }
 
-            self.view.layoutIfNeeded()
+            self?.view.layoutIfNeeded()
 
         }
 
@@ -174,9 +182,11 @@ class CardDetailViewController: UIViewController {
 
     func pullBackContent() {
 
-        UIView.animate(withDuration: 0.4) {
-            self.cardContentView.alpha = 0
-            self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+        UIView.animate(withDuration: 0.4) { [weak self] in
+
+            self?.cardContentView.alpha = 0
+            self?.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
+
         }
 
     }
@@ -189,12 +199,9 @@ class CardDetailViewController: UIViewController {
         cardViewWidth.constant = UIScreen.main.bounds.width * 0.75
         cardViewHeight.constant = UIScreen.main.bounds.width * 0.75
 
-        //----
         self.cardContentView.alpha = 0
         self.cardContentTopConstraint.constant = UIScreen.main.bounds.width * 0.3
         cardContentLeadingConstraint.constant = UIScreen.main.bounds.width * 0.125
-
-        //----
 
         view.layoutIfNeeded()
         panGesture.isEnabled = true
@@ -219,4 +226,5 @@ extension CardDetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return panGesture.isEnabled
     }
+
 }

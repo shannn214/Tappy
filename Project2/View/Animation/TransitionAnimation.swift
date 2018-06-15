@@ -60,14 +60,18 @@ class TransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
                        usingSpringWithDamping: 1,
                        initialSpringVelocity: 0.0,
                        animations: {
+
                             playerView.transform = self.presenting ? CGAffineTransform.identity : scaleTransForm
-                            playerView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
-                       }) { (_) in
-                        if !self.presenting {
-                            self.dismissCompletion?()
-                        }
+                            playerView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY) },
+
+                       completion: { (_) in
+
+                            if !self.presenting {
+                                self.dismissCompletion?()
+                            }
                             transitionContext.completeTransition(true)
-        }
+
+        })
 
     }
 

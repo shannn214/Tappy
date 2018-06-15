@@ -47,22 +47,23 @@ class GuideViewController: UIViewController {
 
     func cardGuideViewAnimation() {
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3,
+                       animations: {
 
-            self.cardGuideView.alpha = 1
-            self.cardGuideViewWidth.constant = 0
-            self.cardGuideViewHeight.constant = 128
-            self.view.layoutIfNeeded()
+                            self.cardGuideView.alpha = 1
+                            self.cardGuideViewWidth.constant = 0
+                            self.cardGuideViewHeight.constant = 128
+                            self.view.layoutIfNeeded() },
 
-        }) { [weak self] (_) in
+                       completion: { [weak self] (_) in
 
-            UIView.animate(withDuration: 0.35, animations: {
-                self?.cardGuideViewWidth.constant = 240
-                self?.didMove(toParentViewController: self)
-                self?.view.layoutIfNeeded()
-            })
+                            UIView.animate(withDuration: 0.35, animations: {
+                                self?.cardGuideViewWidth.constant = 240
+                                self?.didMove(toParentViewController: self)
+                                self?.view.layoutIfNeeded()
+                            })
 
-        }
+        })
 
         self.view.layoutIfNeeded()
 

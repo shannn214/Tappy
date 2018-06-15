@@ -24,7 +24,9 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var showPlayerButton: UIButton!
 
     var recordTransition: CGFloat?
+
     var collectionTransition: CGFloat?
+
     var rotateFlag: Bool?
 
     let layer = CAGradientLayer()
@@ -41,8 +43,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         setup()
-
-        addHitTestView()
 
         NotificationCenter.default.addObserver(
             self,
@@ -63,6 +63,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         if rotateFlag == true {
             rotate(image: collectionCover)
         }
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,17 +71,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         if let collectionListViewController = segue.destination as? CollectionListViewController {
             collectionListViewController.delegate = self
         }
-    }
-
-    func addHitTestView() {
-
-//        showPlayer = UIButton()
-//        showPlayer.setImage(UIImage(), for: .normal)
-//        showPlayer.backgroundColor = UIColor.blue
-//        view.addSubview(showPlayer)
-//        showPlayer.frame = CGRect(x: UIScreen.main.bounds.width * 0.4, y: Constants.screenHeight * 0.1, width: 100, height: 100)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showPlayerView(tapGestureRecognizer:)))
-//        showPlayer.addGestureRecognizer(tapGesture)
 
     }
 
@@ -92,12 +82,10 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
         self.gradientView.layer.addSublayer(layer)
 
-//        showPlayerButton.addTarget(self, action: #selector(showPlayerView), for: .touchUpInside)
-//        showPlayerButton.isHidden = false
-//        showPlayerButton.backgroundColor = UIColor.black
-
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showPlayerView(tapGestureRecognizer:)))
+
         collectionCover.isUserInteractionEnabled = true
+
         collectionCover.addGestureRecognizer(tapGestureRecognizer)
 
         rotateFlag = false
@@ -113,10 +101,12 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         else { return }
 
         present(playerVC, animated: true) {
+
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
             playerVC.backgroundCover.sd_setImage(with: URL(string: url))
             playerVC.playerPanelView.artist.text = artist
             playerVC.playerPanelView.trackName.text = trackName
+
         }
 
     }
@@ -126,24 +116,25 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 extension CollectionViewController: CollectionListControllerDelegate {
 
     func collectionViewDidScroll(_ controller: CollectionListViewController, translation: CGFloat) {
+
         self.collectionTransition = translation
         changeTopView()
+
     }
 
     func changeTopView() {
 
         guard let collectionY = collectionTransition else { return }
-//        if collectionY <= changePoint {
-            topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
-            topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY
-            self.gradientHeightConstraint.constant = SHConstants.topViewHeight - collectionY
 
-//            topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: topViewHeight)
-//        }
+        topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
+        topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY
+        self.gradientHeightConstraint.constant = SHConstants.topViewHeight - collectionY
+
         if collectionY <= SHConstants.topViewAlphaPoint {
             let percentage = collectionY / SHConstants.topViewAlphaPoint
             collectionCover.alpha = 1.0 - percentage
         }
+
     }
 
     func playerViewDidDismiss(url: String) {
@@ -173,16 +164,19 @@ extension CollectionViewController: CollectionListControllerDelegate {
     @objc func trackIsStreaming(notification: Notification) {
 
         guard let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL else { return }
+
         if SpotifyManager.shared.isPlaying == true {
+
             rotate(image: collectionCover)
             collectionCover.sd_setImage(with: URL(string: url), completed: nil)
             rotateFlag = true
-//            showPlayerButton.isHidden = false
+
         } else if SpotifyManager.shared.isPlaying == false {
+
             collectionCover.image = #imageLiteral(resourceName: "black_record")
             removeAnimation(image: collectionCover)
             rotateFlag = false
-//            showPlayerButton.isHidden = true
+
         }
 
     }

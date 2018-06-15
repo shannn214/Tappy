@@ -26,11 +26,8 @@
 		090B6976209F403C0095B416 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090B6975209F403C0095B416 /* Setting.storyboard */; };
 		090B6978209F47D10095B416 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B6977209F47D10095B416 /* GameViewController.swift */; };
 		090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697920A00D1C0095B416 /* SpotifyManager.swift */; };
-		090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697B20A153FA0095B416 /* GameMapViewController.swift */; };
 		090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B697E20A18E9F0095B416 /* PlayerViewController.swift */; };
 		090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B698020A1907D0095B416 /* PopUpRecordViewController.swift */; };
-		0914190820A3388900B7C0F0 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190720A3388900B7C0F0 /* Record.swift */; };
-		0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190920A3EECA00B7C0F0 /* RecordProvider.swift */; };
 		0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914190D20A4839500B7C0F0 /* DesignSetting.swift */; };
 		0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914190F20A48EB300B7C0F0 /* Player.storyboard */; };
 		0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951973B20B1B9C1006E468E /* PlayerPanelView.swift */; };
@@ -65,14 +62,11 @@
 		09A6855A20B7032800BE0EA5 /* CircularStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */; };
 		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
 		09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855D20B9E43900BE0EA5 /* Intro.storyboard */; };
-		09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */; };
-		09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */; };
 		09A6856A20BCF2AA00BE0EA5 /* MapFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856920BCF2AA00BE0EA5 /* MapFinal.png */; };
 		09A6856C20BCFCFB00BE0EA5 /* harden.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856B20BCFCFA00BE0EA5 /* harden.png */; };
 		09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */; };
 		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
 		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
-		09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6857320BF024A00BE0EA5 /* HitTest.swift */; };
 		09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3043E20D0C3AC007645D5 /* Project2Tests.swift */; };
 		09B3044720D10F2A007645D5 /* TestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B3044620D10F2A007645D5 /* TestJson.json */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
@@ -129,11 +123,8 @@
 		090B6975209F403C0095B416 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		090B6977209F47D10095B416 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		090B697920A00D1C0095B416 /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
-		090B697B20A153FA0095B416 /* GameMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapViewController.swift; sourceTree = "<group>"; };
 		090B697E20A18E9F0095B416 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		090B698020A1907D0095B416 /* PopUpRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpRecordViewController.swift; sourceTree = "<group>"; };
-		0914190720A3388900B7C0F0 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		0914190920A3EECA00B7C0F0 /* RecordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProvider.swift; sourceTree = "<group>"; };
 		0914190D20A4839500B7C0F0 /* DesignSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSetting.swift; sourceTree = "<group>"; };
 		0914190F20A48EB300B7C0F0 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		0951973B20B1B9C1006E468E /* PlayerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPanelView.swift; sourceTree = "<group>"; };
@@ -168,14 +159,11 @@
 		09A6855920B7032700BE0EA5 /* CircularStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.otf"; sourceTree = "<group>"; };
 		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		09A6855D20B9E43900BE0EA5 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
-		09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeCollectionView.swift; sourceTree = "<group>"; };
 		09A6856920BCF2AA00BE0EA5 /* MapFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapFinal.png; sourceTree = "<group>"; };
 		09A6856B20BCFCFA00BE0EA5 /* harden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = harden.png; sourceTree = "<group>"; };
 		09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapppp-01.png"; sourceTree = "<group>"; };
 		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
 		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
-		09A6857320BF024A00BE0EA5 /* HitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTest.swift; sourceTree = "<group>"; };
 		09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B3043E20D0C3AC007645D5 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
 		09B3044020D0C3AC007645D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,7 +291,6 @@
 				09A62B3E20AF3FAE00BA5932 /* Achievement */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
-				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,8 +360,6 @@
 				098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */,
 				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
-				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
-				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -413,7 +398,6 @@
 				090B6969209F3FC00095B416 /* CollectionViewController.swift */,
 				09A62B2820AD380F00BA5932 /* CollectionListViewController.swift */,
 				0914190D20A4839500B7C0F0 /* DesignSetting.swift */,
-				09A6857320BF024A00BE0EA5 /* HitTest.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -440,8 +424,6 @@
 		0914190620A3386800B7C0F0 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				0914190720A3388900B7C0F0 /* Record.swift */,
-				0914190920A3EECA00B7C0F0 /* RecordProvider.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -828,18 +810,15 @@
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
-				09A6857420BF024A00BE0EA5 /* HitTest.swift in Sources */,
 				090B696C209F3FD30095B416 /* CardViewController.swift in Sources */,
 				09A62B2720AD2D6200BA5932 /* DBProvider.swift in Sources */,
 				09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */,
-				090B697C20A153FA0095B416 /* GameMapViewController.swift in Sources */,
 				098E103420C6CA3B00B9D7F2 /* SHConstants.swift in Sources */,
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
 				09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
-				0914190820A3388900B7C0F0 /* Record.swift in Sources */,
 				098E104820C917E300B9D7F2 /* Functions.swift in Sources */,
 				098E104E20C9646C00B9D7F2 /* OpeningViewController.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
@@ -860,17 +839,14 @@
 				09A6855420B5BB3400BE0EA5 /* PopView.swift in Sources */,
 				09C6CF3E20A9466600A6C567 /* Track.swift in Sources */,
 				09A62B4520B15FE600BA5932 /* NavigationController.swift in Sources */,
-				0914190A20A3EECA00B7C0F0 /* RecordProvider.swift in Sources */,
 				098E102E20C517E600B9D7F2 /* GameMapScrollView.swift in Sources */,
 				09C6CF3A20A82D4200A6C567 /* Spotify.swift in Sources */,
 				09A62B3720AE8D0200BA5932 /* TransitionAnimation.swift in Sources */,
 				098E104A20C91F8900B9D7F2 /* GameMapBGScrollView.swift in Sources */,
-				09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */,
 				090B6915209F03270095B416 /* AppDelegate.swift in Sources */,
 				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
-				09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

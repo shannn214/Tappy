@@ -66,11 +66,13 @@ class CollectionListViewController: UIViewController {
     private func setCollectionLayout() {
 
         if let setLayout = recordCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+
             let itemSize = UIScreen.main.bounds.width / 2
             setLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             setLayout.itemSize = CGSize(width: itemSize, height: 210)
             setLayout.minimumLineSpacing = 1
             setLayout.minimumInteritemSpacing = 0
+
         }
 
     }
@@ -98,6 +100,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
         let sortedArray = DBProvider.shared.sortedArray
         let info = sortedArray![indexPath.row]
+
         recordCell.artist.text = info.artist
         recordCell.trackName.text = info.trackName
         recordCell.cover.sd_setImage(with: URL(string: info.cover))
@@ -116,6 +119,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
         }
 
         return recordCell
+
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

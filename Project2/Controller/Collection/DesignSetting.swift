@@ -11,10 +11,12 @@ import Foundation
 struct DesignSetting {
 
     func designSetting(view: UIView) {
+
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 1
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 10
+
     }
 
     func imageShadow(shadowView: UIView, cover: UIView) {

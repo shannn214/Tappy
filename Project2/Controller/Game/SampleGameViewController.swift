@@ -22,9 +22,12 @@ class SampleGameViewController: UIViewController {
         super.viewDidLoad()
 
         createScrollViewAndMap()
+
         createCharactor()
-        self.imageView.isUserInteractionEnabled = true
+
         setupButton()
+
+        self.imageView.isUserInteractionEnabled = true
 
     }
 
@@ -34,16 +37,16 @@ class SampleGameViewController: UIViewController {
 
     @IBAction func logoutAction(_ sender: Any) {
 
-        DispatchQueue.main.async {
-            let delegate = UIApplication.shared.delegate as? AppDelegate
-            delegate?.window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
-        }
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+
+        delegate?.window?.rootViewController = UIStoryboard.loginStorybaord().instantiateInitialViewController()
 
     }
 
     func setupButton() {
 
         logoutButton.layer.cornerRadius = 15
+
         self.view.bringSubview(toFront: logoutButton)
 
     }
@@ -54,6 +57,7 @@ class SampleGameViewController: UIViewController {
 
         switch sender.state {
         case .ended:
+
             let pop = PopView()
             pop.center = sender.location(in: view)
             view.addSubview(pop)
@@ -95,8 +99,8 @@ class SampleGameViewController: UIViewController {
         let image = UIImage(contentsOfFile: url)
 
         imageView = UIImageView(image: image)
-        imageView.frame.size.height = UIScreen.main.bounds.height
-        imageView.frame.size.width = UIScreen.main.bounds.height/3297 * 22041
+        imageView.frame.size.height = SHConstants.screenHeight
+        imageView.frame.size.width = SHConstants.mapSizeWidth
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.backgroundColor = UIColor.black
         scrollView.contentSize = CGSize(width: imageView.bounds.width, height: UIScreen.main.bounds.height)

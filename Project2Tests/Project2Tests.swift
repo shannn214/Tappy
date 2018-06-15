@@ -21,7 +21,6 @@ class Project2Tests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
 
         spotifyManager = nil
 
@@ -30,9 +29,10 @@ class Project2Tests: XCTestCase {
 
     func testExample() {
 
-//        let ssss = SpotifyUrisManager.createManagerFromFile(fileName: UriConstant.fileName.rawValue, fileType: UriConstant.fileType.rawValue)
-//
-//        XCTAssertEqual(ssss.uris.count, 10)
+        let ssss = SpotifyUrisManager.createManagerFromFile(fileName: UriConstant.fileName.rawValue,
+                                                            fileType: UriConstant.fileType.rawValue)
+
+        XCTAssertEqual(ssss.uris.count, 10)
 
     }
 

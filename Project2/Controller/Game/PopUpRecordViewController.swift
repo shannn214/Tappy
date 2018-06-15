@@ -104,22 +104,23 @@ class PopUpRecordViewController: UIViewController {
         self.secondGuideView.isHidden = true
         self.firstGuideView.isHidden = false
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3,
+                       animations: {
 
-            self.firstGuideView.alpha = 1
-            self.firstGuideViewWidth.constant = 0
-            self.firstGuideViewHeight.constant = 128
-            self.view.layoutIfNeeded()
+                            self.firstGuideView.alpha = 1
+                            self.firstGuideViewWidth.constant = 0
+                            self.firstGuideViewHeight.constant = 128
+                            self.view.layoutIfNeeded()},
 
-        }) { [weak self] (_) in
+                       completion: { [weak self] (_) in
 
-            UIView.animate(withDuration: 0.35, animations: {
-                self?.firstGuideViewWidth.constant = 240
-                self?.didMove(toParentViewController: parent)
-                self?.view.layoutIfNeeded()
-            })
+                            UIView.animate(withDuration: 0.35, animations: {
+                                self?.firstGuideViewWidth.constant = 240
+                                self?.didMove(toParentViewController: parent)
+                                self?.view.layoutIfNeeded()
+                            })
 
-        }
+        })
 
     }
 
@@ -130,25 +131,23 @@ class PopUpRecordViewController: UIViewController {
         self.introView.isHidden = true
         self.firstGuideView.isHidden = true
 
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3,
+                       animations: {
 
-                self.secondGuideView.alpha = 1
-                self.secondGuideViewWidth.constant = 0
-                self.secondGuideViewHeight.constant = 128
-                self.view.layoutIfNeeded()
+                            self.secondGuideView.alpha = 1
+                            self.secondGuideViewWidth.constant = 0
+                            self.secondGuideViewHeight.constant = 128
+                            self.view.layoutIfNeeded() },
 
-            }) { [weak self] (_) in
+                       completion: { [weak self] (_) in
 
-                UIView.animate(withDuration: 0.35, animations: {
-                    self?.secondGuideViewWidth.constant = 240
-                    self?.didMove(toParentViewController: parent)
-                    self?.view.layoutIfNeeded()
-                })
+                            UIView.animate(withDuration: 0.35, animations: {
+                                self?.secondGuideViewWidth.constant = 240
+                                self?.didMove(toParentViewController: parent)
+                                self?.view.layoutIfNeeded()
+                            })
 
-            }
-
-        }
+        })
 
     }
 
@@ -179,6 +178,7 @@ class PopUpRecordViewController: UIViewController {
         firstGuideTouchHandler?()
 
         self.view.removeFromSuperview()
+
     }
 
     @IBAction func secondGuideAction(_ sender: Any) {
@@ -196,6 +196,7 @@ class PopUpRecordViewController: UIViewController {
         startGuideFlowHandler?()
 
         self.view.removeFromSuperview()
+
     }
 
     @IBAction func leaveButton(_ sender: Any) {
