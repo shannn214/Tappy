@@ -370,11 +370,11 @@
 				090B6977209F47D10095B416 /* GameViewController.swift */,
 				09A6854B20B3C3C300BE0EA5 /* GameMapTestViewController.swift */,
 				090B698020A1907D0095B416 /* PopUpRecordViewController.swift */,
+				098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */,
 				09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */,
 				09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */,
-				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 				09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */,
-				098E104D20C9646C00B9D7F2 /* OpeningViewController.swift */,
+				090B697B20A153FA0095B416 /* GameMapViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";

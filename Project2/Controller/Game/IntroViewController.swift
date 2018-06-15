@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Has replaced by openingView
 class IntroViewController: UIViewController {
 
     @IBOutlet weak var popUpView: UIView!

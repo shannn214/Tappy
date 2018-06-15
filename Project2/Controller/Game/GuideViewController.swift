@@ -22,7 +22,9 @@ class GuideViewController: UIViewController {
         super.viewDidLoad()
 
         createMaskLayer()
+
         self.view.bringSubview(toFront: cardGuideView)
+
         setupCardGuide()
 
     }
@@ -34,9 +36,11 @@ class GuideViewController: UIViewController {
     func setupCardGuide() {
 
         cardGuideView.layer.cornerRadius = 20
+
         cardGuideButton.layer.cornerRadius = 15
 
         cardGuideView.frame.size = CGSize(width: 0, height: 0)
+
         cardGuideViewTopConstraint.constant = UIScreen.main.bounds.height * 0.55
 
     }

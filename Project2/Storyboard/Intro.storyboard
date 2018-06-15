@@ -402,18 +402,18 @@
                                             <constraint firstAttribute="height" constant="30" id="kan-Hu-xIb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
-                                        <state key="normal" title="I don't care.">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="openingAction:" destination="Yc7-40-5tJ" eventType="touchUpInside" id="d9t-QJ-KfT"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" scrollEnabled="NO" editable="NO" text="Hi, I'm Tappy." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx1-eg-tDH">
-                                        <rect key="frame" x="20" y="50" width="200" height="120"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx1-eg-tDH">
+                                        <rect key="frame" x="20" y="30" width="200" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="sf7-c9-Ej1"/>
+                                            <constraint firstAttribute="height" constant="140" id="sf7-c9-Ej1"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="14"/>
@@ -427,7 +427,7 @@
                                     <constraint firstAttribute="bottom" secondItem="pMb-s0-h17" secondAttribute="bottom" constant="15" id="ZqY-1m-wZm"/>
                                     <constraint firstItem="pMb-s0-h17" firstAttribute="centerX" secondItem="Z0V-b8-XFp" secondAttribute="centerX" id="cd0-x0-zI0"/>
                                     <constraint firstAttribute="trailing" secondItem="Yx1-eg-tDH" secondAttribute="trailing" constant="20" id="tvP-EP-gba"/>
-                                    <constraint firstItem="Yx1-eg-tDH" firstAttribute="top" secondItem="Z0V-b8-XFp" secondAttribute="top" constant="50" id="uUq-KO-cSV"/>
+                                    <constraint firstItem="Yx1-eg-tDH" firstAttribute="top" secondItem="Z0V-b8-XFp" secondAttribute="top" constant="30" id="uUq-KO-cSV"/>
                                     <constraint firstItem="Yx1-eg-tDH" firstAttribute="centerX" secondItem="Z0V-b8-XFp" secondAttribute="centerX" id="yil-IC-IAo"/>
                                     <constraint firstAttribute="width" constant="240" id="zGb-sP-NRe"/>
                                 </constraints>

@@ -15,9 +15,9 @@ class GameViewController: UIViewController {
 
     @IBOutlet var tapGesture: UITapGestureRecognizer!
 
-    var distance = 0.0
-    var checkLevel = 0
-    let CDButtonArray = [UIButton(), UIButton()]
+//    var distance = 0.0
+//    var checkLevel = 0
+//    let CDButtonArray = [UIButton(), UIButton()]
     let firstLogin = UserDefaults.standard
 
     var scrollView: UIScrollView!
@@ -28,19 +28,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        initialSetting()
-//
-//        LevelStatusManager.shared.showNewLevel()
-//        DBProvider.shared.getSortedArray()
-
         tapGesture.cancelsTouchesInView = false
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-//        DBProvider.shared.getSortedArray()
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,7 +42,9 @@ class GameViewController: UIViewController {
         initialSetting()
 
         LevelStatusManager.shared.showNewLevel()
+
         DBProvider.shared.getSortedArray()
+
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -67,22 +62,24 @@ class GameViewController: UIViewController {
 
             guard let mapHeight = self.gameMapViewController?.gameMapScrollView.mapImageView.bounds.height else { return }
 
-            let dddd = point.x
+            guard let monsterCenter = self.gameMapViewController?.gameMapScrollView.monster.center.x else { return }
 
-            if Int(dddd) < Int((self.gameMapViewController?.gameMapScrollView.monster.center.x)!) {
+            let tapPoint = point.x
+
+            if Int(tapPoint) < Int(monsterCenter) {
                 self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "left_pink")
             } else {
                 self.gameMapViewController?.gameMapScrollView.monster.image = #imageLiteral(resourceName: "right_pink")
             }
 
             UIView.animate(withDuration: 0.4) {
-                self.gameMapViewController!.gameMapScrollView.monster.frame = CGRect(x: point.x,
+                self.gameMapViewController?.gameMapScrollView.monster.frame = CGRect(x: point.x,
                                                                                      y: 77 * mapHeight / 100,
                                                                                      width: 75,
                                                                                      height: 62)
             }
         default:
-            print("Nope")
+            break
         }
 
     }
@@ -115,9 +112,11 @@ class GameViewController: UIViewController {
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
         for dataIndex in 0...uriManager.uris.count - 1 {
+
             SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
                                                     albumUri: uriManager.uris[dataIndex].albumUri,
                                                     level: uriManager.uris[dataIndex].level)
+
         }
 
     }
