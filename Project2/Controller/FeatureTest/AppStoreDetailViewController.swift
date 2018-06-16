@@ -13,10 +13,13 @@ class AppStoreDetailViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var backgroundView: UIView!
 
+    var gesture: UIGestureRecognizer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialSetup()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,25 +33,46 @@ class AppStoreDetailViewController: UIViewController {
         self.view.layer.cornerRadius = 20
         self.view.clipsToBounds = true
 
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapCellBeforeLose(sender:)))
-        longPressGesture.minimumPressDuration = 0.1
-        self.view.addGestureRecognizer(longPressGesture)
+//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapCellBeforeLose(sender:)))
+//        longPressGesture.minimumPressDuration = 0
+//        longPressGesture.delegate = self
+//        self.view.addGestureRecognizer(longPressGesture)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCellVC(sender:)))
+        tapGesture.delegate = self
+        self.view.addGestureRecognizer(tapGesture)
+
+    }
+
+    @objc func tapCellVC(sender: UITapGestureRecognizer) {
+
+//        if sender.state == .began {
+//
+//            handleLongPressBegan()
+//
+//        } else if sender.state == .cancelled || sender.state == .ended {
+//
+//            handleLongPressEnded()
+//
+//        }
 
     }
 
     @objc func tapCellBeforeLose(sender: UILongPressGestureRecognizer) {
 
-        let touchPoint = sender.location(in: self.view.window)
-
-        if sender.state == .began {
-
-            handleLongPressBegan()
-
-        } else if sender.state == .cancelled || sender.state == .ended {
-
-            handleLongPressEnded()
-
-        }
+//        let touchPoint = sender.location(in: self.view.window)
+//
+//        sender.allowableMovement = 1
+//
+//        if sender.state == .began {
+//
+//            handleLongPressBegan()
+//
+//        } else if sender.state == .cancelled || sender.state == .ended {
+//
+//            handleLongPressEnded()
+//
+//        }
 
     }
 
@@ -58,7 +82,7 @@ class AppStoreDetailViewController: UIViewController {
                        delay: 0,
                        usingSpringWithDamping: 0.9,
                        initialSpringVelocity: 0.1,
-                       options: .beginFromCurrentState,
+                       options: .curveEaseInOut,
                        animations: {
                             self.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
                        }, completion: nil)
@@ -69,7 +93,7 @@ class AppStoreDetailViewController: UIViewController {
 
         UIView.animate(withDuration: 0.3,
                        delay: 0,
-                       options: .beginFromCurrentState,
+                       options: .curveEaseInOut,
                        animations: {
                             self.view.transform = CGAffineTransform.identity
                        }, completion: nil)
@@ -83,4 +107,46 @@ class AppStoreDetailViewController: UIViewController {
 
     }
 
+}
+
+extension AppStoreDetailViewController: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        return true
+    }
+
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+        if touch.phase == .began {
+
+            handleLongPressBegan()
+
+        } else if touch.location(in: view) != touch.previousLocation(in: view) {
+
+            handleLongPressEnded()
+
+        }
+
+        return false
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+//        if otherGestureRecognizer.view is UIScrollView {
+//
+//            handleLongPressEnded()
+//
+//        }
+
+        if otherGestureRecognizer.state == .began {
+            handleLongPressEnded()
+        }
+
+        return true
+    }
 }

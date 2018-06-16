@@ -190,3 +190,23 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
 }
+
+extension AppStoreViewController: UIGestureRecognizerDelegate {
+
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        if appStoreCollectionView.panGestureRecognizer.state == .began {
+
+        }
+
+        return false
+    }
+}
