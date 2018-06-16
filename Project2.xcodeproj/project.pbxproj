@@ -78,6 +78,8 @@
 		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
 		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
 		09D1342520D11F6A00806CAA /* Project2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1342420D11F6A00806CAA /* Project2UITests.swift */; };
+		09D1342F20D508B400806CAA /* HitTestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1342E20D508B400806CAA /* HitTestUIView.swift */; };
+		09D1343220D50E1900806CAA /* CollectionTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1343120D50E1900806CAA /* CollectionTopView.swift */; };
 		09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */; };
 		09D9D56120C433E600A188CE /* MurmurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D56020C433E600A188CE /* MurmurView.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
@@ -179,6 +181,8 @@
 		09D1342220D11F6A00806CAA /* Project2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09D1342420D11F6A00806CAA /* Project2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2UITests.swift; sourceTree = "<group>"; };
 		09D1342620D11F6A00806CAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09D1342E20D508B400806CAA /* HitTestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTestUIView.swift; sourceTree = "<group>"; };
+		09D1343120D50E1900806CAA /* CollectionTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTopView.swift; sourceTree = "<group>"; };
 		09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		09D9D56020C433E600A188CE /* MurmurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MurmurView.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 		090B694D209F04670095B416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09D1343020D50DF800806CAA /* Collection */,
 				098E102C20C517B500B9D7F2 /* Game */,
 				09D9D55F20C433C100A188CE /* UIViewTest */,
 				0951973A20B1B9A0006E468E /* Player */,
@@ -552,10 +557,19 @@
 			path = Project2UITests;
 			sourceTree = "<group>";
 		};
+		09D1343020D50DF800806CAA /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				09D1343120D50E1900806CAA /* CollectionTopView.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
 		09D9D55F20C433C100A188CE /* UIViewTest */ = {
 			isa = PBXGroup;
 			children = (
 				09D9D56020C433E600A188CE /* MurmurView.swift */,
+				09D1342E20D508B400806CAA /* HitTestUIView.swift */,
 			);
 			path = UIViewTest;
 			sourceTree = "<group>";
@@ -815,6 +829,7 @@
 				09A62B2920AD380F00BA5932 /* CollectionListViewController.swift in Sources */,
 				098E103420C6CA3B00B9D7F2 /* SHConstants.swift in Sources */,
 				09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */,
+				09D1343220D50E1900806CAA /* CollectionTopView.swift in Sources */,
 				09A6854C20B3C3C300BE0EA5 /* GameMapTestViewController.swift in Sources */,
 				090B695C209F3B540095B416 /* LoginViewController.swift in Sources */,
 				09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */,
@@ -832,6 +847,7 @@
 				09D9D56120C433E600A188CE /* MurmurView.swift in Sources */,
 				0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */,
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
+				09D1342F20D508B400806CAA /* HitTestUIView.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */,
 				098E104C20C9256C00B9D7F2 /* MaskLayer.swift in Sources */,

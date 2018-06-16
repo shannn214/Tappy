@@ -152,15 +152,6 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
             })
 
-        } else {
-
-            present(playerVC, animated: true) {
-
-                playerVC.playerPanelView.artist.text = "---"
-                playerVC.playerPanelView.trackName.text = "---"
-
-            }
-
         }
 
     }
