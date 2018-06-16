@@ -127,7 +127,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         guard let collectionY = collectionTransition else { return }
 
-        topView.frame = CGRect(x: 0, y: 0 - collectionY, width: topView.frame.width, height: 255)
+        topView.frame.origin.y = -collectionY
 
 //        topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
 //        topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY

@@ -65,6 +65,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="topViewCover" destination="0eR-Yv-vTM" id="XVh-y9-fYg"/>
+                                            <outlet property="topViewCoverConstraint" destination="TcD-Cx-eIq" id="2cU-kb-D1O"/>
                                             <outlet property="topViewLabel" destination="atp-i1-KPm" id="LNQ-4N-raR"/>
                                         </connections>
                                     </view>

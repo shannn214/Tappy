@@ -12,11 +12,7 @@ class HitTestUIView: UIView {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
-        if hitView == self {
-            return nil
-        } else {
-            return hitView
-        }
+        return hitView == self ? nil : hitView
     }
 
 }

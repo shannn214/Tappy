@@ -10,8 +10,9 @@ import Foundation
 
 class CollectionTopView: UIView {
 
-    @IBOutlet var topViewCover: UIImageView!
-    @IBOutlet var topViewLabel: UILabel!
+    @IBOutlet weak var topViewCover: UIImageView!
+    @IBOutlet weak var topViewLabel: UILabel!
+    @IBOutlet weak var topViewCoverConstraint: NSLayoutConstraint!
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
