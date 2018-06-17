@@ -114,52 +114,31 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 //        cell?.addGestureRecognizer(longPressGesture)
         //----------
 
+        //-----tap gesture test-----
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCell(sender:)))
+//        cell?.addGestureRecognizer(tapGesture)
+
         return cell!
     }
-    //------
-//    @objc func tapCellBeforeLose(sender: UILongPressGestureRecognizer) {
-//
-//        if sender.state == .began {
-//
-//            handleLongPressBegan()
-//
-//        } else if sender.state == .cancelled || sender.state == .ended {
-//
-//            handleLongPressEnded()
-//
-//        }
-//
-//    }
-//
-//    func handleLongPressBegan() {
-//
-//        UIView.animate(withDuration: 0.5,
-//                       delay: 0,
-//                       usingSpringWithDamping: 0.9,
-//                       initialSpringVelocity: 0.1,
-//                       options: .beginFromCurrentState,
-//                       animations: {
-////                        self.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-//                        guard let appStoreDetailVC = self.controllers[(self.selectedIndex?.row)!] as? AppStoreDetailViewController else { return }
-//
-//                        appStoreDetailVC.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-//
-//        }, completion: nil)
-//
-//    }
-//
-//    func handleLongPressEnded() {
-//
-//        UIView.animate(withDuration: 0.3,
-//                       delay: 0,
-//                       options: .beginFromCurrentState,
-//                       animations: {
-//                        self.view.transform = CGAffineTransform.identity
-//        }, completion: nil)
-//
-//    }
 
-    //------
+    @objc func tapCell(sender: UITapGestureRecognizer) {
+
+        touchCell()
+
+    }
+
+    func touchCell() {
+
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.9,
+                       initialSpringVelocity: 0.1,
+                       options: .curveEaseInOut,
+                       animations: {
+                        self.appStoreCollectionView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) },
+                       completion: nil)
+
+    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -174,13 +153,16 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
         let point = appStoreCollectionView.convert(cell.frame.origin, to: self.view)
 
         self.selectedIndex = indexPath
+
         self.selectedPoint = point
 
         appStoreDetailVC.view.frame = CGRect(origin: point, size: cell.contentView.bounds.size)
 
-//        appStoreDetailVC.view.center = cell.contentView.center
-
         self.view.bringSubview(toFront: appStoreDetailVC.view)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCell(sender:)))
+        
+        appStoreDetailVC.view.addGestureRecognizer(tapGesture)
 
         UIView.animate(withDuration: 1) {
             appStoreDetailVC.view.frame = self.view.frame
@@ -193,6 +175,17 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension AppStoreViewController: UIGestureRecognizerDelegate {
 
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+        if touch.phase == .began {
+
+            touchCell()
+
+        }
+
+        return false
+    }
+
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 //        return true
 //    }
@@ -200,13 +193,10 @@ extension AppStoreViewController: UIGestureRecognizerDelegate {
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 //        return true
 //    }
-
+//
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
-        if appStoreCollectionView.panGestureRecognizer.state == .began {
-
-        }
-
-        return false
+        return true
     }
+
 }

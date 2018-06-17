@@ -38,9 +38,9 @@ class AppStoreDetailViewController: UIViewController {
 //        longPressGesture.delegate = self
 //        self.view.addGestureRecognizer(longPressGesture)
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCellVC(sender:)))
-        tapGesture.delegate = self
-        self.view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCellVC(sender:)))
+//        tapGesture.delegate = self
+//        self.view.addGestureRecognizer(tapGesture)
 
     }
 
@@ -61,18 +61,18 @@ class AppStoreDetailViewController: UIViewController {
     @objc func tapCellBeforeLose(sender: UILongPressGestureRecognizer) {
 
 //        let touchPoint = sender.location(in: self.view.window)
-//
+
 //        sender.allowableMovement = 1
-//
-//        if sender.state == .began {
-//
-//            handleLongPressBegan()
-//
-//        } else if sender.state == .cancelled || sender.state == .ended {
-//
-//            handleLongPressEnded()
-//
-//        }
+
+        if sender.state == .began {
+
+            handleLongPressBegan()
+
+        } else if sender.state == .cancelled || sender.state == .ended {
+
+            handleLongPressEnded()
+
+        }
 
     }
 
@@ -111,42 +111,47 @@ class AppStoreDetailViewController: UIViewController {
 
 extension AppStoreDetailViewController: UIGestureRecognizerDelegate {
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-
-        return true
-    }
-
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//
 //        return true
 //    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//
+//        if otherGestureRecognizer.state == .began {
+//            return true
+//        }
+//        return false
+//    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//
+//        if touch.phase == .began {
+//
+//            handleLongPressBegan()
+//
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-
-        if touch.phase == .began {
-
-            handleLongPressBegan()
-
-        } else if touch.location(in: view) != touch.previousLocation(in: view) {
-
-            handleLongPressEnded()
-
-        }
-
-        return false
-    }
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-
+//        } else if touch.location(in: view) != touch.previousLocation(in: view) {
+//
+//            handleLongPressEnded()
+//
+//        }
+//
+//        return false
+//    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//
 //        if otherGestureRecognizer.view is UIScrollView {
 //
 //            handleLongPressEnded()
 //
 //        }
-
-        if otherGestureRecognizer.state == .began {
-            handleLongPressEnded()
-        }
-
-        return true
-    }
+//
+//        if otherGestureRecognizer.state == .began {
+//            handleLongPressEnded()
+//        }
+//
+//        return true
+//    }
 }
