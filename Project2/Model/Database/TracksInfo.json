@@ -5,70 +5,80 @@
               "albumUri" : "spotify:album:6anOpUuzfcD0zNPDW1zPOT",
               "level" : 1,
               "image" : "flower_jelly0",
-              "hint" : "Next hint: Fire!!!"
+              "hint" : "Next hint: Fire!!!",
+              "murmur" : ["BoooBooooo", "YaHaHa", "Burnnnnn!!!", ">_<", "Drop the beat!", "Tapppppy the best!", "想吃烤肉"]
               },
               {
               "trackUri" : "spotify:track:1nXRacxi1isUvleBB6Jgx7",
               "albumUri" : "spotify:album:0AVPusXNzK1jWwefBiPJ5I",
               "level" : 2,
               "image" : "fire_jelly0",
-              "hint" : "Next hint: Cloud!"
+              "hint" : "Next hint: Cloud!",
+              "murmur" : ["Colorful cloud!", "I remember...", "Hidden in the sky?", ">_<", "S...saw...?", "duolC", "想吃豆干"]
               },
               {
               "trackUri" : "spotify:track:0oks4FnzhNp5QPTZtoet7c",
               "albumUri" : "spotify:album:4m2880jivSbbyEGAKfITCa",
               "level" : 3,
               "image" : "cloud_jelly0",
-              "hint" : "Next hint: Water!"
+              "hint" : "Next hint: Water!",
+              "murmur" : ["想吃滷味", "YaHaHa", "Hehe~~~", ">_<", "Drop the beat!", "Nuh", "Water me!"]
               },
               {
               "trackUri" : "spotify:track:6jPSxPbNzV64hdwrFIPaIl",
               "albumUri" : "spotify:album:0X8YRrzzbL4RE1bPgRz6eW",
               "level" : 4,
               "image" : "cry_jelly0",
-              "hint" : "Next hint: Star!"
+              "hint" : "Next hint: Star!",
+              "murmur" : ["想吃麻辣鍋", "YaHaHa", "Bling* Bling*", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
               },
               {
               "trackUri" : "spotify:track:4GKk1uNzpxIptBuaY97Dkj",
               "albumUri" : "spotify:album:2G4AUqfwxcV1UdQjm2ouYr",
               "level" : 5,
               "image" : "star_jelly0",
-              "hint" : "Next hint: Weapon!"
+              "hint" : "Next hint: Weapon!",
+              "murmur" : ["想吃拉麵", "YaHaHa", "Master of Collector!", ">_<", "Drop the beat!", "Tapppppy the best!", "zzz"]
               },
               {
               "trackUri" : "spotify:track:62LJFaYihsdVrrkgUOJC05",
               "albumUri" : "spotify:album:54DjkEN3wdCQgfCTZ9WjdB",
               "level" : 6,
               "image" : "master_jelly0",
-              "hint" : "Next hint: Shadow!"
+              "hint" : "Next hint: Shadow!",
+              "murmur" : ["想喝珍奶", "YaHaHa", "Pizza! Pizza!", ">_<", "Darknessssss!!!", "Tapppppy the best!", "大好き"]
               },
               {
               "trackUri" : "spotify:track:3cPtV3L2SinV7YQhflqFad",
               "albumUri" : "spotify:album:3LDLJX6JTDZvcCdkK7JQit",
               "level" : 7,
               "image" : "black_jelly",
-              "hint" : "Next hint: Original position!"
+              "hint" : "Next hint: Original position!",
+              "murmur" : ["想睡覺", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
               },
               {
               "trackUri" : "spotify:track:4dyx5SzxPPaD8xQIid5Wjj",
               "albumUri" : "spotify:album:5g4E06cxsFEMFE9hSekAt2",
               "level" : 8,
               "image" : "peek_jelly",
-              "hint" : "No more hint now."
+              "hint" : "No more hint now.",
+              "murmur" : ["想吃巧克力", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
               },
               {
               "trackUri" : "spotify:track:5HcsDG8COSFJcr15Qw7j9e",
               "albumUri" : "spotify:album:2UQpIR7LhOlWecHpN494O5",
               "level" : 9,
               "image" : "",
-              "hint" : ""
+              "hint" : "",
+              "murmur" : ["想吃鹹水雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
               },
               {
               "trackUri" : "spotify:track:6y6KjfkOZMCbzwOPKKDwi0",
               "albumUri" : "spotify:album:1m3pbwuYJS9OsXyM2jOSXE",
               "level" : 10,
               "image" : "",
-              "hint" : ""
+              "hint" : "",
+              "murmur" : ["想吃鹹酥雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
               }
     ]
     
