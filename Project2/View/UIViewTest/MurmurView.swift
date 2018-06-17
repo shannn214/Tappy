@@ -69,7 +69,7 @@ class MurmurView: UIView {
 }
 
 extension String {
-
+    // NOTE: String length
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedStringKey.font: font]
         let size = self.size(withAttributes: fontAttributes)
