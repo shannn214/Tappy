@@ -158,12 +158,6 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
         appStoreDetailVC.view.frame = CGRect(origin: point, size: cell.contentView.bounds.size)
 
-        self.view.bringSubview(toFront: appStoreDetailVC.view)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCell(sender:)))
-        
-        appStoreDetailVC.view.addGestureRecognizer(tapGesture)
-
         UIView.animate(withDuration: 1) {
             appStoreDetailVC.view.frame = self.view.frame
             appStoreDetailVC.changeToFullScreen()
