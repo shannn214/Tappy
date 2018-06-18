@@ -22,5 +22,11 @@ class CollectionTopView: UIView {
             return nil
         }
     }
+    
+//    override var frame: CGRect {
+//        didSet {
+//            print("-------jjsjsjsjs")
+//        }
+//    }
 
 }

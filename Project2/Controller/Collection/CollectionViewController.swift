@@ -11,7 +11,7 @@ import Foundation
 class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var recordsContainerView: UIView!
-    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topView: HitTestUIView!
 //    @IBOutlet weak var secondCollectionText: UILabel!
 //    @IBOutlet weak var collectionCover: UIImageView!
     @IBOutlet weak var collectionTopView: CollectionTopView!
@@ -67,6 +67,13 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //換圖會重新畫subview的frame，重劃會依據autolayout來重設frame，導致top cover往下掉，所以要再重算時在改變一次。
+        changeTopView()
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let collectionListViewController = segue.destination as? CollectionListViewController {
@@ -101,13 +108,15 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
 
+//        playerVC.modalPresentationStyle = .custom
+        
         present(playerVC, animated: true) {
-
+            
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
             playerVC.backgroundCover.sd_setImage(with: URL(string: url))
             playerVC.playerPanelView.artist.text = artist
             playerVC.playerPanelView.trackName.text = trackName
-
+            
         }
 
     }
@@ -128,6 +137,10 @@ extension CollectionViewController: CollectionListControllerDelegate {
         guard let collectionY = collectionTransition else { return }
 
         topView.frame.origin.y = -collectionY
+        print("==============")
+        print(collectionTopView.topViewCover.frame)
+        print(collectionTopView.frame)
+        print(topView.frame)
 
 //        topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
 //        topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY
@@ -161,7 +174,7 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
     func removeAnimation(image: UIImageView) {
         image.layer.removeAllAnimations()
-        image.layoutIfNeeded()
+//        image.layoutIfNeeded()
     }
 
     @objc func trackIsStreaming(notification: Notification) {
@@ -174,11 +187,14 @@ extension CollectionViewController: CollectionListControllerDelegate {
             collectionTopView.topViewCover.sd_setImage(with: URL(string: url), completed: nil)
             rotateFlag = true
 
+
+
         } else if SpotifyManager.shared.isPlaying == false {
 
             collectionTopView.topViewCover.image = #imageLiteral(resourceName: "black_record")
             removeAnimation(image: collectionTopView.topViewCover)
             rotateFlag = false
+
 
         }
 
