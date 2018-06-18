@@ -280,7 +280,6 @@
 				09A62B2220AAAD9800BA5932 /* Game */,
 				09C6CF3F20A9701900A6C567 /* Database */,
 				09C6CF3820A82D2800A6C567 /* Spotify */,
-				0914190620A3386800B7C0F0 /* Record */,
 				090B6960209F3BD10095B416 /* Notification */,
 			);
 			path = Model;
@@ -424,13 +423,6 @@
 				09A62B3920AED14700BA5932 /* TrackCollectionViewCell.xib */,
 			);
 			path = RecordCell;
-			sourceTree = "<group>";
-		};
-		0914190620A3386800B7C0F0 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Record;
 			sourceTree = "<group>";
 		};
 		0951973A20B1B9A0006E468E /* Player */ = {
