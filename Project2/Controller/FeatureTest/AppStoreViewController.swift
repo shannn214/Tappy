@@ -25,6 +25,8 @@ class AppStoreViewController: UIViewController {
 
     var selectedPoint: CGPoint?
 
+    var seletedCell: UICollectionViewCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -87,24 +89,28 @@ class AppStoreViewController: UIViewController {
 extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return controllers.count
+
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = appStoreCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AppStoreCollectionViewCell.self), for: indexPath) as? AppStoreCollectionViewCell
+        guard let cell = appStoreCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AppStoreCollectionViewCell.self), for: indexPath) as? AppStoreCollectionViewCell else { return UICollectionViewCell() }
 
-        guard let appStoreDetailVC = controllers[indexPath.row] as? AppStoreDetailViewController else { return cell! }
+        guard let appStoreDetailVC = controllers[indexPath.row] as? AppStoreDetailViewController else { return cell }
+
+        cell.delegate = self
 
         self.addChildViewController(appStoreDetailVC)
 
-        cell?.appStoreCellView.addSubview(appStoreDetailVC.view)
+        cell.appStoreCellView.addSubview(appStoreDetailVC.view)
 
-        appStoreDetailVC.view.frame = (cell?.contentView.bounds)!
+        appStoreDetailVC.view.frame = cell.contentView.bounds
 
         appStoreDetailVC.didMove(toParentViewController: self)
 
-        cell?.clipsToBounds = true
+        cell.clipsToBounds = true
 
         cellIndex = indexPath
 
@@ -116,18 +122,19 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
         //-----tap gesture test-----
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCell(sender:)))
-//        cell?.addGestureRecognizer(tapGesture)
+//        
+//        tapGesture.delegate = self
+//        
+//        cell?.contentView.addGestureRecognizer(tapGesture)
 
-        return cell!
+        return cell
     }
 
     @objc func tapCell(sender: UITapGestureRecognizer) {
 
-        touchCell()
-
     }
 
-    func touchCell() {
+    func touchCellContentView() {
 
         UIView.animate(withDuration: 0.5,
                        delay: 0,
@@ -140,28 +147,18 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
     }
 
+    func touchCellContentEnded() {
+
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveEaseInOut,
+                       animations: {
+                        self.view.transform = CGAffineTransform.identity
+        }, completion: nil)
+
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        guard let cell = appStoreCollectionView.cellForItem(at: indexPath) else { return }
-
-        guard let appStoreDetailVC = controllers[indexPath.row] as? AppStoreDetailViewController else { return }
-
-        appStoreDetailVC.view.removeFromSuperview()
-
-        self.view.addSubview(appStoreDetailVC.view)
-
-        let point = appStoreCollectionView.convert(cell.frame.origin, to: self.view)
-
-        self.selectedIndex = indexPath
-
-        self.selectedPoint = point
-
-        appStoreDetailVC.view.frame = CGRect(origin: point, size: cell.contentView.bounds.size)
-
-        UIView.animate(withDuration: 1) {
-            appStoreDetailVC.view.frame = self.view.frame
-            appStoreDetailVC.changeToFullScreen()
-        }
 
     }
 
@@ -171,13 +168,21 @@ extension AppStoreViewController: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 
+        print("-----------")
+        print("touch")
+        print(touch.phase.rawValue)
+
         if touch.phase == .began {
 
-            touchCell()
+            touchCellContentView()
+
+        } else if touch.phase == .ended || touch.phase == .cancelled {
+
+            touchCellContentEnded()
 
         }
 
-        return false
+        return true
     }
 
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -188,9 +193,36 @@ extension AppStoreViewController: UIGestureRecognizerDelegate {
 //        return true
 //    }
 //
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//
+//        return true
+//    }
 
-        return true
+}
+
+extension AppStoreViewController: CellViewDelegate {
+
+    func cellTouchedEnded(_ cell: AppStoreCollectionViewCell) {
+
+        selectedIndex = appStoreCollectionView.indexPath(for: cell)
+
+        guard let appStoreDetailVC = controllers[(selectedIndex?.row)!] as? AppStoreDetailViewController else { return }
+
+        appStoreDetailVC.view.removeFromSuperview()
+
+        self.view.addSubview(appStoreDetailVC.view)
+
+        let point = appStoreCollectionView.convert(cell.frame.origin, to: self.view)
+
+        self.selectedPoint = point
+
+        appStoreDetailVC.view.frame = CGRect(origin: point, size: cell.contentView.bounds.size)
+
+        UIView.animate(withDuration: 0.35) {
+            appStoreDetailVC.view.frame = self.view.frame
+            appStoreDetailVC.changeToFullScreen()
+        }
+
     }
 
 }

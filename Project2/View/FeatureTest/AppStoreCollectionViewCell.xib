@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="306" height="209"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSj-eS-WXh">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSj-eS-WXh" customClass="AppStoreView" customModule="Project2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="209"/>
                         <color key="backgroundColor" red="0.72042363880000004" green="0.22349220480000001" blue="0.35941043109999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

@@ -85,6 +85,7 @@
 		09C6CF3E20A9466600A6C567 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF3D20A9466600A6C567 /* Track.swift */; };
 		09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 09C6CF4020A9737B00A6C567 /* TracksInfo.json */; };
 		09C6CF4320A9763A00A6C567 /* TracksInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */; };
+		09D1349920D8FA2400806CAA /* AppStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1349820D8FA2400806CAA /* AppStoreView.swift */; };
 		09D9D55E20C2E8FD00A188CE /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */; };
 		09D9D56120C433E600A188CE /* MurmurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9D56020C433E600A188CE /* MurmurView.swift */; };
 		DBDC4C6C15156651F106BA6E /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B982F5871BB1854FF20E49 /* Pods_Project2.framework */; };
@@ -172,6 +173,7 @@
 		09C6CF3D20A9466600A6C567 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		09C6CF4020A9737B00A6C567 /* TracksInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TracksInfo.json; sourceTree = "<group>"; };
 		09C6CF4220A9763A00A6C567 /* TracksInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksInfoManager.swift; sourceTree = "<group>"; };
+		09D1349820D8FA2400806CAA /* AppStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreView.swift; sourceTree = "<group>"; };
 		09D9D55D20C2E8FD00A188CE /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		09D9D56020C433E600A188CE /* MurmurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MurmurView.swift; sourceTree = "<group>"; };
 		287FE4E269014CC2187CD712 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			children = (
 				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 				098E103A20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift */,
+				09D1349820D8FA2400806CAA /* AppStoreView.swift */,
 				098E103B20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib */,
 			);
 			path = FeatureTest;
@@ -753,6 +756,7 @@
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,
 				09A62B2420AAADAE00BA5932 /* LevelStatusManager.swift in Sources */,
+				09D1349920D8FA2400806CAA /* AppStoreView.swift in Sources */,
 				09A62B4120AF3FCD00BA5932 /* CardCollectionViewCell.swift in Sources */,
 				09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */,
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
