@@ -16,17 +16,18 @@ class CollectionTopView: UIView {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
-        if topViewCover.frame.contains(point) {
-            return hitView
-        } else {
-            return nil
-        }
+//        if topViewCover.frame.contains(point) {
+//            return hitView
+//        } else {
+//            return nil
+//        }
+        return hitView
     }
     
-//    override var frame: CGRect {
-//        didSet {
-//            print("-------jjsjsjsjs")
-//        }
-//    }
+    override var frame: CGRect {
+        didSet {
+            print("-------jjsjsjsjs")
+        }
+    }
 
 }

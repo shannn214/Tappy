@@ -12,13 +12,16 @@ class HitTestUIView: UIView {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
-        return hitView == self ? nil : hitView
+//        return hitView == self ? nil : hitView
+
+        return hitView
     }
     
     override var frame: CGRect {
         
         didSet {
             print("kdkdkdkdkdkd")
+            print(self)
         }
     }
 

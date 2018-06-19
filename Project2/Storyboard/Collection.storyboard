@@ -70,7 +70,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.64705882349999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1S6-mH-ztL" firstAttribute="leading" secondItem="7L0-U8-Wh8" secondAttribute="leading" id="ITd-CR-az2"/>
                                     <constraint firstAttribute="trailing" secondItem="1S6-mH-ztL" secondAttribute="trailing" id="LFY-Hu-BMA"/>
