@@ -12,17 +12,13 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var recordsContainerView: UIView!
     @IBOutlet weak var topView: HitTestUIView!
-//    @IBOutlet weak var secondCollectionText: UILabel!
-//    @IBOutlet weak var collectionCover: UIImageView!
+
     @IBOutlet weak var collectionTopView: CollectionTopView!
     @IBOutlet weak var gradientView: UIView!
 
     @IBOutlet weak var gradientHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-//
-//    @IBOutlet weak var showPlayerButton: UIButton!
 
     var recordTransition: CGFloat?
 
@@ -61,9 +57,9 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        if rotateFlag == true {
-//            rotate(image: collectionTopView.topViewCover)
-//        }
+        if rotateFlag == true {
+            rotate(image: collectionTopView.topViewCover)
+        }
 
     }
 
@@ -71,7 +67,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         
         //換圖會重新畫subview的frame，重劃會依據autolayout來重設frame，導致top cover往下掉，所以要再重算時在改變一次。
-//        changeTopView()
+        changeTopView()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,7 +92,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
         collectionTopView.topViewCover.addGestureRecognizer(tapGestureRecognizer)
 
-//        rotateFlag = false
+        rotateFlag = false
 
     }
 
@@ -107,8 +103,6 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
               let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
-
-//        playerVC.modalPresentationStyle = .custom
         
         present(playerVC, animated: true) {
             
@@ -137,10 +131,6 @@ extension CollectionViewController: CollectionListControllerDelegate {
         guard let collectionY = collectionTransition else { return }
 
         topView.frame.origin.y = -collectionY
-        print("==============")
-        print(collectionTopView.topViewCover.frame)
-        print(collectionTopView.frame)
-        print(topView.frame)
 
 //        topViewHeightConstraint.constant = SHConstants.topViewHeight - collectionY
 //        topImageConstraint.constant = SHConstants.navigationBarHeight - collectionY
@@ -155,26 +145,28 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
     func playerViewDidDismiss(url: String) {
 
-//        collectionTopView.topViewCover.sd_setImage(with: URL(string: url), completed: nil)
-//        rotate(image: collectionTopView.topViewCover)
+        collectionTopView.topViewCover.sd_setImage(with: URL(string: url), completed: nil)
+        rotate(image: collectionTopView.topViewCover)
 
     }
 
     func rotate(image: UIImageView) {
 
-//        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-//        rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
-//        rotationAnimation.duration = 10
-//        rotationAnimation.isCumulative = true
-//        rotationAnimation.repeatCount = .infinity
-//        image.layer.add(rotationAnimation, forKey: "rotationAnimation")
-//        image.layer.cornerRadius = image.bounds.size.width * 0.5
+        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: .pi * 2.0)
+        rotationAnimation.duration = 10
+        rotationAnimation.isCumulative = true
+        rotationAnimation.repeatCount = .infinity
+        image.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        image.layer.cornerRadius = image.bounds.size.width * 0.5
 
     }
 
     func removeAnimation(image: UIImageView) {
+        
         image.layer.removeAllAnimations()
-//        image.layoutIfNeeded()
+        image.layoutIfNeeded()
+        
     }
 
     @objc func trackIsStreaming(notification: Notification) {
@@ -183,26 +175,15 @@ extension CollectionViewController: CollectionListControllerDelegate {
 
         if SpotifyManager.shared.isPlaying == true {
 
-            print("======")
-            print(topView.frame)
-            
             rotate(image: collectionTopView.topViewCover)
             collectionTopView.topViewCover.sd_setImage(with: URL(string: url), completed: nil)
             rotateFlag = true
-
-            print("+++++")
-            print(topView.frame)
-
-
 
         } else if SpotifyManager.shared.isPlaying == false {
 
             collectionTopView.topViewCover.image = #imageLiteral(resourceName: "black_record")
             removeAnimation(image: collectionTopView.topViewCover)
             rotateFlag = false
-
-            print("-----")
-            print(topView.frame)
 
         }
 

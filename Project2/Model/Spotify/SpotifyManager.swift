@@ -174,6 +174,7 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
             name: .trackPlayinyStatus,
             object: nil
         )
+
     }
 
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePosition position: TimeInterval) {

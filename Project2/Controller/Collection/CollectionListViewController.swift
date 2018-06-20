@@ -41,7 +41,7 @@ class CollectionListViewController: UIViewController {
         super.viewWillAppear(animated)
 
         recordCollectionView.reloadData()
-        
+
     }
 
     private func setupCollectionView() {
@@ -141,7 +141,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
             SpotifyManager.shared.playMusic(track: info.trackUri, completion: { [weak self] in
 
                 playerVC.modalPresentationStyle = .overFullScreen
-                
+
                 self?.present(playerVC, animated: true) {
 
                     playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
