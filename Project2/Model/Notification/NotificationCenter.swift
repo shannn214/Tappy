@@ -16,10 +16,6 @@ extension Notification.Name {
 
     static let trackPlayinyStatus = Notification.Name("trackPlayinyStatus")
 
-    static let startGuideFlow = Notification.Name("startGuideFlow")
-
-    static let firstGuideAction = Notification.Name("firstGuideAction")
-
     static let showCardGuideMaskAction = Notification.Name("showCardGuideMaskAction")
 
 }

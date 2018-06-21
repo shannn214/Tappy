@@ -12,9 +12,9 @@ class MurmurView: UIView {
 
     let murmurLabel = UILabel()
 
-    let murmurTextArray = ["BoooBooooo", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
-
     let randomTextIndex = Int(arc4random_uniform(7))
+
+    let uriManager = SpotifyUrisManager.createManagerFromFile()
 
     override init(frame: CGRect) {
 
@@ -30,9 +30,15 @@ class MurmurView: UIView {
         self.backgroundColor = UIColor(displayP3Red: 219/255, green: 165/255, blue: 63/255, alpha: 1)
         self.layer.cornerRadius = 15
 
-        let uuuuu = murmurTextArray[randomTextIndex]
-        let width = uuuuu.widthOfString(usingFont: UIFont(name: SHConstants.font, size: 14)!)
-        murmurLabel.text = uuuuu
+        guard let levelStatus = LevelStatusManager.shared.level else { return }
+
+        var murmurArray = uriManager.uris[levelStatus - 1].murmur
+
+        let dialog = murmurArray[randomTextIndex]
+
+        let width = dialog.widthOfString(usingFont: UIFont(name: SHConstants.font, size: 14)!)
+
+        murmurLabel.text = dialog
         murmurLabel.font = UIFont(name: SHConstants.font, size: 14)
         murmurLabel.numberOfLines = 0
         murmurLabel.adjustsFontSizeToFitWidth = true
@@ -69,7 +75,7 @@ class MurmurView: UIView {
 }
 
 extension String {
-
+    // NOTE: String length
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedStringKey.font: font]
         let size = self.size(withAttributes: fontAttributes)

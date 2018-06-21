@@ -154,7 +154,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         let info = sortedArray[index]
 
-        popUpPropView(image: info.cover, hint: SHConstants.hint)
+        self.popUpPropView(image: info.cover, hint: SHConstants.hint)
 
         gameMapScrollView.propsButtonArray[index].isHidden = true
 
@@ -232,6 +232,7 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
         SpotifyManager.shared.playMusic(track: info.trackUri, completion: { [weak self] in
 
             self?.present(playerVC, animated: true) {
+
                 playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
                 playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
                 playerVC.playerPanelView.artist.text = info.artist
@@ -298,7 +299,15 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 extension GameMapTestViewController: GameMapScrollDelegate {
 
     func monsterDidTap(_ controller: GameMapScrollView, tapGestureRecognizer: UITapGestureRecognizer) {
-        monsterTapped(tapGestureRecognizer: tapGestureRecognizer)
+
+        guard let levelStatus = LevelStatusManager.shared.level else { return }
+
+        if levelStatus > 0 {
+
+            monsterTapped(tapGestureRecognizer: tapGestureRecognizer)
+
+        }
+
     }
 
     func propButtonDidTap(_ controller: GameMapScrollView, sender: UIButton!) {

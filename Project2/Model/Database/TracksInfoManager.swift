@@ -19,6 +19,8 @@ protocol SpotifyUri {
     var image: String { get }
 
     var hint: String { get }
+
+    var murmur: [String] { get }
 }
 
 struct SpotifyUris: Codable, SpotifyUri {
@@ -33,6 +35,7 @@ struct SpotifyUris: Codable, SpotifyUri {
 
     var hint: String
 
+    var murmur: [String]
 }
 
 struct SpotifyUrisManager: Codable {
