@@ -65,7 +65,7 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         //換圖會重新畫subview的frame，重劃會依據autolayout來重設frame，導致top cover往下掉，所以要再重算時在改變一次。
         changeTopView()
     }
@@ -103,14 +103,14 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
               let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
               let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
         else { return }
-        
+
         present(playerVC, animated: true) {
-            
+
             playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
             playerVC.backgroundCover.sd_setImage(with: URL(string: url))
             playerVC.playerPanelView.artist.text = artist
             playerVC.playerPanelView.trackName.text = trackName
-            
+
         }
 
     }
@@ -163,10 +163,10 @@ extension CollectionViewController: CollectionListControllerDelegate {
     }
 
     func removeAnimation(image: UIImageView) {
-        
+
         image.layer.removeAllAnimations()
         image.layoutIfNeeded()
-        
+
     }
 
     @objc func trackIsStreaming(notification: Notification) {
