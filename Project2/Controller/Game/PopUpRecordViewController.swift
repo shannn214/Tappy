@@ -179,6 +179,8 @@ class PopUpRecordViewController: UIViewController {
 
         self.view.removeFromSuperview()
 
+        self.removeFromParentViewController()
+
     }
 
     @IBAction func secondGuideAction(_ sender: Any) {
@@ -189,6 +191,8 @@ class PopUpRecordViewController: UIViewController {
 
         self.view.removeFromSuperview()
 
+        self.removeFromParentViewController()
+
     }
 
     @IBAction func startButton(_ sender: Any) {
@@ -197,6 +201,8 @@ class PopUpRecordViewController: UIViewController {
 
         self.view.removeFromSuperview()
 
+        self.removeFromParentViewController()
+
     }
 
     @IBAction func leaveButton(_ sender: Any) {
@@ -204,6 +210,8 @@ class PopUpRecordViewController: UIViewController {
         propTouchHandler?()
 
         self.view.removeFromSuperview()
+
+        self.removeFromParentViewController()
 
         if LevelStatusManager.shared.level == 1 {
             firstPropTouchHandler?()

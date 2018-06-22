@@ -92,7 +92,11 @@ class GuideViewController: UIViewController {
     }
 
     @IBAction func cardGuideAction(_ sender: Any) {
+
         self.view.removeFromSuperview()
+
+        self.removeFromParentViewController()
+
     }
 
 }
