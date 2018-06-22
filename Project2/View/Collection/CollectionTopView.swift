@@ -17,7 +17,7 @@ class CollectionTopView: UIView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 
         let hitView = super.hitTest(point, with: event)
-        if topViewCover.frame.contains(point) {
+        if topViewCover.frame.contains(point) && SpotifyManager.shared.isPlaying == true {
             return hitView
         } else {
             return nil
