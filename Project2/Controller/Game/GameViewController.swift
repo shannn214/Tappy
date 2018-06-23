@@ -17,10 +17,6 @@ class GameViewController: UIViewController {
 
     let firstLogin = UserDefaults.standard
 
-    var scrollView: UIScrollView!
-
-    var imageView: UIImageView!
-
     var gameMapViewController: GameMapTestViewController?
 
     override func viewDidLoad() {
@@ -114,7 +110,7 @@ class GameViewController: UIViewController {
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
-        for dataIndex in 0...uriManager.uris.count - 1 {
+        for dataIndex in 0..<uriManager.uris.count {
 
             SpotifyTrackManager.shared.getTrackInfo(trackUri: uriManager.uris[dataIndex].trackUri,
                                                     albumUri: uriManager.uris[dataIndex].albumUri,

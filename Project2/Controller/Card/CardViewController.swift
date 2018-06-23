@@ -78,6 +78,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
         self.addChildViewController(guideView)
         guideView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(guideView.view)
+        guideView.didMove(toParentViewController: self)
         guideView.cardGuideViewAnimation()
 
     }

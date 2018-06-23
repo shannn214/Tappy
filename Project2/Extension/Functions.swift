@@ -34,6 +34,7 @@ extension UIViewController {
         self.addChildViewController(popUpRecordVC)
         popUpRecordVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.addSubview(popUpRecordVC.view)
+        popUpRecordVC.didMove(toParentViewController: self)
 
     }
 
