@@ -11,7 +11,7 @@ import RealmSwift
 
 class LevelStatusManager {
 
-    static var shared = LevelStatusManager()
+    static let shared = LevelStatusManager()
 
     private init() {}
 

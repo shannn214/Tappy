@@ -43,6 +43,8 @@ class CardListViewController: UIViewController {
 
     var selectedPoint: CGPoint?
 
+    var showIndex: IndexPath?
+
     var cell: UICollectionViewCell?
 
     var cardFlag: Bool?
@@ -111,7 +113,9 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
 
-        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return cardCell }
+        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController else { return UICollectionViewCell() }
+
+        guard let levelStatus = LevelStatusManager.shared.level else { return UICollectionViewCell() }
 
         self.addChildViewController(cardDetailVC)
 
@@ -131,7 +135,7 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
 
         cardDetailVC.cardContentLabel.text = uriManager.uris[indexPath.row].hint
 
-        if indexPath.row < LevelStatusManager.shared.level! {
+        if indexPath.row < levelStatus {
 
             cardDetailVC.cardView.isHidden = false
 
@@ -142,6 +146,14 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         }
 
         return cardCell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController,
+              let levelStatus = LevelStatusManager.shared.level
+        else { return }
+
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
