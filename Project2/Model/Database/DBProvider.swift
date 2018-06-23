@@ -11,7 +11,7 @@ import RealmSwift
 
 class DBProvider {
 
-    static var shared = DBProvider()
+    static let shared = DBProvider()
 
     private init() {}
 
