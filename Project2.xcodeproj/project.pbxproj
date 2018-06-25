@@ -67,6 +67,7 @@
 		09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */; };
 		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
 		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
+		09ABF98120E0A6BF0036CB97 /* TestPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98020E0A6BF0036CB97 /* TestPlayerViewController.swift */; };
 		09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3043E20D0C3AC007645D5 /* Project2Tests.swift */; };
 		09B3044720D10F2A007645D5 /* TestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B3044620D10F2A007645D5 /* TestJson.json */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
@@ -165,6 +166,7 @@
 		09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapppp-01.png"; sourceTree = "<group>"; };
 		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
 		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
+		09ABF98020E0A6BF0036CB97 /* TestPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPlayerViewController.swift; sourceTree = "<group>"; };
 		09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B3043E20D0C3AC007645D5 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
 		09B3044020D0C3AC007645D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			children = (
 				090B695D209F3B8B0095B416 /* TabBarViewController.swift */,
 				09D1342C20D3CEE900806CAA /* TabPlayerView.swift */,
+				09ABF98020E0A6BF0036CB97 /* TestPlayerViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
+				09ABF98120E0A6BF0036CB97 /* TestPlayerViewController.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
 				090B696C209F3FD30095B416 /* CardViewController.swift in Sources */,
