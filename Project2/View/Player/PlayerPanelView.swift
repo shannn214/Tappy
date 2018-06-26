@@ -47,7 +47,10 @@ class PlayerPanelView: UIView {
     @objc func playAndPause() {
 
         playing = !playing
+
         playButton.isSelected = !playButton.isSelected
+
+        smallPlayButton.isSelected = !smallPlayButton.isSelected
 
         if playing {
             SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
@@ -73,7 +76,9 @@ class PlayerPanelView: UIView {
 
     @objc func changeCurrentPosition() {
 
-        let seekingCM: CMTime = CMTimeMakeWithSeconds((SpotifyManager.shared.player?.metadata.currentTrack?.duration)!, 10000)
+        guard let sptDuration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
+
+        let seekingCM: CMTime = CMTimeMakeWithSeconds(sptDuration, 10000)
         let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
         let newDuration = CMTimeGetSeconds(seekingCM)
         SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
@@ -86,9 +91,15 @@ class PlayerPanelView: UIView {
 
         playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
 
+        smallPlayButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
 
         leaveArrow.alpha = 0
+
+        playButton.isSelected = false
+
+        smallPlayButton.isSelected = false
 
     }
 

@@ -69,8 +69,9 @@
                                                     <constraint firstAttribute="height" constant="20" id="fRE-kV-vxD"/>
                                                     <constraint firstAttribute="width" constant="20" id="v37-aL-qQO"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="play-button-8"/>
-                                                <state key="selected" backgroundImage="pause-4"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" backgroundImage="pause-4"/>
+                                                <state key="selected" backgroundImage="play-button-8"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,10 +120,10 @@
                                             <constraint firstAttribute="width" constant="50" id="DTW-Dc-RBL"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="play-button-8">
+                                        <state key="normal" backgroundImage="pause-4">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <state key="selected" backgroundImage="pause-4">
+                                        <state key="selected" backgroundImage="play-button-8">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
