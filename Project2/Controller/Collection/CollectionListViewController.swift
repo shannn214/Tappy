@@ -132,7 +132,7 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+//        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
 
         let sortedArray = DBProvider.shared.sortedArray
 
@@ -140,17 +140,17 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
 
             SpotifyManager.shared.playMusic(track: info.trackUri, completion: { [weak self] in
 
-                playerVC.modalPresentationStyle = .overFullScreen
-
-                self?.present(playerVC, animated: true) {
-
-                    playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
-                    playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
-                    playerVC.playerPanelView.artist.text = info.artist
-                    playerVC.playerPanelView.trackName.text = info.trackName
-                    self?.delegate?.playerViewDidDismiss(url: info.cover)
-
-                }
+//                playerVC.modalPresentationStyle = .overFullScreen
+//
+//                self?.present(playerVC, animated: true) {
+//
+//                    playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+//                    playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+//                    playerVC.playerPanelView.artist.text = info.artist
+//                    playerVC.playerPanelView.trackName.text = info.trackName
+//                    self?.delegate?.playerViewDidDismiss(url: info.cover)
+//
+//                }
 
             })
 

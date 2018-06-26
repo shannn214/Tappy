@@ -50,9 +50,9 @@ struct SHConstants {
 
     static let firstLogin = "firstLogin"
 
-    static let mapSizeWidth = UIScreen.main.bounds.height/3297 * 22041
+    static let mapSizeWidth = (UIScreen.main.bounds.height - 50)/3297 * 22041
 
-    static let screenHeight = UIScreen.main.bounds.height
+    static let screenHeight = UIScreen.main.bounds.height - 50
 
     static let topViewHeight: CGFloat = 255
 

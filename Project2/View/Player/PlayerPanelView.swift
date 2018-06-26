@@ -18,6 +18,11 @@ class PlayerPanelView: UIView {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var leaveArrow: UIButton!
+
+    @IBOutlet weak var smallPanel: UIView!
+    @IBOutlet weak var smallTrackName: UILabel!
+    @IBOutlet weak var smallPlayButton: UIButton!
 
     var playing = false
 
@@ -82,6 +87,8 @@ class PlayerPanelView: UIView {
         playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
 
         cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+
+        leaveArrow.alpha = 0
 
     }
 

@@ -32,6 +32,8 @@ class PlayerViewController: UIViewController {
     // MARK: Notitfication
     @objc func trackDuration(notification: Notification) {
 
+        guard let currentTrack = SpotifyManager.shared.player?.metadata.currentTrack else { return }
+
         guard let duration = SpotifyManager.shared.player?.metadata.currentTrack?.duration,
               let statusTime = SpotifyManager.shared.position
         else { return }
@@ -41,6 +43,13 @@ class PlayerViewController: UIViewController {
 
         let time = formatPlayTime(second: statusTime)
         playerPanelView.updateCurrentTime(currentTime: time, proportion: statusTime/duration)
+
+        // NOTE: Try to move player data
+        playerPanelView.cover.sd_setImage(with: URL(string: currentTrack.albumCoverArtURL!))
+//        backgroundCover.sd_setImage(with: URL(string: currentTrack.albumCoverArtURL!))
+        playerPanelView.artist.text = currentTrack.artistName
+        playerPanelView.trackName.text = currentTrack.name
+        playerPanelView.smallTrackName.text = currentTrack.name
 
     }
 
@@ -62,34 +71,34 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func leaveArrow(_ sender: Any) {
-        self.dismiss(animated: true)
+//        self.dismiss(animated: true)
     }
 
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
 
-        let touchPoint = sender.location(in: self.view.window)
-        let touchTrans = sender.translation(in: self.view.window)
-
-        if sender.state == UIGestureRecognizerState.changed {
-            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
-                self.view.frame = CGRect(x: 0,
-                                         y: touchTrans.y,
-                                         width: self.view.frame.size.width,
-                                         height: self.view.frame.size.height)
-            }
-        } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-            if touchPoint.y - initialPoint.y > 300 {
-                self.dismiss(animated: true) {
-                }
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.frame = CGRect(x: 0,
-                                             y: 0,
-                                             width: self.view.frame.size.width,
-                                             height: self.view.frame.size.height)
-                })
-            }
-        }
+//        let touchPoint = sender.location(in: self.view.window)
+//        let touchTrans = sender.translation(in: self.view.window)
+//
+//        if sender.state == UIGestureRecognizerState.changed {
+//            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
+//                self.view.frame = CGRect(x: 0,
+//                                         y: touchTrans.y,
+//                                         width: self.view.frame.size.width,
+//                                         height: self.view.frame.size.height)
+//            }
+//        } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
+//            if touchPoint.y - initialPoint.y > 300 {
+//                self.dismiss(animated: true) {
+//                }
+//            } else {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.view.frame = CGRect(x: 0,
+//                                             y: 0,
+//                                             width: self.view.frame.size.width,
+//                                             height: self.view.frame.size.height)
+//                })
+//            }
+//        }
 
     }
 
