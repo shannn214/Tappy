@@ -30,7 +30,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-Dd-h7D">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="Ohn-u6-2fn" kind="embed" id="fdx-UW-Wgj"/>
                                 </connections>
@@ -88,7 +88,7 @@
                             <constraint firstItem="Fy7-YO-Nng" firstAttribute="trailing" secondItem="wfl-Dd-h7D" secondAttribute="trailing" id="JFM-fv-OQ3"/>
                             <constraint firstItem="Zbi-Oi-ztb" firstAttribute="leading" secondItem="Fy7-YO-Nng" secondAttribute="leading" id="KBV-lU-CEK"/>
                             <constraint firstItem="wfl-Dd-h7D" firstAttribute="top" secondItem="b9X-5J-b2V" secondAttribute="top" id="Psq-EL-tje"/>
-                            <constraint firstItem="Fy7-YO-Nng" firstAttribute="bottom" secondItem="wfl-Dd-h7D" secondAttribute="bottom" constant="50" id="SoA-0U-Hjp"/>
+                            <constraint firstItem="Fy7-YO-Nng" firstAttribute="bottom" secondItem="wfl-Dd-h7D" secondAttribute="bottom" id="SoA-0U-Hjp"/>
                             <constraint firstItem="7L0-U8-Wh8" firstAttribute="centerX" secondItem="b9X-5J-b2V" secondAttribute="centerX" id="X4P-bp-RwW"/>
                             <constraint firstItem="7L0-U8-Wh8" firstAttribute="centerX" secondItem="b9X-5J-b2V" secondAttribute="centerX" id="ZhL-Fn-kgg"/>
                             <constraint firstItem="wfl-Dd-h7D" firstAttribute="leading" secondItem="Fy7-YO-Nng" secondAttribute="leading" id="e4o-Jb-ga6"/>
@@ -136,7 +136,7 @@
             <objects>
                 <viewController id="Ohn-u6-2fn" customClass="CollectionListViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJR-4t-s6F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qAz-dE-83J">
@@ -153,7 +153,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="qAz-dE-83J" firstAttribute="top" secondItem="RJR-4t-s6F" secondAttribute="top" id="AlR-nY-QH0"/>
-                            <constraint firstAttribute="bottom" secondItem="qAz-dE-83J" secondAttribute="bottom" id="LTV-o4-1nZ"/>
+                            <constraint firstAttribute="bottom" secondItem="qAz-dE-83J" secondAttribute="bottom" constant="50" id="LTV-o4-1nZ"/>
                             <constraint firstAttribute="trailing" secondItem="qAz-dE-83J" secondAttribute="trailing" id="Zh7-Hu-9hv"/>
                             <constraint firstItem="qAz-dE-83J" firstAttribute="leading" secondItem="RJR-4t-s6F" secondAttribute="leading" id="abI-d0-V1I"/>
                         </constraints>

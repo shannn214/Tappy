@@ -63,7 +63,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vq-CB-Hex">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="6Az-6N-cfb" kind="embed" id="g87-lk-sAn"/>
                                         </connections>
@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="trailing" secondItem="1vq-CB-Hex" secondAttribute="trailing" id="2rd-qB-sdr"/>
                                     <constraint firstItem="1vq-CB-Hex" firstAttribute="leading" secondItem="l0O-7k-Wtz" secondAttribute="leading" id="TGi-ej-eDX"/>
                                     <constraint firstItem="Fz9-P5-ouS" firstAttribute="top" secondItem="l0O-7k-Wtz" secondAttribute="top" id="ahl-o5-E1Q"/>
-                                    <constraint firstAttribute="bottom" secondItem="1vq-CB-Hex" secondAttribute="bottom" constant="50" id="bNI-pa-2bF"/>
+                                    <constraint firstAttribute="bottom" secondItem="1vq-CB-Hex" secondAttribute="bottom" id="bNI-pa-2bF"/>
                                     <constraint firstItem="1vq-CB-Hex" firstAttribute="top" secondItem="l0O-7k-Wtz" secondAttribute="top" id="c6O-uJ-L98"/>
                                     <constraint firstItem="Fz9-P5-ouS" firstAttribute="leading" secondItem="l0O-7k-Wtz" secondAttribute="leading" id="kgR-cx-6fD"/>
                                 </constraints>
@@ -111,7 +111,7 @@
             <objects>
                 <viewController id="6Az-6N-cfb" customClass="CardListViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g4B-d0-P8n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jzg-1m-5vY">
@@ -128,7 +128,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Jzg-1m-5vY" secondAttribute="bottom" id="Hid-qa-U88"/>
+                            <constraint firstAttribute="bottom" secondItem="Jzg-1m-5vY" secondAttribute="bottom" constant="50" id="Hid-qa-U88"/>
                             <constraint firstItem="Jzg-1m-5vY" firstAttribute="top" secondItem="g4B-d0-P8n" secondAttribute="top" id="IRm-xl-VOi"/>
                             <constraint firstAttribute="trailing" secondItem="Jzg-1m-5vY" secondAttribute="trailing" id="npq-T1-FYP"/>
                             <constraint firstItem="Jzg-1m-5vY" firstAttribute="leading" secondItem="g4B-d0-P8n" secondAttribute="leading" id="sHw-P6-aMl"/>

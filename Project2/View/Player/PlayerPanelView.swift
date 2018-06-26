@@ -76,12 +76,16 @@ class PlayerPanelView: UIView {
 
     @objc func changeCurrentPosition() {
 
-        guard let sptDuration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
+        if SpotifyManager.shared.haveCurrentTrack == true {
 
-        let seekingCM: CMTime = CMTimeMakeWithSeconds(sptDuration, 10000)
-        let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
-        let newDuration = CMTimeGetSeconds(seekingCM)
-        SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
+            guard let sptDuration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
+
+            let seekingCM: CMTime = CMTimeMakeWithSeconds(sptDuration, 10000)
+            let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
+            let newDuration = CMTimeGetSeconds(seekingCM)
+            SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
+
+        }
 
     }
 

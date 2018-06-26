@@ -24,6 +24,7 @@ class SpotifyManager: UIViewController {
     var recordInfo: TrackInfo?
     var position: TimeInterval?
     var isPlaying: Bool?
+    var haveCurrentTrack: Bool?
     var userStatus: SPTProduct?
     let premiumUser = SPTProduct.premium
 
@@ -154,6 +155,8 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
             name: .startPlayingTrack,
             object: nil
         )
+
+        haveCurrentTrack = true
 
     }
 
