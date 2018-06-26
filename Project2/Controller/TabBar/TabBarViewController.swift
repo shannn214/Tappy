@@ -107,7 +107,9 @@ class TabBarViewController: UITabBarController {
 
     let containerView = UIView()
 
-    let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? TestPlayerViewController
+    var playerVC: TestPlayerViewController?
+
+    var flag: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,61 +122,63 @@ class TabBarViewController: UITabBarController {
 
     func addPlayerTest() {
 
-        containerView.backgroundColor = UIColor.yellow
+        guard let playerViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? TestPlayerViewController else { return }
 
-        view.addSubview(containerView)
+        playerVC = playerViewController
 
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        ------------
 
-        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        containerView.backgroundColor = UIColor.clear
+//
+//        view.addSubview(containerView)
+//
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//
+//        containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//
+//        containerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
 
-        containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//        containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height - tabBar.bounds.height - 60).isActive = true
 
-        containerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+//        containerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 
-//        containerView.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        view.bringSubview(toFront: containerView)
+//
+//        containerView.addSubview((playerVC?.view)!)
+//
+//        containerView.clipsToBounds = false
 
-        containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height - tabBar.bounds.height - 60).isActive = true
+//        -------------
 
-//        containerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        playerVC?.view.translatesAutoresizingMaskIntoConstraints = false
+//
+//        playerVC?.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+//
+//        playerVC?.view.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+//
+//        playerVC?.view.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+//
+//        playerVC?.view.heightAnchor.constraint(equalToConstant: (playerVC?.view.bounds.height)!).isActive = true
 
-        view.bringSubview(toFront: containerView)
+        view.addSubview((playerVC?.view)!)
 
-//        self.addChildViewController(playerVC)
+        view.bringSubview(toFront: (playerVC?.view)!)
 
-        containerView.addSubview((playerVC?.view)!)
-
-        containerView.clipsToBounds = true
-
-        playerVC?.view.translatesAutoresizingMaskIntoConstraints = false
-
-        playerVC?.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-
-        playerVC?.view.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-
-        playerVC?.view.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-
-        playerVC?.view.heightAnchor.constraint(equalToConstant: (playerVC?.view.bounds.height)!).isActive = true
-
-//        containerView.addSubview(playerVC.view)
-
-//        self.view.addSubview(playerVC.view)
-
-//        playerVC.view.frame = CGRect(x: 0, y: 600, width: containerView.bounds.width, height: containerView.bounds.height)
-
-//        self.view.bringSubview(toFront: playerVC.view)
-
-//        playerVC.view.bounds = CGRect(x: 0, y: -400, width: UIScreen.main.bounds.width, height: 50)
-
-//        playerVC.didMove(toParentViewController: self)
+        playerVC?.view.frame = CGRect(x: 0,
+                                      y: view.bounds.height - tabBar.bounds.height - 50,
+                                      width: (playerVC?.view.bounds.width)!, height: (playerVC?.view.bounds.height)!)
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panPlayer(panGesture:)))
 
         playerVC?.view.isUserInteractionEnabled = true
 
-        containerView.isUserInteractionEnabled = true
+//        containerView.isUserInteractionEnabled = true
 
         playerVC?.view.addGestureRecognizer(panGesture)
+
+        view.bringSubview(toFront: tabBar)
 
     }
 
@@ -188,35 +192,94 @@ class TabBarViewController: UITabBarController {
 
         if panGesture.state == UIGestureRecognizerState.changed {
 
-//            if touchPoint.y > 0 {
+                if flag == true {
 
-                containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 667 - moving).isActive = true
+                    if trans.y < 0 {
 
-//            }
+                        playerVC?.view.frame = CGRect(x: 0,
+                                                      y: view.bounds.height - tabBar.bounds.height - 50 - moving,
+                                                      width: (playerVC?.view.bounds.width)!,
+                                                      height: (playerVC?.view.bounds.height)!)
 
-//            containerView.heightAnchor.constraint(equalToConstant: 60 + moving).isActive = true
+                    }
 
-            print(containerView.frame)
+                } else if flag == false {
+
+                    if touchPoint.y > 0 && trans.y > 0 {
+
+                    playerVC?.view.frame = CGRect(x: 0,
+                                                  y: trans.y,
+                                                  width: (playerVC?.view.bounds.width)!,
+                                                  height: (playerVC?.view.bounds.height)!)
+
+                    }
+
+                }
 
         } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
 
-            if touchPoint.y < 300 {
+            if trans.y < -200 {
 
-                self.containerView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+                UIView.animate(withDuration: 0.3, animations: {
+
+                    self.playerVC?.view.frame = self.view.bounds
+
+                    self.tabBar.alpha = 0
+
+                })
+
+                flag = false
 
             } else {
 
                 UIView.animate(withDuration: 0.3, animations: {
 
-                    self.containerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 600).isActive = true
+                    self.playerVC?.view.frame = CGRect(x: 0,
+                                                       y: self.view.bounds.height - self.tabBar.bounds.height - 50,
+                                                       width: (self.playerVC?.view.bounds.width)!,
+                                                       height: (self.playerVC?.view.bounds.height)!)
+
+                    self.tabBar.alpha = 1
 
                 })
+
+                flag = true
 
             }
 
         }
 
-        containerView.layoutIfNeeded()
+//        if panGesture.state == UIGestureRecognizerState.changed {
+//
+//            if flag == true {
+//
+//                containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 667 + trans.y).isActive = true
+//
+//            } else if flag == false {
+//
+//                containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: -moving).isActive = true
+//
+//            }
+//
+//            print(containerView.frame)
+//
+//        } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
+//
+//            if trans.y < 100 {
+//
+//                containerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//
+//                flag = false
+//
+//            } else {
+//
+//                containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 600).isActive = true
+//
+//                flag = true
+//
+//            }
+//
+//        }
 
     }
 

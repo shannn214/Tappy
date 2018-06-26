@@ -194,7 +194,36 @@
                     <view key="view" contentMode="scaleToFill" id="cZl-zL-fkO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.78752038749999997" green="0.05913377677" blue="0.35941043109999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so7-HL-1DK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAv-4b-IL7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vVj-MM-Wb9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fAv-4b-IL7" firstAttribute="leading" secondItem="so7-HL-1DK" secondAttribute="leading" id="LqR-gb-7o1"/>
+                                    <constraint firstAttribute="trailing" secondItem="fAv-4b-IL7" secondAttribute="trailing" id="gd8-xj-Ol4"/>
+                                    <constraint firstItem="fAv-4b-IL7" firstAttribute="top" secondItem="so7-HL-1DK" secondAttribute="top" id="pI7-Qr-wp3"/>
+                                    <constraint firstAttribute="bottom" secondItem="fAv-4b-IL7" secondAttribute="bottom" id="qf4-Ay-Kdb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tDX-8j-0Ct" firstAttribute="bottom" secondItem="so7-HL-1DK" secondAttribute="bottom" id="0ys-Hb-tf9"/>
+                            <constraint firstItem="so7-HL-1DK" firstAttribute="centerX" secondItem="cZl-zL-fkO" secondAttribute="centerX" id="ifS-kd-G6j"/>
+                            <constraint firstItem="so7-HL-1DK" firstAttribute="leading" secondItem="tDX-8j-0Ct" secondAttribute="leading" id="nlS-xL-qWM"/>
+                            <constraint firstItem="so7-HL-1DK" firstAttribute="top" secondItem="cZl-zL-fkO" secondAttribute="top" id="teI-qa-r6s"/>
+                            <constraint firstAttribute="trailing" secondItem="so7-HL-1DK" secondAttribute="trailing" id="u79-0S-nah"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tDX-8j-0Ct"/>
                     </view>
                 </viewController>

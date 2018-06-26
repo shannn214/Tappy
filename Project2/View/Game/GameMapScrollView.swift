@@ -45,8 +45,8 @@ class GameMapScrollView: UIScrollView {
     private func setupScrollView() {
 
         mapImageView = UIImageView(image: #imageLiteral(resourceName: "ground_map-1"))
-        mapImageView.frame.size = CGSize(width: SHConstants.mapSizeWidth,
-                                         height: SHConstants.screenHeight)
+        mapImageView.frame.size = CGSize(width: (UIScreen.main.bounds.height - 50)/3297 * 22041,
+                                         height: UIScreen.main.bounds.height - 50)
         self.backgroundColor = UIColor.clear
         self.contentSize = CGSize(width: mapImageView.bounds.width,
                                   height: SHConstants.screenHeight)
