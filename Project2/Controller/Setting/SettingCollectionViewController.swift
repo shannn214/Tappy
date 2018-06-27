@@ -25,6 +25,8 @@ class SettingCollectionViewController: UIViewController {
 
     var seletedCell: UICollectionViewCell?
 
+    var detailVC: SettingDetailViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +49,7 @@ class SettingCollectionViewController: UIViewController {
         settingCollectionView.dataSource = self
         settingCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
 
+        detailVC = UIStoryboard.settingStoryboard().instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self)) as? SettingDetailViewController
     }
 
     func setupCollectionLayout() {
@@ -59,7 +62,7 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return controllers.count
+        return 2
 
     }
 
@@ -67,19 +70,19 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
         guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else { return UICollectionViewCell() }
 
-        guard let settingDetailVC = controllers[indexPath.row] as? SettingDetailViewController else { return cell }
+//        guard let settingDetailVC = controllers[indexPath.row] as? SettingDetailViewController else { return cell }
 
         cell.delegate = self
 
-        self.addChildViewController(settingDetailVC)
-
-        cell.cellView.addSubview(settingDetailVC.view)
-
-        settingDetailVC.view.frame = cell.contentView.bounds
-
-        settingDetailVC.didMove(toParentViewController: self)
-
-        cell.clipsToBounds = true
+//        self.addChildViewController(settingDetailVC)
+//
+//        cell.cellView.addSubview(settingDetailVC.view)
+//
+//        settingDetailVC.view.frame = cell.contentView.bounds
+//
+//        settingDetailVC.didMove(toParentViewController: self)
+//
+//        cell.clipsToBounds = true
 
         cellIndex = indexPath
 
@@ -96,13 +99,30 @@ extension SettingCollectionViewController: CellViewDelegate {
 
     func cellTouchedEnded(_ cell: SettingCollectionViewCell) {
 
-        selectedIndex = settingCollectionView.indexPath(for: cell)
+//        selectedIndex = settingCollectionView.indexPath(for: cell)
+//
+//        guard let settingDetailVC = controllers[(selectedIndex?.row)!] as? SettingDetailViewController else { return }
+//
+//        settingDetailVC.view.removeFromSuperview()
+//
+//        self.view.addSubview(settingDetailVC.view)
+//
+//        let point = settingCollectionView.convert(cell.frame.origin, to: self.view)
+//
+//        let itemSize = UIScreen.main.bounds.width
+//
+//        self.selectedPoint = point
+//
+//        settingDetailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
+//
+//        self.view.bringSubview(toFront: settingDetailVC.view)
+//
+//        UIView.animate(withDuration: 0.35) {
+//            settingDetailVC.view.frame = self.view.frame
+//            settingDetailVC.changeToFullScreen()
+//        }
 
-        guard let settingDetailVC = controllers[(selectedIndex?.row)!] as? SettingDetailViewController else { return }
-
-        settingDetailVC.view.removeFromSuperview()
-
-        self.view.addSubview(settingDetailVC.view)
+        self.view.addSubview(detailVC.view)
 
         let point = settingCollectionView.convert(cell.frame.origin, to: self.view)
 
@@ -110,13 +130,11 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         self.selectedPoint = point
 
-        settingDetailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
-
-        self.view.bringSubview(toFront: settingDetailVC.view)
+        detailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
 
         UIView.animate(withDuration: 0.35) {
-            settingDetailVC.view.frame = self.view.frame
-            settingDetailVC.changeToFullScreen()
+            self.detailVC.view.frame = self.view.frame
+            self.detailVC.changeToFullScreen()
         }
 
     }
