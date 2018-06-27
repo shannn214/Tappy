@@ -47,22 +47,7 @@ class AppStoreViewController: UIViewController {
         appStoreCollectionView.delegate = self
         appStoreCollectionView.dataSource = self
 
-//        appStoreCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCellBeforeLose(sender:))))
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(appStoreCollectionView.endEditing(_:)))
-//
-//        cell.addGestureRecognizer(tapGestureRecognizer)
-
     }
-
-//    @objc func tapCellBeforeLose(sender: UITapGestureRecognizer) {
-//
-//        if sender.state == .recognized {
-//
-//            guard let appStoreDetailVC = controllers[(selectedIndex?.row)!] as? AppStoreDetailViewController else { return }
-//            appStoreDetailVC.view.frame.size = CGSize(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.width)
-//        }
-//
-//    }
 
     func setupCollectionLayout() {
 
@@ -114,19 +99,6 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
 
         cellIndex = indexPath
 
-        //----gesture test------
-//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapCellBeforeLose(sender:)))
-//        longPressGesture.minimumPressDuration = 0.1
-//        cell?.addGestureRecognizer(longPressGesture)
-        //----------
-
-        //-----tap gesture test-----
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCell(sender:)))
-//        
-//        tapGesture.delegate = self
-//        
-//        cell?.contentView.addGestureRecognizer(tapGesture)
-
         return cell
     }
 
@@ -161,42 +133,6 @@ extension AppStoreViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
-
-}
-
-extension AppStoreViewController: UIGestureRecognizerDelegate {
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-
-        print("-----------")
-        print("touch")
-        print(touch.phase.rawValue)
-
-        if touch.phase == .began {
-
-            touchCellContentView()
-
-        } else if touch.phase == .ended || touch.phase == .cancelled {
-
-            touchCellContentEnded()
-
-        }
-
-        return true
-    }
-
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-//
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-//
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//
-//        return true
-//    }
 
 }
 

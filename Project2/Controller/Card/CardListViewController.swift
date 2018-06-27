@@ -16,7 +16,7 @@ protocol CardListControllerDelegate: class {
 
 class CardListViewController: UIViewController {
 
-    @IBOutlet weak var listCollectionView: LukeCollectionView!
+    @IBOutlet weak var listCollectionView: UICollectionView!
 
     var propImages: [UIImage] = []
 

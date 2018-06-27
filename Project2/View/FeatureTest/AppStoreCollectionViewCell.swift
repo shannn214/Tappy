@@ -14,7 +14,7 @@ protocol CellViewDelegate: class {
 
 class AppStoreCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var appStoreCellView: AppStoreView!
+    @IBOutlet weak var appStoreCellView: UIView!
 
     weak var delegate: CellViewDelegate?
 
@@ -26,16 +26,12 @@ class AppStoreCollectionViewCell: UICollectionViewCell {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        print("touch begin")
-
         touchCellContentView()
 
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-
-        print("touch move")
 
         touchCellContentView()
 
@@ -44,17 +40,12 @@ class AppStoreCollectionViewCell: UICollectionViewCell {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
-        print("-----------")
-        print("touch end")
-
         self.delegate?.cellTouchedEnded(self)
 
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-
-        print("touch cancel")
 
         touchCellContentEnded()
 

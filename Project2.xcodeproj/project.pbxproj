@@ -70,7 +70,6 @@
 		09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */; };
 		09A6855E20B9E43900BE0EA5 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6855D20B9E43900BE0EA5 /* Intro.storyboard */; };
 		09A6856020B9E6B900BE0EA5 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */; };
-		09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */; };
 		09A6856A20BCF2AA00BE0EA5 /* MapFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856920BCF2AA00BE0EA5 /* MapFinal.png */; };
 		09A6856C20BCFCFB00BE0EA5 /* harden.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856B20BCFCFA00BE0EA5 /* harden.png */; };
 		09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */; };
@@ -158,7 +157,6 @@
 		09A6855B20B7036E00BE0EA5 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		09A6855D20B9E43900BE0EA5 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		09A6855F20B9E6B900BE0EA5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeCollectionView.swift; sourceTree = "<group>"; };
 		09A6856920BCF2AA00BE0EA5 /* MapFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapFinal.png; sourceTree = "<group>"; };
 		09A6856B20BCFCFA00BE0EA5 /* harden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = harden.png; sourceTree = "<group>"; };
 		09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapppp-01.png"; sourceTree = "<group>"; };
@@ -433,7 +431,6 @@
 		098E103520C8083000B9D7F2 /* FeatureTest */ = {
 			isa = PBXGroup;
 			children = (
-				09A6856420BC236000BE0EA5 /* LukeCollectionView.swift */,
 				098E103A20C808A900B9D7F2 /* AppStoreCollectionViewCell.swift */,
 				09D1349820D8FA2400806CAA /* AppStoreView.swift */,
 				098E103B20C808A900B9D7F2 /* AppStoreCollectionViewCell.xib */,
@@ -781,7 +778,6 @@
 				09A62B3D20AF3F1800BA5932 /* CardListViewController.swift in Sources */,
 				09A6855220B5B91700BE0EA5 /* TapAnimation.swift in Sources */,
 				090B6968209F3F9A0095B416 /* SettingViewController.swift in Sources */,
-				09A6856520BC236000BE0EA5 /* LukeCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
