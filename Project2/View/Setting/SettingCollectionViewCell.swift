@@ -40,6 +40,15 @@ class SettingCollectionViewCell: UICollectionViewCell {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
+//        UIView.animate(withDuration: 0.1,
+//                       delay: 0,
+//                       options: .curveEaseIn,
+//                       animations: {
+//                            self.cellView.transform = CGAffineTransform.identity },
+//                       completion: { (_) in
+//                            self.delegate?.cellTouchedEnded(self)
+//        })
+
         self.delegate?.cellTouchedEnded(self)
 
     }

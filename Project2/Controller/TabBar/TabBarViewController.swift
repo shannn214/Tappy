@@ -101,7 +101,7 @@ enum TabBar {
 
 class TabBarViewController: UITabBarController {
 
-    let tabs: [TabBar] = [.game, .achievement, .collection]
+    let tabs: [TabBar] = [.game, .achievement, .collection, .setting]
 
     // NOTE: Hide .setting for first publish
 

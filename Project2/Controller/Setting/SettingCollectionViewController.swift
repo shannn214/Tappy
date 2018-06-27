@@ -45,26 +45,11 @@ class SettingCollectionViewController: UIViewController {
         settingCollectionView.register(nib, forCellWithReuseIdentifier: String(describing: SettingCollectionViewCell.self))
         settingCollectionView.delegate = self
         settingCollectionView.dataSource = self
+        settingCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
 
     }
 
     func setupCollectionLayout() {
-
-        settingCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-
-        if let setLayout = settingCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-
-            let itemSize = UIScreen.main.bounds.width
-
-            setLayout.sectionInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-
-            setLayout.itemSize = CGSize(width: itemSize * 0.9, height: itemSize * 1.2)
-
-            setLayout.minimumLineSpacing = 50
-
-            setLayout.minimumInteritemSpacing = 0
-
-        }
 
     }
 
@@ -101,34 +86,6 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
         return cell
     }
 
-    @objc func tapCell(sender: UITapGestureRecognizer) {
-
-    }
-
-    func touchCellContentView() {
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 0.1,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.settingCollectionView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) },
-                       completion: nil)
-
-    }
-
-    func touchCellContentEnded() {
-
-        UIView.animate(withDuration: 0.3,
-                       delay: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.view.transform = CGAffineTransform.identity
-        }, completion: nil)
-
-    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
@@ -149,15 +106,45 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         let point = settingCollectionView.convert(cell.frame.origin, to: self.view)
 
+        let itemSize = UIScreen.main.bounds.width
+
         self.selectedPoint = point
 
-        settingDetailVC.view.frame = CGRect(origin: point, size: cell.contentView.bounds.size)
+        settingDetailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
+
+        self.view.bringSubview(toFront: settingDetailVC.view)
 
         UIView.animate(withDuration: 0.35) {
             settingDetailVC.view.frame = self.view.frame
             settingDetailVC.changeToFullScreen()
         }
 
+    }
+
+}
+
+extension SettingCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let itemSize = UIScreen.main.bounds.width
+
+        return CGSize(width: itemSize * 0.85, height: itemSize * 0.9)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+        return 50
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
 
 }

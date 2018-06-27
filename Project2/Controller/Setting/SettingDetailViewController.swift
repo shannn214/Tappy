@@ -25,40 +25,13 @@ class SettingDetailViewController: UIViewController {
 
     func initialSetup() {
 
-        self.view.bounds.size = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.2)
-
         self.view.layer.cornerRadius = 20
         self.view.clipsToBounds = true
 
     }
 
-    func handleLongPressBegan() {
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 0.1,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }, completion: nil)
-
-    }
-
-    func handleLongPressEnded() {
-
-        UIView.animate(withDuration: 0.3,
-                       delay: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.view.transform = CGAffineTransform.identity
-        }, completion: nil)
-
-    }
-
     func changeToFullScreen() {
 
-        self.view.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.view.layer.cornerRadius = 0
 
     }

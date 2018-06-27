@@ -20,10 +20,12 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xP-1s-ww3">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="180"/>
-                        <color key="backgroundColor" red="0.85882352939999995" green="0.64705882349999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8xP-1s-ww3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="U91-h2-CJv"/>
                 <constraint firstItem="8xP-1s-ww3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VQD-cM-CZx"/>
