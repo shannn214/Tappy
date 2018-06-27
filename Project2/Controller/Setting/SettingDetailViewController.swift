@@ -10,6 +10,8 @@ import UIKit
 
 class SettingDetailViewController: UIViewController {
 
+    @IBOutlet weak var detailContainer: UIView!
+
     var gesture: UIGestureRecognizer?
 
     override func viewDidLoad() {
