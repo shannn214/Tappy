@@ -131,7 +131,9 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         self.selectedPoint = point
 
-        detailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
+        detailVC.view.frame = CGRect(origin: CGPoint(x: 0, y: point.y), size: CGSize(width: itemSize, height: itemSize * 0.9))
+        
+        cell.cellView.isHidden = true
 
         UIView.animate(withDuration: 0.35) {
             self.detailVC.view.frame = self.view.frame
@@ -148,7 +150,7 @@ extension SettingCollectionViewController: UICollectionViewDelegateFlowLayout {
 
         let itemSize = UIScreen.main.bounds.width
 
-        return CGSize(width: itemSize * 0.85, height: itemSize * 0.9)
+        return CGSize(width: itemSize, height: itemSize * 0.9)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -163,7 +165,7 @@ extension SettingCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        return UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
     }
 
 }

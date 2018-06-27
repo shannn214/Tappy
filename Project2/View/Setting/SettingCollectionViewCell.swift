@@ -15,14 +15,15 @@ protocol CellViewDelegate: class {
 class SettingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellView: UIView!
-
+    @IBOutlet weak var cellImage: UIImageView!
+    
     weak var delegate: CellViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
-        cellView.layer.cornerRadius = 20
+        cellImage.layer.cornerRadius = 20
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

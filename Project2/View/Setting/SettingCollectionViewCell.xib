@@ -22,15 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="373" height="180"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My-Boo" translatesAutoresizingMaskIntoConstraints="NO" id="cFg-9a-8y3">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="180"/>
+                                <rect key="frame" x="40" y="0.0" width="293" height="180"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.89474826389999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="cFg-9a-8y3" secondAttribute="bottom" id="3nM-WP-cz5"/>
                             <constraint firstItem="cFg-9a-8y3" firstAttribute="top" secondItem="8xP-1s-ww3" secondAttribute="top" id="5DL-rA-jBp"/>
-                            <constraint firstItem="cFg-9a-8y3" firstAttribute="leading" secondItem="8xP-1s-ww3" secondAttribute="leading" id="JZS-eP-BJW"/>
-                            <constraint firstAttribute="trailing" secondItem="cFg-9a-8y3" secondAttribute="trailing" id="OZS-q7-9fh"/>
+                            <constraint firstItem="cFg-9a-8y3" firstAttribute="leading" secondItem="8xP-1s-ww3" secondAttribute="leading" constant="40" id="JZS-eP-BJW"/>
+                            <constraint firstAttribute="trailing" secondItem="cFg-9a-8y3" secondAttribute="trailing" constant="40" id="OZS-q7-9fh"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -46,6 +46,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="373" height="180"/>
             <connections>
+                <outlet property="cellImage" destination="cFg-9a-8y3" id="zm8-p7-fuN"/>
                 <outlet property="cellView" destination="8xP-1s-ww3" id="5zu-WO-COX"/>
             </connections>
             <point key="canvasLocation" x="195.5" y="119"/>
