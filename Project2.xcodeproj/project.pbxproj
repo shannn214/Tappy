@@ -68,6 +68,10 @@
 		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
 		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
 		09ABF98320E233450036CB97 /* MapPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98220E233450036CB97 /* MapPlayerViewController.swift */; };
+		09ABF98720E338600036CB97 /* SettingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */; };
+		09ABF98B20E338F80036CB97 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */; };
+		09ABF98C20E338F80036CB97 /* SettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */; };
+		09ABF98E20E33AAA0036CB97 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */; };
 		09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3043E20D0C3AC007645D5 /* Project2Tests.swift */; };
 		09B3044720D10F2A007645D5 /* TestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B3044620D10F2A007645D5 /* TestJson.json */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
@@ -168,6 +172,10 @@
 		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
 		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
 		09ABF98220E233450036CB97 /* MapPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayerViewController.swift; sourceTree = "<group>"; };
+		09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewController.swift; sourceTree = "<group>"; };
+		09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCollectionViewCell.xib; sourceTree = "<group>"; };
+		09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B3043E20D0C3AC007645D5 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
 		09B3044020D0C3AC007645D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,11 +300,12 @@
 			children = (
 				09D1343020D50DF800806CAA /* Collection */,
 				098E102C20C517B500B9D7F2 /* Game */,
-				09D9D55F20C433C100A188CE /* UIViewTest */,
+				09D9D55F20C433C100A188CE /* SupportView */,
 				0951973A20B1B9A0006E468E /* Player */,
-				09A62B3E20AF3FAE00BA5932 /* Achievement */,
+				09A62B3E20AF3FAE00BA5932 /* Card */,
 				09A62B3520AE8CE300BA5932 /* Animation */,
 				0914190120A2E79900B7C0F0 /* RecordCell */,
+				09ABF98820E338840036CB97 /* Setting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +362,8 @@
 			isa = PBXGroup;
 			children = (
 				090B6967209F3F9A0095B416 /* SettingViewController.swift */,
+				09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */,
+				09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -485,13 +496,13 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
-		09A62B3E20AF3FAE00BA5932 /* Achievement */ = {
+		09A62B3E20AF3FAE00BA5932 /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				09A62B3F20AF3FCD00BA5932 /* CardCollectionViewCell.swift */,
 				09A62B4020AF3FCD00BA5932 /* CardCollectionViewCell.xib */,
 			);
-			path = Achievement;
+			path = Card;
 			sourceTree = "<group>";
 		};
 		09A62B4320B15FB700BA5932 /* Navigate */ = {
@@ -510,6 +521,15 @@
 				09A6856B20BCFCFA00BE0EA5 /* harden.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		09ABF98820E338840036CB97 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */,
+				09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		09B3043D20D0C3AC007645D5 /* Project2Tests */ = {
@@ -560,13 +580,13 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
-		09D9D55F20C433C100A188CE /* UIViewTest */ = {
+		09D9D55F20C433C100A188CE /* SupportView */ = {
 			isa = PBXGroup;
 			children = (
 				09D9D56020C433E600A188CE /* MurmurView.swift */,
 				09D1342E20D508B400806CAA /* HitTestUIView.swift */,
 			);
-			path = UIViewTest;
+			path = SupportView;
 			sourceTree = "<group>";
 		};
 		E40AB426BB8F9BBC538BF7EA /* Pods */ = {
@@ -702,6 +722,7 @@
 				09A6855720B7005B00BE0EA5 /* Moon2.0-Regular.otf in Resources */,
 				09A62B3020ADC96200BA5932 /* Grand9K Pixel.ttf in Resources */,
 				09A62B3B20AED14700BA5932 /* TrackCollectionViewCell.xib in Resources */,
+				09ABF98C20E338F80036CB97 /* SettingCollectionViewCell.xib in Resources */,
 				09C6CF4120A9737B00A6C567 /* TracksInfo.json in Resources */,
 				09A6855C20B7036E00BE0EA5 /* CircularStd-Bold.otf in Resources */,
 				0914191020A48EB300B7C0F0 /* Player.storyboard in Resources */,
@@ -817,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
+				09ABF98720E338600036CB97 /* SettingCollectionViewController.swift in Sources */,
 				09ABF98320E233450036CB97 /* MapPlayerViewController.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
@@ -840,10 +862,12 @@
 				09C6CF3C20A82DD700A6C567 /* SpotifyTrackManager.swift in Sources */,
 				09A62B2C20AD392800BA5932 /* RecordCollectionViewCell.swift in Sources */,
 				090B698120A1907D0095B416 /* PopUpRecordViewController.swift in Sources */,
+				09ABF98B20E338F80036CB97 /* SettingCollectionViewCell.swift in Sources */,
 				09D9D56120C433E600A188CE /* MurmurView.swift in Sources */,
 				0951974020B2CE2D006E468E /* CardDetailViewController.swift in Sources */,
 				090B697A20A00D1C0095B416 /* SpotifyManager.swift in Sources */,
 				09D1342F20D508B400806CAA /* HitTestUIView.swift in Sources */,
+				09ABF98E20E33AAA0036CB97 /* SettingDetailViewController.swift in Sources */,
 				090B6962209F3BFB0095B416 /* NotificationCenter.swift in Sources */,
 				0951973C20B1B9C1006E468E /* PlayerPanelView.swift in Sources */,
 				098E104C20C9256C00B9D7F2 /* MaskLayer.swift in Sources */,
