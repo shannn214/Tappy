@@ -136,8 +136,6 @@ class TabBarViewController: UITabBarController {
 
         playerVC?.view.isUserInteractionEnabled = true
 
-        //        containerView.isUserInteractionEnabled = true
-
         playerVC?.view.addGestureRecognizer(panGesture)
 
         view.bringSubview(toFront: tabBar)

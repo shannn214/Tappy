@@ -38,9 +38,7 @@ class PlayerPanelView: UIView {
     func setupSlider() {
 
         slider.setThumbImage(#imageLiteral(resourceName: "dott"), for: .normal)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpInside)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpOutside)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchCancel)
+        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .valueChanged)
 
     }
 
