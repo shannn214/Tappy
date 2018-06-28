@@ -206,9 +206,6 @@
                             <constraint firstItem="DTg-xP-mSo" firstAttribute="bottom" secondItem="G9w-8c-PdF" secondAttribute="bottom" id="w2a-hI-8oS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G9w-8c-PdF"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="6V5-QS-ULK" appends="YES" id="MIe-jq-oVd"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="backgroundCover" destination="KzH-fA-RcO" id="kax-ow-sLI"/>
@@ -216,11 +213,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GC-GJ-DEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="6V5-QS-ULK">
-                    <connections>
-                        <action selector="panGesture:" destination="aws-MT-OLZ" id="sNn-1w-F40"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="80.799999999999997" y="204.64767616191907"/>
         </scene>

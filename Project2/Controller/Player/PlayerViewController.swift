@@ -17,6 +17,8 @@ class PlayerViewController: UIViewController {
 
     var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
+    var flag: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,16 @@ class PlayerViewController: UIViewController {
             name: .startPlayingTrack,
             object: nil
         )
+
+        setGesture()
+
+    }
+
+    func setGesture() {
+
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panPlayer(panGesture:)))
+
+        self.view.addGestureRecognizer(panGesture)
 
     }
 
@@ -71,34 +83,96 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func leaveArrow(_ sender: Any) {
-//        self.dismiss(animated: true)
+
+        // NOTE
+
     }
 
-    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+    @objc func panPlayer(panGesture: UIPanGestureRecognizer) {
 
-//        let touchPoint = sender.location(in: self.view.window)
-//        let touchTrans = sender.translation(in: self.view.window)
-//
-//        if sender.state == UIGestureRecognizerState.changed {
-//            if touchPoint.y - initialPoint.y > 0 && touchTrans.y > 0 {
-//                self.view.frame = CGRect(x: 0,
-//                                         y: touchTrans.y,
-//                                         width: self.view.frame.size.width,
-//                                         height: self.view.frame.size.height)
-//            }
-//        } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
-//            if touchPoint.y - initialPoint.y > 300 {
-//                self.dismiss(animated: true) {
-//                }
-//            } else {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.view.frame = CGRect(x: 0,
-//                                             y: 0,
-//                                             width: self.view.frame.size.width,
-//                                             height: self.view.frame.size.height)
-//                })
-//            }
-//        }
+        let touchPoint = panGesture.location(in: self.view.window)
+
+        let trans = panGesture.translation(in: self.view.window)
+
+        let moving = abs(trans.y)
+
+        guard let viewPosition = panGesture.view else { return }
+
+        let velocity = panGesture.velocity(in: self.view.window)
+
+        print(velocity.y)
+
+        print("======")
+
+        print(viewPosition.frame.origin.y)
+
+        if panGesture.state == UIGestureRecognizerState.changed {
+
+            if flag == true {
+
+                if trans.y < 0 {
+
+                    self.view.frame = CGRect(x: 0,
+                                                  y: SHConstants.screenHeight - 50 - moving,
+                                                  width: view.bounds.width,
+                                                  height: view.bounds.height)
+
+                }
+
+            } else if flag == false {
+
+                if touchPoint.y > 0 && trans.y > 0 {
+
+                    self.view.frame = CGRect(x: 0,
+                                                  y: trans.y,
+                                                  width: view.bounds.width,
+                                                  height: view.bounds.height)
+
+                }
+
+            }
+
+        } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
+
+            //            if trans.y < -200 {
+            if viewPosition.frame.origin.y < SHConstants.screenHeight / 2 || velocity.y < -1500 {
+
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+
+                    self.view.frame = self.view.bounds
+
+//                    self.tabBar.alpha = 0
+
+                    self.playerPanelView.smallPanel.alpha = 0
+
+                    self.playerPanelView.leaveArrow.alpha = 1
+
+                }, completion: nil)
+
+                flag = false
+
+            } else if viewPosition.frame.origin.y > SHConstants.screenHeight / 2 || velocity.y > 1500 {
+
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+
+                    self.view.frame = CGRect(x: 0,
+                                                       y: SHConstants.screenHeight - 50,
+                                                       width: self.view.bounds.width,
+                                                       height: self.view.bounds.height)
+
+//                    self.tabBar.alpha = 1
+
+                    self.playerPanelView.smallPanel.alpha = 1
+
+                    self.playerPanelView.leaveArrow.alpha = 0
+
+                }, completion: nil)
+
+                flag = true
+
+            }
+
+        }
 
     }
 

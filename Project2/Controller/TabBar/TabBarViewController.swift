@@ -136,7 +136,7 @@ class TabBarViewController: UITabBarController {
 
         playerVC?.view.isUserInteractionEnabled = true
 
-        playerVC?.view.addGestureRecognizer(panGesture)
+//        playerVC?.view.addGestureRecognizer(panGesture)
 
         view.bringSubview(toFront: tabBar)
 
@@ -149,6 +149,16 @@ class TabBarViewController: UITabBarController {
         let trans = panGesture.translation(in: playerVC?.view.window)
 
         let moving = abs(trans.y)
+
+        guard let viewPosition = panGesture.view else { return }
+
+        let velocity = panGesture.velocity(in: playerVC?.view.window)
+
+        print(velocity.y)
+
+        print("======")
+
+        print(viewPosition.frame.origin.y)
 
         if panGesture.state == UIGestureRecognizerState.changed {
 
@@ -178,9 +188,10 @@ class TabBarViewController: UITabBarController {
 
         } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
 
-            if trans.y < -200 {
+//            if trans.y < -200 {
+            if viewPosition.frame.origin.y < SHConstants.screenHeight / 2 || velocity.y < -1500 {
 
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
 
                     self.playerVC?.view.frame = self.view.bounds
 
@@ -190,13 +201,13 @@ class TabBarViewController: UITabBarController {
 
                     self.playerVC?.playerPanelView.leaveArrow.alpha = 1
 
-                })
+                }, completion: nil)
 
                 flag = false
 
-            } else {
+            } else if viewPosition.frame.origin.y > SHConstants.screenHeight / 2 || velocity.y > 1500 {
 
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
 
                     self.playerVC?.view.frame = CGRect(x: 0,
                                                        y: self.view.bounds.height - self.tabBar.bounds.height - 50,
@@ -209,7 +220,7 @@ class TabBarViewController: UITabBarController {
 
                     self.playerVC?.playerPanelView.leaveArrow.alpha = 0
 
-                })
+                }, completion: nil)
 
                 flag = true
 

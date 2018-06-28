@@ -132,7 +132,7 @@ extension SettingCollectionViewController: CellViewDelegate {
         self.selectedPoint = point
 
         detailVC.view.frame = CGRect(origin: CGPoint(x: 0, y: point.y), size: CGSize(width: itemSize, height: itemSize * 0.9))
-        
+
         cell.cellView.isHidden = true
 
         UIView.animate(withDuration: 0.35) {

@@ -16,7 +16,7 @@ class SettingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellImage: UIImageView!
-    
+
     weak var delegate: CellViewDelegate?
 
     override func awakeFromNib() {
