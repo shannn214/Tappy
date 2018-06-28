@@ -35,10 +35,26 @@ class PlayerPanelView: UIView {
 
     }
 
-    func setupSlider() {
+    private func setupSlider() {
 
         slider.setThumbImage(#imageLiteral(resourceName: "dott"), for: .normal)
         slider.addTarget(self, action: #selector(changeCurrentPosition), for: .valueChanged)
+
+    }
+
+    private func setupButton() {
+
+        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+        smallPlayButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+
+        leaveArrow.alpha = 0
+
+        playButton.isSelected = true
+
+        smallPlayButton.isSelected = true
 
     }
 
@@ -84,24 +100,6 @@ class PlayerPanelView: UIView {
             SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
 
         }
-
-    }
-
-    private func setupButton() {
-
-        playButton.isSelected = true
-
-        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
-
-        smallPlayButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
-
-        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
-
-        leaveArrow.alpha = 0
-
-        playButton.isSelected = false
-
-        smallPlayButton.isSelected = false
 
     }
 

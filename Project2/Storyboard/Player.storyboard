@@ -73,14 +73,27 @@
                                                 <state key="normal" backgroundImage="pause-4"/>
                                                 <state key="selected" backgroundImage="play-button-8"/>
                                             </button>
+                                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA9-vP-Llb">
+                                                <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="ihE-kE-EQy"/>
+                                                    <constraint firstAttribute="height" constant="20" id="qKA-Og-aRg"/>
+                                                </constraints>
+                                                <state key="normal" image="up-arrow"/>
+                                                <connections>
+                                                    <action selector="smallLeaveArrow:" destination="aws-MT-OLZ" eventType="touchUpInside" id="Ajq-4j-eOq"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="avB-xA-ORJ" secondAttribute="trailing" constant="15" id="BiA-sH-xNr"/>
                                             <constraint firstAttribute="height" constant="45" id="FX8-J6-fui"/>
+                                            <constraint firstItem="EA9-vP-Llb" firstAttribute="leading" secondItem="Yup-fK-aAL" secondAttribute="leading" constant="15" id="Hsd-D7-RXA"/>
                                             <constraint firstItem="g2h-Zz-Grr" firstAttribute="centerY" secondItem="Yup-fK-aAL" secondAttribute="centerY" id="L2R-Tf-965"/>
                                             <constraint firstAttribute="bottom" secondItem="avB-xA-ORJ" secondAttribute="bottom" constant="10" id="ZF6-D8-8EA"/>
                                             <constraint firstItem="g2h-Zz-Grr" firstAttribute="centerX" secondItem="Yup-fK-aAL" secondAttribute="centerX" id="g0q-R2-QuA"/>
+                                            <constraint firstAttribute="bottom" secondItem="EA9-vP-Llb" secondAttribute="bottom" constant="10" id="jR2-tQ-mF5"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-7K-qDA">
@@ -221,5 +234,6 @@
         <image name="arrow" width="128" height="128"/>
         <image name="pause-4" width="128" height="128"/>
         <image name="play-button-8" width="128" height="128"/>
+        <image name="up-arrow" width="64" height="64"/>
     </resources>
 </document>

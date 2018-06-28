@@ -69,6 +69,9 @@ class PlayerViewController: UIViewController {
         playerPanelView.artist.text = currentTrack.artistName
         playerPanelView.trackName.text = currentTrack.name
         playerPanelView.smallTrackName.text = currentTrack.name
+        playerPanelView.playButton.isSelected = false
+        playerPanelView.smallPlayButton.isSelected = false
+        playerPanelView.playing = false
 
     }
 
@@ -107,6 +110,24 @@ class PlayerViewController: UIViewController {
         }, completion: nil)
 
         flag = true
+
+    }
+
+    @IBAction func smallLeaveArrow(_ sender: Any) {
+
+        self.playerDelegate?.playerViewStatus(flag: false)
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+
+            self.view.frame = self.view.bounds
+
+            self.playerPanelView.smallPanel.alpha = 0
+
+            self.playerPanelView.leaveArrow.alpha = 1
+
+        }, completion: nil)
+
+        flag = false
 
     }
 
@@ -173,9 +194,9 @@ class PlayerViewController: UIViewController {
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
 
                     self.view.frame = CGRect(x: 0,
-                                                       y: SHConstants.screenHeight - 50,
-                                                       width: self.view.bounds.width,
-                                                       height: self.view.bounds.height)
+                                             y: SHConstants.screenHeight - 50,
+                                             width: self.view.bounds.width,
+                                             height: self.view.bounds.height)
 
                     self.playerPanelView.smallPanel.alpha = 1
 
