@@ -28,6 +28,8 @@ class SettingCollectionViewController: UIViewController {
 
     var detailVC: SettingDetailViewController!
 
+    let sortedArray = DBProvider.shared.sortedArray
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,7 +65,7 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 2
+        return 4
 
     }
 
@@ -71,26 +73,24 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
         guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else { return UICollectionViewCell() }
 
-//        guard let settingDetailVC = controllers[indexPath.row] as? SettingDetailViewController else { return cell }
-
         cell.delegate = self
 
-//        self.addChildViewController(settingDetailVC)
-//
-//        cell.cellView.addSubview(settingDetailVC.view)
-//
-//        settingDetailVC.view.frame = cell.contentView.bounds
-//
-//        settingDetailVC.didMove(toParentViewController: self)
-//
-//        cell.clipsToBounds = true
-
         cellIndex = indexPath
+
+        guard let info = sortedArray?[indexPath.row] else { return UICollectionViewCell() }
+
+        cell.cellImage.sd_setImage(with: URL(string: info.cover))
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        print("cell did select")
+
+        detailVC.selectedIndex = indexPath
+
+        print("cell index did sent")
 
     }
 
@@ -100,28 +100,7 @@ extension SettingCollectionViewController: CellViewDelegate {
 
     func cellTouchedEnded(_ cell: SettingCollectionViewCell) {
 
-//        selectedIndex = settingCollectionView.indexPath(for: cell)
-//
-//        guard let settingDetailVC = controllers[(selectedIndex?.row)!] as? SettingDetailViewController else { return }
-//
-//        settingDetailVC.view.removeFromSuperview()
-//
-//        self.view.addSubview(settingDetailVC.view)
-//
-//        let point = settingCollectionView.convert(cell.frame.origin, to: self.view)
-//
-//        let itemSize = UIScreen.main.bounds.width
-//
-//        self.selectedPoint = point
-//
-//        settingDetailVC.view.frame = CGRect(origin: point, size: CGSize(width: itemSize * 0.85, height: itemSize * 0.9))
-//
-//        self.view.bringSubview(toFront: settingDetailVC.view)
-//
-//        UIView.animate(withDuration: 0.35) {
-//            settingDetailVC.view.frame = self.view.frame
-//            settingDetailVC.changeToFullScreen()
-//        }
+        print("delegate: cell touch")
 
         self.view.addSubview(detailVC.view)
 

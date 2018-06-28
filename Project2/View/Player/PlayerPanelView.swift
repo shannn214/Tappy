@@ -19,6 +19,7 @@ class PlayerPanelView: UIView {
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var leaveArrow: UIButton!
+    @IBOutlet weak var smallSlider: UISlider!
 
     @IBOutlet weak var smallPanel: UIView!
     @IBOutlet weak var smallTrackName: UILabel!
@@ -39,6 +40,8 @@ class PlayerPanelView: UIView {
 
         slider.setThumbImage(#imageLiteral(resourceName: "dott"), for: .normal)
         slider.addTarget(self, action: #selector(changeCurrentPosition), for: .valueChanged)
+
+        smallSlider.setThumbImage(UIImage(), for: .normal)
 
     }
 
@@ -85,6 +88,8 @@ class PlayerPanelView: UIView {
         startTimeLabel.text = currentTime
 
         slider.value = Float(proportion)
+
+        smallSlider.value = Float(proportion)
 
     }
 

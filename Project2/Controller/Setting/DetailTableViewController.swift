@@ -12,6 +12,10 @@ class DetailTableViewController: UIViewController {
 
     @IBOutlet weak var detailTableView: UITableView!
 
+    var selectedCellIndex: IndexPath?
+
+    let sortedArray = DBProvider.shared.sortedArray
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,8 +55,13 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
               let headerCell = detailTableView.dequeueReusableCell(withIdentifier: String(describing: DetailHeaderTableViewCell.self)) as? DetailHeaderTableViewCell
         else { return UITableViewCell() }
 
+        guard let info = sortedArray?[(selectedCellIndex?.row)!] else { return UITableViewCell() }
+
         switch indexPath.row {
         case 0:
+
+            headerCell.detailCellImage.sd_setImage(with: URL(string: info.cover))
+
             return headerCell
         default:
             return cell

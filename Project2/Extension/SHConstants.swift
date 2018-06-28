@@ -67,8 +67,8 @@ struct SHConstants {
                                        width: UIScreen.main.bounds.width,
                                        height: UIScreen.main.bounds.height)
 
-    static let mapMaskRoundedRect = CGRect(x: 15 * UIScreen.main.bounds.width / 100,
-                                           y: 68 * UIScreen.main.bounds.height / 100,
+    static let mapMaskRoundedRect = CGRect(x: 14 * UIScreen.main.bounds.width / 100,
+                                           y: 65 * UIScreen.main.bounds.height / 100,
                                            width: 300,
                                            height: 150)
 

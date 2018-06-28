@@ -11,6 +11,8 @@ import UIKit
 class DetailHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var detailCellImage: UIImageView!
+    @IBOutlet weak var imageLeading: NSLayoutConstraint!
+    @IBOutlet weak var imageTrailing: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,7 +23,6 @@ class DetailHeaderTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

@@ -12,7 +12,7 @@ class SettingDetailViewController: UIViewController {
 
     @IBOutlet weak var detailContainer: UIView!
 
-    var gesture: UIGestureRecognizer?
+    var selectedIndex: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,16 @@ class SettingDetailViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if let detailViewController = segue.destination as? DetailTableViewController {
+
+            detailViewController.selectedCellIndex = selectedIndex
+
+        }
+
     }
 
     func initialSetup() {
