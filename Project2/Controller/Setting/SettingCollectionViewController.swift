@@ -13,11 +13,6 @@ class SettingCollectionViewController: UIViewController {
 
     @IBOutlet weak var settingCollectionView: UICollectionView!
 
-    lazy var controllers: [UIViewController] = [
-        UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self)),
-        UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self))
-    ]
-
     var cellIndex: IndexPath?
 
     var selectedIndex: IndexPath?
@@ -35,8 +30,6 @@ class SettingCollectionViewController: UIViewController {
 
         setupCollectionView()
 
-        setupCollectionLayout()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,10 +46,6 @@ class SettingCollectionViewController: UIViewController {
         settingCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
 
         detailVC = UIStoryboard.settingStoryboard().instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self)) as? SettingDetailViewController
-    }
-
-    func setupCollectionLayout() {
-
     }
 
 }
@@ -110,14 +99,45 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         self.selectedPoint = point
 
-        detailVC.view.frame = CGRect(origin: CGPoint(x: 0, y: point.y), size: CGSize(width: itemSize, height: itemSize * 0.9))
+        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+
+        let yPoint = detailVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: point.y)
+
+        yPoint.isActive = true
+
+        let xPoint = detailVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: point.x)
+
+        xPoint.isActive = true
+
+        let width = detailVC.view.widthAnchor.constraint(equalToConstant: itemSize * 0.85)
+
+        width.isActive = true
+
+        let height = detailVC.view.heightAnchor.constraint(equalToConstant: itemSize * 0.9)
+
+        height.isActive = true
+
+        self.selectedPoint = point
+
+        self.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+
+            xPoint.constant = 0
+
+            yPoint.constant = 0
+
+            width.constant = self.view.frame.width
+
+            height.constant = self.view.frame.height
+
+            self.view.layoutIfNeeded()
+
+            self.detailVC.changeToFullScreen()
+
+        }, completion: nil)
 
         cell.cellView.isHidden = true
-
-        UIView.animate(withDuration: 0.35) {
-            self.detailVC.view.frame = self.view.frame
-            self.detailVC.changeToFullScreen()
-        }
 
     }
 
@@ -129,7 +149,7 @@ extension SettingCollectionViewController: UICollectionViewDelegateFlowLayout {
 
         let itemSize = UIScreen.main.bounds.width
 
-        return CGSize(width: itemSize, height: itemSize * 0.9)
+        return CGSize(width: itemSize * 0.85, height: itemSize * 0.9)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

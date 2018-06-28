@@ -87,7 +87,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yNC-R7-OxH">
                                                 <rect key="frame" x="-2" y="0.0" width="379" height="31"/>
                                                 <color key="minimumTrackTintColor" red="0.84425446500000001" green="0.85261342009999996" blue="0.85261342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="maximumTrackTintColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="0.83462890624999997" colorSpace="calibratedRGB"/>
                                                 <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </slider>
                                         </subviews>

@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My-Boo" translatesAutoresizingMaskIntoConstraints="NO" id="lUt-si-Dq9">
-                        <rect key="frame" x="40" y="0.0" width="462" height="282.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="542" height="282.5"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="lUt-si-Dq9" secondAttribute="bottom" id="F1u-Zg-uHa"/>
-                    <constraint firstAttribute="trailing" secondItem="lUt-si-Dq9" secondAttribute="trailing" constant="40" id="Kmm-HA-a4h"/>
-                    <constraint firstItem="lUt-si-Dq9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="Mjf-D4-9U7"/>
+                    <constraint firstAttribute="trailing" secondItem="lUt-si-Dq9" secondAttribute="trailing" id="Kmm-HA-a4h"/>
+                    <constraint firstItem="lUt-si-Dq9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Mjf-D4-9U7"/>
                     <constraint firstItem="lUt-si-Dq9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ySN-9H-Gfk"/>
                 </constraints>
             </tableViewCellContentView>

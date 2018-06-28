@@ -72,11 +72,11 @@
 		09ABF98B20E338F80036CB97 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */; };
 		09ABF98C20E338F80036CB97 /* SettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */; };
 		09ABF98E20E33AAA0036CB97 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */; };
-		09ABF99020E373880036CB97 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98F20E373880036CB97 /* DetailTableViewController.swift */; };
 		09ABF99320E374800036CB97 /* SettingDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF99120E374800036CB97 /* SettingDetailTableViewCell.swift */; };
 		09ABF99420E374800036CB97 /* SettingDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABF99220E374800036CB97 /* SettingDetailTableViewCell.xib */; };
 		09ABF99720E37AD60036CB97 /* DetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF99520E37AD60036CB97 /* DetailHeaderTableViewCell.swift */; };
 		09ABF99820E37AD60036CB97 /* DetailHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABF99620E37AD60036CB97 /* DetailHeaderTableViewCell.xib */; };
+		09ABF9B820E5290A0036CB97 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF9B720E5290A0036CB97 /* DetailTableViewController.swift */; };
 		09B3043F20D0C3AC007645D5 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3043E20D0C3AC007645D5 /* Project2Tests.swift */; };
 		09B3044720D10F2A007645D5 /* TestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B3044620D10F2A007645D5 /* TestJson.json */; };
 		09C6CF3320A5655F00A6C567 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6CF3020A5655F00A6C567 /* SpotifyAuthentication.framework */; };
@@ -181,11 +181,11 @@
 		09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCollectionViewCell.xib; sourceTree = "<group>"; };
 		09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
-		09ABF98F20E373880036CB97 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		09ABF99120E374800036CB97 /* SettingDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailTableViewCell.swift; sourceTree = "<group>"; };
 		09ABF99220E374800036CB97 /* SettingDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingDetailTableViewCell.xib; sourceTree = "<group>"; };
 		09ABF99520E37AD60036CB97 /* DetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		09ABF99620E37AD60036CB97 /* DetailHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		09ABF9B720E5290A0036CB97 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		09B3043C20D0C3AC007645D5 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B3043E20D0C3AC007645D5 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
 		09B3044020D0C3AC007645D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 				090B6967209F3F9A0095B416 /* SettingViewController.swift */,
 				09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */,
 				09ABF98D20E33AAA0036CB97 /* SettingDetailViewController.swift */,
-				09ABF98F20E373880036CB97 /* DetailTableViewController.swift */,
+				09ABF9B720E5290A0036CB97 /* DetailTableViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -854,6 +854,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09ABF9B820E5290A0036CB97 /* DetailTableViewController.swift in Sources */,
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				09ABF98720E338600036CB97 /* SettingCollectionViewController.swift in Sources */,
 				09ABF98320E233450036CB97 /* MapPlayerViewController.swift in Sources */,
@@ -871,7 +872,6 @@
 				09ABF99320E374800036CB97 /* SettingDetailTableViewCell.swift in Sources */,
 				0914190E20A4839500B7C0F0 /* DesignSetting.swift in Sources */,
 				098E104820C917E300B9D7F2 /* Functions.swift in Sources */,
-				09ABF99020E373880036CB97 /* DetailTableViewController.swift in Sources */,
 				098E104E20C9646C00B9D7F2 /* OpeningViewController.swift in Sources */,
 				090B697F20A18E9F0095B416 /* PlayerViewController.swift in Sources */,
 				090B6978209F47D10095B416 /* GameViewController.swift in Sources */,

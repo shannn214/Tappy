@@ -30,6 +30,8 @@ class SettingDetailViewController: UIViewController {
         if let detailViewController = segue.destination as? DetailTableViewController {
 
             detailViewController.selectedCellIndex = selectedIndex
+            
+            detailViewController.detailDelegate = self
 
         }
 
@@ -48,4 +50,14 @@ class SettingDetailViewController: UIViewController {
 
     }
 
+}
+
+extension SettingDetailViewController: DetailDelegate {
+    
+    func detailDidScroll(translation: CGFloat) {
+        
+        self.view.frame.origin = CGPoint(x: 0, y: -translation)
+    
+    }
+    
 }

@@ -141,6 +141,7 @@
                             <constraint firstAttribute="trailing" secondItem="AZR-yw-QpQ" secondAttribute="trailing" id="n4Q-ZY-CVa"/>
                             <constraint firstItem="AZR-yw-QpQ" firstAttribute="leading" secondItem="Jrk-Ys-lvf" secondAttribute="leading" id="x6T-5N-iBv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qwu-Ic-pfy"/>
                     </view>
                     <connections>
                         <outlet property="detailTableView" destination="AZR-yw-QpQ" id="zRY-g5-pun"/>

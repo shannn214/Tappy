@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol DetailDelegate: class {
+    func detailDidScroll(translation: CGFloat)
+}
+
 class DetailTableViewController: UIViewController {
 
     @IBOutlet weak var detailTableView: UITableView!
 
     var selectedCellIndex: IndexPath?
+    
+    weak var detailDelegate: DetailDelegate?
 
     let sortedArray = DBProvider.shared.sortedArray
 
@@ -38,6 +44,14 @@ class DetailTableViewController: UIViewController {
         let headerNib = UINib(nibName: String(describing: DetailHeaderTableViewCell.self), bundle: nil)
         detailTableView.register(headerNib, forCellReuseIdentifier: String(describing: DetailHeaderTableViewCell.self))
 
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print(scrollView.contentOffset.y)
+        
+        self.detailDelegate?.detailDidScroll(translation: scrollView.contentOffset.y)
+        
     }
 
 }
