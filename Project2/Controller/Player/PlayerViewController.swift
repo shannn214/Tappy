@@ -8,7 +8,10 @@
 
 import Foundation
 import SDWebImage
-//import AVFoundation
+
+protocol PlayerDelegate: class {
+    func playerViewStatus(flag: Bool)
+}
 
 class PlayerViewController: UIViewController {
 
@@ -18,6 +21,10 @@ class PlayerViewController: UIViewController {
     var initialPoint: CGPoint = CGPoint(x: 0, y: 0)
 
     var flag: Bool = true
+
+    var tabBarAlpha: (() -> Void)?
+
+    weak var playerDelegate: PlayerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +91,22 @@ class PlayerViewController: UIViewController {
 
     @IBAction func leaveArrow(_ sender: Any) {
 
-        // NOTE
+        self.playerDelegate?.playerViewStatus(flag: true)
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+
+            self.view.frame = CGRect(x: 0,
+                                     y: SHConstants.screenHeight - 50,
+                                     width: self.view.bounds.width,
+                                     height: self.view.bounds.height)
+
+            self.playerPanelView.smallPanel.alpha = 1
+
+            self.playerPanelView.leaveArrow.alpha = 0
+
+        }, completion: nil)
+
+        flag = true
 
     }
 
@@ -99,12 +121,6 @@ class PlayerViewController: UIViewController {
         guard let viewPosition = panGesture.view else { return }
 
         let velocity = panGesture.velocity(in: self.view.window)
-
-        print(velocity.y)
-
-        print("======")
-
-        print(viewPosition.frame.origin.y)
 
         if panGesture.state == UIGestureRecognizerState.changed {
 
@@ -134,14 +150,13 @@ class PlayerViewController: UIViewController {
 
         } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
 
-            //            if trans.y < -200 {
             if viewPosition.frame.origin.y < SHConstants.screenHeight / 2 || velocity.y < -1500 {
 
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+                self.playerDelegate?.playerViewStatus(flag: false)
+
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
 
                     self.view.frame = self.view.bounds
-
-//                    self.tabBar.alpha = 0
 
                     self.playerPanelView.smallPanel.alpha = 0
 
@@ -153,14 +168,14 @@ class PlayerViewController: UIViewController {
 
             } else if viewPosition.frame.origin.y > SHConstants.screenHeight / 2 || velocity.y > 1500 {
 
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+                self.playerDelegate?.playerViewStatus(flag: true)
+
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
 
                     self.view.frame = CGRect(x: 0,
                                                        y: SHConstants.screenHeight - 50,
                                                        width: self.view.bounds.width,
                                                        height: self.view.bounds.height)
-
-//                    self.tabBar.alpha = 1
 
                     self.playerPanelView.smallPanel.alpha = 1
 

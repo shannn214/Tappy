@@ -107,8 +107,6 @@ class TabBarViewController: UITabBarController {
 
     var playerVC: PlayerViewController?
 
-    var flag: Bool = true
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,101 +130,11 @@ class TabBarViewController: UITabBarController {
                                       y: view.bounds.height - tabBar.bounds.height - 50,
                                       width: (playerVC?.view.bounds.width)!, height: (playerVC?.view.bounds.height)!)
 
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panPlayer(panGesture:)))
-
         playerVC?.view.isUserInteractionEnabled = true
-
-//        playerVC?.view.addGestureRecognizer(panGesture)
 
         view.bringSubview(toFront: tabBar)
 
-    }
-
-    @objc func panPlayer(panGesture: UIPanGestureRecognizer) {
-
-        let touchPoint = panGesture.location(in: playerVC?.view.window)
-
-        let trans = panGesture.translation(in: playerVC?.view.window)
-
-        let moving = abs(trans.y)
-
-        guard let viewPosition = panGesture.view else { return }
-
-        let velocity = panGesture.velocity(in: playerVC?.view.window)
-
-        print(velocity.y)
-
-        print("======")
-
-        print(viewPosition.frame.origin.y)
-
-        if panGesture.state == UIGestureRecognizerState.changed {
-
-            if flag == true {
-
-                if trans.y < 0 {
-
-                    playerVC?.view.frame = CGRect(x: 0,
-                                                  y: view.bounds.height - tabBar.bounds.height - 50 - moving,
-                                                  width: (playerVC?.view.bounds.width)!,
-                                                  height: (playerVC?.view.bounds.height)!)
-
-                }
-
-            } else if flag == false {
-
-                if touchPoint.y > 0 && trans.y > 0 {
-
-                    playerVC?.view.frame = CGRect(x: 0,
-                                                  y: trans.y,
-                                                  width: (playerVC?.view.bounds.width)!,
-                                                  height: (playerVC?.view.bounds.height)!)
-
-                }
-
-            }
-
-        } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
-
-//            if trans.y < -200 {
-            if viewPosition.frame.origin.y < SHConstants.screenHeight / 2 || velocity.y < -1500 {
-
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-
-                    self.playerVC?.view.frame = self.view.bounds
-
-                    self.tabBar.alpha = 0
-
-                    self.playerVC?.playerPanelView.smallPanel.alpha = 0
-
-                    self.playerVC?.playerPanelView.leaveArrow.alpha = 1
-
-                }, completion: nil)
-
-                flag = false
-
-            } else if viewPosition.frame.origin.y > SHConstants.screenHeight / 2 || velocity.y > 1500 {
-
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-
-                    self.playerVC?.view.frame = CGRect(x: 0,
-                                                       y: self.view.bounds.height - self.tabBar.bounds.height - 50,
-                                                       width: (self.playerVC?.view.bounds.width)!,
-                                                       height: (self.playerVC?.view.bounds.height)!)
-
-                    self.tabBar.alpha = 1
-
-                    self.playerVC?.playerPanelView.smallPanel.alpha = 1
-
-                    self.playerVC?.playerPanelView.leaveArrow.alpha = 0
-
-                }, completion: nil)
-
-                flag = true
-
-            }
-
-        }
+        playerVC?.playerDelegate = self
 
     }
 
@@ -252,6 +160,29 @@ class TabBarViewController: UITabBarController {
         }
 
         setViewControllers(controllers, animated: false)
+
+    }
+
+}
+
+extension TabBarViewController: PlayerDelegate {
+
+    func playerViewStatus(flag: Bool) {
+
+        switch flag {
+        case true:
+
+            UIView.animate(withDuration: 0.3) {
+                self.tabBar.alpha = 1
+            }
+
+        default:
+
+            UIView.animate(withDuration: 0.3) {
+                self.tabBar.alpha = 0
+            }
+
+        }
 
     }
 
