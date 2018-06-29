@@ -94,7 +94,7 @@ extension SettingCollectionViewController: CellViewDelegate {
 
     func cellTouchedEnded(_ cell: SettingCollectionViewCell) {
 
-        print("delegate: cell touch")
+//        print("delegate: cell touch")
 
         seletedCell = cell
 
