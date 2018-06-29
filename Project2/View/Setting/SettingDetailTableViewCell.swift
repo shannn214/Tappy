@@ -10,6 +10,8 @@ import UIKit
 
 class SettingDetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var detailContent: UITextView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

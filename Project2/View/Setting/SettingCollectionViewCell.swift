@@ -16,6 +16,7 @@ class SettingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var cellTitle: UILabel!
 
     weak var delegate: CellViewDelegate?
 
@@ -23,6 +24,7 @@ class SettingCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         cellImage.layer.cornerRadius = 20
+        cellView.layer.cornerRadius = 20
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -43,6 +45,7 @@ class SettingCollectionViewCell: UICollectionViewCell {
         super.touchesEnded(touches, with: event)
 
         self.delegate?.cellTouchedEnded(self)
+        touchCellContentEnded()
 
     }
 

@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol SettingDetailDelegate: class {
+    func detailBackToSmallSize(_ controller: SettingDetailViewController)
+}
+
 class SettingDetailViewController: UIViewController {
 
     @IBOutlet weak var detailContainer: UIView!
 
     var selectedIndex: IndexPath?
+
+    var selectedPoint: CGPoint?
+
+    weak var settingDetailDelegate: SettingDetailDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +38,7 @@ class SettingDetailViewController: UIViewController {
         if let detailViewController = segue.destination as? DetailTableViewController {
 
             detailViewController.selectedCellIndex = selectedIndex
-            
+
             detailViewController.detailDelegate = self
 
         }
@@ -53,11 +61,21 @@ class SettingDetailViewController: UIViewController {
 }
 
 extension SettingDetailViewController: DetailDelegate {
-    
+
     func detailDidScroll(translation: CGFloat) {
-        
-        self.view.frame.origin = CGPoint(x: 0, y: -translation)
-    
+
+        if translation < 0 {
+
+//            self.view.frame.origin = CGPoint(x: 0, y: -translation)
+
+        }
+
+        if translation < -100 {
+
+            self.settingDetailDelegate?.detailBackToSmallSize(self)
+
+        }
+
     }
-    
+
 }

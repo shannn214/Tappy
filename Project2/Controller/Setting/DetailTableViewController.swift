@@ -17,7 +17,7 @@ class DetailTableViewController: UIViewController {
     @IBOutlet weak var detailTableView: UITableView!
 
     var selectedCellIndex: IndexPath?
-    
+
     weak var detailDelegate: DetailDelegate?
 
     let sortedArray = DBProvider.shared.sortedArray
@@ -37,7 +37,9 @@ class DetailTableViewController: UIViewController {
         detailTableView.separatorStyle = .none
         detailTableView.delegate = self
         detailTableView.dataSource = self
-        detailTableView.autoresizingMask = []
+
+        detailTableView.rowHeight = UITableViewAutomaticDimension
+        detailTableView.estimatedRowHeight = 100
 
         let nib = UINib(nibName: String(describing: SettingDetailTableViewCell.self), bundle: nil)
         detailTableView.register(nib, forCellReuseIdentifier: String(describing: SettingDetailTableViewCell.self))
@@ -45,13 +47,11 @@ class DetailTableViewController: UIViewController {
         detailTableView.register(headerNib, forCellReuseIdentifier: String(describing: DetailHeaderTableViewCell.self))
 
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        print(scrollView.contentOffset.y)
-        
+
         self.detailDelegate?.detailDidScroll(translation: scrollView.contentOffset.y)
-        
+
     }
 
 }
@@ -60,7 +60,7 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 40
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,13 +71,20 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
 
         guard let info = sortedArray?[(selectedCellIndex?.row)!] else { return UITableViewCell() }
 
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+        let jsonData = uriManager.uris[(selectedCellIndex?.row)!]
+
         switch indexPath.row {
         case 0:
 
             headerCell.detailCellImage.sd_setImage(with: URL(string: info.cover))
+            headerCell.headerTitle.text = jsonData.title
 
             return headerCell
         default:
+
+            cell.detailContent.text = jsonData.content
+
             return cell
         }
 
@@ -88,8 +95,10 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
         switch indexPath.row {
         case 0:
             return UIScreen.main.bounds.width * 0.9
+        case 1:
+            return UITableViewAutomaticDimension
         default:
-            return 40
+            return 50
         }
 
     }

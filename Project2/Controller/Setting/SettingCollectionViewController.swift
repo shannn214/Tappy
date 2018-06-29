@@ -19,7 +19,7 @@ class SettingCollectionViewController: UIViewController {
 
     var selectedPoint: CGPoint?
 
-    var seletedCell: UICollectionViewCell?
+    var seletedCell: SettingCollectionViewCell?
 
     var detailVC: SettingDetailViewController!
 
@@ -45,7 +45,6 @@ class SettingCollectionViewController: UIViewController {
         settingCollectionView.dataSource = self
         settingCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
 
-        detailVC = UIStoryboard.settingStoryboard().instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self)) as? SettingDetailViewController
     }
 
 }
@@ -62,6 +61,10 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
         guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else { return UICollectionViewCell() }
 
+        let uriManager = SpotifyUrisManager.createManagerFromFile()
+
+        let jsonData = uriManager.uris[indexPath.row]
+
         cell.delegate = self
 
         cellIndex = indexPath
@@ -70,16 +73,18 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
         cell.cellImage.sd_setImage(with: URL(string: info.cover))
 
+        cell.cellTitle.text = jsonData.title
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        print("cell did select")
+        detailVC = UIStoryboard.settingStoryboard().instantiateViewController(withIdentifier: String(describing: SettingDetailViewController.self)) as? SettingDetailViewController
+
+        detailVC.settingDetailDelegate = self
 
         detailVC.selectedIndex = indexPath
-
-        print("cell index did sent")
 
     }
 
@@ -91,6 +96,8 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         print("delegate: cell touch")
 
+        seletedCell = cell
+
         self.view.addSubview(detailVC.view)
 
         let point = settingCollectionView.convert(cell.frame.origin, to: self.view)
@@ -99,21 +106,23 @@ extension SettingCollectionViewController: CellViewDelegate {
 
         self.selectedPoint = point
 
+        detailVC.selectedPoint = point
+
         detailVC.view.translatesAutoresizingMaskIntoConstraints = false
 
         let yPoint = detailVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: point.y)
 
-        yPoint.isActive = true
-
         let xPoint = detailVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: point.x)
-
-        xPoint.isActive = true
 
         let width = detailVC.view.widthAnchor.constraint(equalToConstant: itemSize * 0.85)
 
-        width.isActive = true
-
         let height = detailVC.view.heightAnchor.constraint(equalToConstant: itemSize * 0.9)
+
+        yPoint.isActive = true
+
+        xPoint.isActive = true
+
+        width.isActive = true
 
         height.isActive = true
 
@@ -165,6 +174,56 @@ extension SettingCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
         return UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+    }
+
+}
+
+extension SettingCollectionViewController: SettingDetailDelegate {
+
+    func detailBackToSmallSize(_ controller: SettingDetailViewController) {
+
+//        print("detail back to small delegate did sent")
+
+//        let point = settingCollectionView.convert((seletedCell?.frame.origin)!, to: self.view)
+//
+//        self.detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let itemSize = UIScreen.main.bounds.width
+//
+//        let yPoint = self.detailVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: point.y)
+//
+//        let xPoint = self.detailVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: point.x)
+//
+//        let width = self.detailVC.view.widthAnchor.constraint(equalToConstant: itemSize * 0.85)
+//
+//        let height = self.detailVC.view.heightAnchor.constraint(equalToConstant: itemSize * 0.9)
+//
+//        self.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.3,
+                       animations: {
+
+//                            yPoint.isActive = true
+//
+//                            xPoint.isActive = true
+//
+//                            width.isActive = true
+//
+//                            height.isActive = true
+//
+//                            self.view.layoutIfNeeded()
+
+                            self.detailVC.view.alpha = 0
+
+        },
+                       completion: { _ in
+
+                            self.seletedCell?.cellView.isHidden = false
+
+//                            self.detailVC.view.removeFromSuperview()
+
+        })
+
     }
 
 }
