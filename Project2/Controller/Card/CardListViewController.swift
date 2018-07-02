@@ -148,14 +148,6 @@ extension CardListViewController: UICollectionViewDelegate, UICollectionViewData
         return cardCell
     }
 
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
-        guard let cardDetailVC = controllers[indexPath.row] as? CardDetailViewController,
-              let levelStatus = LevelStatusManager.shared.level
-        else { return }
-
-    }
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let cardListY = scrollView.contentOffset.y

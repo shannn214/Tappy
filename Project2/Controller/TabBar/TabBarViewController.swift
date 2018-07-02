@@ -67,7 +67,7 @@ enum TabBar {
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings-3")
+            return #imageLiteral(resourceName: "favorites")
 
         }
 
@@ -91,7 +91,7 @@ enum TabBar {
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings-3").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "favorites").withRenderingMode(.alwaysOriginal)
 
         }
 
@@ -101,14 +101,40 @@ enum TabBar {
 
 class TabBarViewController: UITabBarController {
 
-    let tabs: [TabBar] = [.game, .achievement, .collection]
+    let tabs: [TabBar] = [.game, .achievement, .collection, .setting]
 
     // NOTE: Hide .setting for first publish
+
+    var playerVC: PlayerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTab()
+
+        addPlayerTest()
+
+    }
+
+    func addPlayerTest() {
+
+        guard let playerViewController = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+
+        playerVC = playerViewController
+
+        view.addSubview((playerVC?.view)!)
+
+        view.bringSubview(toFront: (playerVC?.view)!)
+
+        playerVC?.view.frame = CGRect(x: 0,
+                                      y: view.bounds.height - tabBar.bounds.height - 50,
+                                      width: (playerVC?.view.bounds.width)!, height: (playerVC?.view.bounds.height)!)
+
+        playerVC?.view.isUserInteractionEnabled = true
+
+        view.bringSubview(toFront: tabBar)
+
+        playerVC?.playerDelegate = self
 
     }
 
@@ -134,6 +160,29 @@ class TabBarViewController: UITabBarController {
         }
 
         setViewControllers(controllers, animated: false)
+
+    }
+
+}
+
+extension TabBarViewController: PlayerDelegate {
+
+    func playerViewStatus(flag: Bool, transY: CGFloat?) {
+
+        switch flag {
+        case true:
+
+            UIView.animate(withDuration: 0.3) {
+                self.tabBar.alpha = 1
+            }
+
+        default:
+
+            UIView.animate(withDuration: 0.3) {
+                self.tabBar.alpha = 0
+            }
+
+        }
 
     }
 

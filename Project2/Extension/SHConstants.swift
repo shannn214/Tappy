@@ -50,9 +50,9 @@ struct SHConstants {
 
     static let firstLogin = "firstLogin"
 
-    static let mapSizeWidth = UIScreen.main.bounds.height/3297 * 22041
+    static let mapSizeWidth = (UIScreen.main.bounds.height - 50)/3297 * 22041
 
-    static let screenHeight = UIScreen.main.bounds.height
+    static let screenHeight = UIScreen.main.bounds.height - 50
 
     static let topViewHeight: CGFloat = 255
 
@@ -67,8 +67,8 @@ struct SHConstants {
                                        width: UIScreen.main.bounds.width,
                                        height: UIScreen.main.bounds.height)
 
-    static let mapMaskRoundedRect = CGRect(x: 15 * UIScreen.main.bounds.width / 100,
-                                           y: 68 * UIScreen.main.bounds.height / 100,
+    static let mapMaskRoundedRect = CGRect(x: 14 * UIScreen.main.bounds.width / 100,
+                                           y: 65 * UIScreen.main.bounds.height / 100,
                                            width: 300,
                                            height: 150)
 

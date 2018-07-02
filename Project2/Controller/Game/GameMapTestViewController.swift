@@ -225,19 +225,19 @@ class GameMapTestViewController: UIViewController, UIScrollViewDelegate {
 
         guard let sortedArray = DBProvider.shared.sortedArray else { return }
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
+//        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController else { return }
 
         let info = sortedArray[level]
 
         SpotifyManager.shared.playMusic(track: info.trackUri, completion: { [weak self] in
 
-            self?.present(playerVC, animated: true) {
-
-                playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
-                playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
-                playerVC.playerPanelView.artist.text = info.artist
-                playerVC.playerPanelView.trackName.text = info.trackName
-            }
+//            self?.present(playerVC, animated: true) {
+//
+//                playerVC.playerPanelView.cover.sd_setImage(with: URL(string: info.cover))
+//                playerVC.backgroundCover.sd_setImage(with: URL(string: info.cover))
+//                playerVC.playerPanelView.artist.text = info.artist
+//                playerVC.playerPanelView.trackName.text = info.trackName
+//            }
 
         })
 

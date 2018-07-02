@@ -21,6 +21,10 @@ protocol SpotifyUri {
     var hint: String { get }
 
     var murmur: [String] { get }
+
+    var title: String { get }
+
+    var content: String { get }
 }
 
 struct SpotifyUris: Codable, SpotifyUri {
@@ -36,6 +40,10 @@ struct SpotifyUris: Codable, SpotifyUri {
     var hint: String
 
     var murmur: [String]
+
+    var title: String
+
+    var content: String
 }
 
 struct SpotifyUrisManager: Codable {
@@ -73,7 +81,6 @@ struct SpotifyUrisManager: Codable {
 
         } catch {
 
-//            fatalError()
             print("Wrong file")
 
         }

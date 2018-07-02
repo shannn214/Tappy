@@ -98,21 +98,21 @@ class CollectionViewController: UIViewController, UIScrollViewDelegate {
 
     @objc func showPlayerView(tapGestureRecognizer: UITapGestureRecognizer) {
 
-        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController,
-              let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL,
-              let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
-              let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
-        else { return }
-
-        present(playerVC, animated: true) {
-
-            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
-            playerVC.backgroundCover.sd_setImage(with: URL(string: url))
-            playerVC.playerPanelView.artist.text = artist
-            playerVC.playerPanelView.trackName.text = trackName
-
-        }
-
+//        guard let playerVC = UIStoryboard.playerStoryboard().instantiateInitialViewController() as? PlayerViewController,
+//              let url = SpotifyManager.shared.player?.metadata.currentTrack?.albumCoverArtURL,
+//              let artist = SpotifyManager.shared.player?.metadata.currentTrack?.artistName,
+//              let trackName = SpotifyManager.shared.player?.metadata.currentTrack?.name
+//        else { return }
+//
+//        present(playerVC, animated: true) {
+//
+//            playerVC.playerPanelView.cover.sd_setImage(with: URL(string: url))
+//            playerVC.backgroundCover.sd_setImage(with: URL(string: url))
+//            playerVC.playerPanelView.artist.text = artist
+//            playerVC.playerPanelView.trackName.text = trackName
+//
+//        }
+//
     }
 
 }

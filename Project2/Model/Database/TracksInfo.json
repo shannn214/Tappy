@@ -6,31 +6,39 @@
               "level" : 1,
               "image" : "flower_jelly0",
               "hint" : "Next hint: Fire!!!",
-              "murmur" : ["BoooBooooo", "YaHaHa", "Burnnnnn!!!", ">_<", "Drop the beat!", "Tapppppy the best!", "想吃烤肉"]
+              "murmur" : ["BoooBooooo", "YaHaHa", "Burnnnnn!!!", ">_<", "Drop the beat!", "Tapppppy the best!", "想吃烤肉"],
+              "title" : "About Tappy",
+              "content" : ""
+              },
+              {
+              "trackUri" : "spotify:track:0PwKsFzNiOTnAus6fj7zJn",
+              "albumUri" : "spotify:album:5N6Jn6dBh0WqLzGfOPytgx",
+              "level" : 2,
+              "image" : "fire_jelly0",
+              "hint" : "Next hint: Cloud!",
+              "murmur" : ["Colorful cloud!", "I remember...", "Hidden in the sky?", ">_<", "<3", "duolC", "想吃豆干"],
+              "title" : "Special Thanks",
+              "content" : "So many people helped shape Tappy. \n Below are some of their names. \n SERIOUSLY GOOD PEOPLE \n \n ---- \n Davis Lin \n Bebee Lin \n Kevin Lin \n \n ---- \n AppWorks School \n \n My Goddess  |  Enid Tian \n My Mentor  |  Luke Wu \n Wayne Chen \n Wade Hong \n Abby Lee \n BigRoot Hsu \n Django Lin \n Aaron Huang \n Annie Wang \n Kevin Liao \n Frank Ding \n Alan Chen \n Sam Chang \n David Wu \n RY hung"
               },
               {
               "trackUri" : "spotify:track:4UZmRayMrFI8pHeK5zb7GU",
               "albumUri" : "spotify:album:6anOpUuzfcD0zNPDW1zPOT",
-              "level" : 2,
-              "image" : "fire_jelly0",
-              "hint" : "Next hint: Cloud!",
-              "murmur" : ["Colorful cloud!", "I remember...", "Hidden in the sky?", ">_<", "<3", "duolC", "想吃豆干"]
+              "level" : 3,
+              "image" : "cloud_jelly0",
+              "hint" : "Next hint: Water!",
+              "murmur" : ["想吃滷味", "YaHaHa", "Hehe~~~", ">_<", "Drop the beat!", "Nuh", "Water me!"],
+              "title" : "About Music",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:0oks4FnzhNp5QPTZtoet7c",
               "albumUri" : "spotify:album:4m2880jivSbbyEGAKfITCa",
-              "level" : 3,
-              "image" : "cloud_jelly0",
-              "hint" : "Next hint: Water!",
-              "murmur" : ["想吃滷味", "YaHaHa", "Hehe~~~", ">_<", "Drop the beat!", "Nuh", "Water me!"]
-              },
-              {
-              "trackUri" : "spotify:track:6jPSxPbNzV64hdwrFIPaIl",
-              "albumUri" : "spotify:album:0X8YRrzzbL4RE1bPgRz6eW",
               "level" : 4,
               "image" : "cry_jelly0",
               "hint" : "Next hint: Star!",
-              "murmur" : ["想吃麻辣鍋", "YaHaHa", "Bling* Bling*", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想吃麻辣鍋", "YaHaHa", "Bling* Bling*", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:4GKk1uNzpxIptBuaY97Dkj",
@@ -38,7 +46,9 @@
               "level" : 5,
               "image" : "star_jelly0",
               "hint" : "Next hint: Weapon!",
-              "murmur" : ["想吃拉麵", "YaHaHa", "Master of Collector!", ">_<", "Drop the beat!", "Tapppppy the best!", "zzz"]
+              "murmur" : ["想吃拉麵", "YaHaHa", "Master of Collector!", ">_<", "Drop the beat!", "Tapppppy the best!", "zzz"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:62LJFaYihsdVrrkgUOJC05",
@@ -46,7 +56,9 @@
               "level" : 6,
               "image" : "master_jelly0",
               "hint" : "Next hint: Shadow!",
-              "murmur" : ["想喝珍奶", "YaHaHa", "Pizza! Pizza!", ">_<", "Darknessssss!!!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想喝珍奶", "YaHaHa", "Pizza! Pizza!", ">_<", "Darknessssss!!!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:3cPtV3L2SinV7YQhflqFad",
@@ -54,7 +66,9 @@
               "level" : 7,
               "image" : "black_jelly",
               "hint" : "Next hint: Original position!",
-              "murmur" : ["想睡覺", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想睡覺", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:4dyx5SzxPPaD8xQIid5Wjj",
@@ -62,7 +76,9 @@
               "level" : 8,
               "image" : "peek_jelly",
               "hint" : "No more hint now.",
-              "murmur" : ["想吃巧克力", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想吃巧克力", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:5HcsDG8COSFJcr15Qw7j9e",
@@ -70,7 +86,9 @@
               "level" : 9,
               "image" : "",
               "hint" : "",
-              "murmur" : ["想吃鹹水雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想吃鹹水雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               },
               {
               "trackUri" : "spotify:track:6y6KjfkOZMCbzwOPKKDwi0",
@@ -78,7 +96,9 @@
               "level" : 10,
               "image" : "",
               "hint" : "",
-              "murmur" : ["想吃鹹酥雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"]
+              "murmur" : ["想吃鹹酥雞", "YaHaHa", "Pizza! Pizza!", ">_<", "Drop the beat!", "Tapppppy the best!", "大好き"],
+              "title" : "",
+              "content" : ""
               }
     ]
     

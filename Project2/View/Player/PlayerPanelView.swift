@@ -18,6 +18,12 @@ class PlayerPanelView: UIView {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var leaveArrow: UIButton!
+    @IBOutlet weak var smallSlider: UISlider!
+
+    @IBOutlet weak var smallPanel: UIView!
+    @IBOutlet weak var smallTrackName: UILabel!
+    @IBOutlet weak var smallPlayButton: UIButton!
 
     var playing = false
 
@@ -30,19 +36,38 @@ class PlayerPanelView: UIView {
 
     }
 
-    func setupSlider() {
+    private func setupSlider() {
 
         slider.setThumbImage(#imageLiteral(resourceName: "dott"), for: .normal)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpInside)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchUpOutside)
-        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .touchCancel)
+        slider.addTarget(self, action: #selector(changeCurrentPosition), for: .valueChanged)
+
+        smallSlider.setThumbImage(UIImage(), for: .normal)
+
+    }
+
+    private func setupButton() {
+
+        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+        smallPlayButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
+
+        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+
+        leaveArrow.alpha = 0
+
+        playButton.isSelected = true
+
+        smallPlayButton.isSelected = true
 
     }
 
     @objc func playAndPause() {
 
         playing = !playing
+
         playButton.isSelected = !playButton.isSelected
+
+        smallPlayButton.isSelected = !smallPlayButton.isSelected
 
         if playing {
             SpotifyManager.shared.player?.setIsPlaying(false, callback: nil)
@@ -64,24 +89,23 @@ class PlayerPanelView: UIView {
 
         slider.value = Float(proportion)
 
+        smallSlider.value = Float(proportion)
+
     }
 
     @objc func changeCurrentPosition() {
 
-        let seekingCM: CMTime = CMTimeMakeWithSeconds((SpotifyManager.shared.player?.metadata.currentTrack?.duration)!, 10000)
-        let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
-        let newDuration = CMTimeGetSeconds(seekingCM)
-        SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
+        if SpotifyManager.shared.haveCurrentTrack == true {
+//        if SpotifyManager.shared.player?.getMetadata() != nil {
 
-    }
+            guard let sptDuration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
 
-    private func setupButton() {
+            let seekingCM: CMTime = CMTimeMakeWithSeconds(sptDuration, 10000)
+            let duration = slider.value * Float(CMTimeGetSeconds(seekingCM))
+            let newDuration = CMTimeGetSeconds(seekingCM)
+            SpotifyManager.shared.player?.seek(to: Double(duration), callback: nil)
 
-        playButton.isSelected = true
-
-        playButton.addTarget(self, action: #selector(playAndPause), for: UIControlEvents.touchUpInside)
-
-        cover.layer.cornerRadius = cover.bounds.size.width * 0.5
+        }
 
     }
 
