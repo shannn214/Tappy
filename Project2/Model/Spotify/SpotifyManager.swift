@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol SpotifyStreaming {
+    func getMetadata() -> SPTPlaybackMetadata
+}
+
 class SpotifyManager: UIViewController {
 
     static let shared = SpotifyManager()
@@ -192,6 +196,16 @@ extension SpotifyManager: SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDe
     }
 
     func audioStreamingDidDisconnect(_ audioStreaming: SPTAudioStreamingController!) {
+
+    }
+
+}
+
+extension SpotifyStreaming {
+
+    func getMetadata() -> SPTPlaybackMetadata {
+
+        return SPTPlaybackMetadata(prevTrack: nil, currentTrack: nil, nextTrack: nil)!
 
     }
 

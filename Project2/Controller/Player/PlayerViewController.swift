@@ -171,7 +171,7 @@ class PlayerViewController: UIViewController {
 
         } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
 
-            if viewPosition.frame.origin.y < SHConstants.screenHeight / 2 || velocity.y < -1500 {
+            if velocity.y < -1500 || viewPosition.frame.origin.y < SHConstants.screenHeight / 2 {
 
                 self.playerDelegate?.playerViewStatus(flag: false)
 

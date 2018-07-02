@@ -67,7 +67,7 @@ enum TabBar {
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings-3")
+            return #imageLiteral(resourceName: "favorites")
 
         }
 
@@ -91,7 +91,7 @@ enum TabBar {
 
         case .setting:
 
-            return #imageLiteral(resourceName: "settings-3").withRenderingMode(.alwaysOriginal)
+            return #imageLiteral(resourceName: "favorites").withRenderingMode(.alwaysOriginal)
 
         }
 

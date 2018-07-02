@@ -214,7 +214,6 @@ extension SettingCollectionViewController: SettingDetailDelegate {
 //                            self.view.layoutIfNeeded()
 
                             self.detailVC.view.alpha = 0
-
         },
                        completion: { _ in
 

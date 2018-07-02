@@ -40,7 +40,7 @@ class DetailTableViewController: UIViewController {
 
         detailTableView.rowHeight = UITableViewAutomaticDimension
         detailTableView.estimatedRowHeight = 100
-        
+
         let nib = UINib(nibName: String(describing: SettingDetailTableViewCell.self), bundle: nil)
         detailTableView.register(nib, forCellReuseIdentifier: String(describing: SettingDetailTableViewCell.self))
         let headerNib = UINib(nibName: String(describing: DetailHeaderTableViewCell.self), bundle: nil)
@@ -73,7 +73,7 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
 
         let uriManager = SpotifyUrisManager.createManagerFromFile()
         let jsonData = uriManager.uris[(selectedCellIndex?.row)!]
-        
+
         cell.selectionStyle = .none
         headerCell.selectionStyle = .none
 
