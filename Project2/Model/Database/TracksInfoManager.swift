@@ -81,7 +81,6 @@ struct SpotifyUrisManager: Codable {
 
         } catch {
 
-//            fatalError()
             print("Wrong file")
 
         }

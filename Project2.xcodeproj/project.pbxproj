@@ -67,7 +67,6 @@
 		09A6856E20BCFF2A00BE0EA5 /* mapppp-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */; };
 		09A6857020BD1EC400BE0EA5 /* SampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */; };
 		09A6857220BD1FDF00BE0EA5 /* SampleMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */; };
-		09ABF98320E233450036CB97 /* MapPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98220E233450036CB97 /* MapPlayerViewController.swift */; };
 		09ABF98720E338600036CB97 /* SettingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */; };
 		09ABF98B20E338F80036CB97 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */; };
 		09ABF98C20E338F80036CB97 /* SettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */; };
@@ -176,7 +175,6 @@
 		09A6856D20BCFF2A00BE0EA5 /* mapppp-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapppp-01.png"; sourceTree = "<group>"; };
 		09A6856F20BD1EC400BE0EA5 /* SampleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGameViewController.swift; sourceTree = "<group>"; };
 		09A6857120BD1FDF00BE0EA5 /* SampleMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleMode.storyboard; sourceTree = "<group>"; };
-		09ABF98220E233450036CB97 /* MapPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayerViewController.swift; sourceTree = "<group>"; };
 		09ABF98620E338600036CB97 /* SettingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewController.swift; sourceTree = "<group>"; };
 		09ABF98920E338F80036CB97 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		09ABF98A20E338F80036CB97 /* SettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				090B697E20A18E9F0095B416 /* PlayerViewController.swift */,
-				09ABF98220E233450036CB97 /* MapPlayerViewController.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -857,7 +854,6 @@
 				09ABF9B820E5290A0036CB97 /* DetailTableViewController.swift in Sources */,
 				09A62B3A20AED14700BA5932 /* TrackCollectionViewCell.swift in Sources */,
 				09ABF98720E338600036CB97 /* SettingCollectionViewController.swift in Sources */,
-				09ABF98320E233450036CB97 /* MapPlayerViewController.swift in Sources */,
 				090B695E209F3B8B0095B416 /* TabBarViewController.swift in Sources */,
 				090B6964209F3C530095B416 /* UIStoryboard.swift in Sources */,
 				090B696C209F3FD30095B416 /* CardViewController.swift in Sources */,

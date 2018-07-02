@@ -210,3 +210,13 @@ extension SpotifyStreaming {
     }
 
 }
+
+extension SPTAudioStreamingController: SpotifyStreaming {
+
+    func getMetadata() -> SPTPlaybackMetadata {
+
+        return metadata
+
+    }
+
+}

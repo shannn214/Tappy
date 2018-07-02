@@ -167,7 +167,7 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: PlayerDelegate {
 
-    func playerViewStatus(flag: Bool) {
+    func playerViewStatus(flag: Bool, transY: CGFloat?) {
 
         switch flag {
         case true:

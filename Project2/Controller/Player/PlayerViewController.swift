@@ -10,7 +10,7 @@ import Foundation
 import SDWebImage
 
 protocol PlayerDelegate: class {
-    func playerViewStatus(flag: Bool)
+    func playerViewStatus(flag: Bool, transY: CGFloat?)
 }
 
 class PlayerViewController: UIViewController {
@@ -94,7 +94,7 @@ class PlayerViewController: UIViewController {
 
     @IBAction func leaveArrow(_ sender: Any) {
 
-        self.playerDelegate?.playerViewStatus(flag: true)
+        self.playerDelegate?.playerViewStatus(flag: true, transY: nil)
 
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
 
@@ -115,15 +115,15 @@ class PlayerViewController: UIViewController {
 
     @IBAction func smallLeaveArrow(_ sender: Any) {
 
-        self.playerDelegate?.playerViewStatus(flag: false)
+        self.playerDelegate?.playerViewStatus(flag: false, transY: nil)
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
 
-            self.view.frame = self.view.bounds
+            self?.view.frame = (self?.view.bounds)!
 
-            self.playerPanelView.smallPanel.alpha = 0
+            self?.playerPanelView.smallPanel.alpha = 0
 
-            self.playerPanelView.leaveArrow.alpha = 1
+            self?.playerPanelView.leaveArrow.alpha = 1
 
         }, completion: nil)
 
@@ -143,16 +143,20 @@ class PlayerViewController: UIViewController {
 
         let velocity = panGesture.velocity(in: self.view.window)
 
-        if panGesture.state == UIGestureRecognizerState.changed {
+        switch panGesture.state {
+
+        case .changed:
 
             if flag == true {
 
                 if trans.y < 0 {
 
                     self.view.frame = CGRect(x: 0,
-                                                  y: SHConstants.screenHeight - 50 - moving,
-                                                  width: view.bounds.width,
-                                                  height: view.bounds.height)
+                                             y: SHConstants.screenHeight - 50 - moving,
+                                             width: view.bounds.width,
+                                             height: view.bounds.height)
+
+                    self.playerPanelView.smallPanel.alpha = 1 + (trans.y / 50)
 
                 }
 
@@ -161,27 +165,25 @@ class PlayerViewController: UIViewController {
                 if touchPoint.y > 0 && trans.y > 0 {
 
                     self.view.frame = CGRect(x: 0,
-                                                  y: trans.y,
-                                                  width: view.bounds.width,
-                                                  height: view.bounds.height)
+                                             y: trans.y,
+                                             width: view.bounds.width,
+                                             height: view.bounds.height)
 
                 }
 
             }
 
-        } else if panGesture.state == UIGestureRecognizerState.ended || panGesture.state == UIGestureRecognizerState.cancelled {
+        case .cancelled, .ended:
 
             if velocity.y < -1500 || viewPosition.frame.origin.y < SHConstants.screenHeight / 2 {
 
-                self.playerDelegate?.playerViewStatus(flag: false)
+                self.playerDelegate?.playerViewStatus(flag: false, transY: trans.y)
 
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
 
-                    self.view.frame = self.view.bounds
+                    self?.view.frame = (self?.view.bounds)!
 
-                    self.playerPanelView.smallPanel.alpha = 0
-
-                    self.playerPanelView.leaveArrow.alpha = 1
+                    self?.playerPanelView.leaveArrow.alpha = 1
 
                 }, completion: nil)
 
@@ -189,18 +191,18 @@ class PlayerViewController: UIViewController {
 
             } else if viewPosition.frame.origin.y > SHConstants.screenHeight / 2 || velocity.y > 1500 {
 
-                self.playerDelegate?.playerViewStatus(flag: true)
+                self.playerDelegate?.playerViewStatus(flag: true, transY: trans.y)
 
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
 
-                    self.view.frame = CGRect(x: 0,
+                    self?.view.frame = CGRect(x: 0,
                                              y: SHConstants.screenHeight - 50,
-                                             width: self.view.bounds.width,
-                                             height: self.view.bounds.height)
+                                             width: (self?.view.bounds.width)!,
+                                             height: (self?.view.bounds.height)!)
 
-                    self.playerPanelView.smallPanel.alpha = 1
+                    self?.playerPanelView.smallPanel.alpha = 1
 
-                    self.playerPanelView.leaveArrow.alpha = 0
+                    self?.playerPanelView.leaveArrow.alpha = 0
 
                 }, completion: nil)
 
@@ -208,6 +210,8 @@ class PlayerViewController: UIViewController {
 
             }
 
+        default:
+            break
         }
 
     }

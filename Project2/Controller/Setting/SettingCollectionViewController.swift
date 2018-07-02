@@ -182,44 +182,14 @@ extension SettingCollectionViewController: SettingDetailDelegate {
 
     func detailBackToSmallSize(_ controller: SettingDetailViewController) {
 
-//        print("detail back to small delegate did sent")
-
-//        let point = settingCollectionView.convert((seletedCell?.frame.origin)!, to: self.view)
-//
-//        self.detailVC.view.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let itemSize = UIScreen.main.bounds.width
-//
-//        let yPoint = self.detailVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: point.y)
-//
-//        let xPoint = self.detailVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: point.x)
-//
-//        let width = self.detailVC.view.widthAnchor.constraint(equalToConstant: itemSize * 0.85)
-//
-//        let height = self.detailVC.view.heightAnchor.constraint(equalToConstant: itemSize * 0.9)
-//
-//        self.view.layoutIfNeeded()
-
         UIView.animate(withDuration: 0.3,
                        animations: {
-
-//                            yPoint.isActive = true
-//
-//                            xPoint.isActive = true
-//
-//                            width.isActive = true
-//
-//                            height.isActive = true
-//
-//                            self.view.layoutIfNeeded()
 
                             self.detailVC.view.alpha = 0
         },
                        completion: { _ in
 
                             self.seletedCell?.cellView.isHidden = false
-
-//                            self.detailVC.view.removeFromSuperview()
 
         })
 

@@ -96,6 +96,7 @@ class PlayerPanelView: UIView {
     @objc func changeCurrentPosition() {
 
         if SpotifyManager.shared.haveCurrentTrack == true {
+//        if SpotifyManager.shared.player?.getMetadata() != nil {
 
             guard let sptDuration = SpotifyManager.shared.player?.metadata.currentTrack?.duration else { return }
 

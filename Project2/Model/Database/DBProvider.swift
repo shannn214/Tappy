@@ -34,7 +34,6 @@ class DBProvider {
 
 }
 
-//Need to ask Luke
 extension Results {
     func toArray<T>(ofType: T.Type) -> [T] {
         //        return flatMap { $0 as? T }
