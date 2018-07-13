@@ -53,7 +53,7 @@ extension SettingCollectionViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 4
+        return 2
 
     }
 

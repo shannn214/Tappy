@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fc1-us-zP0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <connections>
                                     <segue destination="OVq-01-37a" kind="embed" id="Nnw-qz-aDV"/>
                                 </connections>
@@ -26,7 +26,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iAL-PY-7VF" firstAttribute="bottom" secondItem="Fc1-us-zP0" secondAttribute="bottom" id="E2S-r5-U1c"/>
+                            <constraint firstItem="iAL-PY-7VF" firstAttribute="bottom" secondItem="Fc1-us-zP0" secondAttribute="bottom" constant="50" id="E2S-r5-U1c"/>
                             <constraint firstItem="iAL-PY-7VF" firstAttribute="trailing" secondItem="Fc1-us-zP0" secondAttribute="trailing" id="dKy-p1-nUO"/>
                             <constraint firstItem="Fc1-us-zP0" firstAttribute="top" secondItem="pBL-5v-KUp" secondAttribute="top" id="k6p-yN-0Js"/>
                             <constraint firstItem="Fc1-us-zP0" firstAttribute="leading" secondItem="iAL-PY-7VF" secondAttribute="leading" id="u4J-5t-uf9"/>
@@ -43,11 +43,11 @@
             <objects>
                 <viewController id="OVq-01-37a" customClass="SettingCollectionViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9r-cO-Jfa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iN1-2o-kGL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uUF-ZV-g1G">
                                     <size key="itemSize" width="50" height="50"/>
