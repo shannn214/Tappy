@@ -8,7 +8,7 @@
               "hint" : "Next hint: Fire!!!",
               "murmur" : ["BoooBooooo", "YaHaHa", "Burnnnnn!!!", ">_<", "Drop the beat!", "Tapppppy the best!", "想吃烤肉"],
               "title" : "About Tappy",
-              "content" : ""
+              "content" : "As a fresh developer, Tappy is my first origin programming project. \n \n There are so many defects in Tappy. But it is also full of love and joyful when I’m developing Tappy. \n \n Somehow I think Tappy represented some sort of my personality. I’m very happy to experience the process of making it. \n \n Incompletely means there’s much room to improve in the future. If you have any suggestions or want to say something to me (ex. I love you), feel free to contact me :) \n \n Thank you for playing my game. \n \n ---- \n Chin Shang \n gracejin214@gmail.com"
               },
               {
               "trackUri" : "spotify:track:0PwKsFzNiOTnAus6fj7zJn",
@@ -27,7 +27,7 @@
               "image" : "cloud_jelly0",
               "hint" : "Next hint: Water!",
               "murmur" : ["想吃滷味", "YaHaHa", "Hehe~~~", ">_<", "Drop the beat!", "Nuh", "Water me!"],
-              "title" : "About Music",
+              "title" : "",
               "content" : ""
               },
               {
