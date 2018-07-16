@@ -186,10 +186,13 @@ extension SettingCollectionViewController: SettingDetailDelegate {
                        animations: {
 
                             self.detailVC.view.alpha = 0
-        },
-                       completion: { _ in
 
                             self.seletedCell?.cellView.isHidden = false
+
+        },
+                       completion: { (_: Bool) in
+
+//                            self.detailVC.view.removeFromSuperview()
 
         })
 
