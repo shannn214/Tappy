@@ -11,29 +11,29 @@ import XCTest
 
 class Project2Tests: XCTestCase {
 
-    var spotifyManager: SpotifyUrisManager!
-
-    override func setUp() {
-        super.setUp()
-
-        spotifyManager = SpotifyUrisManager()
-
-    }
-
-    override func tearDown() {
-
-        spotifyManager = nil
-
-        super.tearDown()
-    }
-
-    func testExample() {
-
-        let ssss = SpotifyUrisManager.createManagerFromFile(fileName: UriConstant.fileName.rawValue,
-                                                            fileType: UriConstant.fileType.rawValue)
-
-        XCTAssertEqual(ssss.uris.count, 10)
-
-    }
+//    var spotifyManager: SpotifyUrisManager!
+//
+//    override func setUp() {
+//        super.setUp()
+//
+//        spotifyManager = SpotifyUrisManager()
+//
+//    }
+//
+//    override func tearDown() {
+//
+//        spotifyManager = nil
+//
+//        super.tearDown()
+//    }
+//
+//    func testExample() {
+//
+//        let ssss = SpotifyUrisManager.createManagerFromFile(fileName: UriConstant.fileName.rawValue,
+//                                                            fileType: UriConstant.fileType.rawValue)
+//
+//        XCTAssertEqual(ssss.uris.count, 10)
+//
+//    }
 
 }
