@@ -29,7 +29,7 @@
 
 <img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6429.TRIM.gif" width="250" /> <img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6894.TRIM.MOV.gif" width="250" />
 
-<img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6431.PNG" width="250" /> <img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6432.PNG" width="250" />
+<img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6884.TRIM.gif" width="250" /> <img src="https://github.com/shannn214/Tappy/blob/master/readMeImage/IMG_6432.PNG" width="250" />
 
 
 ## Requirement
